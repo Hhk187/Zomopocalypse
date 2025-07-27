@@ -10,7 +10,7 @@
 # .godot/scene_groups_cache.cfg
 # .godot/uid_cache.bin
 Requirements/Launcher/
-Requirements/temp
+temp
 /android/
 # Godot-specific ignores
 # *.import/
