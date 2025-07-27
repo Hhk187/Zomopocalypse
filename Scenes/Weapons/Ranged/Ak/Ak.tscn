@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnblltv50fky0"]
+
+[ext_resource type="PackedScene" uid="uid://qsf1is5fnqvd" path="res://BaseScenes/BaseWeapon/BaseWeapon.tscn" id="1_1erx4"]
+[ext_resource type="Script" uid="uid://dqubptjcohlg8" path="res://base_weapon.gd" id="2_lql1c"]
+[ext_resource type="PackedScene" uid="uid://c372uodbmwnkv" path="res://Assets/Models/Weapons/Low Poly Weapons Pack-glb/Assault Rifle-XGeBGFQxYg.glb" id="3_k25jp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1erx4"]
+size = Vector3(0.115, 0.365, 0.83)
+
+[node name="BaseWeapon" instance=ExtResource("1_1erx4")]
+script = ExtResource("2_lql1c")
+
+[node name="Assault Rifle-XGeBGFQxYg" parent="Model" index="0" instance=ExtResource("3_k25jp")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.0398744, -0.175551)
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00155091, -0.0992577)
+shape = SubResource("BoxShape3D_1erx4")
+
+[editable path="Model/Assault Rifle-XGeBGFQxYg"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://qsf1is5fnqvd"]
+
+[node name="BaseWeapon" type="RigidBody3D"]
+collision_layer = 16
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

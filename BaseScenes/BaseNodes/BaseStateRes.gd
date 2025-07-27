@@ -11,6 +11,7 @@ var name : String
 func _init(_name : String, _entity : BaseEntity) -> void:
 	name = _name
 	entity = _entity
+	state_manager_node = _entity.find_child("BaseStateManagerNode")
 
 func enter(_last_state : BaseStateRes = null, _args : Array = []):
 	pass
