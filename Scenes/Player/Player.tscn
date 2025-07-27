@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://baq5fam5xesra"]
+
+[ext_resource type="PackedScene" uid="uid://d30ipjyyopunc" path="res://BaseScenes/BaseEntity/BaseEntity.tscn" id="1_s0eop"]
+[ext_resource type="Script" uid="uid://bo2urmd8u6hwt" path="res://BaseScenes/BaseNodes/BaseStateManagerNode.gd" id="2_ft8w5"]
+[ext_resource type="Script" uid="uid://bycwuf3w0etdn" path="res://Scenes/Player/player.gd" id="2_h54ih"]
+[ext_resource type="Script" uid="uid://c2jnm5ucuwppv" path="res://Scenes/Player/pitch.gd" id="2_t26db"]
+[ext_resource type="Script" uid="uid://0a3iovwytv30" path="res://BaseScenes/BaseNodes/BaseInputsNode.gd" id="4_t26db"]
+[ext_resource type="PackedScene" uid="uid://c372uodbmwnkv" path="res://Assets/Models/Weapons/Low Poly Weapons Pack-glb/Assault Rifle-XGeBGFQxYg.glb" id="4_ude3g"]
+[ext_resource type="PackedScene" uid="uid://cxoditwtcywk0" path="res://Assets/Models/Weapons/Low Poly Weapons Pack-glb/Pistol-L1u7KkJzY2.glb" id="5_4wape"]
+[ext_resource type="PackedScene" uid="uid://dwtu2oloffgpr" path="res://Assets/Models/Weapons/Low Poly Weapons Pack-glb/Assault Rifle.glb" id="6_t26db"]
+
+[node name="Player" instance=ExtResource("1_s0eop")]
+script = ExtResource("2_h54ih")
+
+[node name="MeshInstance3D" parent="Model" index="0"]
+layers = 2
+
+[node name="Pitch" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48287, -0.352809)
+script = ExtResource("2_t26db")
+
+[node name="Yaw" type="Node3D" parent="Pitch" index="0"]
+
+[node name="Camera3D" type="Camera3D" parent="Pitch/Yaw" index="0"]
+cull_mask = 1048569
+current = true
+
+[node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, -3.72529e-09, 0, 3.72529e-09, 0.999999, 0.501739, 0.00229895, 0.079279)
+
+[node name="Assault Rifle-XGeBGFQxYg" parent="Pitch/Yaw/Camera3D/RightHand" index="0" instance=ExtResource("4_ude3g")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 9.31323e-10, 0, -9.31323e-10, 0.2, 0, -0.0103863, -0.219136)
+
+[node name="AssaultRIfle_01_Cube_002" parent="Pitch/Yaw/Camera3D/RightHand/Assault Rifle-XGeBGFQxYg" index="0"]
+layers = 2
+
+[node name="Pistol-L1u7KkJzY2" parent="Pitch/Yaw/Camera3D/RightHand" index="1" instance=ExtResource("5_4wape")]
+transform = Transform3D(-0.05, 0, 4.37114e-09, 1.11022e-16, 0.05, 0, -4.37114e-09, 0, -0.05, 0.0110458, 0.0120192, -0.0126399)
+visible = false
+
+[node name="Pistol_01_Cube_004" parent="Pitch/Yaw/Camera3D/RightHand/Pistol-L1u7KkJzY2" index="0"]
+layers = 2
+
+[node name="RayCast3D" type="RayCast3D" parent="Pitch/Yaw/Camera3D" index="1"]
+target_position = Vector3(0, 0, -5)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Pitch/Yaw/Camera3D" index="2"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Pitch/Yaw/Camera3D/SubViewportContainer" index="0"]
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4294967293
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="CameraPOV" type="Camera3D" parent="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48287, -0.352809)
+cull_mask = 12
+fov = 35.0
+
+[node name="RightHandPOV" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.238295, -0.186528, -0.576225)
+
+[node name="Assault Rifle-XGeBGFQxYg" parent="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV/RightHandPOV" index="0" instance=ExtResource("4_ude3g")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.0366234, -0.184427)
+
+[node name="AssaultRIfle_01_Cube_002" parent="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV/RightHandPOV/Assault Rifle-XGeBGFQxYg" index="0"]
+layers = 4
+
+[node name="Pistol-L1u7KkJzY2" parent="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV/RightHandPOV" index="1" instance=ExtResource("5_4wape")]
+transform = Transform3D(-0.05, 0, -7.54978e-09, 0, 0.05, 0, 7.54979e-09, 0, -0.05, 0.0110457, 0.0786536, -0.136114)
+visible = false
+
+[node name="Pistol_01_Cube_004" parent="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV/RightHandPOV/Pistol-L1u7KkJzY2" index="0"]
+layers = 4
+
+[node name="Assault Rifle" parent="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV/RightHandPOV" index="2" instance=ExtResource("6_t26db")]
+transform = Transform3D(-0.2, -1.4518e-06, -1.46071e-06, -1.4518e-06, 0.2, 0, 1.46071e-06, 1.06033e-11, -0.2, 0.00308269, 0.0589838, -0.177803)
+visible = false
+
+[node name="AssaultRIfle_03_001_Cube_001" parent="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV/RightHandPOV/Assault Rifle" index="0"]
+layers = 4
+
+[node name="BaseStateManagerNode" type="Node" parent="." index="3"]
+script = ExtResource("2_ft8w5")
+metadata/_custom_type_script = "uid://bo2urmd8u6hwt"
+
+[node name="BaseInputsNode" type="Node" parent="." index="4"]
+script = ExtResource("4_t26db")
+metadata/_custom_type_script = "uid://0a3iovwytv30"
+
+[editable path="Pitch/Yaw/Camera3D/RightHand/Assault Rifle-XGeBGFQxYg"]
+[editable path="Pitch/Yaw/Camera3D/RightHand/Pistol-L1u7KkJzY2"]
+[editable path="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV/RightHandPOV/Assault Rifle-XGeBGFQxYg"]
+[editable path="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV/RightHandPOV/Pistol-L1u7KkJzY2"]
+[editable path="Pitch/Yaw/Camera3D/SubViewportContainer/SubViewport/CameraPOV/RightHandPOV/Assault Rifle"]

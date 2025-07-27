@@ -1,0 +1,9 @@
+{
+    "GodotSteam-v4.15" : {
+    "name" : "GodotSteam",
+    "version" : "v4.15",
+    "link" : "https://github.com/GodotSteam/MultiplayerPeer/releases/download/v4.15-mp/win64-g441-s162-gs415-mp.zip",
+    "description" : "The not 'latest' version of Godot Engine",
+    "location" : "Launcher/GodotSteam/"
+    }
+}
