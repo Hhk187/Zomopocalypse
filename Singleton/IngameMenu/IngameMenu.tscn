@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://dtn0o8sijbrvb" path="res://Singleton/IngameMenu/ingame_menu.gd" id="1_30l4m"]
 
 [node name="IngameMenu" type="Control"]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +12,7 @@ grow_vertical = 2
 script = ExtResource("1_30l4m")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,6 +59,16 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Quit
 "
+
+[node name="FPSLabel" type="Label" parent="."]
+layout_mode = 0
+offset_right = 85.0
+offset_bottom = 43.0
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "FPS : 144"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/FullscreenBordlerss" to="." method="_on_toggle_fullscreen_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Windowed" to="." method="_on_windowed_pressed"]

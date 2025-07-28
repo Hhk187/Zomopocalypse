@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bit23408ulf5s"]
+[gd_scene load_steps=6 format=3 uid="uid://bit23408ulf5s"]
 
 [ext_resource type="PackedScene" uid="uid://qsf1is5fnqvd" path="res://BaseScenes/BaseItems/BaseItem.tscn" id="1_41qur"]
-[ext_resource type="Script" uid="uid://dqubptjcohlg8" path="res://base_weapon.gd" id="2_wxtu6"]
 [ext_resource type="Script" uid="uid://bd0s152hspgvo" path="res://BaseScenes/BaseItems/ItemDataRes.gd" id="3_draa7"]
 [ext_resource type="PackedScene" uid="uid://bp2vdvqhi6xuh" path="res://Assets/Models/Weapons/Low Poly Weapons Pack-glb/Pistol-L1u7KkJzY2.glb" id="4_41qur"]
 
@@ -10,8 +9,12 @@ script = ExtResource("3_draa7")
 id = "pistol01"
 name = "Pitsol"
 item_type = 0
-damage = 0.0
-range_unit = 0.0
+damage = 10.0
+range_unit = 100.0
+is_fire_auto = false
+fire_rate = 102.0
+ammo = 12.0
+max_ammo = 12.0
 hand = 0
 is_stackable = false
 max_stack = 0
@@ -19,15 +22,14 @@ use_animation = 0
 metadata/_custom_type_script = "uid://bd0s152hspgvo"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1erx4"]
-size = Vector3(0.140381, 0.244141, 0.305664)
+size = Vector3(0.0837402, 0.180664, 0.254883)
 
-[node name="BaseItem" instance=ExtResource("1_41qur")]
-script = ExtResource("2_wxtu6")
+[node name="Pistol" instance=ExtResource("1_41qur")]
 item_data = SubResource("Resource_41qur")
 
 [node name="Pistol-L1u7KkJzY2" parent="Model" index="0" instance=ExtResource("4_41qur")]
-transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, -0.04, 0.072, -0.126)
+transform = Transform3D(-0.05, 0, -4.37114e-09, 0, 0.05, 0, 4.37114e-09, 0, -0.05, 0, 0.035, 0.028)
 
 [node name="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.04581e-06, 0.0108233)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0262043, -0.00967808)
 shape = SubResource("BoxShape3D_1erx4")

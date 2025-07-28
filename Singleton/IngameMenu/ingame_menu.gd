@@ -1,5 +1,11 @@
 extends Control
 
+@onready var center_container: CenterContainer = $CenterContainer
+@onready var fps_label: Label = $FPSLabel
+
+func _physics_process(delta: float) -> void:
+	fps_label.text = "FPS : %s" % Engine.get_frames_per_second()
+
 
 var mouse_mode : bool = false:
 	set(value):
@@ -13,8 +19,8 @@ var mouse_mode : bool = false:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_action_pressed("ui_cancel"):
-			visible = !visible
-			mouse_mode = visible
+			center_container.visible = !center_container.visible
+			mouse_mode = center_container.visible
 		if event.is_action_pressed("debug_mouse_toggle"):
 			mouse_mode = !mouse_mode
 

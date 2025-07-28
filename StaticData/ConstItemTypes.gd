@@ -13,6 +13,6 @@ const HAND_L = "left_hand"
 
 # Animation names
 # use
-const ANIM_SHOOT = "shoot"
-const ANIM_SWING = "swing"
-const ANIM_USE = "use"
+const ANIM_SHOOT = &"shoot"
+const ANIM_SWING = &"swing"
+const ANIM_USE = &"use"

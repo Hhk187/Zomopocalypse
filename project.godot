@@ -23,6 +23,7 @@ IngameMenu="*res://Singleton/IngameMenu/IngameMenu.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
@@ -95,3 +96,7 @@ play_pickup={
 3d_physics/layer_1="World"
 3d_physics/layer_2="player"
 3d_physics/layer_5="Pickupable"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"

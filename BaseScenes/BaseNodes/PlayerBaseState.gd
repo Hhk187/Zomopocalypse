@@ -11,8 +11,8 @@ func input(event : InputEvent):
 	if not can_look_around: return
 	var player = entity as PlayerBaseEntity
 	if event is InputEventMouseMotion:
-		player.rotate_y(-(event.relative.x * 0.004))
-		player.neck.rotate_x(-(event.relative.y * 0.004))
+		player.rotate_y(-(event.relative.x * 0.002))
+		player.neck.rotate_x(-(event.relative.y * 0.002))
 		player.neck.rotation_degrees.x = clamp(player.neck.rotation_degrees.x,-90.0, 90.0)
 
 		CameraPOV.sway2D(event.relative)
@@ -35,6 +35,9 @@ func movements(delta):
 		entity.velocity.x = lerp(entity.velocity.x, 0.0, 0.3)
 		entity.velocity.z = lerp(entity.velocity.z, 0.0, 0.3)
 
+	CameraPOV.sway3D(Vector3(input_dir.x, 0, input_dir.y) * 0.003)
+	CameraPlayer.sway3D(Vector3(input_dir.x, 0, input_dir.y) * 0.003)
+
 	entity.move_and_slide()
 
 func just_fall(delta):
@@ -56,5 +59,4 @@ func interaction():
 		if Input.is_action_just_pressed("play_drop"):
 			player.right_hand.get_child(0).un_equipe()
 		if Input.is_action_pressed('play_fire'):
-			player.right_hand_pov.animation_player.stop()
-			player.right_hand_pov.animation_player.play("shoot")
+			player.use_weapon()

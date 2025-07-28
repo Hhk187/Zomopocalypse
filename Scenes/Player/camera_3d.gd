@@ -1,11 +1,14 @@
 extends Camera3D
+class_name CameraPlayer
 
+static var camera_sway : Vector3
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func _physics_process(delta: float) -> void:
+	rotation.z += camera_sway.x
+	rotation.z = clampf(rotation.z, -0.2, 0.2)
+	rotation.z = lerp(rotation.z, 0.0, 0.3)
+	camera_sway = camera_sway.lerp(Vector3.ZERO, delta*5)
+	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+static func sway3D(sway_amount : Vector3):
+	camera_sway -= sway_amount
