@@ -9,5 +9,5 @@ def remove_import_files(directory):
                 print(f"Removed: {file_path}")
 
 if __name__ == "__main__":
-    directory = '../../'
+    directory = '../'
     remove_import_files(directory)

@@ -1,12 +1,168 @@
-[gd_scene load_steps=8 format=3 uid="uid://baq5fam5xesra"]
+[gd_scene load_steps=15 format=3 uid="uid://baq5fam5xesra"]
 
 [ext_resource type="PackedScene" uid="uid://d30ipjyyopunc" path="res://BaseScenes/BaseEntity/BaseEntity.tscn" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://bo2urmd8u6hwt" path="res://BaseScenes/BaseNodes/BaseStateManagerNode.gd" id="2_ft8w5"]
 [ext_resource type="Script" uid="uid://bycwuf3w0etdn" path="res://Scenes/Player/player.gd" id="2_h54ih"]
 [ext_resource type="Script" uid="uid://c2jnm5ucuwppv" path="res://Scenes/Player/pitch.gd" id="2_t26db"]
+[ext_resource type="Script" uid="uid://biai3ifmf1pj5" path="res://Scenes/Player/camera_3d.gd" id="4_825xp"]
 [ext_resource type="Script" uid="uid://d38jr4b2o6pr4" path="res://Scenes/Player/right_hand.gd" id="4_fk5o5"]
 [ext_resource type="Script" uid="uid://0a3iovwytv30" path="res://BaseScenes/BaseNodes/BaseInputsNode.gd" id="4_t26db"]
 [ext_resource type="Script" uid="uid://5g4ya4k75jdd" path="res://Scenes/Player/camera_pov.gd" id="6_825xp"]
+[ext_resource type="Script" uid="uid://bjanwlykcietl" path="res://Scenes/Player/right_hand_pov.gd" id="7_0kmp4"]
+
+[sub_resource type="Animation" id="Animation_825xp"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0.238295, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.186528, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.576225, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_fk5o5"]
+resource_name = "shoot"
+length = 0.5
+step = 0.01
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0.238295, -0.25, 0, 0.25, 0, 0.238295, -0.25, 0, 0.25, 0, 0.238295, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.01, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.186528, -0.25, 0, 0.25, 0, -0.186528, -0.25, 0, 0.25, 0, -0.186528, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.01, 0.5)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(-0.576225, 0, 0, 0, 0, -0.554266, -0.135, 0, 0.25, 0, -0.576225, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.01, 0.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.0126674, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.01, 0.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.01, 0.5)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.01, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_i5acl"]
+resource_name = "swing"
+
+[sub_resource type="Animation" id="Animation_0kmp4"]
+resource_name = "use"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ji083"]
+_data = {
+&"RESET": SubResource("Animation_825xp"),
+&"shoot": SubResource("Animation_fk5o5"),
+&"swing": SubResource("Animation_i5acl"),
+&"use": SubResource("Animation_0kmp4")
+}
 
 [node name="Player" instance=ExtResource("1_s0eop")]
 collision_layer = 2
@@ -16,7 +172,7 @@ script = ExtResource("2_h54ih")
 layers = 2
 
 [node name="Pitch" type="Node3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48287, -0.352809)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -0.353)
 script = ExtResource("2_t26db")
 
 [node name="Yaw" type="Node3D" parent="Pitch" index="0"]
@@ -25,13 +181,14 @@ script = ExtResource("2_t26db")
 cull_mask = 1048569
 current = true
 fov = 80.0
+script = ExtResource("4_825xp")
 
 [node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, -3.72529e-09, 0, 3.72529e-09, 0.999999, 0.501739, 0.00229895, 0.079279)
+transform = Transform3D(1, 0, 0, 0, 0.999999, -3.72529e-09, 0, 3.72529e-09, 0.999999, 0, 0, 0)
 script = ExtResource("4_fk5o5")
 
-[node name="CenterRay" type="RayCast3D" parent="Pitch/Yaw/Camera3D" index="1"]
-target_position = Vector3(0, 0, -5)
+[node name="InteractionRay" type="RayCast3D" parent="Pitch/Yaw/Camera3D" index="1"]
+target_position = Vector3(0, 0, -2.5)
 collision_mask = 16
 
 [node name="SubViewportContainerPOV" type="SubViewportContainer" parent="Pitch/Yaw/Camera3D" index="2"]
@@ -55,8 +212,15 @@ script = ExtResource("6_825xp")
 
 [node name="RightHandPOV" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.238295, -0.186528, -0.576225)
+script = ExtResource("7_0kmp4")
 
 [node name="Offset" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="0"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="1"]
+root_node = NodePath("../../../../../RightHand")
+libraries = {
+&"": SubResource("AnimationLibrary_ji083")
+}
 
 [node name="BaseStateManagerNode" type="Node" parent="." index="3"]
 script = ExtResource("2_ft8w5")

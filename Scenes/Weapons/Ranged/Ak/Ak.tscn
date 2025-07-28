@@ -1,14 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnblltv50fky0"]
+[gd_scene load_steps=7 format=3 uid="uid://dnblltv50fky0"]
 
-[ext_resource type="PackedScene" uid="uid://qsf1is5fnqvd" path="res://BaseScenes/BaseWeapon/BaseWeapon.tscn" id="1_1erx4"]
+[ext_resource type="PackedScene" uid="uid://qsf1is5fnqvd" path="res://BaseScenes/BaseItems/BaseItem.tscn" id="1_1erx4"]
 [ext_resource type="Script" uid="uid://dqubptjcohlg8" path="res://base_weapon.gd" id="2_lql1c"]
-[ext_resource type="PackedScene" uid="uid://c372uodbmwnkv" path="res://Assets/Models/Weapons/Low Poly Weapons Pack-glb/Assault Rifle-XGeBGFQxYg.glb" id="3_k25jp"]
+[ext_resource type="PackedScene" uid="uid://c1fnfdw6o0x6p" path="res://Assets/Models/Weapons/Low Poly Weapons Pack-glb/Assault Rifle-XGeBGFQxYg.glb" id="3_k25jp"]
+[ext_resource type="Script" uid="uid://bd0s152hspgvo" path="res://BaseScenes/BaseItems/ItemDataRes.gd" id="3_lql1c"]
+
+[sub_resource type="Resource" id="Resource_k25jp"]
+script = ExtResource("3_lql1c")
+id = "Ak01"
+name = "Ak"
+item_type = 0
+damage = 5.0
+range_unit = 0.0
+hand = 0
+is_stackable = false
+max_stack = 0
+use_animation = 0
+metadata/_custom_type_script = "uid://bd0s152hspgvo"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1erx4"]
-size = Vector3(0.115, 0.365, 0.83)
+size = Vector3(0.200195, 0.365, 0.921875)
 
-[node name="BaseWeapon" instance=ExtResource("1_1erx4")]
+[node name="BaseItem" instance=ExtResource("1_1erx4")]
 script = ExtResource("2_lql1c")
+item_data = SubResource("Resource_k25jp")
 
 [node name="Assault Rifle-XGeBGFQxYg" parent="Model" index="0" instance=ExtResource("3_k25jp")]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.0398744, -0.175551)

@@ -46,11 +46,15 @@ func gravity(delta):
 
 
 func interaction():
-	if entity.center_ray.is_colliding():
-		if Input.is_action_just_pressed("play_pickup") and not entity.right_hand.get_child_count():
-			var weapon = entity.center_ray.get_collider()
-			weapon.equipe()
-			weapon.get_parent().remove_child(weapon)
-			entity.right_hand.add_child(weapon)
-	if Input.is_action_just_pressed("play_drop") and entity.right_hand.get_child_count():
-		entity.right_hand.get_child(0).un_equipe()
+	var player = entity as PlayerBaseEntity
+	var item : BaseItem = player.interaction_ray.get_collider()
+	if player.interaction_ray.is_colliding():
+		if Input.is_action_just_pressed("play_pickup") and not player.right_hand.get_child_count():
+			item.equipe()
+			player.right_hand.add_child(item)
+	if player.right_hand.get_child_count():
+		if Input.is_action_just_pressed("play_drop"):
+			player.right_hand.get_child(0).un_equipe()
+		if Input.is_action_pressed('play_fire'):
+			player.right_hand_pov.animation_player.stop()
+			player.right_hand_pov.animation_player.play("shoot")
