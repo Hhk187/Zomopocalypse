@@ -5,8 +5,12 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_2irch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2irch"]
+radius = 0.393544
+height = 1.834
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
+collision_layer = 12
+collision_mask = 4
 script = ExtResource("1_eip6o")
 
 [node name="Model" type="Node3D" parent="."]

@@ -22,6 +22,9 @@ func use_weapon():
 		var ray_end  = ray_origin + camera_3d.project_ray_normal(viewport * 0.5) * equiped_weapon.item_data.range_unit
 		
 		var new_interserction = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
+		new_interserction.collide_with_areas = true
+		new_interserction.collide_with_bodies = true
+		new_interserction.collision_mask = pow(2, 6-1)
 		var intersection = get_world_3d().direct_space_state.intersect_ray(new_interserction)
 		
 		if not intersection.is_empty():

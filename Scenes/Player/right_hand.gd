@@ -18,7 +18,7 @@ func _on_child_entered_tree(node: BaseItem) -> void:
 
 
 func _on_child_exiting_tree(node: Node) -> void:
-	node.equiped_pos = get_parent().global_position
+	node.equiped_pos = get_parent().global_position - get_parent().global_basis.z * 0.25
 	node.basis_z = get_parent().global_basis.z
 	offset.get_child(3).queue_free()
 	animation_player.play("pullup_fists")

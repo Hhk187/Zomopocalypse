@@ -1,0 +1,127 @@
+[gd_scene load_steps=42 format=3 uid="uid://chylc4mwq55js"]
+
+[ext_resource type="PackedScene" uid="uid://bi31ctleeo4rm" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-a.glb" id="1_6nw08"]
+[ext_resource type="PackedScene" uid="uid://dq0ni5x2k44gd" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-b.glb" id="2_go3lp"]
+[ext_resource type="PackedScene" uid="uid://dj73anov5mdif" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-c.glb" id="3_xk6vy"]
+[ext_resource type="PackedScene" uid="uid://7xx3s12f6fge" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-d.glb" id="4_4lu1i"]
+[ext_resource type="PackedScene" uid="uid://b3ksd4gdcu7r5" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-e.glb" id="5_f3s8t"]
+[ext_resource type="PackedScene" uid="uid://ddk2nwgur6lwa" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-f.glb" id="6_kj03j"]
+[ext_resource type="PackedScene" uid="uid://deejdrbc5l5tb" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-g.glb" id="7_2ytnp"]
+[ext_resource type="PackedScene" uid="uid://bv5qmsqrwh6fr" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-h.glb" id="8_hb6bv"]
+[ext_resource type="PackedScene" uid="uid://dgcywr14addka" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-i.glb" id="9_bgtfg"]
+[ext_resource type="PackedScene" uid="uid://drm8xlhuhkvyv" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-j.glb" id="10_8bfv3"]
+[ext_resource type="PackedScene" uid="uid://cm2yraj0awqjm" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-k.glb" id="11_i8xwc"]
+[ext_resource type="PackedScene" uid="uid://ckcxu3dudbqc2" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-l.glb" id="12_y0dvl"]
+[ext_resource type="PackedScene" uid="uid://dq7g3bfx1v4l4" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-m.glb" id="13_tdb8c"]
+[ext_resource type="PackedScene" uid="uid://b5o33tdwxkiu7" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-n.glb" id="14_8a6sg"]
+[ext_resource type="PackedScene" uid="uid://c2ou1greww86w" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-skyscraper-a.glb" id="15_uh6f1"]
+[ext_resource type="PackedScene" uid="uid://cxgvx3lqgp71e" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-skyscraper-b.glb" id="16_wnns3"]
+[ext_resource type="PackedScene" uid="uid://cogd6ir8bcsou" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-skyscraper-c.glb" id="17_taej8"]
+[ext_resource type="PackedScene" uid="uid://bspvrf8omraw4" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-skyscraper-d.glb" id="18_ba7op"]
+[ext_resource type="PackedScene" uid="uid://caw25bxhorudn" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/building-skyscraper-e.glb" id="19_1w02q"]
+[ext_resource type="PackedScene" uid="uid://cwyeltgjavepj" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/detail-awning-wide.glb" id="20_qcr4o"]
+[ext_resource type="PackedScene" uid="uid://cv8q3fuq6aw6i" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/detail-awning.glb" id="21_g81yk"]
+[ext_resource type="PackedScene" uid="uid://cro8iwco1mytg" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/detail-overhang-wide.glb" id="22_nh74k"]
+[ext_resource type="PackedScene" uid="uid://ddw2jelawms35" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/detail-overhang.glb" id="23_q0uan"]
+[ext_resource type="PackedScene" uid="uid://d0yus5jc6j0yj" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/detail-parasol-a.glb" id="24_x0h3m"]
+[ext_resource type="PackedScene" uid="uid://bb10a81fsee17" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/detail-parasol-b.glb" id="25_1c7o6"]
+[ext_resource type="PackedScene" uid="uid://ctrvv8l8wa0x7" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-a.glb" id="26_txljr"]
+[ext_resource type="PackedScene" uid="uid://rog5nidlydt6" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-b.glb" id="27_livxc"]
+[ext_resource type="PackedScene" uid="uid://c5vqbi2t8gxyt" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-c.glb" id="28_o4wb7"]
+[ext_resource type="PackedScene" uid="uid://q0k5sf85yyhy" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-d.glb" id="29_1xg3v"]
+[ext_resource type="PackedScene" uid="uid://c46eck68b5qwh" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-e.glb" id="30_uq72n"]
+[ext_resource type="PackedScene" uid="uid://fla1x7c555ap" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-f.glb" id="31_2fmgi"]
+[ext_resource type="PackedScene" uid="uid://du4xokhrcgu5e" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-g.glb" id="32_xgedn"]
+[ext_resource type="PackedScene" uid="uid://br3j8flya55dh" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-h.glb" id="33_2s1nv"]
+[ext_resource type="PackedScene" uid="uid://di5oqd4hn66dq" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-i.glb" id="34_3yhyg"]
+[ext_resource type="PackedScene" uid="uid://fccn6s121gdx" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-j.glb" id="35_243fi"]
+[ext_resource type="PackedScene" uid="uid://dg1px6qvkrwpt" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-k.glb" id="36_ph5im"]
+[ext_resource type="PackedScene" uid="uid://c4frdi1oufh6" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-l.glb" id="37_08x2y"]
+[ext_resource type="PackedScene" uid="uid://n8aswgwuhtnk" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-m.glb" id="38_y332u"]
+[ext_resource type="PackedScene" uid="uid://bnvwlmd3s4lsl" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-n.glb" id="39_2bp8t"]
+[ext_resource type="PackedScene" uid="uid://dseyu7v2k0jo7" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-wide-a.glb" id="40_xrvpv"]
+[ext_resource type="PackedScene" uid="uid://cneow3484pfw4" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-commercial_2.1/Models/GLB format/low-detail-building-wide-b.glb" id="41_jblxy"]
+
+[node name="BuildingLibrary" type="Node3D"]
+
+[node name="building-a2" parent="." instance=ExtResource("1_6nw08")]
+
+[node name="building-b2" parent="." instance=ExtResource("2_go3lp")]
+
+[node name="building-c2" parent="." instance=ExtResource("3_xk6vy")]
+
+[node name="building-d2" parent="." instance=ExtResource("4_4lu1i")]
+
+[node name="building-e2" parent="." instance=ExtResource("5_f3s8t")]
+
+[node name="building-f2" parent="." instance=ExtResource("6_kj03j")]
+
+[node name="building-g2" parent="." instance=ExtResource("7_2ytnp")]
+
+[node name="building-h2" parent="." instance=ExtResource("8_hb6bv")]
+
+[node name="building-i2" parent="." instance=ExtResource("9_bgtfg")]
+
+[node name="building-j2" parent="." instance=ExtResource("10_8bfv3")]
+
+[node name="building-k2" parent="." instance=ExtResource("11_i8xwc")]
+
+[node name="building-l2" parent="." instance=ExtResource("12_y0dvl")]
+
+[node name="building-m2" parent="." instance=ExtResource("13_tdb8c")]
+
+[node name="building-n2" parent="." instance=ExtResource("14_8a6sg")]
+
+[node name="building-skyscraper-a2" parent="." instance=ExtResource("15_uh6f1")]
+
+[node name="building-skyscraper-b2" parent="." instance=ExtResource("16_wnns3")]
+
+[node name="building-skyscraper-c2" parent="." instance=ExtResource("17_taej8")]
+
+[node name="building-skyscraper-d2" parent="." instance=ExtResource("18_ba7op")]
+
+[node name="building-skyscraper-e2" parent="." instance=ExtResource("19_1w02q")]
+
+[node name="detail-awning-wide2" parent="." instance=ExtResource("20_qcr4o")]
+
+[node name="detail-awning2" parent="." instance=ExtResource("21_g81yk")]
+
+[node name="detail-overhang-wide2" parent="." instance=ExtResource("22_nh74k")]
+
+[node name="detail-overhang2" parent="." instance=ExtResource("23_q0uan")]
+
+[node name="detail-parasol-a2" parent="." instance=ExtResource("24_x0h3m")]
+
+[node name="detail-parasol-b2" parent="." instance=ExtResource("25_1c7o6")]
+
+[node name="low-detail-building-a2" parent="." instance=ExtResource("26_txljr")]
+
+[node name="low-detail-building-b2" parent="." instance=ExtResource("27_livxc")]
+
+[node name="low-detail-building-c2" parent="." instance=ExtResource("28_o4wb7")]
+
+[node name="low-detail-building-d2" parent="." instance=ExtResource("29_1xg3v")]
+
+[node name="low-detail-building-e2" parent="." instance=ExtResource("30_uq72n")]
+
+[node name="low-detail-building-f2" parent="." instance=ExtResource("31_2fmgi")]
+
+[node name="low-detail-building-g2" parent="." instance=ExtResource("32_xgedn")]
+
+[node name="low-detail-building-h2" parent="." instance=ExtResource("33_2s1nv")]
+
+[node name="low-detail-building-i2" parent="." instance=ExtResource("34_3yhyg")]
+
+[node name="low-detail-building-j2" parent="." instance=ExtResource("35_243fi")]
+
+[node name="low-detail-building-k2" parent="." instance=ExtResource("36_ph5im")]
+
+[node name="low-detail-building-l2" parent="." instance=ExtResource("37_08x2y")]
+
+[node name="low-detail-building-m2" parent="." instance=ExtResource("38_y332u")]
+
+[node name="low-detail-building-n2" parent="." instance=ExtResource("39_2bp8t")]
+
+[node name="low-detail-building-wide-a2" parent="." instance=ExtResource("40_xrvpv")]
+
+[node name="low-detail-building-wide-b2" parent="." instance=ExtResource("41_jblxy")]

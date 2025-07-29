@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dqubptjcohlg8" path="res://BaseScenes/BaseItems/base_item.gd" id="1_x0e0j"]
 
 [node name="BaseItem" type="RigidBody3D"]
-collision_layer = 16
+collision_layer = 48
 collision_mask = 19
 script = ExtResource("1_x0e0j")
 

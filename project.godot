@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Zomopocalypse"
-run/main_scene="uid://dsrqiwqcqmq5v"
+run/main_scene="uid://bavieeppwkly8"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -95,7 +95,10 @@ play_pickup={
 3d_render/layer_4="Enviorment"
 3d_physics/layer_1="World"
 3d_physics/layer_2="player"
-3d_physics/layer_5="Pickupable"
+3d_physics/layer_3="Entity"
+3d_physics/layer_4="Zombie"
+3d_physics/layer_5="Item"
+3d_physics/layer_6="CanBeShot"
 
 [physics]
 

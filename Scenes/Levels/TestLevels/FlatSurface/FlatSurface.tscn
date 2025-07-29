@@ -1,0 +1,40 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsrqiwqcqmq5v"]
+
+[ext_resource type="PackedScene" uid="uid://cs7x65e5s6akq" path="res://BaseScenes/BaseLevel/BaseLevel.tscn" id="1_gjfik"]
+[ext_resource type="Texture2D" uid="uid://n2etowmlgpji" path="res://addons/kenney_prototype_textures/light/texture_07.png" id="2_2qvh6"]
+[ext_resource type="PackedScene" uid="uid://baq5fam5xesra" path="res://Scenes/Player/Player.tscn" id="3_pw2w5"]
+[ext_resource type="Script" uid="uid://cbvb6hlvb3nad" path="res://Scenes/Levels/TestLevels/FlatSurface/items.gd" id="4_jrj5m"]
+[ext_resource type="PackedScene" uid="uid://bit23408ulf5s" path="res://Scenes/Weapons/Ranged/pistol/Pistol.tscn" id="5_hxcor"]
+[ext_resource type="PackedScene" uid="uid://dnblltv50fky0" path="res://Scenes/Weapons/Ranged/Ak/Ak.tscn" id="6_k5x80"]
+[ext_resource type="PackedScene" uid="uid://da6uh4ojy13yd" path="res://Scenes/Zombies/TestZombie/TestZombie.tscn" id="7_tw5jm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w6l07"]
+albedo_texture = ExtResource("2_2qvh6")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[node name="FlatSurface" instance=ExtResource("1_gjfik")]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Objects" index="0"]
+material_override = SubResource("StandardMaterial3D_w6l07")
+operation = 2
+use_collision = true
+collision_layer = 33
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Objects/CSGCombiner3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0)
+use_collision = true
+size = Vector3(61.562, 5, 52.957)
+
+[node name="Player" parent="Players" index="0" instance=ExtResource("3_pw2w5")]
+transform = Transform3D(-0.988647, 0, 0.15026, 0, 1, 0, -0.15026, 0, -0.988647, 0, 0, -3.98757)
+collision_mask = 1
+
+[node name="TestZombie" parent="." index="5" instance=ExtResource("7_tw5jm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.808252, -9.53674e-07, 8.50839)
+collision_layer = 1
+collision_mask = 1
+
+[node name="Items" parent="." index="7"]
+script = ExtResource("4_jrj5m")
+weapons = Array[PackedScene]([ExtResource("5_hxcor"), ExtResource("6_k5x80")])
