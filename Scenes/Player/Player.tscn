@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://baq5fam5xesra"]
+[gd_scene load_steps=19 format=3 uid="uid://baq5fam5xesra"]
 
 [ext_resource type="PackedScene" uid="uid://d30ipjyyopunc" path="res://BaseScenes/BaseEntity/BaseEntity.tscn" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://bo2urmd8u6hwt" path="res://BaseScenes/BaseNodes/BaseStateManagerNode.gd" id="2_ft8w5"]
@@ -11,16 +11,6 @@
 [ext_resource type="Script" uid="uid://bjanwlykcietl" path="res://Scenes/Player/right_hand_pov.gd" id="7_0kmp4"]
 [ext_resource type="PackedScene" uid="uid://2rw3x6w3brdc" path="res://Assets/Models/Weapons/EditedModels/POV/BaseRiggedArm/BaseRiggedArm.blend" id="8_ji083"]
 [ext_resource type="Script" uid="uid://lmg7y0wn8fbc" path="res://Scenes/Player/hand_ik.gd" id="9_0kmp4"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_0kmp4"]
-top_radius = 0.005
-bottom_radius = 0.005
-height = 0.2
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_i5acl"]
-top_radius = 0.02
-bottom_radius = 0.02
-height = 0.001
 
 [sub_resource type="Animation" id="Animation_825xp"]
 length = 0.001
@@ -214,7 +204,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.0251773, -0.00402057, 0.10676)]
+"values": [Vector3(0.0251773, -0.0290539, 0.165171)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -254,7 +244,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(0.238295, -0.25, 0, 0.25, 0, 0.238295, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2)
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -265,7 +255,7 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-0.186528, -0.25, 0, 0.25, 0, -0.186528, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2)
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -276,7 +266,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(-0.5413, -0.135, 0, 0.13, -0.0144179, -0.576225, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2)
+"times": PackedFloat32Array(0, 0.5)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -285,9 +275,9 @@ tracks/3/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/Right
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.0126674, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2)
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(-0.00563686, 0, 0, 0.1, -0.0573735, 0.00872665, -0.25, 0, 0.176695, -0.0110965, -0.0174533, -0.0933046, 0.00770006, 0.101085, 0.00717806, 0, -0.118915, -0.00962958, 0.25, 0),
+"times": PackedFloat32Array(0, 0.12, 0.27, 0.4)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -296,9 +286,9 @@ tracks/4/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/Right
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.12, 0.27, 0.4)
 }
 tracks/5/type = "bezier"
 tracks/5/imported = false
@@ -307,9 +297,9 @@ tracks/5/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/Right
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.2)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.0174533, -0.25, 0, 0.25, 0, -0.00872665, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.12, 0.27, 0.4)
 }
 
 [sub_resource type="Animation" id="Animation_i5acl"]
@@ -375,7 +365,7 @@ script = ExtResource("2_t26db")
 [node name="Camera3D" type="Camera3D" parent="Pitch/Yaw" index="0"]
 cull_mask = 1048569
 current = true
-fov = 80.0
+fov = 90.0
 script = ExtResource("4_825xp")
 
 [node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D" index="0"]
@@ -402,7 +392,7 @@ render_target_update_mode = 4
 [node name="CameraPOV" type="Camera3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, -0.353)
 cull_mask = 12
-fov = 35.0
+fov = 40.0
 script = ExtResource("6_825xp")
 
 [node name="RightHandPOV" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV" index="0"]
@@ -415,14 +405,6 @@ script = ExtResource("7_0kmp4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.230466, 0, 0.419643)
 
 [node name="Skeleton3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/BaseRiggedArm/Armature" index="0"]
-bones/6/position = Vector3(-9.20142e-08, 0.0536312, 0)
-bones/6/rotation = Quaternion(-0.583117, -0.294126, -0.371026, 0.660154)
-bones/6/scale = Vector3(1, 1, 1)
-bones/8/rotation = Quaternion(-0.584367, 0.153164, -0.186954, 0.774664)
-bones/8/scale = Vector3(1, 1, 1)
-bones/10/position = Vector3(-4.17807e-08, 0.065603, 0)
-bones/10/rotation = Quaternion(-0.606843, -0.127543, 0.170108, 0.765858)
-bones/10/scale = Vector3(1, 1, 1)
 bones/12/position = Vector3(0.031404, 0.082823, 0)
 bones/12/rotation = Quaternion(0, 0, -0.828122, 0.560547)
 bones/12/scale = Vector3(1, 1, 1)
@@ -447,19 +429,7 @@ target_node = NodePath("../../../../LeftHand")
 script = ExtResource("9_0kmp4")
 
 [node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="1"]
-transform = Transform3D(0.980263, 0.0138487, 0.197209, -0.197695, 0.0686879, 0.977854, -3.9041e-06, -0.997541, 0.0700702, -0.0127692, 0.024076, -0.0615962)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand" index="0"]
-transform = Transform3D(0.0692425, -0.869739, -0.488631, -0.0500144, 0.486164, -0.872435, 0.996345, 0.0848486, -0.00983617, -0.043848, 0.0873275, -0.0159893)
-layers = 4
-mesh = SubResource("CylinderMesh_0kmp4")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand" index="1"]
-transform = Transform3D(1.72594, -0.310122, -0.352746, -0.915255, -0.520543, -0.714045, 0.0739416, 0.795525, -0.604739, -0.147774, 0.138604, -0.00416195)
-layers = 4
-mesh = SubResource("CylinderMesh_i5acl")
-skeleton = NodePath("../..")
+transform = Transform3D(0.980263, 0.0138487, 0.197209, -0.197695, 0.0686879, 0.977854, -3.9041e-06, -0.997541, 0.0700701, -0.0127692, 0.024076, -0.0615962)
 
 [node name="LeftHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="2"]
 transform = Transform3D(0.989972, -0.0141125, -0.140554, 0.140354, 0.210808, 0.967399, 0.0159776, -0.977425, 0.210675, -0.442614, 0.000935912, -0.0851889)
@@ -469,7 +439,6 @@ root_node = NodePath("../../../../../RightHand")
 libraries = {
 &"": SubResource("AnimationLibrary_ji083")
 }
-playback_default_blend_time = 0.1
 
 [node name="BaseStateManagerNode" type="Node" parent="." index="4"]
 script = ExtResource("2_ft8w5")

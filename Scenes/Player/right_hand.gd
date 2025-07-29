@@ -2,7 +2,6 @@ extends Marker3D
 class_name RightHand
 
 @onready var offset: Marker3D = $"../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset"
-@onready var combat_ray: RayCast3D = $"../CombatRay"
 @onready var animation_player: AnimationPlayer = $"../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/AnimationPlayer"
 
 func _on_child_entered_tree(node: BaseItem) -> void:
