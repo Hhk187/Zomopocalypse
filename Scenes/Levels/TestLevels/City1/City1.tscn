@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bavieeppwkly8"]
+[gd_scene load_steps=14 format=3 uid="uid://bavieeppwkly8"]
 
 [ext_resource type="PackedScene" uid="uid://cs7x65e5s6akq" path="res://BaseScenes/BaseLevel/BaseLevel.tscn" id="1_1spie"]
 [ext_resource type="MeshLibrary" uid="uid://bef7mwhbwqwiq" path="res://Scenes/GridMapLibrary/Roads/Roads.tres" id="2_gjws7"]
 [ext_resource type="PackedScene" uid="uid://baq5fam5xesra" path="res://Scenes/Player/Player.tscn" id="2_qa3tc"]
 [ext_resource type="MeshLibrary" uid="uid://c17bf60yqftbv" path="res://Scenes/GridMapLibrary/Buildings/Buildings.tres" id="3_omnf5"]
 [ext_resource type="PackedScene" uid="uid://dnblltv50fky0" path="res://Scenes/Weapons/Ranged/Ak/Ak.tscn" id="3_rbt2t"]
+[ext_resource type="PackedScene" uid="uid://wlnu2nen6s54" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-suburban_20/Models/GLB format/building-type-a.glb" id="4_ytqtl"]
+[ext_resource type="PackedScene" uid="uid://c0etkva1pb53v" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-suburban_20/Models/GLB format/building-type-b.glb" id="5_h5o76"]
+[ext_resource type="PackedScene" uid="uid://g7xmm8svff8y" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-suburban_20/Models/GLB format/building-type-k.glb" id="6_o542b"]
+[ext_resource type="PackedScene" uid="uid://dg1i0o5n31i40" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-suburban_20/Models/GLB format/building-type-q.glb" id="7_h5o76"]
+[ext_resource type="PackedScene" uid="uid://bx0vc51takpyl" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-industrial_1.0/Models/GLB format/building-a.glb" id="8_uwvpk"]
+[ext_resource type="PackedScene" uid="uid://di160fklbwk2r" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-industrial_1.0/Models/GLB format/building-c.glb" id="9_0dyya"]
+[ext_resource type="PackedScene" uid="uid://wmadybouneds" path="res://Assets/Models/CIty/Buildings/kenney_retro-urban-kit/Models/GLB format/truck-grey.glb" id="10_rp8e3"]
+[ext_resource type="PackedScene" uid="uid://xi38vgsrplsg" path="res://Assets/Models/CIty/Buildings/kenney_retro-urban-kit/Models/GLB format/road-asphalt-center.glb" id="11_3uxlq"]
 
 [node name="BaseLevel" instance=ExtResource("1_1spie")]
 
@@ -22,15 +30,56 @@ mesh_library = ExtResource("3_omnf5")
 cell_size = Vector3(2, 0.125, 2)
 collision_layer = 33
 data = {
-"cells": PackedInt32Array(2, 65503, 1048576, 65523, 65509, 14, 65528, 65493, 1441799, 65529, 65505, 1441816, 65525, 65498, 1441816, 2, 65493, 1048577)
+"cells": PackedInt32Array(2, 65503, 1048576, 65523, 65509, 14, 65528, 65493, 1441799, 65529, 65505, 1441816, 65525, 65498, 24, 2, 65493, 1048577, 65518, 65494, 29, 65509, 65497, 32, 65513, 65496, 31, 65522, 65492, 40, 65512, 65509, 14, 3, 65484, 1048585)
 }
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="building-type-a2" parent="Buildings" index="0" instance=ExtResource("4_ytqtl")]
+transform = Transform3D(-3.98211e-07, 0, 9.11, 0, 9.11, 0, -9.11, 0, -3.98211e-07, 34.5137, 0.0749989, 13.0502)
+
+[node name="building-type-b2" parent="Buildings" index="1" instance=ExtResource("5_h5o76")]
+transform = Transform3D(12.495, 0, 0, 0, 12.495, 0, 0, 0, 12.495, 23.9248, 0.00218511, 53.6297)
+
+[node name="building-type-k2" parent="Buildings" index="2" instance=ExtResource("6_o542b")]
+transform = Transform3D(13.87, 0, 0, 0, 13.87, 0, 0, 0, 13.87, -1.80197, 0.0199938, 52.6241)
+
+[node name="building-type-q2" parent="Buildings" index="3" instance=ExtResource("7_h5o76")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 51.0341, 0.00626969, 52.2674)
+
+[node name="building-a2" parent="Buildings" index="4" instance=ExtResource("8_uwvpk")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 72.427, 0, 54.323)
+
+[node name="building-c2" parent="Buildings" index="5" instance=ExtResource("9_0dyya")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 94.951, 0, 55.332)
+
+[node name="truck-grey2" parent="Buildings" index="6" instance=ExtResource("10_rp8e3")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 120.556, -0.0500011, 35.2084)
+
+[node name="road-asphalt-center2" parent="Buildings" index="7" instance=ExtResource("11_3uxlq")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 103.299, 0.249777, 25.5599)
 
 [node name="Player" parent="." index="6" instance=ExtResource("2_qa3tc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.79467, 0.804843, -12.8489)
 collision_mask = 5
+
+[node name="CameraPOV" parent="Player/Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.79467, 2.20484, -12.8489)
+
+[node name="RightHand" parent="Player/Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="1"]
+transform = Transform3D(0.980263, 0.0138487, 0.197209, -0.197695, 0.0686879, 0.977854, -3.9041e-06, -0.997541, 0.0700701, -0.0127692, 0.024076, -0.0615962)
+
+[node name="LeftHand" parent="Player/Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="2"]
+transform = Transform3D(0.989972, -0.0141125, -0.140554, 0.140354, 0.210808, 0.967399, 0.0159776, -0.977425, 0.210675, -0.442614, 0.000935912, -0.0851889)
 
 [node name="Ak" parent="Items" index="0" instance=ExtResource("3_rbt2t")]
 transform = Transform3D(0.650891, 0.757736, 0.0466679, -0.755796, 0.652561, -0.0541894, -0.0715149, 0, 0.99744, -1.2, 3.967, -31.064)
 
 [node name="Ak2" parent="Items" index="1" instance=ExtResource("3_rbt2t")]
 transform = Transform3D(0.650891, 0.757736, 0.0466679, -0.755796, 0.652561, -0.0541894, -0.0715149, 0, 0.99744, -0.889521, 3.96672, -31.0642)
+
+[node name="Ak3" parent="Items" index="2" instance=ExtResource("3_rbt2t")]
+transform = Transform3D(0.67559, 0.737277, 0, -0.737277, 0.67559, 0, 0, 0, 1, -1.42342, 4.05407, -31.0898)
+
+[editable path="Buildings/building-type-b2"]
+[editable path="Player"]
+[editable path="Player/Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/BaseRiggedArm"]

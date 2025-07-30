@@ -20,6 +20,8 @@ func input(event : InputEvent):
 
 
 func movements(delta):
+	
+	var speed : float
 	# Handle jump.
 	if Input.is_action_just_pressed("play_jump") and entity.is_on_floor():
 		entity.velocity.y = JUMP_VELOCITY
@@ -28,9 +30,14 @@ func movements(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("play_left", "play_right", "play_forward", "play_backward")
 	var direction := (entity.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if Input.is_action_pressed("play_run"):
+		speed = SPEED * 5
+	else :
+		speed = SPEED
+	
 	if direction:
-		entity.velocity.x = lerp(entity.velocity.x, direction.x * SPEED, 0.2)
-		entity.velocity.z = lerp(entity.velocity.z, direction.z * SPEED, 0.2)
+		entity.velocity.x = lerp(entity.velocity.x, direction.x * speed, 0.2)
+		entity.velocity.z = lerp(entity.velocity.z, direction.z * speed, 0.2)
 	else:
 		entity.velocity.x = lerp(entity.velocity.x, 0.0, 0.3)
 		entity.velocity.z = lerp(entity.velocity.z, 0.0, 0.3)
