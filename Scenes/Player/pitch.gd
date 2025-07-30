@@ -13,4 +13,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
-	camera_pov.global_transform = camera_3d.global_transform
+	camera_pov.global_transform = camera_3d.global_transform 

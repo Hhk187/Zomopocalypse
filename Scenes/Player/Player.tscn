@@ -502,31 +502,32 @@ root_node = NodePath("../../../../../RightHand")
 libraries = {
 &"": SubResource("AnimationLibrary_ji083")
 }
+playback_auto_capture = false
 
-[node name="BaseRiggedArm" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV" index="1" instance=ExtResource("8_ji083")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00782901, -0.186528, -0.156582)
+[node name="BaseRiggedArm" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="2" instance=ExtResource("8_ji083")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.230466, 0, 0.419643)
 
-[node name="Skeleton3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm/Armature" index="0"]
+[node name="Skeleton3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature" index="0"]
 bones/12/position = Vector3(0.053, 0.097, 0)
 bones/12/scale = Vector3(1, 1, 1)
 
-[node name="ArmModel" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm/Armature/Skeleton3D" index="0"]
+[node name="ArmModel" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature/Skeleton3D" index="0"]
 layers = 4
 
-[node name="RightHandIK" type="SkeletonIK3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm/Armature/Skeleton3D" index="1"]
+[node name="RightHandIK" type="SkeletonIK3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature/Skeleton3D" index="1"]
 root_bone = &"UpperArm.r"
 tip_bone = &"Hand.r"
 use_magnet = true
 magnet = Vector3(0.465, -1, 0)
-target_node = NodePath("../../../../RightHandPOV/Offset/RightHand")
+target_node = NodePath("../../../../Offset/RightHand")
 script = ExtResource("9_0kmp4")
 
-[node name="LeftHandIK" type="SkeletonIK3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm/Armature/Skeleton3D" index="2"]
+[node name="LeftHandIK" type="SkeletonIK3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature/Skeleton3D" index="2"]
 root_bone = &"UpperArm.l"
 tip_bone = &"Hand.l"
 use_magnet = true
 magnet = Vector3(-1.355, -1, 0)
-target_node = NodePath("../../../../RightHandPOV/Offset/LeftHand")
+target_node = NodePath("../../../../Offset/LeftHand")
 script = ExtResource("9_0kmp4")
 
 [node name="BaseStateManagerNode" type="Node" parent="." index="4"]
@@ -540,4 +541,4 @@ metadata/_custom_type_script = "uid://0a3iovwytv30"
 [connection signal="child_entered_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_exiting_tree"]
 
-[editable path="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm"]
+[editable path="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm"]

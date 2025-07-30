@@ -3,4 +3,5 @@ extends SkeletonIK3D
 
 
 func _ready() -> void:
-	start()
+	#start()
+	pass
