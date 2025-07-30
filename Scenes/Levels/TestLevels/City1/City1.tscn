@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://di160fklbwk2r" path="res://Assets/Models/CIty/Buildings/kenney_city-kit-industrial_1.0/Models/GLB format/building-c.glb" id="9_0dyya"]
 [ext_resource type="PackedScene" uid="uid://wmadybouneds" path="res://Assets/Models/CIty/Buildings/kenney_retro-urban-kit/Models/GLB format/truck-grey.glb" id="10_rp8e3"]
 [ext_resource type="PackedScene" uid="uid://xi38vgsrplsg" path="res://Assets/Models/CIty/Buildings/kenney_retro-urban-kit/Models/GLB format/road-asphalt-center.glb" id="11_3uxlq"]
-[ext_resource type="PackedScene" uid="uid://d4i7m5kw7h844" path="res://Scenes/BuildingsBlock/Shop/ShopBlockClosed.tscn" id="14_0dyya"]
+[ext_resource type="PackedScene" uid="uid://d4i7m5kw7h844" path="res://Scenes/BuildingsBlock/Shop/ShopBlock.tscn" id="14_0dyya"]
 
 [node name="BaseLevel" instance=ExtResource("1_1spie")]
 
@@ -75,3 +75,9 @@ transform = Transform3D(-0.000672107, -0.000733476, 1, -0.737277, 0.67559, 0, -0
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.40849, 2.40286, -34.775)
 
 [editable path="Buildings/building-type-b2"]
+[editable path="Node3D"]
+[editable path="Node3D/Floor"]
+[editable path="Node3D/FrontSide"]
+[editable path="Node3D/Wall"]
+[editable path="Node3D/Wall2"]
+[editable path="Node3D/Wall3"]

@@ -4,7 +4,7 @@
 
 [node name="BaseItem" type="RigidBody3D"]
 collision_layer = 48
-collision_mask = 19
+collision_mask = 17
 script = ExtResource("1_x0e0j")
 
 [node name="Model" type="Node3D" parent="."]

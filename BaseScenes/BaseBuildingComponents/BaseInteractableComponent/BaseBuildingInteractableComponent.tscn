@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgcajo32ts3uf"]
+
+[sub_resource type="Animation" id="Animation_gyuc0"]
+resource_name = "interact"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_24xs6"]
+_data = {
+&"interact": SubResource("Animation_gyuc0")
+}
+
+[node name="BaseBuildingInteractableComponent" type="Node3D"]
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="InteractibleArea3D" type="Area3D" parent="."]
+collision_layer = 64
+collision_mask = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_24xs6")
+}

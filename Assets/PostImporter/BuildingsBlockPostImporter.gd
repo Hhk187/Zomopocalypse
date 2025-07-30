@@ -1,8 +1,6 @@
 @tool # Needed so it runs in editor.
 extends EditorScenePostImport
 
-var scale = 10
-
 # This sample changes all node names.
 # Called right after the scene is imported and gets the root node.
 func _post_import(scene):
@@ -12,7 +10,6 @@ func _post_import(scene):
 
 func Rescale(node : Node3D):
 	if node != null:
-		node.name = "modified_" + node.name
 		for child in node.find_children("*", "MeshInstance3D") as Array[MeshInstance3D]:
-			child.scale = Vector3.ONE * scale
 			child.create_trimesh_collision()
+			child.get_child(0).hide()

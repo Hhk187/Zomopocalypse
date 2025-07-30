@@ -29,3 +29,7 @@ func _on_toggle_fullscreen_pressed() -> void:
 
 func _on_windowed_pressed() -> void:
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_fullscreen_pressed() -> void:
+	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)

@@ -49,6 +49,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "windowed"
 
+[node name="Fullscreen" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Fullscreen"
+
 [node name="Settings" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
@@ -72,3 +77,4 @@ vertical_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/FullscreenBordlerss" to="." method="_on_toggle_fullscreen_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Windowed" to="." method="_on_windowed_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
