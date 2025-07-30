@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4i7m5kw7h844"]
+
+[ext_resource type="PackedScene" uid="uid://b30i813hssdjk" path="res://Assets/Models/CIty/Buildings/Blocking/Floor.blend" id="1_byybw"]
+[ext_resource type="PackedScene" uid="uid://bc3qw1ijrr2c0" path="res://Assets/Models/CIty/Buildings/Blocking/FrontSide.blend" id="2_qmnxk"]
+[ext_resource type="Material" uid="uid://bwccub37nqllo" path="res://Assets/Materials/Wall.tres" id="3_qmnxk"]
+[ext_resource type="PackedScene" uid="uid://b0it06rfppa8t" path="res://Assets/Models/CIty/Buildings/Blocking/Wall.blend" id="3_xy27c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_byybw"]
+albedo_color = Color(0.284545, 0.178477, 0.0659072, 1)
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmnxk"]
+albedo_color = Color(0.391765, 0.391765, 0.391765, 1)
+metallic_specular = 0.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_byybw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -1.05)
+
+[node name="Plane" parent="Floor" index="0"]
+material_override = SubResource("StandardMaterial3D_byybw")
+
+[node name="FrontSide" parent="." instance=ExtResource("2_qmnxk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.2)
+
+[node name="Wall" parent="FrontSide" index="0"]
+material_override = ExtResource("3_qmnxk")
+
+[node name="Ledge" parent="FrontSide" index="1"]
+material_override = SubResource("StandardMaterial3D_qmnxk")
+
+[node name="Wall" parent="." instance=ExtResource("3_xy27c")]
+transform = Transform3D(6.70552e-08, 0, 1, 0, 1, 0, -1, 0, 6.70552e-08, 2.75, 0, -1.04981)
+
+[node name="Plane" parent="Wall" index="0"]
+material_override = ExtResource("3_qmnxk")
+
+[node name="Wall2" parent="." instance=ExtResource("3_xy27c")]
+transform = Transform3D(1, 0, -1.10767e-07, 0, 1, 0, 1.10767e-07, 0, 1, 0, 0, -4.29981)
+
+[node name="Plane" parent="Wall2" index="0"]
+material_override = ExtResource("3_qmnxk")
+
+[node name="Wall3" parent="." instance=ExtResource("3_xy27c")]
+transform = Transform3D(-1.54478e-07, 0, -1, 0, 1, 0, 1, 0, -1.54478e-07, -2.75, 0, -1.04981)
+
+[node name="Plane" parent="Wall3" index="0"]
+material_override = ExtResource("3_qmnxk")
+
+[editable path="Floor"]
+[editable path="FrontSide"]
+[editable path="Wall"]
+[editable path="Wall2"]
+[editable path="Wall3"]

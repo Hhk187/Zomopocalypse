@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://baq5fam5xesra"]
+[gd_scene load_steps=25 format=3 uid="uid://baq5fam5xesra"]
 
 [ext_resource type="PackedScene" uid="uid://d30ipjyyopunc" path="res://BaseScenes/BaseEntity/BaseEntity.tscn" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://bo2urmd8u6hwt" path="res://BaseScenes/BaseNodes/BaseStateManagerNode.gd" id="2_ft8w5"]
@@ -11,10 +11,25 @@
 [ext_resource type="Script" uid="uid://bjanwlykcietl" path="res://Scenes/Player/right_hand_pov.gd" id="7_0kmp4"]
 [ext_resource type="PackedScene" uid="uid://2rw3x6w3brdc" path="res://Assets/Models/Weapons/EditedModels/POV/BaseRiggedArm/BaseRiggedArm.blend" id="8_ji083"]
 [ext_resource type="Script" uid="uid://lmg7y0wn8fbc" path="res://Scenes/Player/hand_ik.gd" id="9_0kmp4"]
+[ext_resource type="Texture2D" uid="uid://bidayc2t1a541" path="res://Assets/Textures/ParticalEffects/kenney_particle_pack/muzzle_02.png" id="9_6tu5v"]
+[ext_resource type="Texture2D" uid="uid://bwua8rw0mvl17" path="res://Assets/Textures/ParticalEffects/kenney_particle_pack/muzzle_01.png" id="9_epg6k"]
+[ext_resource type="Texture2D" uid="uid://cs2dwaku0m7um" path="res://Assets/Textures/ParticalEffects/kenney_particle_pack/muzzle_05.png" id="12_w71ue"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0kmp4"]
 radius = 0.3
 height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0u84n"]
+transparency = 2
+alpha_scissor_threshold = 0.3
+alpha_antialiasing_mode = 0
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(1, 0.811765, 0, 1)
+albedo_texture = ExtResource("9_epg6k")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_esmjy"]
+size = Vector2(0.2, 0.135)
 
 [sub_resource type="Animation" id="Animation_825xp"]
 length = 0.001
@@ -130,7 +145,31 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.31475, -0.588345, 0.587397)]
+"values": [Vector3(-1.18159, -1.29154, 1.31074)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/MuzzleFlash:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/MuzzleFlash/MeshInstance3D:material_override:albedo_texture")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_epg6k")]
 }
 
 [sub_resource type="Animation" id="Animation_0u84n"]
@@ -181,7 +220,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.31475, -0.588345, 0.587397)]
+"values": [Vector3(-1.18112, -1.2909, 1.31019)]
 }
 
 [sub_resource type="Animation" id="Animation_epg6k"]
@@ -196,7 +235,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.0293279, 0.00823963, -0.302009)]
+"values": [Vector3(-0.058123, 0.0195185, -0.153396)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -220,7 +259,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.18965, -2.32027, 1.74997)]
+"values": [Vector3(1.42261, -1.81102, 2.25842)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -305,6 +344,30 @@ tracks/5/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.0174533, -0.25, 0, 0.25, 0, -0.00872665, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.12, 0.27, 0.4)
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/MuzzleFlash:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/MuzzleFlash/MeshInstance3D:material_override:albedo_texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.05),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("9_epg6k"), ExtResource("9_6tu5v"), ExtResource("12_w71ue"), ExtResource("9_epg6k")]
+}
 
 [sub_resource type="Animation" id="Animation_i5acl"]
 resource_name = "swing"
@@ -324,6 +387,7 @@ _data = {
 
 [node name="Player" instance=ExtResource("1_s0eop")]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("2_h54ih")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
@@ -411,44 +475,59 @@ script = ExtResource("7_0kmp4")
 
 [node name="Offset" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="0"]
 
-[node name="BaseRiggedArm" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="0" instance=ExtResource("8_ji083")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.230466, 0, 0.419643)
-
-[node name="Skeleton3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/BaseRiggedArm/Armature" index="0"]
-bones/12/position = Vector3(0.031404, 0.082823, 0)
-bones/12/rotation = Quaternion(0, 0, -0.828122, 0.560547)
-bones/12/scale = Vector3(1, 1, 1)
-
-[node name="ArmModel" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/BaseRiggedArm/Armature/Skeleton3D" index="0"]
-layers = 4
-
-[node name="RightHandIK" type="SkeletonIK3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/BaseRiggedArm/Armature/Skeleton3D" index="1"]
-root_bone = &"UpperArm.r"
-tip_bone = &"Hand.r"
-use_magnet = true
-magnet = Vector3(0.465, -1, 0)
-target_node = NodePath("../../../../RightHand")
-script = ExtResource("9_0kmp4")
-
-[node name="LeftHandIK" type="SkeletonIK3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/BaseRiggedArm/Armature/Skeleton3D" index="2"]
-root_bone = &"UpperArm.l"
-tip_bone = &"Hand.l"
-use_magnet = true
-magnet = Vector3(-1.355, -1, 0)
-target_node = NodePath("../../../../LeftHand")
-script = ExtResource("9_0kmp4")
-
-[node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="1"]
+[node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="0"]
 transform = Transform3D(0.980263, 0.0138487, 0.197209, -0.197695, 0.0686879, 0.977854, -3.9041e-06, -0.997541, 0.0700701, -0.0127692, 0.024076, -0.0615962)
 
-[node name="LeftHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="2"]
-transform = Transform3D(0.989972, -0.0141125, -0.140554, 0.140354, 0.210808, 0.967399, 0.0159776, -0.977425, 0.210675, -0.442614, 0.000935912, -0.0851889)
+[node name="LeftHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="1"]
+transform = Transform3D(0.930341, -0.0376848, -0.364755, 0.366695, 0.097571, 0.925212, 0.000723094, -0.994515, 0.104593, -0.442614, 0.000935912, -0.0851889)
+
+[node name="MuzzleFlash" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0469983, -0.584956)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/MuzzleFlash" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0363933)
+layers = 4
+material_override = SubResource("StandardMaterial3D_0u84n")
+mesh = SubResource("PlaneMesh_esmjy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/MuzzleFlash" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.0363933)
+layers = 4
+material_override = SubResource("StandardMaterial3D_0u84n")
+mesh = SubResource("PlaneMesh_esmjy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="1"]
 root_node = NodePath("../../../../../RightHand")
 libraries = {
 &"": SubResource("AnimationLibrary_ji083")
 }
+
+[node name="BaseRiggedArm" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV" index="1" instance=ExtResource("8_ji083")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00782901, -0.186528, -0.156582)
+
+[node name="Skeleton3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm/Armature" index="0"]
+bones/12/position = Vector3(0.053, 0.097, 0)
+bones/12/scale = Vector3(1, 1, 1)
+
+[node name="ArmModel" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm/Armature/Skeleton3D" index="0"]
+layers = 4
+
+[node name="RightHandIK" type="SkeletonIK3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm/Armature/Skeleton3D" index="1"]
+root_bone = &"UpperArm.r"
+tip_bone = &"Hand.r"
+use_magnet = true
+magnet = Vector3(0.465, -1, 0)
+target_node = NodePath("../../../../RightHandPOV/Offset/RightHand")
+script = ExtResource("9_0kmp4")
+
+[node name="LeftHandIK" type="SkeletonIK3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm/Armature/Skeleton3D" index="2"]
+root_bone = &"UpperArm.l"
+tip_bone = &"Hand.l"
+use_magnet = true
+magnet = Vector3(-1.355, -1, 0)
+target_node = NodePath("../../../../RightHandPOV/Offset/LeftHand")
+script = ExtResource("9_0kmp4")
 
 [node name="BaseStateManagerNode" type="Node" parent="." index="4"]
 script = ExtResource("2_ft8w5")
@@ -461,4 +540,4 @@ metadata/_custom_type_script = "uid://0a3iovwytv30"
 [connection signal="child_entered_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_exiting_tree"]
 
-[editable path="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/BaseRiggedArm"]
+[editable path="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/BaseRiggedArm"]
