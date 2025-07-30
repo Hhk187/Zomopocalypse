@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://baq5fam5xesra"]
+[gd_scene load_steps=26 format=3 uid="uid://baq5fam5xesra"]
 
 [ext_resource type="PackedScene" uid="uid://d30ipjyyopunc" path="res://BaseScenes/BaseEntity/BaseEntity.tscn" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://bo2urmd8u6hwt" path="res://BaseScenes/BaseNodes/BaseStateManagerNode.gd" id="2_ft8w5"]
@@ -18,6 +18,10 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0kmp4"]
 radius = 0.3
 height = 1.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_0u84n"]
+radius = 0.05
+height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0u84n"]
 transparency = 2
@@ -133,7 +137,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-1.35995, 1.2294, -1.2364)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -476,10 +480,35 @@ script = ExtResource("7_0kmp4")
 [node name="Offset" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="0"]
 
 [node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="0"]
-transform = Transform3D(0.980263, 0.0138487, 0.197209, -0.197695, 0.0686879, 0.977854, -3.9041e-06, -0.997541, 0.0700701, -0.0127692, 0.024076, -0.0615962)
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.0127692, 0.024076, -0.0615962)
+
+[node name="RightHandIK" type="Node3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand" index="0"]
+transform = Transform3D(0.999999, -4.00723e-09, -2.01764e-08, 1.76015e-08, 0.999999, -6.70552e-08, 5.34009e-08, -7.45058e-08, 0.999999, -0.0285611, 0.0392717, -0.0152032)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand/RightHandIK" index="0"]
+transform = Transform3D(1, 5.31509e-09, 5.43289e-08, -3.39878e-09, 1, 2.23517e-08, -3.52505e-08, 2.98023e-08, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_0u84n")
+skeleton = NodePath("../..")
+
+[node name="RightLowerArmIK" type="Node3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand" index="1"]
+transform = Transform3D(1, -3.07409e-09, -4.99788e-08, 1.08489e-08, 0.999999, -3.72529e-08, 5.38752e-08, -5.21541e-08, 0.999999, 0.0172654, 0.0314282, 0.328975)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand/RightLowerArmIK" index="0"]
+transform = Transform3D(1, 5.31509e-09, 5.43289e-08, -3.39878e-09, 1, 2.23517e-08, -3.52505e-08, 2.98023e-08, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_0u84n")
+skeleton = NodePath("../..")
+
+[node name="RightUpperArmIK" type="Node3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand" index="2"]
+transform = Transform3D(0.999999, -3.07546e-09, -3.50776e-08, 1.86724e-08, 0.999999, -3.72529e-08, 1.88156e-07, -8.9407e-08, 0.999999, 0.0528442, -0.294768, 0.298234)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand/RightUpperArmIK" index="0"]
+transform = Transform3D(1, 3.45608e-09, 6.92952e-08, -7.72934e-09, 1, 2.23517e-08, -1.69253e-07, 7.45058e-08, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_0u84n")
+skeleton = NodePath("../..")
 
 [node name="LeftHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="1"]
 transform = Transform3D(0.930341, -0.0376848, -0.364755, 0.366695, 0.097571, 0.925212, 0.000723094, -0.994515, 0.104593, -0.442614, 0.000935912, -0.0851889)
+visible = false
 
 [node name="MuzzleFlash" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0469983, -0.584956)
@@ -529,6 +558,27 @@ use_magnet = true
 magnet = Vector3(-1.355, -1, 0)
 target_node = NodePath("../../../../Offset/LeftHand")
 script = ExtResource("9_0kmp4")
+
+[node name="RightHand" type="LookAtModifier3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature/Skeleton3D" index="3"]
+target_node = NodePath("../../../../Offset/RightHand/RightHandIK")
+bone_name = "Hand.r"
+bone = 4
+forward_axis = 2
+primary_rotation_axis = 2
+
+[node name="RightLowerArm" type="LookAtModifier3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature/Skeleton3D" index="4"]
+target_node = NodePath("../../../../Offset/RightHand/RightLowerArmIK")
+bone_name = "LowerArm.r"
+bone = 3
+forward_axis = 2
+primary_rotation_axis = 2
+
+[node name="RightUpperArm" type="LookAtModifier3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature/Skeleton3D" index="5"]
+target_node = NodePath("../../../../Offset/RightHand/RightUpperArmIK")
+bone_name = "UpperArm.r"
+bone = 2
+forward_axis = 2
+primary_rotation_axis = 2
 
 [node name="BaseStateManagerNode" type="Node" parent="." index="4"]
 script = ExtResource("2_ft8w5")
