@@ -11,14 +11,15 @@ class_name ItemDataRes
 	ConstItemType.TYPE_TRAP
 	) var item_type
 
-@export var damage : float = 0.0
-@export var range_unit : float = 0.0
+@export var damage : int = 0
+@export var range_unit : int = 0
 @export var is_fire_auto : bool = false
-@export var fire_rate : float = 1.0
+## In ms
+@export var fire_rate : int = 1.0
 
 
-@export var ammo : float = 0.0
-@export var max_ammo : float = 0.0
+@export var ammo : int = 0
+@export var max_ammo : int = 0
 
 
 @export_enum(

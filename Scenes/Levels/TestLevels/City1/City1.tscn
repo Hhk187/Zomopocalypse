@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bavieeppwkly8"]
+[gd_scene load_steps=17 format=3 uid="uid://bavieeppwkly8"]
 
 [ext_resource type="PackedScene" uid="uid://cs7x65e5s6akq" path="res://BaseScenes/BaseLevel/BaseLevel.tscn" id="1_1spie"]
 [ext_resource type="MeshLibrary" uid="uid://bef7mwhbwqwiq" path="res://Scenes/GridMapLibrary/Roads/Roads.tres" id="2_gjws7"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://xi38vgsrplsg" path="res://Assets/Models/CIty/Buildings/kenney_retro-urban-kit/Models/GLB format/road-asphalt-center.glb" id="11_3uxlq"]
 [ext_resource type="PackedScene" uid="uid://d4i7m5kw7h844" path="res://Scenes/BuildingsBlock/Shop/ShopBlock.tscn" id="14_0dyya"]
 [ext_resource type="PackedScene" uid="uid://slu126ng1ddn" path="res://Scenes/BuildingsBlock/Components/Door.tscn" id="15_rp8e3"]
+[ext_resource type="AudioStream" uid="uid://v3m50fohurbk" path="res://Assets/SFX/Weapons/Rifle/Fire.wav" id="16_3uxlq"]
 
 [node name="BaseLevel" instance=ExtResource("1_1spie")]
 
@@ -220,7 +221,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48.00
 mass = 50.0
 
 [node name="Player" parent="Players" index="0" instance=ExtResource("2_qa3tc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09697, 3.5253, -34.5782)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.40631, -34.6535)
 
 [node name="Ak" parent="Items" index="0" instance=ExtResource("3_rbt2t")]
 transform = Transform3D(0.650891, 0.757736, 0.0466679, -0.755796, 0.652561, -0.0541894, -0.0715149, 0, 0.99744, -1.2, 3.967, -31.064)
@@ -233,6 +234,9 @@ transform = Transform3D(0.675241, 0.736896, 0.0321609, -0.737277, 0.67559, 0, -0
 
 [node name="Node3D" parent="." index="7" instance=ExtResource("14_0dyya")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.40849, 2.40286, -34.775)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="8"]
+stream = ExtResource("16_3uxlq")
 
 [editable path="Buildings/building-type-b2"]
 [editable path="Node3D"]

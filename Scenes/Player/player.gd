@@ -46,6 +46,13 @@ func use_weapon():
 		
 		right_hand_pov.animation_player.stop()
 		right_hand_pov.animation_player.play("shoot")
+		var audio = AudioStreamPlayer3D.new()
+		audio.stream = preload("res://Assets/SFX/Weapons/Rifle/AK_Shot.wav")
+		add_child(audio)
+		#audio.volume_db = -10
+
+		audio.play()
+		
 	
 	
 	#var object : Node3D = combat_ray.get_collider()

@@ -27,12 +27,20 @@ func _on_interact() -> void:
 
 func _on_receive_damage(damage: float, direction: Vector3) -> void:
 	health -= damage
-	if health <= 0:
+	if health <= 0 and decor_state != DECOR_STATE_TYPE.BROKEN_DOWN:
 		decor_state = DECOR_STATE_TYPE.BROKEN_DOWN
+		linear_velocity -= direction * damage * 0.6
 	if decor_state == DECOR_STATE_TYPE.BROKEN_DOWN:
-		linear_velocity -= direction * damage
-
+		linear_velocity -= direction * damage * 0.1
 
 
 func _on_state_changed() -> void:
 	pass # Replace with function body.
+
+
+func _play_sound(_audio : AudioStream):
+	var audio = AudioStreamPlayer3D.new()
+	audio.stream = _audio
+	audio.finished.connect(audio.queue_free)
+	add_child(audio)
+	audio.call_deferred("play")

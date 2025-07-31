@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://baq5fam5xesra"]
+[gd_scene load_steps=27 format=3 uid="uid://baq5fam5xesra"]
 
 [ext_resource type="PackedScene" uid="uid://d30ipjyyopunc" path="res://BaseScenes/BaseEntity/BaseEntity.tscn" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://bo2urmd8u6hwt" path="res://BaseScenes/BaseNodes/BaseStateManagerNode.gd" id="2_ft8w5"]
@@ -17,6 +17,10 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0kmp4"]
 radius = 0.3
+height = 1.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u84n"]
+radius = 0.360997
 height = 1.6
 
 [sub_resource type="SphereMesh" id="SphereMesh_0u84n"]
@@ -398,16 +402,13 @@ rotation = 1.5708
 points = PackedVector2Array(-10, 0, 10, 0)
 width = 2.0
 
-[node name="MeshInstance3D" parent="Model" index="0"]
-visible = false
-layers = 2
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model" index="1"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79851, 0)
 mesh = SubResource("CapsuleMesh_0kmp4")
 
 [node name="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.774657, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_0u84n")
 
 [node name="Pitch" type="Node3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0)
@@ -434,6 +435,8 @@ collision_mask = 14
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -549,11 +552,16 @@ metadata/_custom_type_script = "uid://0a3iovwytv30"
 script = ExtResource("14_0u84n")
 
 [node name="TopRay" type="RayCast3D" parent="LedgeContact" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.200155, -0.337128)
-target_position = Vector3(0, 0, -0.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, -0.337)
+target_position = Vector3(0, 0, -0.3)
+
+[node name="FloorRay" type="RayCast3D" parent="LedgeContact/TopRay" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05)
+target_position = Vector3(0, -0.4, 0)
 
 [node name="BottomRay" type="RayCast3D" parent="LedgeContact" index="1"]
-target_position = Vector3(0, 0, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+target_position = Vector3(0, 0, -0.4)
 
 [connection signal="child_entered_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_exiting_tree"]

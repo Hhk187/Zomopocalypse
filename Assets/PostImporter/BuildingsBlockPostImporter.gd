@@ -12,4 +12,4 @@ func Rescale(node : Node3D):
 	if node != null:
 		for child in node.find_children("*", "MeshInstance3D") as Array[MeshInstance3D]:
 			child.create_trimesh_collision()
-			child.get_child(0).hide()
+			#child.get_child(0).hide()
