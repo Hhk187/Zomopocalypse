@@ -31,9 +31,6 @@ metadata/_editor_floor_ = Vector3(0, 43, 0)
 mesh_library = ExtResource("3_omnf5")
 cell_size = Vector3(2, 0.125, 2)
 collision_layer = 33
-data = {
-"cells": PackedInt32Array(2, 65503, 1048576, 65523, 65509, 14, 65528, 65493, 1441799, 65529, 65505, 1441816, 65525, 65498, 24, 2, 65493, 1048577, 65518, 65494, 29, 65509, 65497, 32, 65513, 65496, 31, 65522, 65492, 40, 65512, 65509, 14, 3, 65484, 1048585)
-}
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="building-type-a2" parent="Buildings" index="0" instance=ExtResource("4_ytqtl")]
@@ -60,6 +57,168 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 120.556, -0.0500011, 35.20
 [node name="road-asphalt-center2" parent="Buildings" index="7" instance=ExtResource("11_3uxlq")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 103.299, 0.249777, 25.5599)
 
+[node name="Domino" type="Node3D" parent="WorldDecor" index="0"]
+
+[node name="Door2" parent="WorldDecor/Domino" index="0" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -14.1373, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door12" parent="WorldDecor/Domino" index="1" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -15.1003, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door13" parent="WorldDecor/Domino" index="2" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.232, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door14" parent="WorldDecor/Domino" index="3" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.2819, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door15" parent="WorldDecor/Domino" index="4" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -18.3033, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door16" parent="WorldDecor/Domino" index="5" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.4727, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door17" parent="WorldDecor/Domino" index="6" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -20.7954, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door18" parent="WorldDecor/Domino" index="7" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.2116, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door19" parent="WorldDecor/Domino" index="8" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.6258, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door20" parent="WorldDecor/Domino" index="9" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.0819, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door21" parent="WorldDecor/Domino" index="10" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.8663, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door22" parent="WorldDecor/Domino" index="11" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -26.8294, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door23" parent="WorldDecor/Domino" index="12" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -27.9611, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door24" parent="WorldDecor/Domino" index="13" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -29.011, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door25" parent="WorldDecor/Domino" index="14" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -30.0323, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door26" parent="WorldDecor/Domino" index="15" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -31.2018, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door27" parent="WorldDecor/Domino" index="16" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -32.5244, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door28" parent="WorldDecor/Domino" index="17" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -33.9406, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door29" parent="WorldDecor/Domino" index="18" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -35.3548, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door30" parent="WorldDecor/Domino" index="19" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.8109, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door31" parent="WorldDecor/Domino" index="20" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -37.4408, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door32" parent="WorldDecor/Domino" index="21" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -38.4039, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door33" parent="WorldDecor/Domino" index="22" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -39.5356, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door34" parent="WorldDecor/Domino" index="23" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -40.5855, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door35" parent="WorldDecor/Domino" index="24" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -41.6068, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door36" parent="WorldDecor/Domino" index="25" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -42.7763, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door37" parent="WorldDecor/Domino" index="26" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -44.0989, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door38" parent="WorldDecor/Domino" index="27" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -45.5151, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door39" parent="WorldDecor/Domino" index="28" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -46.9293, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door40" parent="WorldDecor/Domino" index="29" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -36.3854, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door41" parent="WorldDecor/Domino" index="30" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.0591, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door42" parent="WorldDecor/Domino" index="31" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50.0222, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door43" parent="WorldDecor/Domino" index="32" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -51.1539, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door44" parent="WorldDecor/Domino" index="33" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -52.2038, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door45" parent="WorldDecor/Domino" index="34" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -53.2251, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door46" parent="WorldDecor/Domino" index="35" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -54.3946, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door47" parent="WorldDecor/Domino" index="36" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -55.7172, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door48" parent="WorldDecor/Domino" index="37" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -57.1334, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door49" parent="WorldDecor/Domino" index="38" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -58.5476, 0.0979154, -38.6383)
+mass = 50.0
+
+[node name="Door50" parent="WorldDecor/Domino" index="39" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48.0037, 0.0979154, -38.6383)
+mass = 50.0
+
 [node name="Player" parent="Players" index="0" instance=ExtResource("2_qa3tc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.09697, 3.5253, -34.5782)
 
@@ -70,13 +229,15 @@ transform = Transform3D(0.650891, 0.757736, 0.0466679, -0.755796, 0.652561, -0.0
 transform = Transform3D(0.650891, 0.757736, 0.0466679, -0.755796, 0.652561, -0.0541894, -0.0715149, 0, 0.99744, -0.889521, 3.96672, -31.0642)
 
 [node name="Ak3" parent="Items" index="2" instance=ExtResource("3_rbt2t")]
-transform = Transform3D(-0.000672107, -0.000733476, 1, -0.737277, 0.67559, 0, -0.67559, -0.737277, -0.000994845, -1.42342, 7.26958, -20.6664)
+transform = Transform3D(0.675241, 0.736896, 0.0321609, -0.737277, 0.67559, 0, -0.0217276, -0.0237115, 0.999483, -1.42342, 4.67144, -30.7811)
 
 [node name="Node3D" parent="." index="7" instance=ExtResource("14_0dyya")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.40849, 2.40286, -34.775)
 
-[node name="Door" parent="." index="8" instance=ExtResource("15_rp8e3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69753, 4.46192, -38.7973)
-mass = 50.0
-
 [editable path="Buildings/building-type-b2"]
+[editable path="Node3D"]
+[editable path="Node3D/Floor"]
+[editable path="Node3D/FrontSide"]
+[editable path="Node3D/Wall"]
+[editable path="Node3D/Wall2"]
+[editable path="Node3D/Wall3"]

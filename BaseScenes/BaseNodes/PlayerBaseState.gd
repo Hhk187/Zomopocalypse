@@ -63,9 +63,10 @@ func interaction():
 			if Input.is_action_just_pressed("play_pickup") and not player.right_hand.get_child_count():
 				item.equipe()
 				player.right_hand.add_child(item)
-		elif item.is_in_group("inertactable"):
+		elif item.is_in_group("interact"):
+			var world_decor := item as WorldDecor
 			if Input.is_action_just_pressed("play_use"):
-				print("inertacted with %s" % [item.name])
+				world_decor.interact.emit()
 		
 	if player.right_hand.get_child_count():
 		if Input.is_action_just_pressed("play_drop"):

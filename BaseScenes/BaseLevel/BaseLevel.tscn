@@ -27,7 +27,6 @@ shadow_enabled = true
 
 [node name="Surface" type="GridMap" parent="."]
 cell_size = Vector3(1, 1, 1)
-collision_layer = 33
 data = {
 "cells": PackedInt32Array(3, 11, 1048583, 65535, 16, 1048581, 65533, 24, 1048580)
 }
@@ -35,7 +34,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="Buildings" type="GridMap" parent="."]
 
-[node name="Objects" type="Node3D" parent="."]
+[node name="WorldDecor" type="Node3D" parent="."]
 
 [node name="Players" type="Node" parent="."]
 

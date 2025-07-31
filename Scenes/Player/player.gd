@@ -18,7 +18,6 @@ var equiped_weapon : BaseItem
 func use_weapon():
 	if equiped_weapon.item_data.can_be_used() : 
 		var viewport = get_viewport().size
-		sub_viewport.size = viewport
 		
 		var ray_origin  = camera_3d.project_ray_origin(viewport * 0.5)
 		var ray_end  = ray_origin + camera_3d.project_ray_normal(viewport * 0.5) * equiped_weapon.item_data.range_unit
@@ -34,7 +33,11 @@ func use_weapon():
 			var collider = intersection.collider
 			
 			if collider is RigidBody3D:
-				collider.linear_velocity -= global_basis.z * equiped_weapon.item_data.damage
+				if collider.get_collision_layer_value(3): 
+					collider = collider as WorldDecor
+					collider.receive_damage.emit(equiped_weapon.item_data.damage, global_basis.z)
+				else :
+					collider.linear_velocity -= global_basis.z * equiped_weapon.item_data.damage
 			var new_mesh := MeshInstance3D.new()
 			new_mesh.mesh = SphereMesh.new()
 			new_mesh.scale = Vector3(0.2,0.2,0.2)
