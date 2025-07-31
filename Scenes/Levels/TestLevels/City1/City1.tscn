@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bavieeppwkly8"]
+[gd_scene load_steps=16 format=3 uid="uid://bavieeppwkly8"]
 
 [ext_resource type="PackedScene" uid="uid://cs7x65e5s6akq" path="res://BaseScenes/BaseLevel/BaseLevel.tscn" id="1_1spie"]
 [ext_resource type="MeshLibrary" uid="uid://bef7mwhbwqwiq" path="res://Scenes/GridMapLibrary/Roads/Roads.tres" id="2_gjws7"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://wmadybouneds" path="res://Assets/Models/CIty/Buildings/kenney_retro-urban-kit/Models/GLB format/truck-grey.glb" id="10_rp8e3"]
 [ext_resource type="PackedScene" uid="uid://xi38vgsrplsg" path="res://Assets/Models/CIty/Buildings/kenney_retro-urban-kit/Models/GLB format/road-asphalt-center.glb" id="11_3uxlq"]
 [ext_resource type="PackedScene" uid="uid://d4i7m5kw7h844" path="res://Scenes/BuildingsBlock/Shop/ShopBlock.tscn" id="14_0dyya"]
+[ext_resource type="PackedScene" uid="uid://slu126ng1ddn" path="res://Scenes/BuildingsBlock/Components/Door.tscn" id="15_rp8e3"]
 
 [node name="BaseLevel" instance=ExtResource("1_1spie")]
 
@@ -74,10 +75,8 @@ transform = Transform3D(-0.000672107, -0.000733476, 1, -0.737277, 0.67559, 0, -0
 [node name="Node3D" parent="." index="7" instance=ExtResource("14_0dyya")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.40849, 2.40286, -34.775)
 
+[node name="Door" parent="." index="8" instance=ExtResource("15_rp8e3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69753, 4.46192, -38.7973)
+mass = 50.0
+
 [editable path="Buildings/building-type-b2"]
-[editable path="Node3D"]
-[editable path="Node3D/Floor"]
-[editable path="Node3D/FrontSide"]
-[editable path="Node3D/Wall"]
-[editable path="Node3D/Wall2"]
-[editable path="Node3D/Wall3"]

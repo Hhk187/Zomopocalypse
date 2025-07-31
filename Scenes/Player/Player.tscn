@@ -366,8 +366,8 @@ _data = {
 }
 
 [node name="Player" instance=ExtResource("1_s0eop")]
-collision_layer = 6
-collision_mask = 5
+collision_layer = 2
+collision_mask = 1
 script = ExtResource("2_h54ih")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="0"]
@@ -428,11 +428,14 @@ script = ExtResource("4_fk5o5")
 
 [node name="InteractionRay" type="RayCast3D" parent="Pitch/Yaw/Camera3D" index="1"]
 target_position = Vector3(0, 0, -2.5)
-collision_mask = 16
+collision_mask = 14
 
 [node name="SubViewportContainerPOV" type="SubViewportContainer" parent="Pitch/Yaw/Camera3D" index="2"]
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 stretch = true
 

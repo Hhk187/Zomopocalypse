@@ -57,11 +57,16 @@ func gravity(delta):
 
 func interaction():
 	var player = entity as PlayerBaseEntity
-	var item : BaseItem = player.interaction_ray.get_collider()
-	if player.interaction_ray.is_colliding():
-		if Input.is_action_just_pressed("play_pickup") and not player.right_hand.get_child_count():
-			item.equipe()
-			player.right_hand.add_child(item)
+	var item : Node3D = player.interaction_ray.get_collider()
+	if item:
+		if item.is_in_group("item"):
+			if Input.is_action_just_pressed("play_pickup") and not player.right_hand.get_child_count():
+				item.equipe()
+				player.right_hand.add_child(item)
+		elif item.is_in_group("inertactable"):
+			if Input.is_action_just_pressed("play_use"):
+				print("inertacted with %s" % [item.name])
+		
 	if player.right_hand.get_child_count():
 		if Input.is_action_just_pressed("play_drop"):
 			player.right_hand.get_child(0).un_equipe()

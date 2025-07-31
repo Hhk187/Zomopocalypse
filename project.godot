@@ -28,6 +28,11 @@ window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 window/vsync/vsync_mode=2
 
+[global_group]
+
+item=""
+inertactable=""
+
 [input]
 
 debug_mouse_toggle={
@@ -98,16 +103,15 @@ play_run={
 3d_render/layer_3="POV"
 3d_render/layer_4="Enviorment"
 3d_physics/layer_1="World"
-3d_physics/layer_2="Player"
-3d_physics/layer_3="Entity"
-3d_physics/layer_4="Zombie"
+3d_physics/layer_2="Entity"
+3d_physics/layer_3="WorldDecor"
+3d_physics/layer_4="item"
 3d_physics/layer_5="Item"
 3d_physics/layer_6="CanBeShot"
 3d_physics/layer_7="Interactable"
 
 [physics]
 
-common/max_physics_steps_per_frame=16
 common/physics_jitter_fix=0.0
 3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true

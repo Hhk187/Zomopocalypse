@@ -6,6 +6,6 @@ extends Node3D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if bottom_ray.is_colliding() and Input.is_action_pressed("play_forward"):
+	if bottom_ray.is_colliding() and Input.is_action_pressed("play_forward") and owner.is_on_floor():
 		if not top_ray.is_colliding():
 			owner.global_position.y += 0.1

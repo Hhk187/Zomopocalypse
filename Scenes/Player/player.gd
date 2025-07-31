@@ -10,6 +10,7 @@ class_name PlayerBaseEntity
 
 @onready var interaction_ray: RayCast3D = $Pitch/Yaw/Camera3D/InteractionRay
 
+@onready var sub_viewport: SubViewport = $Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport
 
 var equiped_weapon : BaseItem
 
@@ -17,6 +18,7 @@ var equiped_weapon : BaseItem
 func use_weapon():
 	if equiped_weapon.item_data.can_be_used() : 
 		var viewport = get_viewport().size
+		sub_viewport.size = viewport
 		
 		var ray_origin  = camera_3d.project_ray_origin(viewport * 0.5)
 		var ray_end  = ray_origin + camera_3d.project_ray_normal(viewport * 0.5) * equiped_weapon.item_data.range_unit
@@ -24,7 +26,7 @@ func use_weapon():
 		var new_interserction = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
 		new_interserction.collide_with_areas = true
 		new_interserction.collide_with_bodies = true
-		new_interserction.collision_mask = pow(2, 6-1)
+		new_interserction.collision_mask = pow(2, 1-1) + pow(2, 2-1) + pow(2, 3-1) + pow(2, 4-1)
 		var intersection = get_world_3d().direct_space_state.intersect_ray(new_interserction)
 		
 		if not intersection.is_empty():
@@ -33,7 +35,6 @@ func use_weapon():
 			
 			if collider is RigidBody3D:
 				collider.linear_velocity -= global_basis.z * equiped_weapon.item_data.damage
-				collider.angular_velocity -= global_basis.z * equiped_weapon.item_data.damage
 			var new_mesh := MeshInstance3D.new()
 			new_mesh.mesh = SphereMesh.new()
 			new_mesh.scale = Vector3(0.2,0.2,0.2)
