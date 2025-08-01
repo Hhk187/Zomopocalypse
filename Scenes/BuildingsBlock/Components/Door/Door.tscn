@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://slu126ng1ddn"]
 
 [ext_resource type="PackedScene" uid="uid://dr7gtm78pwglv" path="res://BaseScenes/BaseBuildings/BaseWorldDecor/base_world_decor.tscn" id="1_upoqu"]
-[ext_resource type="Script" uid="uid://1pnix44t44o2" path="res://Scenes/BuildingsBlock/Components/door.gd" id="2_wlgbp"]
+[ext_resource type="Script" uid="uid://1pnix44t44o2" path="res://Scenes/BuildingsBlock/Components/Door/door.gd" id="2_wlgbp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wlgbp"]
 albedo_color = Color(0.46, 0.46, 0.46, 1)
@@ -24,25 +24,21 @@ points = PackedVector3Array(-0.5, -1, -0.05, -0.5, -1, 0.05, -0.5, 1, -0.05, 0.5
 
 [node name="Door" groups=["interact"] instance=ExtResource("1_upoqu")]
 collision_layer = 5
-collision_mask = 7
 mass = 5.0
-sleeping = true
-freeze = true
 script = ExtResource("2_wlgbp")
 health = 50.0
 
-[node name="Model" type="Node3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
-
 [node name="Door" type="MeshInstance3D" parent="Model" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)
 material_override = SubResource("StandardMaterial3D_wlgbp")
 mesh = SubResource("BoxMesh_sdhup")
+skeleton = NodePath("")
 
 [node name="Knob" type="MeshInstance3D" parent="Model" index="1"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.35, 1, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.85, 1, 0)
 material_override = SubResource("StandardMaterial3D_x0rhq")
 mesh = SubResource("CylinderMesh_rwy1b")
+skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0)

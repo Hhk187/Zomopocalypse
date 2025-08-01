@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3hvmwx2y717q"]
+
+[ext_resource type="PackedScene" uid="uid://dr7gtm78pwglv" path="res://BaseScenes/BaseBuildings/BaseWorldDecor/base_world_decor.tscn" id="1_gne2t"]
+[ext_resource type="PackedScene" uid="uid://cbdl8j4cs4eqi" path="res://Assets/Models/CIty/Buildings/Furniture/Seats/Couch.blend" id="2_hxtg1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mqiao"]
+size = Vector3(2.99316, 0.506439, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mrskl"]
+size = Vector3(2.99316, 0.243469, 0.41626)
+
+[node name="Couch" instance=ExtResource("1_gne2t")]
+collision_layer = 5
+health = 50.0
+
+[node name="Couch2" parent="Model" index="0" instance=ExtResource("2_hxtg1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269003, 0)
+shape = SubResource("BoxShape3D_mqiao")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0.638472, 0.380375)
+shape = SubResource("BoxShape3D_mrskl")

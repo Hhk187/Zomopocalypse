@@ -1,4 +1,5 @@
 extends Control
+class_name InGameMenu
 
 @onready var center_container: CenterContainer = $CenterContainer
 @onready var fps_label: Label = $FPSLabel

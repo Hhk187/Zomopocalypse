@@ -3,7 +3,13 @@
 [ext_resource type="Script" uid="uid://dq8kn7ve3l6ea" path="res://BaseScenes/BaseBuildings/BaseWorldDecor/base_world_decor.gd" id="1_h3kg1"]
 
 [node name="BaseWorldDecor" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 7
+sleeping = true
+freeze = true
 script = ExtResource("1_h3kg1")
+
+[node name="Model" type="Node3D" parent="."]
 
 [connection signal="interact" from="." to="." method="_on_interact"]
 [connection signal="receive_damage" from="." to="." method="_on_receive_damage"]

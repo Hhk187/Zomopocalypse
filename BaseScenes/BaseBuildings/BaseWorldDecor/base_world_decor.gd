@@ -30,12 +30,9 @@ func _on_receive_damage(damage: float, direction: Vector3) -> void:
 	if health <= 0 and decor_state != DECOR_STATE_TYPE.BROKEN_DOWN:
 		decor_state = DECOR_STATE_TYPE.BROKEN_DOWN
 		linear_velocity -= direction * damage * 0.6
+		_play_sound_breaking()
 	if decor_state == DECOR_STATE_TYPE.BROKEN_DOWN:
 		linear_velocity -= direction * damage * 0.1
-
-
-func _on_state_changed() -> void:
-	pass # Replace with function body.
 
 
 func _play_sound(_audio : AudioStream):
@@ -44,3 +41,13 @@ func _play_sound(_audio : AudioStream):
 	audio.finished.connect(audio.queue_free)
 	add_child(audio)
 	audio.call_deferred("play")
+
+func _play_sound_breaking():
+	_play_sound(load("res://Assets/SFX/WorldDecor/Break/Break.wav"))
+
+func _on_state_changed() -> void:
+	if decor_state == DECOR_STATE_TYPE.BROKEN_DOWN:
+		_play_sound_breaking()
+		set_collision_layer_value(1, false)
+		sleeping = false
+		freeze = false

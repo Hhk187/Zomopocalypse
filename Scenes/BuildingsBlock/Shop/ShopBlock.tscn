@@ -3,13 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://b30i813hssdjk" path="res://Assets/Models/CIty/Buildings/Blocking/Floor.blend" id="1_byybw"]
 [ext_resource type="PackedScene" uid="uid://d3yvrg1y4kas0" path="res://BaseScenes/BaseBuildings/BaseBuildingBlock/base_building_block.tscn" id="1_ef6od"]
 [ext_resource type="PackedScene" uid="uid://bc3qw1ijrr2c0" path="res://Assets/Models/CIty/Buildings/Blocking/FrontSide.blend" id="2_qmnxk"]
-[ext_resource type="PackedScene" uid="uid://slu126ng1ddn" path="res://Scenes/BuildingsBlock/Components/Door.tscn" id="3_ojbbn"]
+[ext_resource type="Material" uid="uid://bn2lj7y874u6n" path="res://Assets/Materials/FloorWood.tres" id="3_de3vc"]
+[ext_resource type="PackedScene" uid="uid://slu126ng1ddn" path="res://Scenes/BuildingsBlock/Components/Door/Door.tscn" id="3_ojbbn"]
 [ext_resource type="Material" uid="uid://bwccub37nqllo" path="res://Assets/Materials/Wall.tres" id="3_qmnxk"]
 [ext_resource type="PackedScene" uid="uid://b0it06rfppa8t" path="res://Assets/Models/CIty/Buildings/Blocking/Wall.blend" id="3_xy27c"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojbbn"]
-albedo_color = Color(0.284545, 0.178477, 0.0659072, 1)
-metallic_specular = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_de3vc"]
 albedo_color = Color(0.391765, 0.391765, 0.391765, 1)
@@ -21,7 +18,7 @@ metallic_specular = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -3.70674)
 
 [node name="Plane" parent="Floor" index="0"]
-material_override = SubResource("StandardMaterial3D_ojbbn")
+material_override = ExtResource("3_de3vc")
 
 [node name="FrontSide" parent="." index="1" instance=ExtResource("2_qmnxk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.456735)

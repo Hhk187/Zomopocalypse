@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://ce8jnr54c0f3d"]
+
+[ext_resource type="PackedScene" uid="uid://b30i813hssdjk" path="res://Assets/Models/CIty/Buildings/Blocking/Floor.blend" id="1_0kktq"]
+[ext_resource type="Material" uid="uid://bn2lj7y874u6n" path="res://Assets/Materials/FloorWood.tres" id="2_88t2x"]
+[ext_resource type="PackedScene" uid="uid://c3hvmwx2y717q" path="res://Scenes/BuildingsBlock/Components/Couch/Couch.tscn" id="3_id31c"]
+[ext_resource type="PackedScene" uid="uid://b6y0sor32gmf" path="res://Assets/Models/CIty/Buildings/Furniture/TV/TV.blend" id="4_lryed"]
+[ext_resource type="PackedScene" uid="uid://dchwb6v2850fu" path="res://Assets/Models/CIty/Buildings/Furniture/Tables/SmallTable.blend" id="5_6hv1g"]
+
+[node name="MainRoom" type="Node3D"]
+
+[node name="Floor" parent="." instance=ExtResource("1_0kktq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, -3.7)
+
+[node name="Plane" parent="Floor" index="0"]
+material_override = ExtResource("2_88t2x")
+
+[node name="Couch" parent="." instance=ExtResource("3_id31c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.58531, -0.0222964, -3.48116)
+
+[node name="TV" parent="." instance=ExtResource("4_lryed")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60903, 0.698717, -6.76773)
+
+[node name="SmallTable" parent="." instance=ExtResource("5_6hv1g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60761, 2.38419e-07, -6.73568)
+
+[editable path="Floor"]

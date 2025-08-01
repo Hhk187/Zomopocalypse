@@ -20,11 +20,3 @@ func _on_interact():
 			rotation_degrees.y = 0
 			door_state = DOOR_STATE_TYPE.OPEN
 			_play_sound(load("res://Assets/SFX/WorldDecor/Openning/Open.wav"))
-
-
-func _on_state_changed() -> void:
-	if decor_state == DECOR_STATE_TYPE.BROKEN_DOWN:
-		_play_sound(load("res://Assets/SFX/WorldDecor/Break/Break.wav"))
-		set_collision_layer_value(1, false)
-		sleeping = false
-		freeze = false
