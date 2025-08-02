@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bc3qw1ijrr2c0" path="res://Assets/Models/CIty/Buildings/Blocking/FrontSide.blend" id="2_qmnxk"]
 [ext_resource type="Material" uid="uid://bn2lj7y874u6n" path="res://Assets/Materials/FloorWood.tres" id="3_de3vc"]
 [ext_resource type="PackedScene" uid="uid://slu126ng1ddn" path="res://Scenes/BuildingsBlock/Components/Door/Door.tscn" id="3_ojbbn"]
-[ext_resource type="Material" uid="uid://bwccub37nqllo" path="res://Assets/Materials/Wall.tres" id="3_qmnxk"]
+[ext_resource type="Material" uid="uid://bwccub37nqllo" path="res://Assets/Materials/OuterWallBuilding.tres" id="3_qmnxk"]
 [ext_resource type="PackedScene" uid="uid://b0it06rfppa8t" path="res://Assets/Models/CIty/Buildings/Blocking/Wall.blend" id="3_xy27c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_de3vc"]
