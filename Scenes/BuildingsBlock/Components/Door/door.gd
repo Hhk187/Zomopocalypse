@@ -8,7 +8,6 @@ enum DOOR_STATE_TYPE {
 
 var door_state : DOOR_STATE_TYPE = DOOR_STATE_TYPE.CLOSE
 
-
 func _on_interact():
 	if not is_operational(): return
 	match door_state:

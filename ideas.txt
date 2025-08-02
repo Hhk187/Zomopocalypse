@@ -1,0 +1,8 @@
+Ideas:
+    Buildings:
+        - Shootable emergency ladders, when shot, then deploy a ladder
+
+
+Useful source:
+    - Computer-Generated Residential Building Layouts : https://paulmerrell.org/wp-content/uploads/2021/06/floorplan-final.pdf
+    - Floor layout : https://colepowered.com/shadows-of-doubt-devblog-13-creating-procedural-interiors/

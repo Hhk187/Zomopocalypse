@@ -30,6 +30,7 @@ func _on_receive_damage(damage: float, direction: Vector3) -> void:
 	if health <= 0 and decor_state != DECOR_STATE_TYPE.BROKEN_DOWN:
 		decor_state = DECOR_STATE_TYPE.BROKEN_DOWN
 		linear_velocity -= direction * damage * 0.6
+		angular_velocity -= direction * damage 
 		_play_sound_breaking()
 	if decor_state == DECOR_STATE_TYPE.BROKEN_DOWN:
 		linear_velocity -= direction * damage * 0.1
