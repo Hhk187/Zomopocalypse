@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://donvnxtekyp11"]
+
+[ext_resource type="Script" uid="uid://dxpqp4ya377d3" path="res://BaseScenes/BaseBuildings/BaseApartementBuilding/base_apartement_buidling.gd" id="1_kb8jc"]
+
+[node name="BaseApartementBuidling" type="StaticBody3D"]
+script = ExtResource("1_kb8jc")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="StairesLocation" type="Marker3D" parent="."]

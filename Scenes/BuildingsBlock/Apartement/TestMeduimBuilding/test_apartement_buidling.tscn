@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://d2a7pndqqmwnf"]
+
+[ext_resource type="PackedScene" uid="uid://donvnxtekyp11" path="res://BaseScenes/BaseBuildings/BaseApartementBuilding/base_apartement_buidling.tscn" id="1_4ecy8"]
+[ext_resource type="PackedScene" uid="uid://jmr22kisf30a" path="res://Assets/Models/CIty/HollowApartement/Meduim/HollowApartement.Meduim.blend" id="2_jwdal"]
+[ext_resource type="Material" uid="uid://bwccub37nqllo" path="res://Assets/Materials/Wall.tres" id="3_32r44"]
+[ext_resource type="Material" uid="uid://bn2lj7y874u6n" path="res://Assets/Materials/FloorWood.tres" id="4_bv6v1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_32r44"]
+size = Vector3(16, 0.2, 10)
+
+[node name="TestApartementBuidling" instance=ExtResource("1_4ecy8")]
+
+[node name="HollowApartement_Meduim" parent="Model" index="0" instance=ExtResource("2_jwdal")]
+
+[node name="Plane" parent="Model/HollowApartement_Meduim" index="0"]
+material_override = ExtResource("3_32r44")
+
+[node name="Plane_001" parent="Model/HollowApartement_Meduim" index="1"]
+material_override = ExtResource("4_bv6v1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, 0)
+shape = SubResource("BoxShape3D_32r44")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.9, 0)
+shape = SubResource("BoxShape3D_32r44")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.9, 0)
+shape = SubResource("BoxShape3D_32r44")
+
+[editable path="Model/HollowApartement_Meduim"]
