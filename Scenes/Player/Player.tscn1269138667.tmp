@@ -521,6 +521,20 @@ playback_auto_capture = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.230466, 0, 0.419643)
 visible = false
 
+[node name="Skeleton3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature" index="0"]
+bones/2/rotation = Quaternion(-0.468096, -0.206601, 0.256887, 0.819885)
+bones/3/rotation = Quaternion(-0.056816, 0.130227, 0.867301, 0.477075)
+bones/4/rotation = Quaternion(0.0706143, 0.00849445, -0.223615, 0.972079)
+bones/6/rotation = Quaternion(-0.411153, 0.0368197, -0.426274, 0.804915)
+bones/8/rotation = Quaternion(-0.250037, 0.0603427, -0.226706, 0.939385)
+bones/10/rotation = Quaternion(-0.602664, -0.13386, 0.170577, 0.767972)
+bones/11/rotation = Quaternion(0, 0, 0.503338, 0.864089)
+bones/12/rotation = Quaternion(-0.772625, -0.620997, 0.037447, 0.126532)
+bones/13/rotation = Quaternion(-0.184956, -0.0202059, 0.0110543, 0.982477)
+bones/16/rotation = Quaternion(-0.398089, -0.163017, 0.50332, 0.749413)
+bones/18/rotation = Quaternion(-0.629129, -0.151831, 0.178842, 0.741053)
+bones/20/rotation = Quaternion(-0.817292, 0.181532, -0.11858, 0.533871)
+
 [node name="ArmModel" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature/Skeleton3D" index="0"]
 layers = 4
 

@@ -11228,7 +11228,7 @@ libraries = {
 }
 
 [node name="Root Scene" type="Node3D" parent="." index="8"]
-transform = Transform3D(-0.973467, 0, 0.228827, 0.0218128, 0.995446, 0.0927953, -0.227785, 0.0953246, -0.969034, 2.5519, -0.732863, -4.30253)
+transform = Transform3D(-0.973467, 0, 0.228827, 0.0218128, 0.995446, 0.0927953, -0.227785, 0.0953246, -0.969034, 2.67633, -0.430898, -4.74609)
 
 [node name="RootNode" type="Node3D" parent="Root Scene" index="0"]
 

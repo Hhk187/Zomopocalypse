@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2a7pndqqmwnf"]
+[gd_scene load_steps=20 format=3 uid="uid://d2a7pndqqmwnf"]
 
 [ext_resource type="PackedScene" uid="uid://donvnxtekyp11" path="res://BaseScenes/BaseBuildings/BaseApartementBuilding/base_apartement_buidling.tscn" id="1_4ecy8"]
 [ext_resource type="PackedScene" uid="uid://jmr22kisf30a" path="res://Assets/Models/CIty/HollowApartement/Meduim/HollowApartement.Meduim.blend" id="2_jwdal"]
 [ext_resource type="Material" uid="uid://bps5ot6u27d2x" path="res://Assets/Materials/OuterWallFloor.tres" id="3_whab4"]
 [ext_resource type="Material" uid="uid://bn2lj7y874u6n" path="res://Assets/Materials/FloorWood.tres" id="4_bv6v1"]
 [ext_resource type="Material" uid="uid://b1dnp7i4313p5" path="res://Assets/Materials/GroundInsideWall.tres" id="4_l88ba"]
+[ext_resource type="PackedScene" uid="uid://slu126ng1ddn" path="res://Scenes/BuildingsBlock/Components/Door/Door.tscn" id="6_l88ba"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l88ba"]
 albedo_color = Color(0.356863, 0.258824, 0, 1)
@@ -135,5 +136,25 @@ shape = SubResource("BoxShape3D_l88ba")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.5, 4.9, -3)
 visible = false
 shape = SubResource("BoxShape3D_sbmju")
+
+[node name="Decor" type="Node3D" parent="." index="8"]
+
+[node name="Door" parent="Decor" index="0" instance=ExtResource("6_l88ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99941, 5.01049, 1.00134)
+
+[node name="Door2" parent="Decor" index="1" instance=ExtResource("6_l88ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00059, 5.01047, 1.00134)
+
+[node name="Door3" parent="Decor" index="2" instance=ExtResource("6_l88ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99941, 9.01049, 1.00134)
+
+[node name="Door4" parent="Decor" index="3" instance=ExtResource("6_l88ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00059, 9.01047, 1.00134)
+
+[node name="Door5" parent="Decor" index="4" instance=ExtResource("6_l88ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99941, 13.0577, 1.00134)
+
+[node name="Door6" parent="Decor" index="5" instance=ExtResource("6_l88ba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00059, 13.0577, 1.00134)
 
 [editable path="Model/HollowApartement_Meduim"]

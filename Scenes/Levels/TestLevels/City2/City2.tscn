@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://eyxrj40ah7ti"]
+[gd_scene load_steps=6 format=3 uid="uid://eyxrj40ah7ti"]
 
 [ext_resource type="PackedScene" uid="uid://cs7x65e5s6akq" path="res://BaseScenes/BaseLevel/BaseLevel.tscn" id="1_1qkjd"]
 [ext_resource type="MeshLibrary" uid="uid://bef7mwhbwqwiq" path="res://Scenes/GridMapLibrary/Roads/Roads.tres" id="2_sylpw"]
 [ext_resource type="PackedScene" uid="uid://d2a7pndqqmwnf" path="res://Scenes/BuildingsBlock/Apartement/TestMeduimBuilding/test_apartement_buidling.tscn" id="3_ptqpm"]
 [ext_resource type="PackedScene" uid="uid://baq5fam5xesra" path="res://Scenes/Player/Player.tscn" id="4_smmf0"]
+[ext_resource type="PackedScene" uid="uid://dnblltv50fky0" path="res://Scenes/Weapons/Ranged/Ak/Ak.tscn" id="5_6as6a"]
 
 [node name="BaseLevel" instance=ExtResource("1_1qkjd")]
 
@@ -21,3 +22,6 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -32.65
 
 [node name="Player" parent="Players" index="0" instance=ExtResource("4_smmf0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.1104, 5.19854, 34.8452)
+
+[node name="Ak" parent="Items" index="0" instance=ExtResource("5_6as6a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1994, 6.01221, 31.5888)
