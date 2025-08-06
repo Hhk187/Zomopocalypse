@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bk5i72m8bu4ea"
-path.s3tc="res://.godot/imported/SM_Powerline4_texture_atlas.png-37802478f13016e771750e4550bc68e9.s3tc.ctex"
+uid="uid://cjvry7vx0hr1x"
+path.s3tc="res://.godot/imported/SM_CombatKnife_texture_atlas.png-c2e00dbc3e66510d1f9cc10a1f975c9f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Unsanctioned_Dreams_assets/Props/Street/SM_Powerline4_texture_atlas.png"
-dest_files=["res://.godot/imported/SM_Powerline4_texture_atlas.png-37802478f13016e771750e4550bc68e9.s3tc.ctex"]
+source_file="res://Assets/Unsanctioned_Dreams_assets/Weapons/Melee/SM_CombatKnife_texture_atlas.png"
+dest_files=["res://.godot/imported/SM_CombatKnife_texture_atlas.png-c2e00dbc3e66510d1f9cc10a1f975c9f.s3tc.ctex"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bk485qos4g4y"
-path="res://.godot/imported/SM_Powerline2.glb-378455b317427449e4f3738878b5bf9a.scn"
+path="res://.godot/imported/SM_Powerline2.glb-f22e278f22f47683839f858b93f469ee.scn"
 
 [deps]
 
-source_file="res://Assets/Unsanctioned_Dreams_assets/SM_Powerline2.glb"
-dest_files=["res://.godot/imported/SM_Powerline2.glb-378455b317427449e4f3738878b5bf9a.scn"]
+source_file="res://Assets/Unsanctioned_Dreams_assets/Props/Street/SM_Powerline2.glb"
+dest_files=["res://.godot/imported/SM_Powerline2.glb-f22e278f22f47683839f858b93f469ee.scn"]
 
 [params]
 

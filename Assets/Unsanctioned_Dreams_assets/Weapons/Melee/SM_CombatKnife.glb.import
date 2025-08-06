@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6uy3nu0nrul3"
-path="res://.godot/imported/SM_Powerline1.glb-bf41adf22d1a0a09ca7bbf79a9bf9a00.scn"
+uid="uid://4hqa2n7yxny"
+path="res://.godot/imported/SM_CombatKnife.glb-d4e55bf2c941e739100756328a36da63.scn"
 
 [deps]
 
-source_file="res://Assets/Unsanctioned_Dreams_assets/Props/Street/SM_Powerline1.glb"
-dest_files=["res://.godot/imported/SM_Powerline1.glb-bf41adf22d1a0a09ca7bbf79a9bf9a00.scn"]
+source_file="res://Assets/Unsanctioned_Dreams_assets/Weapons/Melee/SM_CombatKnife.glb"
+dest_files=["res://.godot/imported/SM_CombatKnife.glb-d4e55bf2c941e739100756328a36da63.scn"]
 
 [params]
 

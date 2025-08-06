@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bq5hu6yq1mpqd"
-path.s3tc="res://.godot/imported/SM_Powerline1_texture_atlas.png-06038a0c2d3e392cf5f4b7bf61751f6f.s3tc.ctex"
+path.s3tc="res://.godot/imported/SM_Powerline1_texture_atlas.png-d49848df89dc02fc9425c653c61adc5c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Unsanctioned_Dreams_assets/SM_Powerline1_texture_atlas.png"
-dest_files=["res://.godot/imported/SM_Powerline1_texture_atlas.png-06038a0c2d3e392cf5f4b7bf61751f6f.s3tc.ctex"]
+source_file="res://Assets/Unsanctioned_Dreams_assets/Props/Street/SM_Powerline1_texture_atlas.png"
+dest_files=["res://.godot/imported/SM_Powerline1_texture_atlas.png-d49848df89dc02fc9425c653c61adc5c.s3tc.ctex"]
 
 [params]
 

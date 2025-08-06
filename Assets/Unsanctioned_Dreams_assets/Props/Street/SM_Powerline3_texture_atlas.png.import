@@ -3,9 +3,10 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5bc5sex7238c"
-path="res://.godot/imported/SM_Powerline3_texture_atlas.png-e456a4aa8b757986a0bcea55f22658c0.ctex"
+path.s3tc="res://.godot/imported/SM_Powerline3_texture_atlas.png-2fce69bc6a57f7a8dd51255f157f257d.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
 "md5": "9597fe92d219dc6a33445c8ba2741242"
@@ -13,12 +14,12 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/Unsanctioned_Dreams_assets/SM_Powerline3_texture_atlas.png"
-dest_files=["res://.godot/imported/SM_Powerline3_texture_atlas.png-e456a4aa8b757986a0bcea55f22658c0.ctex"]
+source_file="res://Assets/Unsanctioned_Dreams_assets/Props/Street/SM_Powerline3_texture_atlas.png"
+dest_files=["res://.godot/imported/SM_Powerline3_texture_atlas.png-2fce69bc6a57f7a8dd51255f157f257d.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -34,4 +35,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
