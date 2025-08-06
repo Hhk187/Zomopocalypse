@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://7n3iw4wdvwcy"]
+
+[ext_resource type="PackedScene" uid="uid://qsf1is5fnqvd" path="res://BaseScenes/BaseItems/BaseItem.tscn" id="1_gqu2v"]
+[ext_resource type="Script" uid="uid://bd0s152hspgvo" path="res://BaseScenes/BaseItems/ItemDataRes.gd" id="2_ja8ts"]
+[ext_resource type="PackedScene" uid="uid://nri5bordolg8" path="res://Assets/Unsanctioned_Dreams_assets/Weapons/Ranged/HandGuns/9MMPistol.blend" id="3_1km6r"]
+[ext_resource type="Texture2D" uid="uid://buaxn1y7l7kh" path="res://Assets/Unsanctioned_Dreams_assets/Weapons/Ranged/HandGuns/9MMPistol_texture_atlas.png" id="4_5at04"]
+
+[sub_resource type="Resource" id="Resource_1km6r"]
+script = ExtResource("2_ja8ts")
+id = "9mm"
+name = "9mm"
+item_type = 0
+damage = 10
+range_unit = 100
+is_fire_auto = false
+fire_rate = 100
+ammo = 12
+max_ammo = 12
+hand = 0
+offset_rotation = Vector3(0, 0, 0)
+offset_position = Vector3(0, 0, 0)
+is_stackable = false
+max_stack = 0
+use_animation = 0
+metadata/_custom_type_script = "uid://bd0s152hspgvo"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_shh18"]
+albedo_texture = ExtResource("4_5at04")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1km6r"]
+size = Vector3(0.480881, 0.355896, 0.205078)
+
+[node name="BaseItem" instance=ExtResource("1_gqu2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+item_data = SubResource("Resource_1km6r")
+
+[node name="Model" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0863747, -0.163651, 0.0955083)
+
+[node name="9MMPistol" parent="Model" index="0" instance=ExtResource("3_1km6r")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0856248, -0.0243703, 0.049376)
+
+[node name="M_Reciever" parent="Model/9MMPistol" index="0"]
+material_override = SubResource("StandardMaterial3D_shh18")
+
+[node name="M_Trigger" parent="Model/9MMPistol" index="1"]
+material_override = SubResource("StandardMaterial3D_shh18")
+
+[node name="M_Slide" parent="Model/9MMPistol" index="2"]
+material_override = SubResource("StandardMaterial3D_shh18")
+
+[node name="M_Barrel" parent="Model/9MMPistol" index="3"]
+material_override = SubResource("StandardMaterial3D_shh18")
+
+[node name="M_Magazine" parent="Model/9MMPistol" index="4"]
+material_override = SubResource("StandardMaterial3D_shh18")
+
+[node name="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.000505634, -0.0409118, -0.00152116)
+shape = SubResource("BoxShape3D_1km6r")
+
+[editable path="Model/9MMPistol"]

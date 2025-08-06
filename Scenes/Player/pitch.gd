@@ -13,4 +13,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
+	sub_viewport_container_pov.set_deferred("size", DisplayServer.screen_get_size())
 	camera_pov.global_transform = camera_3d.global_transform 

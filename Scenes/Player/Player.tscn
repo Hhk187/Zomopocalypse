@@ -433,8 +433,6 @@ collision_mask = 14
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -444,7 +442,7 @@ stretch = true
 transparent_bg = true
 handle_input_locally = false
 canvas_cull_mask = 4294967293
-size = Vector2i(3840, 2160)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraPOV" type="Camera3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport" index="0"]
@@ -461,7 +459,6 @@ script = ExtResource("7_0kmp4")
 
 [node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="0"]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.0127692, 0.024076, -0.0615962)
-visible = false
 
 [node name="RightHandIK" type="Node3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand" index="0"]
 transform = Transform3D(0.999999, -4.00723e-09, -2.01764e-08, 1.76015e-08, 0.999999, -6.70552e-08, 5.34009e-08, -7.45058e-08, 0.999999, -0.0581244, -0.000802517, -0.227889)

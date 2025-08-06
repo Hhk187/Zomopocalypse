@@ -11,6 +11,7 @@ class_name ItemDataRes
 	ConstItemType.TYPE_TRAP
 	) var item_type
 
+
 @export var damage : int = 0
 @export var range_unit : int = 0
 @export var is_fire_auto : bool = false
@@ -26,6 +27,10 @@ class_name ItemDataRes
 	ConstItemType.HAND_R,
 	ConstItemType.HAND_L
 	) var hand
+@export var offset_rotation : Vector3
+@export var offset_position : Vector3
+
+
 
 @export var is_stackable : bool
 @export var max_stack : int
@@ -44,16 +49,16 @@ var cooldown_timer : float = 0.0
 var cooldown_delta : float = 0.0
 
 func can_be_used():
-	if not on_cooldown and not is_fire_auto:
-		if Input.is_action_just_pressed("play_fire"):
+	if Time.get_ticks_msec() - cooldown_delta > fire_rate:
+		if is_fire_auto:
 			on_cooldown = true
 			cooldown_delta = Time.get_ticks_msec()
 			return true
-	
-	if Time.get_ticks_msec() - cooldown_delta > fire_rate:
-		on_cooldown = true
-		cooldown_delta = Time.get_ticks_msec()
-		return true
+		elif Input.is_action_just_pressed("play_fire"):
+			on_cooldown = true
+			cooldown_delta = Time.get_ticks_msec()
+			return true
+		
 	else :
 		on_cooldown = false
 		return false
