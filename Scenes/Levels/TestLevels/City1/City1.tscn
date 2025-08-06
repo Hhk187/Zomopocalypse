@@ -254,13 +254,8 @@ material_override = ExtResource("20_w0py6")
 [node name="HollowApartement_Meduim" parent="." index="11" instance=ExtResource("19_vn3hr")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.664, 2.18625, -51.227)
 
-[node name="Plane" parent="HollowApartement_Meduim" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.219827, 0)
-material_override = ExtResource("20_w0py6")
-
 [editable path="Buildings/building-type-b2"]
 [editable path="Buildings/MainRoom"]
-[editable path="Buildings/MainRoom/Floor"]
 [editable path="Node3D"]
 [editable path="Node3D/Floor"]
 [editable path="Node3D/FrontSide"]
