@@ -17,7 +17,7 @@ var equiped_weapon : BaseItem
 
 func use_weapon():
 	if equiped_weapon.item_data.can_be_used() : 
-		var viewport = get_viewport().size
+		var viewport = DisplayServer.screen_get_size()
 		
 		var ray_origin  = camera_3d.project_ray_origin(viewport * 0.5)
 		var ray_end  = ray_origin + camera_3d.project_ray_normal(viewport * 0.5) * equiped_weapon.item_data.range_unit
