@@ -93,6 +93,9 @@ material_override = SubResource("StandardMaterial3D_bv6v1")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/HollowApartement_Meduim/FloorInnerWall/StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_844y3")
 
+[node name="InnerBuilding_001" parent="Model/HollowApartement_Meduim" index="6"]
+material_override = ExtResource("4_bv6v1")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="Model/HollowApartement_Meduim/InnerBuilding_001" index="0"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Model/HollowApartement_Meduim/InnerBuilding_001/StaticBody3D" index="0"]
