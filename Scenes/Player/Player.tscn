@@ -17,11 +17,9 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0kmp4"]
 radius = 0.3
-height = 1.6
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u84n"]
 radius = 0.360997
-height = 1.6
 
 [sub_resource type="SphereMesh" id="SphereMesh_0u84n"]
 radius = 0.05
@@ -403,11 +401,11 @@ points = PackedVector2Array(-10, 0, 10, 0)
 width = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.79851, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.990911, 0)
 mesh = SubResource("CapsuleMesh_0kmp4")
 
 [node name="CollisionShape3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.987031, 0)
 shape = SubResource("CapsuleShape3D_0u84n")
 
 [node name="Pitch" type="Node3D" parent="." index="3"]
