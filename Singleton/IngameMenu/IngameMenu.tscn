@@ -78,3 +78,4 @@ vertical_alignment = 1
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/FullscreenBordlerss" to="." method="_on_toggle_fullscreen_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Windowed" to="." method="_on_windowed_pressed"]
 [connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Fullscreen" to="." method="_on_fullscreen_pressed"]
+[connection signal="pressed" from="CenterContainer/PanelContainer/MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
