@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dnblltv50fky0"]
 
 [ext_resource type="PackedScene" uid="uid://qsf1is5fnqvd" path="res://BaseScenes/BaseItems/BaseItem.tscn" id="1_1erx4"]
-[ext_resource type="PackedScene" uid="uid://c1fnfdw6o0x6p" path="res://Assets/Models/Weapons/Low Poly Weapons Pack-glb/Assault Rifle-XGeBGFQxYg.glb" id="3_k25jp"]
+[ext_resource type="PackedScene" uid="uid://s1vmts8ix68y" path="res://Assets/Unsanctioned_Dreams_assets/Weapons/Ranged/Ak47/AK47.blend" id="3_1erx4"]
 [ext_resource type="Script" uid="uid://bd0s152hspgvo" path="res://BaseScenes/BaseItems/ItemDataRes.gd" id="3_lql1c"]
 
 [sub_resource type="Resource" id="Resource_k25jp"]
@@ -24,16 +24,14 @@ use_animation = 0
 metadata/_custom_type_script = "uid://bd0s152hspgvo"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1erx4"]
-size = Vector3(0.113525, 0.304688, 0.916992)
+size = Vector3(0.113525, 0.304688, 1.05762)
 
 [node name="Ak" instance=ExtResource("1_1erx4")]
 item_data = SubResource("Resource_k25jp")
 
-[node name="Assault Rifle-XGeBGFQxYg" parent="Model" index="0" instance=ExtResource("3_k25jp")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.0398744, -0.175551)
+[node name="AK47" parent="Model" index="0" instance=ExtResource("3_1erx4")]
+transform = Transform3D(-9.83506e-09, 0, -0.225, 0, 0.225, 0, 0.225, 0, -9.83506e-09, 0, -0.0248853, -0.107659)
 
 [node name="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0289819, -0.112382)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0289819, -0.122398)
 shape = SubResource("BoxShape3D_1erx4")
-
-[editable path="Model/Assault Rifle-XGeBGFQxYg"]

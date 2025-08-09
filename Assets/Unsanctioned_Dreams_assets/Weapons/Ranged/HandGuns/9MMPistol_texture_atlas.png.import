@@ -2,11 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buaxn1y7l7kh"
+uid="uid://bmdtxhjt6ligr"
 path.s3tc="res://.godot/imported/9MMPistol_texture_atlas.png-50c36817253e16dcc09d3932607f4d70.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
+}
+generator_parameters={
+"md5": "9597fe92d219dc6a33445c8ba2741242"
 }
 
 [deps]

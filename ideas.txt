@@ -6,3 +6,24 @@ Ideas:
 Useful source:
     - Computer-Generated Residential Building Layouts : https://paulmerrell.org/wp-content/uploads/2021/06/floorplan-final.pdf
     - Floor layout : https://colepowered.com/shadows-of-doubt-devblog-13-creating-procedural-interiors/
+
+
+
+
+Bed single and king size
+Couch / Sofa
+TV flat
+Kitchen counter / cabinets
+Sink (kitchen + bathroom)
+Fridge
+Dining table + 2–4 chairs
+Toilet
+Bathtub / shower
+Closet / wardrobe
+Bookshelf
+Desk + chair
+Nightstand
+Wall lamp / floor lamp
+Small shelves
+Random clutter (boxes, bags, clothes pile)
+

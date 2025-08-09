@@ -5,13 +5,14 @@ class_name ItemDataRes
 @export var id : String
 @export var name : String = "Name_Placholder"
 
+@export_group("Type")
 @export_enum(
 	ConstItemType.TYPE_WEAPON,
 	ConstItemType.TYPE_CONUMABLE,
 	ConstItemType.TYPE_TRAP
 	) var item_type
 
-
+@export_group("Stats")
 @export var damage : int = 0
 @export var range_unit : int = 0
 @export var is_fire_auto : bool = false
@@ -22,7 +23,7 @@ class_name ItemDataRes
 @export var ammo : int = 0
 @export var max_ammo : int = 0
 
-
+@export_group("Held")
 @export_enum(
 	ConstItemType.HAND_R,
 	ConstItemType.HAND_L
@@ -31,16 +32,18 @@ class_name ItemDataRes
 @export var offset_position : Vector3
 
 
-
+@export_group("Inventory")
 @export var is_stackable : bool
 @export var max_stack : int
 
+@export_group("Animation")
 # ANIMATION
 @export_enum(
 	ConstItemType.ANIM_SHOOT,
 	ConstItemType.ANIM_SWING,
 	ConstItemType.ANIM_USE
 	) var use_animation
+
 
 
 

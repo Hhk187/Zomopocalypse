@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b67c0m3qd462r"
-path.s3tc="res://.godot/imported/texture_atlas.png-2a8f722c6d409238952119fa42cbb262.s3tc.ctex"
+uid="uid://bq5hu6yq1mpqd"
+path.s3tc="res://.godot/imported/texture_atlas.png-dfa09ed260a5d723ba11de6c462a4ff9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "9597fe92d219dc6a33445c8ba2741242"
+}
 
 [deps]
 
-source_file="res://Assets/Unsanctioned_Dreams_assets/Props/Street/texture_atlas.png"
-dest_files=["res://.godot/imported/texture_atlas.png-2a8f722c6d409238952119fa42cbb262.s3tc.ctex"]
+source_file="res://Assets/Unsanctioned_Dreams_assets/Altlas/texture_atlas.png"
+dest_files=["res://.godot/imported/texture_atlas.png-dfa09ed260a5d723ba11de6c462a4ff9.s3tc.ctex"]
 
 [params]
 

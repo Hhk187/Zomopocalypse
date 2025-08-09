@@ -16,3 +16,8 @@ const HAND_L = "left_hand"
 const ANIM_SHOOT = &"shoot"
 const ANIM_SWING = &"swing"
 const ANIM_USE = &"use"
+const DICT_ANIMTIONS = {
+	0 : ANIM_SHOOT,
+	1 : ANIM_SWING,
+	2 : ANIM_USE
+}

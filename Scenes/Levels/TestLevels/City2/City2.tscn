@@ -58,7 +58,7 @@ transform = Transform3D(0.996759, 0, 0.0804423, 0, 1, 0, -0.0804423, 0, 0.996759
 transform = Transform3D(0.996759, 0, 0.0804423, 0, 1, 0, -0.0804423, 0, 0.996759, -37.4439, 0.006, -35.4719)
 
 [node name="Player" parent="Players" index="0" instance=ExtResource("4_smmf0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.1104, 1.06628, 28.0761)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -34.98, 1.066, 28.076)
 
 [node name="Ak" parent="Items" index="0" instance=ExtResource("5_6as6a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1994, 2.18096, 29.3689)

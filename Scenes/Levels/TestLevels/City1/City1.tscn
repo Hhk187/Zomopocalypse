@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bavieeppwkly8"]
+[gd_scene load_steps=26 format=4 uid="uid://bavieeppwkly8"]
 
 [ext_resource type="PackedScene" uid="uid://cs7x65e5s6akq" path="res://BaseScenes/BaseLevel/BaseLevel.tscn" id="1_1spie"]
 [ext_resource type="MeshLibrary" uid="uid://bef7mwhbwqwiq" path="res://Scenes/GridMapLibrary/Roads/Roads.tres" id="2_gjws7"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://pgm02ouo8ym" path="res://Assets/Models/CIty/HollowApartement/Big/HollowApartementBig.blend" id="18_sw2x6"]
 [ext_resource type="PackedScene" uid="uid://jmr22kisf30a" path="res://Assets/Models/CIty/HollowApartement/Meduim/HollowApartement.Meduim.blend" id="19_vn3hr"]
 [ext_resource type="Material" uid="uid://bn2lj7y874u6n" path="res://Assets/Materials/FloorWood.tres" id="20_w0py6"]
+[ext_resource type="PackedScene" uid="uid://cjfd4a3cu5sc" path="res://Assets/Unsanctioned_Dreams_assets/Props/Street/TrafficCone.blend" id="21_rc0p6"]
+[ext_resource type="PackedScene" uid="uid://nri5bordolg8" path="res://Assets/Unsanctioned_Dreams_assets/Weapons/Ranged/HandGuns/9MMPistol.blend" id="22_ehxgv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xffs1"]
 
@@ -95,6 +97,19 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 103.299, 0.249777, 25.5599
 
 [node name="MainRoom" parent="Buildings" index="8" instance=ExtResource("12_7mv8t")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.46016, 2.37858, -44.2117)
+
+[node name="HollowApartementBig" parent="Buildings" index="9" instance=ExtResource("18_sw2x6")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.09699, 2.375, -52.6211)
+
+[node name="Plane" parent="Buildings/HollowApartementBig" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0877628, 0)
+material_override = ExtResource("20_w0py6")
+
+[node name="HollowApartement_Meduim" parent="Buildings" index="10" instance=ExtResource("19_vn3hr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.664, 2.18625, -51.227)
+
+[node name="Node3D" parent="Buildings" index="11" instance=ExtResource("14_0dyya")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.40849, 2.40286, -34.775)
 
 [node name="Domino" type="Node3D" parent="WorldDecor" index="0"]
 
@@ -282,29 +297,25 @@ transform = Transform3D(0.650891, 0.757736, 0.0466679, -0.755796, 0.652561, -0.0
 [node name="Ak3" parent="Items" index="2" instance=ExtResource("3_rbt2t")]
 transform = Transform3D(0.675241, 0.736896, 0.0321609, -0.737277, 0.67559, 0, -0.0217276, -0.0237115, 0.999483, -1.42342, 4.67144, -30.7811)
 
-[node name="Node3D" parent="." index="7" instance=ExtResource("14_0dyya")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.40849, 2.40286, -34.775)
+[node name="TrafficCone" parent="Items" index="3" instance=ExtResource("21_rc0p6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.46632, -36)
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="8"]
+[node name="9MMPistol" parent="Items" index="4" instance=ExtResource("22_ehxgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.30524, 2.47904, -37.3754)
+
+[node name="9MMPistol2" parent="Items" index="5" instance=ExtResource("22_ehxgv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.51074, 2.47904, -36.7885)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="7"]
 stream = ExtResource("16_3uxlq")
-
-[node name="HollowApartementBig" parent="." index="10" instance=ExtResource("18_sw2x6")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8.09699, 2.375, -52.6211)
-
-[node name="Plane" parent="HollowApartementBig" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0877628, 0)
-material_override = ExtResource("20_w0py6")
-
-[node name="HollowApartement_Meduim" parent="." index="11" instance=ExtResource("19_vn3hr")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.664, 2.18625, -51.227)
 
 [editable path="Buildings/building-type-b2"]
 [editable path="Buildings/MainRoom"]
-[editable path="Node3D"]
-[editable path="Node3D/Floor"]
-[editable path="Node3D/FrontSide"]
-[editable path="Node3D/Wall"]
-[editable path="Node3D/Wall2"]
-[editable path="Node3D/Wall3"]
-[editable path="HollowApartementBig"]
-[editable path="HollowApartement_Meduim"]
+[editable path="Buildings/HollowApartementBig"]
+[editable path="Buildings/HollowApartement_Meduim"]
+[editable path="Buildings/Node3D"]
+[editable path="Buildings/Node3D/Floor"]
+[editable path="Buildings/Node3D/FrontSide"]
+[editable path="Buildings/Node3D/Wall"]
+[editable path="Buildings/Node3D/Wall2"]
+[editable path="Buildings/Node3D/Wall3"]

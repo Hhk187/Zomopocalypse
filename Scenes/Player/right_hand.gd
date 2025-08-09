@@ -12,6 +12,8 @@ func _on_child_entered_tree(node: BaseItem) -> void:
 		mesh.call_deferred("set_layer_mask_value", 2, false)
 		mesh.call_deferred("set_layer_mask_value", 3, true)
 	owner.equiped_weapon = node
+	model.position = node.item_data.offset_position
+	model.rotation_degrees = node.item_data.offset_rotation
 	animation_player.play("pullup_weapon")
 	
 

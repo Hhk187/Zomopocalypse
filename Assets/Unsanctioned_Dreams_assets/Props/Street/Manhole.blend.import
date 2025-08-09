@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://nri5bordolg8"
-path="res://.godot/imported/9MMPistol.blend-24528b5ca1f069727709656a4e6c1215.scn"
+uid="uid://be6tjc4brr8ae"
+path="res://.godot/imported/Manhole.blend-fd7233b748deaad50dbf7b2534d9aadc.scn"
 
 [deps]
 
-source_file="res://Assets/Unsanctioned_Dreams_assets/Weapons/Ranged/HandGuns/9MMPistol.blend"
-dest_files=["res://.godot/imported/9MMPistol.blend-24528b5ca1f069727709656a4e6c1215.scn"]
+source_file="res://Assets/Unsanctioned_Dreams_assets/Props/Street/Manhole.blend"
+dest_files=["res://.godot/imported/Manhole.blend-fd7233b748deaad50dbf7b2534d9aadc.scn"]
 
 [params]
 
@@ -32,19 +32,7 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path="uid://cs64c8d5a4s0h"
-_subresources={
-"nodes": {
-"PATH:Cube_008": {
-"import/skip_import": true
-},
-"PATH:Empty": {
-"import/skip_import": true
-},
-"PATH:M_Playerscale": {
-"import/skip_import": true
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true
