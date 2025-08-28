@@ -4,7 +4,11 @@ class_name PlayerBaseState
 
 static var can_look_around : bool = true
 const JUMP_VELOCITY = 4.5
-const SPEED = 5.0
+var SPEED = 5.0 :
+	set(value):
+		printerr("CHEATS DETECTED")
+		print("SPEED IS NOW : %s" % value)
+		SPEED = value
 
 
 func input(event : InputEvent):

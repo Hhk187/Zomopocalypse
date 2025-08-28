@@ -1,31 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cs7x65e5s6akq"]
+[gd_scene load_steps=2 format=3 uid="uid://cs7x65e5s6akq"]
 
 [ext_resource type="PackedScene" uid="uid://ry71rpvokoh3" path="res://Singleton/IngameMenu/IngameMenu.tscn" id="1_x7fhe"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qmhbp"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-
-[sub_resource type="Sky" id="Sky_x7fhe"]
-sky_material = SubResource("ProceduralSkyMaterial_qmhbp")
-
-[sub_resource type="Environment" id="Environment_q7o2k"]
-background_mode = 2
-sky = SubResource("Sky_x7fhe")
-tonemap_mode = 2
-glow_enabled = true
 
 [node name="BaseLevel" type="Node3D"]
 
 [node name="Envoirment" type="Node3D" parent="."]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Envoirment"]
-environment = SubResource("Environment_q7o2k")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Envoirment"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-layers = 8
-shadow_enabled = true
 
 [node name="Surface" type="GridMap" parent="."]
 cell_size = Vector3(1, 1, 1)

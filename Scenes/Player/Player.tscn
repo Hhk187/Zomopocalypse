@@ -468,7 +468,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.238295, -0.186528, -0.57622
 script = ExtResource("7_0kmp4")
 
 [node name="Offset" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="0"]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.0127692, 0.024076, -0.0615962)
