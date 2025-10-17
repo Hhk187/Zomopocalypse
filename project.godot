@@ -112,3 +112,9 @@ play_run={
 common/physics_jitter_fix=0.0
 3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+textures/default_filters/use_nearest_mipmap_filter=true
+environment/glow/upscale_mode=0

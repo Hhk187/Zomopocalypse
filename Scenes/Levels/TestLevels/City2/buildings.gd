@@ -8,13 +8,13 @@ var arrow : Node3D
 		toggle_building_direction = value
 		on_toggle_building_direction(toggle_building_direction)
 
-func _ready() -> void:
-	_create_arrow()
-	
-	for block : CSGBox3D in get_children():
-		var arrow_dup : Node3D = arrow.duplicate()
-		arrow_dup.position.z -= block.size.z * 0.5 + 1
-		block.add_child(arrow_dup)
+#func _ready() -> void:
+	#_create_arrow()
+	#
+	#for block : CSGBox3D in get_children():
+		#var arrow_dup : Node3D = arrow.duplicate()
+		#arrow_dup.position.z -= block.size.z * 0.5 + 1
+		#block.add_child(arrow_dup)
 
 func _create_arrow():
 	# the arrow it self
