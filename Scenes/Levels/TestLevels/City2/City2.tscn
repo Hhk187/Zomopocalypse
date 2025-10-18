@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://eyxrj40ah7ti"]
+[gd_scene load_steps=36 format=3 uid="uid://eyxrj40ah7ti"]
 
 [ext_resource type="PackedScene" uid="uid://cs7x65e5s6akq" path="res://BaseScenes/BaseLevel/BaseLevel.tscn" id="1_1qkjd"]
 [ext_resource type="MeshLibrary" uid="uid://bef7mwhbwqwiq" path="res://Scenes/GridMapLibrary/Roads/Roads.tres" id="2_sylpw"]
@@ -22,6 +22,7 @@
 [ext_resource type="Material" uid="uid://c7okq5jvb8gm" path="res://Assets/Materials/temp/10_24_10.tres" id="14_koic8"]
 [ext_resource type="Texture2D" uid="uid://b5g6pb63ukk1i" path="res://Assets/Textures/Material/rustedIronTexture_32x32.jpg" id="16_obk0w"]
 [ext_resource type="PackedScene" uid="uid://eq7oc7ui3e0h" path="res://Assets/Models/CIty/Props/ChillCat/ChillCatRef.blend" id="19_miyio"]
+[ext_resource type="Texture2D" uid="uid://btgf2t4vjj8ji" path="res://temp/SPC Click Flooring - Stonecreek Luxury Flooring.jpg" id="20_4qwas"]
 [ext_resource type="PackedScene" uid="uid://slu126ng1ddn" path="res://Scenes/BuildingsBlock/Components/Door/Door.tscn" id="20_8umye"]
 [ext_resource type="PackedScene" uid="uid://db1xrlf2q23l4" path="res://Assets/Models/CIty/Buildings/Testing/8_10_12.blend" id="21_uhmtu"]
 
@@ -55,6 +56,16 @@ texture_filter = 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_koic8"]
 albedo_color = Color(0.179453, 0.179453, 0.179453, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8umye"]
+albedo_texture = ExtResource("9_obk0w")
+uv1_triplanar = true
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ejo2"]
+albedo_texture = ExtResource("20_4qwas")
+uv1_triplanar = true
+texture_filter = 0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r2orj"]
 albedo_color = Color(0.57, 0.57, 0.57, 1)
 
@@ -67,9 +78,9 @@ size = Vector3(1.30884, 3.8053, 1.42432)
 environment = SubResource("Environment_o63du")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Envoirment" index="1"]
-transform = Transform3D(-0.557745, 0.718812, -0.415006, 0, 0.5, 0.866025, 0.830012, 0.483021, -0.278873, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0.173648, -0.984807, 0, 0.984808, 0.173648, 1, 7.5904e-09, -4.30473e-08, 0, 0, 0)
 shadow_enabled = true
-shadow_blur = 0.0
+shadow_blur = 2.0
 
 [node name="Surface" parent="." index="1"]
 mesh_library = ExtResource("2_sylpw")
@@ -773,10 +784,34 @@ size = Vector3(10, 24, 10)
 material = ExtResource("14_koic8")
 
 [node name="8_10_12" parent="Buildings/Buildings" index="93" instance=ExtResource("21_uhmtu")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -227.791, 2.84985e-06, 115.271)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -227.791, 0.01, 115.271)
+
+[node name="Cube" parent="Buildings/Buildings/8_10_12" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_8umye")
+surface_material_override/2 = SubResource("StandardMaterial3D_3ejo2")
 
 [node name="Door" parent="Buildings/Buildings/8_10_12" index="1" instance=ExtResource("20_8umye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58392, 1.19209e-07, 5.97964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.002, 0, 6.105)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Buildings/Buildings/8_10_12" index="2"]
+transform = Transform3D(1, 4.37114e-08, 4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, 0.887794, 3.60848, 2.96312)
+light_energy = 10.0
+shadow_enabled = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Buildings/Buildings/8_10_12" index="3"]
+transform = Transform3D(1, 4.37114e-08, 4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, 2.01194, 3.60848, 8.03589)
+light_energy = 10.0
+shadow_enabled = true
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Buildings/Buildings/8_10_12" index="4"]
+transform = Transform3D(1, 4.37114e-08, 4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, 0.975128, 3.60848, -2.60266)
+light_energy = 10.0
+shadow_enabled = true
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Buildings/Buildings/8_10_12" index="5"]
+transform = Transform3D(1, 4.37114e-08, 4.37114e-08, -4.37114e-08, -4.37114e-08, 1, 4.37114e-08, -1, -4.37114e-08, -1.02757, 3.60848, 0.258026)
+light_energy = 10.0
+shadow_enabled = true
 
 [node name="WorldDecor" type="Node3D" parent="Buildings" index="3"]
 
@@ -1095,3 +1130,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.725, 2.18095, 156.678)
 
 [node name="9mm" parent="Items" index="1" instance=ExtResource("6_veadp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.725, 2.18095, 155.311)
+
+[editable path="Buildings/Buildings/8_10_12"]
