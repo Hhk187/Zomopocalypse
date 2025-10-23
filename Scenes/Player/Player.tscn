@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://baq5fam5xesra"]
+[gd_scene load_steps=28 format=3 uid="uid://baq5fam5xesra"]
 
 [ext_resource type="PackedScene" uid="uid://d30ipjyyopunc" path="res://BaseScenes/BaseEntity/BaseEntity.tscn" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://bo2urmd8u6hwt" path="res://BaseScenes/BaseNodes/BaseStateManagerNode.gd" id="2_ft8w5"]
 [ext_resource type="Script" uid="uid://bycwuf3w0etdn" path="res://Scenes/Player/player.gd" id="2_h54ih"]
 [ext_resource type="Script" uid="uid://c2jnm5ucuwppv" path="res://Scenes/Player/pitch.gd" id="2_t26db"]
+[ext_resource type="PackedScene" uid="uid://vjq2gsqdl5n4" path="res://temp/BaseCharacter.blend" id="3_esmjy"]
 [ext_resource type="Script" uid="uid://biai3ifmf1pj5" path="res://Scenes/Player/camera_3d.gd" id="4_825xp"]
 [ext_resource type="Script" uid="uid://d38jr4b2o6pr4" path="res://Scenes/Player/right_hand.gd" id="4_fk5o5"]
 [ext_resource type="Script" uid="uid://0a3iovwytv30" path="res://BaseScenes/BaseNodes/BaseInputsNode.gd" id="4_t26db"]
@@ -414,14 +415,40 @@ width = 2.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Model" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.990911, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_0kmp4")
+
+[node name="BaseCharacter" parent="Model" index="1" instance=ExtResource("3_esmjy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Model/BaseCharacter/Armature" index="0"]
+bones/0/position = Vector3(-2.25739e-16, -4.49288e-08, -1.01664)
+bones/1/rotation = Quaternion(0.0651544, -2.18113e-17, 5.85556e-16, 0.997875)
+bones/3/rotation = Quaternion(0.0425907, -8.50379e-18, -3.64768e-17, 0.999093)
+bones/4/rotation = Quaternion(-0.0896069, 9.94836e-18, -1.15404e-17, 0.995977)
+bones/5/position = Vector3(0.178237, 0.165904, 0.0318416)
+bones/5/rotation = Quaternion(-0.00599623, -0.0332988, -0.994058, 0.103458)
+bones/6/rotation = Quaternion(0.0436165, -0.00628254, -0.0878873, 0.995155)
+bones/7/rotation = Quaternion(-0.0167644, -0.000176677, 0.00668824, 0.999837)
+bones/8/position = Vector3(-0.178237, 0.165904, 0.0318416)
+bones/8/rotation = Quaternion(-0.00636155, 0.0332754, 0.993413, 0.109462)
+bones/9/rotation = Quaternion(0.0239481, -0.00028773, 0.0645321, 0.997628)
+bones/10/rotation = Quaternion(-0.0167644, 0.000176677, -0.00668824, 0.999837)
+bones/11/position = Vector3(0.0952356, 0.0685823, 0.0168447)
+bones/11/rotation = Quaternion(-0.00255456, -0.0731379, 0.997063, -0.0225646)
+bones/12/rotation = Quaternion(-0.0661797, 0.00085291, -0.0269038, 0.997445)
+bones/13/rotation = Quaternion(0.622472, 0.00583892, 0.0100439, 0.782556)
+bones/14/position = Vector3(-0.0952356, 0.0685823, 0.0168447)
+bones/14/rotation = Quaternion(0.00255456, -0.0731379, 0.997063, 0.0225646)
+bones/15/rotation = Quaternion(-0.0661797, -0.00085291, 0.0269038, 0.997445)
+bones/16/rotation = Quaternion(0.622472, -0.00583892, -0.0100439, 0.782556)
 
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.987031, 0)
 shape = SubResource("CapsuleShape3D_0u84n")
 
 [node name="Pitch" type="Node3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65358, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85224, -0.17465)
 script = ExtResource("2_t26db")
 
 [node name="Yaw" type="Node3D" parent="Pitch" index="0"]
@@ -445,8 +472,6 @@ collision_mask = 14
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -456,11 +481,11 @@ stretch = true
 transparent_bg = true
 handle_input_locally = false
 canvas_cull_mask = 4294967293
-size = Vector2i(3840, 2160)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraPOV" type="Camera3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65358, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85224, -0.17465)
 cull_mask = 12
 fov = 35.0
 script = ExtResource("6_825xp")
@@ -562,4 +587,5 @@ target_position = Vector3(0, 0, -0.5)
 [connection signal="child_entered_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_exiting_tree"]
 
+[editable path="Model/BaseCharacter"]
 [editable path="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm"]

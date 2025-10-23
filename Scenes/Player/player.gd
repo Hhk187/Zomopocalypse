@@ -1,6 +1,7 @@
 extends BaseEntity
 class_name PlayerBaseEntity
 
+@onready var animation_player: AnimationPlayer = $Model/BaseCharacter/AnimationPlayer
 
 @onready var neck: Node3D = $Pitch
 @onready var right_hand: Marker3D = $Pitch/Yaw/Camera3D/RightHand
@@ -14,6 +15,9 @@ class_name PlayerBaseEntity
 
 var equiped_weapon : BaseItem
 
+
+func _ready() -> void:
+	animation_player.play("Run")
 
 func use_weapon():
 	if equiped_weapon.item_data.can_be_used() : 
