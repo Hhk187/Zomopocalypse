@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu7xilfnsi6bn"]
+[gd_scene load_steps=15 format=3 uid="uid://cu7xilfnsi6bn"]
 
 [ext_resource type="PackedScene" uid="uid://ce8jnr54c0f3d" path="res://Scenes/BuildingsBlock/PreMadeBlocks/MainRoom/main_room.tscn" id="1_c85ce"]
 [ext_resource type="Script" uid="uid://dcqb36lmrurfd" path="res://Scenes/IntroScene/IntroScene.gd" id="2_wfuan"]
+[ext_resource type="Texture2D" uid="uid://btgf2t4vjj8ji" path="res://temp/SPC Click Flooring - Stonecreek Luxury Flooring.jpg" id="3_b53ee"]
 [ext_resource type="Script" uid="uid://depa8b510g1oo" path="res://Scenes/IntroScene/main_menu.gd" id="3_wfuan"]
 [ext_resource type="PackedScene" uid="uid://d2a7pndqqmwnf" path="res://Scenes/BuildingsBlock/Apartement/TestMeduimBuilding/test_apartement_buidling.tscn" id="4_622t3"]
 [ext_resource type="PackedScene" uid="uid://vjq2gsqdl5n4" path="res://temp/BaseCharacter.blend" id="5_rdoje"]
@@ -16,9 +17,15 @@ sky_material = SubResource("ProceduralSkyMaterial_622t3")
 
 [sub_resource type="Environment" id="Environment_b53ee"]
 background_mode = 2
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_rdoje")
 tonemap_mode = 2
 ssao_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_leo3h"]
+albedo_texture = ExtResource("3_b53ee")
+uv1_triplanar = true
+texture_filter = 0
 
 [sub_resource type="Animation" id="Animation_6hv1g"]
 resource_name = "OpenUp"
@@ -130,6 +137,9 @@ _data = {
 &"RESET": SubResource("Animation_l2o17")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_rdoje"]
+size = Vector3(1, 15.96, 21.855)
+
 [node name="MainRoom" instance=ExtResource("1_c85ce")]
 script = ExtResource("2_wfuan")
 
@@ -137,6 +147,22 @@ script = ExtResource("2_wfuan")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Node" index="0"]
 environment = SubResource("Environment_b53ee")
+
+[node name="OmniLight3D" parent="TV" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42087638, 0.22055578)
+shadow_blur = 0.075
+omni_range = 0.5470603
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TV" index="2"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.4070387, 0.4211645)
+light_energy = 4.11
+light_size = 1.0
+light_specular = 0.0
+spot_range = 8.804263
+spot_angle = 180.0
+
+[node name="Floor" parent="." index="4"]
+material_override = SubResource("StandardMaterial3D_leo3h")
 
 [node name="Camera3D" type="Camera3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.607, 1.065, -5.608)
@@ -218,24 +244,31 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, -5,
 transform = Transform3D(-0.985052, 0, 0.172256, 0, 1, 0, -0.172256, 0, -0.985052, 2.62414, -0.0593768, -4.46472)
 
 [node name="Skeleton3D" parent="BaseCharacter/Armature" index="0"]
-bones/0/position = Vector3(-2.25739e-16, -4.49288e-08, -1.01664)
-bones/3/rotation = Quaternion(0.0425907, -8.50379e-18, -3.64768e-17, 0.999093)
-bones/5/position = Vector3(0.178237, 0.165904, 0.0318416)
-bones/5/rotation = Quaternion(-0.00599623, -0.0332988, -0.994058, 0.103458)
-bones/6/rotation = Quaternion(0.0436165, -0.00628254, -0.0878873, 0.995155)
-bones/7/rotation = Quaternion(-0.0167644, -0.000176677, 0.00668824, 0.999837)
-bones/8/position = Vector3(-0.178237, 0.165904, 0.0318416)
-bones/8/rotation = Quaternion(-0.00636155, 0.0332754, 0.993413, 0.109462)
-bones/9/rotation = Quaternion(0.0239481, -0.00028773, 0.0645321, 0.997628)
-bones/10/rotation = Quaternion(-0.0167644, 0.000176677, -0.00668824, 0.999837)
-bones/11/position = Vector3(0.0952356, 0.0685823, 0.0168447)
-bones/11/rotation = Quaternion(-0.00255456, -0.0731379, 0.997063, -0.0225646)
-bones/12/rotation = Quaternion(-0.0661797, 0.00085291, -0.0269038, 0.997445)
-bones/13/rotation = Quaternion(0.622472, 0.00583892, 0.0100439, 0.782556)
-bones/14/position = Vector3(-0.0952356, 0.0685823, 0.0168447)
-bones/14/rotation = Quaternion(0.00255456, -0.0731379, 0.997063, 0.0225646)
-bones/15/rotation = Quaternion(-0.0661797, -0.00085291, 0.0269038, 0.997445)
-bones/16/rotation = Quaternion(0.622472, -0.00583892, -0.0100439, 0.782556)
+bones/0/position = Vector3(-0.00017660856, 0.0053364313, -0.5134489)
+bones/0/rotation = Quaternion(-0.86414707, -4.5277193e-16, -2.9073797e-16, 0.5032394)
+bones/1/rotation = Quaternion(0.065154396, -2.1811262e-17, 5.8555615e-16, 0.9978752)
+bones/3/rotation = Quaternion(0.20051794, -3.9406605e-05, -6.326344e-05, 0.97969)
+bones/4/rotation = Quaternion(-0.089606926, 9.948362e-18, -1.1540425e-17, 0.9959772)
+bones/5/position = Vector3(0.17823745, 0.16590388, 0.031841666)
+bones/5/rotation = Quaternion(-0.3999407, -0.24407738, -0.68326443, 0.56002086)
+bones/6/rotation = Quaternion(0.7627216, 0.627196, 0.021134209, 0.15631491)
+bones/7/rotation = Quaternion(0.093164206, -0.54117554, 0.027862936, 0.83526826)
+bones/8/position = Vector3(-0.17823745, 0.1659039, 0.03184167)
+bones/8/rotation = Quaternion(-0.47417706, -0.26959243, 0.58783895, 0.5974292)
+bones/9/rotation = Quaternion(0.5010671, -0.48555824, -0.26514232, 0.66548073)
+bones/10/rotation = Quaternion(0.08638071, 0.43348444, 0.19726065, 0.8750531)
+bones/11/position = Vector3(0.095226064, 0.06844679, 0.016048037)
+bones/11/rotation = Quaternion(0.015111877, 0.54532516, 0.8378217, -0.021139408)
+bones/12/rotation = Quaternion(-0.76278836, 0.014871762, -0.01732065, 0.6462451)
+bones/13/rotation = Quaternion(0.63691264, -0.0029383686, 0.008622183, 0.7708821)
+bones/14/position = Vector3(-0.09522606, 0.06871793, 0.017641421)
+bones/14/rotation = Quaternion(-0.008138142, 0.5454925, 0.83788574, 0.0178686)
+bones/15/rotation = Quaternion(-0.76283395, -0.012887824, 0.019595262, 0.64616895)
+bones/16/rotation = Quaternion(0.6404829, -0.012468014, -0.01436094, 0.76773703)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088000506, 0, 0)
+mesh = SubResource("BoxMesh_rdoje")
 
 [connection signal="pressed" from="UI/MainMenu/Main/MarginContainer/VBoxContainer/PlayOffline" to="UI/MainMenu" method="_on_play_offline_pressed"]
 

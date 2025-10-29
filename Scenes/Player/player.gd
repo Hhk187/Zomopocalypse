@@ -16,8 +16,11 @@ class_name PlayerBaseEntity
 var equiped_weapon : BaseItem
 
 
-func _ready() -> void:
-	animation_player.play("Run")
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed('play_inspect'):
+		pass
+
+
 
 func use_weapon():
 	if equiped_weapon.item_data.can_be_used() : 

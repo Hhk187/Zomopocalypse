@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://baq5fam5xesra"]
+[gd_scene load_steps=37 format=4 uid="uid://baq5fam5xesra"]
 
 [ext_resource type="PackedScene" uid="uid://d30ipjyyopunc" path="res://BaseScenes/BaseEntity/BaseEntity.tscn" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://bo2urmd8u6hwt" path="res://BaseScenes/BaseNodes/BaseStateManagerNode.gd" id="2_ft8w5"]
@@ -6,21 +6,61 @@
 [ext_resource type="Script" uid="uid://c2jnm5ucuwppv" path="res://Scenes/Player/pitch.gd" id="2_t26db"]
 [ext_resource type="PackedScene" uid="uid://vjq2gsqdl5n4" path="res://temp/BaseCharacter.blend" id="3_esmjy"]
 [ext_resource type="Script" uid="uid://biai3ifmf1pj5" path="res://Scenes/Player/camera_3d.gd" id="4_825xp"]
+[ext_resource type="Script" uid="uid://bbsuhw005il5g" path="res://Scenes/Player/ik.gd" id="4_esmjy"]
 [ext_resource type="Script" uid="uid://d38jr4b2o6pr4" path="res://Scenes/Player/right_hand.gd" id="4_fk5o5"]
 [ext_resource type="Script" uid="uid://0a3iovwytv30" path="res://BaseScenes/BaseNodes/BaseInputsNode.gd" id="4_t26db"]
 [ext_resource type="Script" uid="uid://5g4ya4k75jdd" path="res://Scenes/Player/camera_pov.gd" id="6_825xp"]
 [ext_resource type="Script" uid="uid://bjanwlykcietl" path="res://Scenes/Player/right_hand_pov.gd" id="7_0kmp4"]
-[ext_resource type="PackedScene" uid="uid://2rw3x6w3brdc" path="res://Assets/Models/Weapons/EditedModels/POV/BaseRiggedArm/BaseRiggedArm.blend" id="8_ji083"]
 [ext_resource type="Texture2D" uid="uid://bidayc2t1a541" path="res://Assets/Textures/ParticalEffects/kenney_particle_pack/muzzle_02.png" id="9_6tu5v"]
 [ext_resource type="Texture2D" uid="uid://bwua8rw0mvl17" path="res://Assets/Textures/ParticalEffects/kenney_particle_pack/muzzle_01.png" id="9_epg6k"]
 [ext_resource type="Texture2D" uid="uid://cs2dwaku0m7um" path="res://Assets/Textures/ParticalEffects/kenney_particle_pack/muzzle_05.png" id="12_w71ue"]
+[ext_resource type="Texture2D" uid="uid://b1xupxxgrxkvg" path="res://temp/PistolTextureMetal.png" id="13_6tu5v"]
 [ext_resource type="Script" uid="uid://dfuffywxc0cga" path="res://Scenes/Player/ledge_contact.gd" id="14_0u84n"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0kmp4"]
 radius = 0.3
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abqkc"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("13_6tu5v")
+metallic = 1.0
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tl6n1"]
+_surfaces = [{
+"aabb": AABB(-0.015000001, -0.093651906, -0.12254188, 0.030000001, 0.17922005, 0.27907848),
+"format": 34896613377,
+"index_count": 855,
+"index_data": PackedByteArray("AAABAAIAAQACAAMAAQAEAAIAAgAFAAMAAgAAAAUABQAGAAMAAQADAAYAAgAEAAcAAgAHAAAABwAEAAgAAQAIAAQABwAIAAkAAAAHAAkACgAIAAEACgABAAYAAAALAAEACwAKAAEAAAAJAAsAAAAMAAUABQAMAAYAAAALAAwACgANAAgACQAIAA0ACgAGAA4ADAAOAAYACwAJAA8ACwAQAAwACQARAA8AEgAPABEACwAPABIACwASABAADAAQABMAEgATABAADAATABQADAAUAA4AEgAVABMAFQAUABMACwASABUAEgARABUACwAVABYAFQAWABQACwAWAAoAFQARABcACQAXABEAFQAXABYACQANABcAFgAYABQAGAAOABQAFgAXABkADQAZABcAFgAaABgAFgAZABoAGgAKABYAGQANABsAGgAZABsADgAYABwAGgAcABgAHQAKAA4AHQANAAoADgAcAB4AHQAOAB4ACgAaAB8AGgAfABwACgAfAB0AGgAbAB8AIAAeABwAHwAgABwAHQAhAA0AGwANACEAIgAdAB8AHwAiACAAIwAdAB4AIwAhAB0AIwAdACIAJAAbACEAIwAkACEAHwAbACUAHwAlACIAJgAbACQAGwAnACUAGwAmACcAIgAlACgAJQApACgAKQAlACcAIgAoACoAKgAoACkAIgAqACsAKgAsACsAIgArACAALAAgACsALQAiACoAKgAtACwAKgApAC0AKQAnAC4ALQAvACwALAAvADAALAAwADEAIAAsADEALwAyADAAMgAxADAALwAzADIALQA0AC8ANAAzAC8ALQA0ADUALQApADYALQA2ADQAKQA3ADYAKQAuADcALQA1ADgAIgAtADgAOAAuACcANgA3ADkANgA5ADoANAA2ADoANwA7ADkAPAA3AC4AOwA3ADwAOgA5AD0AOQA7AD0ANAA6AD4ANAA+ADMAPgA6AD8AOgA9AD8ANAA+AEAANABAADUAQAA4ADUAPgBBADMAMwBBAEIAPgA/AEMAPgBDAEEAMwBCADIARABCAEEAQwBEAEEAQwA/AEUAPQBFAD8APgBDAEYAPgBGAEAAQwBHAEQAQwBFAEcARwBGAEMARwBIAEQARABIAEkASgBJAEgARwBKAEgARABJAEsAQgBEAEsATABLAEkASgBMAEkARwBKAEwARwBNAEoARwBFAE0ASgBNAE4ARQBOAE0ASgBOAEwARQBPAE4ATABOAE8ARQBQAE8ARQA9AFAATABPAFEARwBMAFEAUQBPAFAATABRAEsARgBHAFEAUQBSAEsAQgBLAFIAUQBQAFMAUQBTAFIAUwBCAFIAUwBQAD0ARgBRAFMAUwA9AEYAUwBGAEIARgA9ADsARgBUAEIAVAAyAEIARgA7AFUARgBVAFQAVgAyAFQAVQBWAFQAVQBAAEYAMgBWAFcAVQA7AFgAOwBZAFgAVQBaAFYAVQBYAFoAWgBAAFUAWgBXAFYAWgBYAFkAOwA8AFkAQABaAFsAWgBZAFsAWgBbAFcAXABZADwAQABbAF0AXQA8AC4AQABdADgAXQAuADgAXgA8AF0AXgBcADwAXgBdAFsAXABfAFkAWwBZAF8AYABfAFwAWwBfAGEAXgBbAGEAYABiAF8AYQBfAGIAYwBgAFwAYwBcAF4AYwBeAGEAZABiAGAAXgBdAGUAZgBkAGAAZgBgAGMAZABnAGIAXQAxAGUAMgBlADEAMgBXAGUAXQA4ADEAaABlAFcAXgBlAGgAYwBeAGgAaABXAGkAWwBpAFcAWwBhAGkAagBoAGkAYwBoAGoAYQBrAGkAagBpAGsAYwBhAGwAYQBsAGsAYQBiAGwAZgBjAGoAZgBjAGwAbQBqAGsAZgBqAG0AbQBrAG4AbABuAGsAbABiAGcAbwBtAG4AcABmAG0AcABtAG8AcABkAGYAZgBsAHEAbABxAG4AbABnAHEAcABmAHEAcgBnAGQAcAByAGQAcgBzAGcAcQBnAHMAdAByAHAAdABwAG8AJgBzAHIAdAAmAHIAJgAkAHMAdQBzACQAcQBzAHUAcABxAHUAdABwAHUAcQB2AG4AbwBuAHYAcQB1AHYAdQAkACMAdAB1ACMAdwBvAHYAdABvAHcAdQB4AHYAdQAjAHgAdwB2AHgAIwAeAHgAeAAeACAAeAAgAHcAIwAiAHQAdwAgAHkAIAAxAHkAOAB5ADEAegB3AHkAOAB6AHkAegB0AHcAIgA4AHoAdAAiAHoAOAAnAHoAegAmAHQAegAnACYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 123,
+"vertex_data": PackedByteArray("/3+g9v//AAD/f8mosfkAAP9/yaj//wAA///JqP//AAAAAMmo//8AAP//oPb//wAA///JqLH5AAAAAKD2//8AAAAAyaix+QAAAACg9rH5AAD/f6aodO4AAP9/oPax+QAA//+g9rH5AAAAAKaodO4AAP//pqh07gAAAAD//wf4AAD/////B/gAAAAA///A7wAA/3///wf4AAD/////wO8AAP//oPZ07gAA/3///8DvAAD/f6D2dO4AAAAAoPZ07gAA//+g9gmjAAAAAKD2CaMAAP9/oPYJowAAAAC24AmjAAD//7bgCaMAAP9/pqgJowAA//+mqAmjAAD/f7bgCaMAAP//tuD6cwAAAACmqAmjAAD/f7bg+nMAAP9/pqiPngAAAACmqI+eAAAAALbg+nMAAAAApqjVgwAAAACmqPpzAAAAAKD2+nMAAAAAoPZPUwAA/3+g9vpzAAD//6D2+nMAAP//oPZPUwAA/3+g9k9TAAAAAKaoT1MAAP//oPakMgAA//+XraQyAAD//6aoT1MAAP//l61nJgAA//+g9mcmAAD/f6D2pDIAAP9/l62kMgAAAACg9qQyAAAAAJetpDIAAP9/pqhPUwAAAACXrWcmAAAAAKD2ZyYAAAAAAAAAAAAAAACGfsJMAAAAAJetKhoAAP9/oPZnJgAAAACg9ioaAAD/f5etZyYAAP//oPYqGgAA//+XrSoaAAD/f6D2KhoAAP//0+z4FgAAAADT7PgWAAD/f5etKhoAAP9/0+z4FgAA//917noGAAD//6LkRgMAAP9/de56BgAA//8h0e8NAAD/f6LkRgMAAAAAde56BgAAAACi5EYDAAAAACHR7w0AAAAAl61WAgAA/38h0e8NAAD//5etVgIAAP9/l61WAgAA//8AAAAAAAD/fwAAAAAAAP//AAAkOQAA//9TYBNIAAAAAAAAJDkAAAAAU2ATSAAA/38AACQ5AAD/f1NgE0gAAAAAWnJCVwAA/3+GfsJMAAD/f1pyQlcAAAAAAmklVQAAAAAmcUqDAAD/fwJpJVUAAAAAfmlohwAA/38mcUqDAAAAADSRxo4AAP//hn7CTAAA/380kcaOAAAAADSRnZMAAP//WnJCVwAA//8CaSVVAAD//yZxSoMAAP//fmlohwAA/39+aWiHAAD//zSRxo4AAP//NJGdkwAA///+nDWMAAD/f/6cNYwAAP9/NJGdkwAAAAD+nDWMAAAAAP6cLpYAAP9/pqjVgwAA/3/+nC6WAAD///6cLpYAAP//pqjVgwAA//+mqI+eAAD//6ao+nMAAP9/pqj6cwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ctyai"]
+resource_name = "BaseCharacter_Plane"
+_surfaces = [{
+"aabb": AABB(-0.015000001, -0.093651906, -0.12254188, 0.030000001, 0.17922005, 0.27907848),
+"attribute_data": PackedByteArray("tHvZqfZ+DsK0ew7C9n7ZqcWEGcLSf++mGYTvpsWE2am+q9mpvqupsL6rGcIQxKmwDq4Zwt67GcJisrnFEMQZwoq3ucW2s2TJNrZkyQW6vdUmvFzT/tPk1efS/NK/2pfYVNgzzybskMB34oz2//+M9vHUGcLx1NmpEMTZqdPlkMDT5dmpJuzZqXnykMB58tmpIPTlrMv4grXJ/pDATf5xr6X8Y6y0e9mp9n4OwvZ+2am0ew7CxYQZwhmE76bSf++mxYTZqb6r2am+q6mwvqsZwg6uGcLeuxnCYrK5xRDEGcKKt7nFtrNkyTa2ZMkFur3VJrxc0/7T5NXn0vzSv9qX2FTYM88QxKmw8dTZqRDE2anx1BnC0+WQwNPl2an//4z2d+KM9ibskMAm7NmpefKQwHny2akg9OWsyf6QwMv4grVN/nGvpfxjrCTCDsIIu9mpJMLZqQi7DsJAydmpQMkOwiTC8fwIu///JML//wi78fxAyf//QMnx/CTC//8Iu/H8JMLx/Ai7//9AyfH8QMn//yTCgPcIu/H8JMLx/Ai7gPdAyfH8QMmA9yTC+dIIu4D3JMKA90DJgPcIu/nSQMn50iTCz9AIu8/QQMnP0CTCgPcIu/nSJML50gi7gPdAyfnSQMmA9yTCL7wIu93DJMLdw0DJ3cMIuy+8QMkvvCTCXawIu12sQMldrCTCL7wIu12sJMJdrAi7L7wIu4ucQMldrEDJL7xAyYucJMKLnAi7npZAyZ6WJMKelgi7sZBAybGQJMKxkCTCJ4UIu7GQJMKxkAi7J4VAybGQQMknhSTCgrUIu5DAJMKQwAi7grVAyZDAQMmCtSTCM88IuxnCJMIZwgi7M89AyRnCQMkzzyTCBYQIu7GfJMKxnwi7BYRAybGfQMkFhCTCkMAIu4z2JMKM9gi7kMBAyYz2QMmQwCTCjPYIu5fYJMKX2Ai7jPZAyZfYQMmM9iTCmsMIu0euJMJHrgi7msNAyUeuQMmawyTCQa0Iu5jFJMKYxQi7Qa1AyZjFQMlBrSTC3cMIu+zHJMLsxwi73cNAyezHQMndwyTCZMkIu7nFJMK5xQi7ZMlAybnFQMlkySTCZMkIu1zTJMJc0wi7ZMlAyVzTQMlkySTCvdUIu2TJJMJkyQi7vdVAyWTJQMm91STCucUIu2TJJMJkyQi7ucVAyWTJQMm5xSTCwMwIu8/QJMLP0Ai7wMxAyc/QQMnAzCTC7aYIu0GtJMJBrQi77aZAyUGtQMntpiTC2akIu+WsJMLlrAi72akkwkeuCLsxqSTCMakIu0euQMkxqUDJR64kwmOsCLtxryTCca8Iu2OsQMlxr0DJY6wkwiWPCLsohyTCKIcIuyWPQMkoh0DJJY8kwnGvCLuCtSTCgrUIu3GvQMmCtUDJca8kwtmpCLupsCTCqbAIu9mpQMmpsEDJ2akkwqmwCLvZqSTC2akIu6mwQMnZqUDJqbAkwvnSCLsvvCTCL7wIu/nSQMkvvEDJ+dIkwiP8CLsh+CTCIfgIuyP8QMkh+EDJI/wkwtmpCLvvpiTC76YIu9mpQMnvpkDJ2akkwu+mCLvZqSTC2akIu++mQMnZqUDJ76a0e9mp9n4OwrR7DsL2ftmpxYQZwtJ/76YZhO+mxYTZqb6r2am+q6mwvqsZwhDEqbAOrhnC3rsZwmKyucUQxBnCire5xbazZMk2tmTJBbq91Sa8XNP+0+TV59L80r/al9hU2DPPJuyQwHfijPb//4z28dQZwvHU2akQxNmp0+WQwNPl2akm7NmpefKQwHny2akg9OWsy/iCtcn+kMBN/nGvpfxjrCTC2alAyeWsQMnZqSTC5aw="),
+"format": 34896613399,
+"index_count": 855,
+"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAYAAwAGAAcAAwAHAAQACAAEAAcABAAIAAkABAAJAAoACwAKAAkADAAKAAsADAALAA0ADQAOAAwADQALAA8ADQAQAA4AEAARAA4AEAASABEAEgATABEAEgAUABMAFAAVABMAFAAWABUAFgAXABUAFgAYABcAGQAXABgAGQAaABcAGgAZABsAGQAYABwACwAcAA8ACwAdABwAHQALAB4AHQAfABwAGQAcAB8AHQAgAB8AIAAZAB8AIAAhABkAGwAZACIAIQAiABkAIQAjACIAJAAiACMAIgAkACUAIgAlACYAJAAnACUAJAAoACcAKQAqACsAKQAsACoAKwAqAC0AKwAuAC8AKwAwAC4AKwAtADAALQAxADAAMQAtADIAMgAtADMANAAyADMANQAyADQANQA0ADYAMgA1ADcANQA2ADgAOAA2ADkAOAA5ADoAOgA5ADsAOgA7ADwAPAA7AD0APAA9AD4APgA9AD8APgA/AEAAMgA3AEEAQgBBADcAQQBCAEMAQgA3AEQAQgBEAEUAQABFAEQAQgBFAEYARwBAAD8ARwBFAEAARwA/AEgARgBFAEkARQBHAEkARgBJAEoASQBHAEsASgBJAEsASgBLAEwASwBNAEwATQBLAE4ATQBOAE8ATQBPAFAATQBQAFEAUgBTAFQAUgBVAFMAUgBUAFYAUgBWAFcAWABZAFoAWABbAFkAWABaAFwAWABcAF0AXgBfAGAAXgBhAF8AXgBgAGIAXgBiAGMAZABlAGYAZABnAGUAZABmAGgAZABoAGkAagBrAGwAagBsAG0AagBuAGsAagBtAG8AcABuAGoAcABqAG8AcABxAG4AcABvAHIAcwB0AHUAcwB2AHQAcwB1AHcAcwB3AHgAeQB6AHsAeQB7AHwAeQB9AHoAeQB8AH4AfwB9AHkAfwB5AH4AfwCAAH0AfwB+AIEAggCDAIQAggCFAIMAhACDAIYAggCEAIcAggCHAIgAhACJAIcAhACGAIoAhACKAIkAigCGAIsAigCMAIkAigCLAI0AigCNAIwAjQCLAI4AjQCPAIwAjQCOAJAAjQCQAI8AkQCSAJMAkQCUAJIAkQCTAJUAkQCVAJYAlwCYAJkAlwCaAJgAlwCZAJsAlwCbAJwAnQCeAJ8AnQCgAJ4AnQCfAKEAnQChAKIAowCkAKUAowCmAKQAowClAKcAowCnAKgAqQCqAKsAqQCsAKoAqQCrAK0AqQCtAK4ArwCwALEArwCyALAArwCxALMArwCzALQAtQC2ALcAtQC4ALYAtQC3ALkAtQC5ALoAuwC8AL0AuwC+ALwAuwC9AL8AuwC/AMAAwQDCAMMAwQDEAMIAwQDDAMUAwQDFAMYAxwDIAMkAxwDKAMgAxwDJAMsAxwDLAMwAzQDOAM8AzQDQAM4AzQDPANEAzQDRANIA0wDUANUA0wDWANQA0wDVANcA0wDXANgA2QDaANsA2QDcANoA2QDbAN0A2QDdAN4A3wDgAOEA3wDiAOAA3wDhAOMA3wDjAOQA5QDmAOcA5QDoAOYA5QDnAOkA5QDpAOoA6wDsAO0A6wDuAOwA7wDwAPEA7wDyAPAA7wDxAPMA7wDzAPQA9QD2APcA9QD4APYA9QD3APkA9QD5APoA+wD8AP0A+wD+APwA+wD9AP8A+wD/AAABAQECAQMBAQEEAQIBAQEDAQUBAQEFAQYBBwEIAQkBBwEKAQgBBwEJAQsBBwELAQwBDQEOAQ8BDQEQAQ4BDQEPAREBDQERARIBEwEUARUBEwEWARQBEwEVARcBEwEXARgBGQEaARsBGQEcARoBGQEbAR0BGQEdAR4BHwEgASEBHwEiASABHwEhASMBHwEjASQBJQEmAScBJQEoASYBJQEnASkBJQEpASoBKwEsAS0BKwEuASwBLgEvASwBLgEwATEBLgExATIBLgEyAS8BMwEvATIBLwEzATQBLwE0ATUBNgE1ATQBNwE1ATYBNwE2ATgBOAE5ATcBOAE2AToBOAE7ATkBOwE8ATkBOwE9ATwBPQE+ATwBPQE/AT4BPwFAAT4BPwFBAUABQQFCAUABQQFDAUIBRAFCAUMBRAFFAUIBRQFEAUYBRAFDAUcBNgFHAToBNgFIAUcBSAE2AUkBSAFKAUcBRAFHAUoBSAFLAUoBSwFEAUoBSwFMAUQBRgFEAU0BTAFNAUQBTAFOAU0BTwFNAU4BTQFPAVABTQFQAVEBTwFSAVABTwFTAVIBVAFVAVYBVAFXAVUB"),
+"material": SubResource("StandardMaterial3D_abqkc"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(1.9351053, 2.0648947, 0, 0),
+"vertex_count": 344,
+"vertex_data": PackedByteArray("/3+g9v///7//f8mosfn/v/9/yaj///+//3+g9rH5/7//f6aodO7/v/9///8H+P+//3///8Dv/7//f6D2dO7/v/9/oPYJo/+//3+24Amj/7//f6aoCaP/v/9/tuD6c/+//3+mqI+e/7//f6ao1YP/v/9//pwulv+//3+mqPpz/7//f/6cNYz/v/9/NJGdk/+//380kcaO/7//f35paIf/v/9/JnFKg/+//38CaSVV/7//f1pyQlf/v/9/U2ATSP+//3+GfsJM/7//f5etZyb/v/9/AAAkOf+//38AAAAA/7//f6aoT1P/v/9/oPZPU/+//3+g9vpz/7//f5etpDL/v/9/oPakMv+//3+g9mcm/7//f5etKhr/v/9/oPYqGv+//3/T7PgW/7//fyHR7w3/v/9/l61WAv+//3+i5EYD/7//f3Xuegb/vwAAoPb//wAAAADJqLH5AAAAAKD2sfkAAAAAyaj//wAAAACmqHTuAAAAAP//wO8AAAAA//8H+AAAAACg9nTuAAAAAKD2CaMAAAAAtuAJowAAAACmqAmjAAAAAKaoj54AAAAApqjVgwAAAAD+nC6WAAAAAKao+nMAAAAA/pw1jAAAAAA0kZ2TAAAAADSRxo4AAAAAfmlohwAAAAAmcUqDAAAAAAJpJVUAAAAAWnJCVwAAAABTYBNIAAAAAIZ+wkwAAAAAtuD6cwAAAACg9k9TAAAAAKD2+nMAAAAApqhPUwAAAACXraQyAAAAAKD2pDIAAAAAAAAAAAAAAAAAACQ5AAAAAJetZyYAAAAAoPZnJgAAAACXrSoaAAAAAKD2KhoAAAAA0+z4FgAAAACXrVYCAAAAACHR7w1pAQAAouRGAwAAAAB17noGAAD/f8mo//8AgAAAoPb//wCA/3+g9v//AIAAAMmo//8AgP//oPb//wCA///JqP//AID/f8mosfn/PwAAyaj///8//3/JqP///z8AAMmosfn/P///yaj///8////JqLH5/z//f6D2////vwAAoPax+f+//3+g9rH5/78AAKD2////v///oPax+f+///+g9v///7//f6aodO5RQAAAyaix+VFA/3/JqLH5UUAAAKaodO5RQP//yaix+VFA//+mqHTuUUD/f6aoCaP/PwAApqh07v8//3+mqHTu/z///6aodO7/PwAApqgJo/8///+mqAmj/z//f6aoj57/PwAApqiPnv8///+mqI+e/z//f6D2dO7/vwAAoPYJo/+//3+g9gmj/78AAKD2dO7/v///oPYJo/+///+g9nTu/7//f6ao+nP/PwAApqjVg/8//3+mqNWD/z///6ao1YP/PwAApqj6c/8///+mqPpz/z//f6aoT1P/PwAApqhPU/8///+mqE9T/z//f6D2+nP/vwAAoPZPU/+//3+g9k9T/78AAKD2+nP/vwAAoPakMv+///+g9k9T/7///6D2+nP/v///oPakMv+//3+g9qQy/78AAKD2Zyb/v///oPZnJv+//3+g9mcm/78AAKD2Khr/v///oPYqGv+//3+g9ioa/7//f5etVgL/PwAAl60qGv8//3+XrSoa/z8AAJetVgL/P///l60qGv8///+XrVYC/z//fyHR7w0mEwAAl61WAiYT/3+XrVYCJhMAACHR7w0mE///l61WAiYT//8h0e8NJhP/f4Z+wkyuiQAApqhPU66J/3+mqE9TrokAAIZ+wkyuif//pqhPU66J//+GfsJMron/fwAAAAD/PwAAAAAkOf8//38AACQ5/z8AAAAAAAD/P///AAAkOf8///8AAAAA/z//f5etKhpkCQAAAAAAAGQJ/38AAAAAZAkAAJetKhpkCf//AAAAAGQJ//+XrSoaZAn/fwAAJDmmiQAAU2ATSKaJ/39TYBNIpokAAAAAJDmmif//U2ATSKaJ//8AACQ5pon/fyZxSoNIvwAAWnJCV0i//39ackJXSL8AACZxSoNIv///WnJCV0i///8mcUqDSL//fwJpJVVAQAAAfmloh0BA/39+aWiHQEAAAAJpJVVAQP//fmloh0BA//8CaSVVQED/f6ao1YNKIgAA/pw1jEoi/3/+nDWMSiIAAKao1YNKIv///pw1jEoi//+mqNWDSiL/fzSRnZNRjQAA/pwullGN/3/+nC6WUY0AADSRnZNRjf///pwullGN//80kZ2TUY3/fzSRxo67FAAAJnFKg7sU/38mcUqDuxQAADSRxo67FP//JnFKg7sU//80kcaOuxT/f35paIcwkgAANJGdkzCS/380kZ2TMJIAAH5paIcwkv//NJGdkzCS//9+aWiHMJL/f/6cNYxRDQAANJHGjlEN/380kcaOUQ0AAP6cNYxRDf//NJHGjlEN///+nDWMUQ3/f/6cLpa0XQAApqiPnrRd/3+mqI+etF0AAP6cLpa0Xf//pqiPnrRd///+nC6WtF3/f1NgE0huUAAAAmklVW5Q/38CaSVVblAAAFNgE0huUP//AmklVW5Q//9TYBNIblD/f6D2KhonEwAA0+z4FicT/3/T7PgWJxMAAKD2KhonE/9/WnJCV+2lAACGfsJM7aX/f4Z+wkztpQAAWnJCV+2l//+GfsJM7aX//1pyQlftpf9/de56BicTAACi5EYDJxP/f6LkRgMnEwAAde56BicT//+i5EYDJxP//3XuegYnE/9/0+z4Fme9AAB17noGZ73/f3XuegZnvQAA0+z4Fme9//917noGZ73//9Ps+BZnvf9/ouRGA7scAAAh0e8Nuxz/fyHR7w27HAAAouRGA7sc//8h0e8Nuxz//6LkRgO7HP9/oPYJowAAAAC24AmjAAD/f7bgCaMAAAAAoPYJowAA//+24AmjAAD//6D2CaMAAP9/tuD6cwCAAACg9vpzAID/f6D2+nMAgAAAtuD6cwCA//+g9vpzAID//7bg+nMAgP9/tuAJo/+/AAC24Ppz/7//f7bg+nP/vwAAtuAJo/+///+24Ppz/7///7bgCaP/v/9///8H+P+/AAD//8Dv/7//f///wO//vwAA//8H+P+//////8Dv/7//////B/j/v/9/oPax+f2KAAD//wf4/Yr/f///B/j9igAAoPax+f2K/////wf4/Yr//6D2sfn9iv9////A76kIAACg9nTuqQj/f6D2dO6pCAAA///A76kI//+g9nTuqQj/////wO+pCP//oPb///+////JqLH5/7///8mo////v///oPax+f+///+mqHTu/7//////B/j/v//////A7/+///+g9nTu/7///6D2CaP/v///tuAJo/+///+mqAmj/7///7bg+nP/v///pqiPnv+///+mqNWD/7////6cLpb/v///pqj6c/+////+nDWM/7///zSRnZP/v///NJHGjv+///9+aWiH/7///yZxSoP/v///AmklVf+///9ackJX/7///1NgE0j/v///hn7CTP+///+XrWcm/7///wAAJDn/v///AAAAAP+///+mqE9T/7///6D2T1P/v///oPb6c/+///+XraQy/7///6D2pDL/v///oPZnJv+///+XrSoa/7///6D2Khr/v///0+z4Fv+///8h0e8N/7///5etVgL/v///ouRGA/+///917noG/7//f6D2KhomE///0+z4FiYT//+g9ioaJhP/f9Ps+BYmE/9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//39y/sXA/z//f/8//3//f////3////9/////f////3////9///8AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9//3////9/////f////3////9/////f///////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9//38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD///9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tl6n1")
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u84n"]
-radius = 0.360997
+radius = 0.63
 
 [sub_resource type="SphereMesh" id="SphereMesh_0u84n"]
 radius = 0.05
@@ -380,6 +420,31 @@ _data = {
 &"use": SubResource("Animation_0kmp4")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0u84n"]
+animation = &"Hands_F"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6tu5v"]
+animation = &"GunHolding"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_esmjy"]
+animation = &"Walk_F"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_0u84n"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:BottomArm.r", "Armature/Skeleton3D:Hand.r", "Armature/Skeleton3D:UpperArm.r"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_spxdj"]
+graph_offset = Vector2(-779.5372, 250.94186)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_esmjy")
+nodes/Animation/position = Vector2(-200, 180)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_0u84n")
+"nodes/Animation 2/position" = Vector2(-200, 380)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_0u84n")
+nodes/Blend2/position = Vector2(60, 260)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6tu5v")
+"nodes/Animation 3/position" = Vector2(-200, 580)
+node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Animation", &"Blend2", 1, &"Animation 3"]
+
 [node name="Player" instance=ExtResource("1_s0eop")]
 collision_layer = 2
 collision_mask = 1
@@ -422,42 +487,72 @@ mesh = SubResource("CapsuleMesh_0kmp4")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/BaseCharacter/Armature" index="0"]
-bones/0/position = Vector3(-2.25739e-16, -4.49288e-08, -1.01664)
-bones/1/rotation = Quaternion(0.0651544, -2.18113e-17, 5.85556e-16, 0.997875)
-bones/3/rotation = Quaternion(0.0425907, -8.50379e-18, -3.64768e-17, 0.999093)
-bones/4/rotation = Quaternion(-0.0896069, 9.94836e-18, -1.15404e-17, 0.995977)
-bones/5/position = Vector3(0.178237, 0.165904, 0.0318416)
-bones/5/rotation = Quaternion(-0.00599623, -0.0332988, -0.994058, 0.103458)
-bones/6/rotation = Quaternion(0.0436165, -0.00628254, -0.0878873, 0.995155)
-bones/7/rotation = Quaternion(-0.0167644, -0.000176677, 0.00668824, 0.999837)
-bones/8/position = Vector3(-0.178237, 0.165904, 0.0318416)
-bones/8/rotation = Quaternion(-0.00636155, 0.0332754, 0.993413, 0.109462)
-bones/9/rotation = Quaternion(0.0239481, -0.00028773, 0.0645321, 0.997628)
-bones/10/rotation = Quaternion(-0.0167644, 0.000176677, -0.00668824, 0.999837)
-bones/11/position = Vector3(0.0952356, 0.0685823, 0.0168447)
-bones/11/rotation = Quaternion(-0.00255456, -0.0731379, 0.997063, -0.0225646)
-bones/12/rotation = Quaternion(-0.0661797, 0.00085291, -0.0269038, 0.997445)
-bones/13/rotation = Quaternion(0.622472, 0.00583892, 0.0100439, 0.782556)
-bones/14/position = Vector3(-0.0952356, 0.0685823, 0.0168447)
-bones/14/rotation = Quaternion(0.00255456, -0.0731379, 0.997063, 0.0225646)
-bones/15/rotation = Quaternion(-0.0661797, -0.00085291, 0.0269038, 0.997445)
-bones/16/rotation = Quaternion(0.622472, -0.00583892, -0.0100439, 0.782556)
+bones/0/position = Vector3(-6.625686e-17, 0.9615635, -1.0039076e-08)
+bones/0/rotation = Quaternion(-0.09190259, 1.2075574e-16, -5.9295107e-16, 0.995768)
+bones/1/rotation = Quaternion(0.16112974, 0.0009109087, 0.029785894, 0.98648334)
+bones/3/rotation = Quaternion(0.042590726, -8.503797e-18, -3.647666e-17, 0.9990926)
+bones/4/rotation = Quaternion(-0.193302, 6.9382917e-18, -5.670464e-17, 0.9811393)
+bones/5/position = Vector3(0.17823742, 0.16590406, 0.031841613)
+bones/5/rotation = Quaternion(-0.01846315, -0.13459995, -0.9841529, 0.11395222)
+bones/6/rotation = Quaternion(0.15022904, -0.046466697, -0.10391242, 0.9820766)
+bones/7/rotation = Quaternion(-0.016764356, -0.00017667713, 0.0066882377, 0.9998371)
+bones/8/position = Vector3(-0.17823741, 0.16590412, 0.031841636)
+bones/8/rotation = Quaternion(-0.026968334, 0.38570476, 0.9202453, 0.06044314)
+bones/9/rotation = Quaternion(0.7988071, 0.026572978, 0.041100524, 0.5995931)
+bones/10/rotation = Quaternion(-0.4754519, -0.059646536, 0.043035112, 0.8766617)
+bones/11/position = Vector3(0.09523562, 0.06858241, 0.016844712)
+bones/11/rotation = Quaternion(-0.0054054707, -0.19941081, 0.9796529, -0.0220555)
+bones/12/rotation = Quaternion(-0.51715106, 0.009256918, -0.023729738, 0.8555152)
+bones/13/rotation = Quaternion(0.27990505, 0.006486763, 0.008743816, 0.95996594)
+bones/14/position = Vector3(-0.09523562, 0.06858241, 0.016844712)
+bones/14/rotation = Quaternion(-0.0021000346, 0.13172257, 0.9910265, 0.02261105)
+bones/15/rotation = Quaternion(-0.26660278, -0.0045767766, 0.02627435, 0.96343744)
+bones/16/rotation = Quaternion(0.67203134, -0.005642852, -0.01011498, 0.7404322)
+
+[node name="Head" parent="Model/BaseCharacter/Armature/Skeleton3D" index="9"]
+visible = false
+
+[node name="Neck" parent="Model/BaseCharacter/Armature/Skeleton3D" index="10"]
+visible = false
+
+[node name="Head_IK" type="SkeletonIK3D" parent="Model/BaseCharacter/Armature/Skeleton3D" index="15"]
+influence = 0.8
+root_bone = &"BottomSpine"
+tip_bone = &"Head_2"
+target_node = NodePath("../../../../../Pitch/HeadTarget_IK")
+script = ExtResource("4_esmjy")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Model/BaseCharacter/Armature/Skeleton3D" index="16"]
+transform = Transform3D(-0.983464, 0.031295102, 0.17837903, 0.17213392, -0.14460453, 0.9744019, 0.056288466, 0.98899436, 0.13682684, -0.2207496, 1.4146852, 0.52607185)
+bone_name = "Hand.r"
+bone_idx = 10
+
+[node name="Plane" type="MeshInstance3D" parent="Model/BaseCharacter/Armature/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(-0.99875844, -0.00021072745, 0.049813032, 0.049813405, -0.005083857, 0.99874556, 4.2801694e-05, 0.9999869, 0.0050876467, -0.020716026, 0.1577464, 0.04523015)
+mesh = SubResource("ArrayMesh_ctyai")
+skeleton = NodePath("")
+
+[node name="Camera" parent="Model/BaseCharacter" index="1"]
+transform = Transform3D(-1, 0, -3.8941437e-07, 0, 1, 0, 3.8941437e-07, 0, -1, 0, 1.8, 0.1)
+
+[node name="Plane" parent="Model/BaseCharacter" index="2"]
+visible = false
 
 [node name="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.987031, 0)
 shape = SubResource("CapsuleShape3D_0u84n")
 
 [node name="Pitch" type="Node3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85224, -0.17465)
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 1.221, 0)
 script = ExtResource("2_t26db")
 
 [node name="Yaw" type="Node3D" parent="Pitch" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5920706, -0.08616769)
 
 [node name="Camera3D" type="Camera3D" parent="Pitch/Yaw" index="0"]
 cull_mask = 1048569
 doppler_tracking = 2
 current = true
-fov = 90.0
 script = ExtResource("4_825xp")
 
 [node name="RightHand" type="Marker3D" parent="Pitch/Yaw/Camera3D" index="0"]
@@ -472,6 +567,8 @@ collision_mask = 14
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -481,11 +578,11 @@ stretch = true
 transparent_bg = true
 handle_input_locally = false
 canvas_cull_mask = 4294967293
-size = Vector2i(1920, 1080)
+size = Vector2i(2560, 1440)
 render_target_update_mode = 4
 
 [node name="CameraPOV" type="Camera3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85224, -0.17465)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8130704, -0.08616767)
 cull_mask = 12
 fov = 35.0
 script = ExtResource("6_825xp")
@@ -528,7 +625,7 @@ mesh = SubResource("SphereMesh_0u84n")
 skeleton = NodePath("../..")
 
 [node name="LeftHand" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="1"]
-transform = Transform3D(0.93034, -0.0376848, -0.364755, 0.366695, 0.097571, 0.925212, 0.000723093, -0.994515, 0.104593, -0.442614, 0.000935912, -0.0851889)
+transform = Transform3D(0.93033975, -0.037684802, -0.364755, 0.3666949, 0.097570986, 0.9252118, 0.000723093, -0.99451494, 0.10459324, -0.442614, 0.000935912, -0.0851889)
 visible = false
 
 [node name="MuzzleFlash" type="Marker3D" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="2"]
@@ -554,22 +651,130 @@ libraries = {
 }
 playback_auto_capture = false
 
-[node name="BaseRiggedArm" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="2" instance=ExtResource("8_ji083")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.230466, 0, 0.419643)
+[node name="HeadTarget_IK" type="Marker3D" parent="Pitch" index="1"]
+transform = Transform3D(-1, 0, -8.742278e-08, 3.774758e-15, 0.9999996, 2.980232e-08, 8.7422734e-08, 2.980232e-08, -0.9999996, 0, 0.5964079, -0.1001043)
+
+[node name="Pitch2" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 0.99999976, 0, 0, 0, 0.99999976, 0, 1.221, 0)
+script = ExtResource("2_t26db")
+
+[node name="Yaw" type="Node3D" parent="Pitch2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5920706, -0.08616769)
+
+[node name="Camera3D" type="Camera3D" parent="Pitch2/Yaw" index="0"]
+cull_mask = 1048569
+doppler_tracking = 2
+current = true
+script = ExtResource("4_825xp")
+
+[node name="RightHand" type="Marker3D" parent="Pitch2/Yaw/Camera3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.375263, 0, 0)
+script = ExtResource("4_fk5o5")
+
+[node name="InteractionRay" type="RayCast3D" parent="Pitch2/Yaw/Camera3D" index="1"]
+target_position = Vector3(0, 0, -2.5)
+collision_mask = 14
+
+[node name="SubViewportContainerPOV" type="SubViewportContainer" parent="Pitch2/Yaw/Camera3D" index="2"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV" index="0"]
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4294967293
+size = Vector2i(2560, 1440)
+render_target_update_mode = 4
+
+[node name="CameraPOV" type="Camera3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8130704, -0.08616767)
+cull_mask = 12
+fov = 35.0
+script = ExtResource("6_825xp")
+
+[node name="RightHandPOV" type="Marker3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.238295, -0.186528, -0.576225)
+script = ExtResource("7_0kmp4")
+
+[node name="Offset" type="Marker3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="0"]
+
+[node name="RightHand" type="Marker3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="0"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.0127692, 0.024076, -0.0615962)
 visible = false
 
-[node name="ArmModel" parent="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm/Armature/Skeleton3D" index="0"]
-layers = 4
+[node name="RightHandIK" type="Node3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand" index="0"]
+transform = Transform3D(0.999999, -4.00723e-09, -2.01764e-08, 1.76015e-08, 0.999999, -6.70552e-08, 5.34009e-08, -7.45058e-08, 0.999999, -0.0581244, -0.000802517, -0.227889)
+visible = false
 
-[node name="BaseStateManagerNode" type="Node" parent="." index="4"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand/RightHandIK" index="0"]
+transform = Transform3D(1, 5.31509e-09, 5.43289e-08, -3.39878e-09, 1, 2.23517e-08, -3.52505e-08, 2.98023e-08, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_0u84n")
+skeleton = NodePath("../..")
+
+[node name="RightLowerArmIK" type="Node3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand" index="1"]
+transform = Transform3D(1, -3.07409e-09, -4.99788e-08, 1.08489e-08, 0.999999, -3.72529e-08, 5.38752e-08, -5.21541e-08, 0.999999, 0.0172654, -0.0477947, 0.0158662)
+visible = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand/RightLowerArmIK" index="0"]
+transform = Transform3D(1, 5.31509e-09, 5.43289e-08, -3.39878e-09, 1, 2.23517e-08, -3.52505e-08, 2.98023e-08, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_0u84n")
+skeleton = NodePath("../..")
+
+[node name="RightUpperArmIK" type="Node3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand" index="2"]
+transform = Transform3D(0.999999, -3.07546e-09, -3.50776e-08, 1.86724e-08, 0.999999, -3.72529e-08, 1.88156e-07, -8.9407e-08, 0.999999, 0.0528442, -0.118639, 0.275138)
+visible = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/RightHand/RightUpperArmIK" index="0"]
+transform = Transform3D(1, 3.45608e-09, 6.92952e-08, -7.72934e-09, 1, 2.23517e-08, -1.69253e-07, 7.45058e-08, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_0u84n")
+skeleton = NodePath("../..")
+
+[node name="LeftHand" type="Marker3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="1"]
+transform = Transform3D(0.9303397, -0.037684802, -0.364755, 0.36669487, 0.097570986, 0.9252118, 0.00072309293, -0.99451494, 0.10459324, -0.442614, 0.000935912, -0.0851889)
+visible = false
+
+[node name="MuzzleFlash" type="Marker3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0469983, -0.584956)
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/MuzzleFlash" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0363933)
+layers = 4
+material_override = SubResource("StandardMaterial3D_0u84n")
+mesh = SubResource("PlaneMesh_esmjy")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/Offset/MuzzleFlash" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -0.0363933)
+layers = 4
+material_override = SubResource("StandardMaterial3D_0u84n")
+mesh = SubResource("PlaneMesh_esmjy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pitch2/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV" index="1"]
+root_node = NodePath("../../../../../RightHand")
+libraries = {
+&"": SubResource("AnimationLibrary_ji083")
+}
+playback_auto_capture = false
+
+[node name="HeadTarget_IK" type="Marker3D" parent="Pitch2" index="1"]
+transform = Transform3D(-1, 0, -8.742278e-08, 3.774758e-15, 0.9999996, 2.980232e-08, 8.7422734e-08, 2.980232e-08, -0.9999996, 0, 0.5964079, -0.1001043)
+
+[node name="BaseStateManagerNode" type="Node" parent="." index="5"]
 script = ExtResource("2_ft8w5")
 metadata/_custom_type_script = "uid://bo2urmd8u6hwt"
 
-[node name="BaseInputsNode" type="Node" parent="." index="5"]
+[node name="BaseInputsNode" type="Node" parent="." index="6"]
 script = ExtResource("4_t26db")
 metadata/_custom_type_script = "uid://0a3iovwytv30"
 
-[node name="LedgeContact" type="Node3D" parent="." index="6"]
+[node name="LedgeContact" type="Node3D" parent="." index="7"]
 script = ExtResource("14_0u84n")
 
 [node name="TopRay" type="RayCast3D" parent="LedgeContact" index="0"]
@@ -584,8 +789,15 @@ target_position = Vector3(0, -0.4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 target_position = Vector3(0, 0, -0.5)
 
+[node name="AnimationTree" type="AnimationTree" parent="." index="8"]
+root_node = NodePath("../Model/BaseCharacter")
+tree_root = SubResource("AnimationNodeBlendTree_spxdj")
+anim_player = NodePath("../Model/BaseCharacter/AnimationPlayer")
+parameters/Blend2/blend_amount = 1.0
+
 [connection signal="child_entered_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_entered_tree"]
 [connection signal="child_exiting_tree" from="Pitch/Yaw/Camera3D/RightHand" to="Pitch/Yaw/Camera3D/RightHand" method="_on_child_exiting_tree"]
+[connection signal="child_entered_tree" from="Pitch2/Yaw/Camera3D/RightHand" to="Pitch2/Yaw/Camera3D/RightHand" method="_on_child_entered_tree"]
+[connection signal="child_exiting_tree" from="Pitch2/Yaw/Camera3D/RightHand" to="Pitch2/Yaw/Camera3D/RightHand" method="_on_child_exiting_tree"]
 
 [editable path="Model/BaseCharacter"]
-[editable path="Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV/BaseRiggedArm"]
