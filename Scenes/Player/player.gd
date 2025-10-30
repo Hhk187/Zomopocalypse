@@ -3,15 +3,10 @@ class_name PlayerBaseEntity
 
 @onready var animation_player: AnimationPlayer = $Model/BaseCharacter/AnimationPlayer
 
-@onready var neck: Node3D = $Pitch
-@onready var right_hand: Marker3D = $Pitch/Yaw/Camera3D/RightHand
 @onready var camera_3d: CameraPlayer = $Pitch/Yaw/Camera3D
-
-@onready var right_hand_pov: Marker3D = $Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport/CameraPOV/RightHandPOV
 
 @onready var interaction_ray: RayCast3D = $Pitch/Yaw/Camera3D/InteractionRay
 
-@onready var sub_viewport: SubViewport = $Pitch/Yaw/Camera3D/SubViewportContainerPOV/SubViewport
 
 var equiped_weapon : BaseItem
 

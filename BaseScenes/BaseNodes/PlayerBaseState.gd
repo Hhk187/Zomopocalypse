@@ -23,7 +23,7 @@ func input(event : InputEvent):
 
 
 
-func movements(delta):
+func movements(_delta : float):
 	
 	var speed : float
 	# Handle jump.
@@ -51,10 +51,10 @@ func movements(delta):
 
 	entity.move_and_slide()
 
-func just_fall(delta):
+func just_fall(delta : float):
 	entity.velocity += entity.get_gravity() * delta
 
-func gravity(delta):
+func gravity(_delta : float):
 	if not entity.is_on_floor():
 		change_state("falling")
 

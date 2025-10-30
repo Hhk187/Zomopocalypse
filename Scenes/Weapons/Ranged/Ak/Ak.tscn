@@ -12,14 +12,10 @@ item_type = 0
 damage = 15
 range_unit = 100
 is_fire_auto = true
-fire_rate = 100
+fire_rate = 100.0
 ammo = 30
 max_ammo = 30
 hand = 0
-offset_rotation = Vector3(0, 0, 0)
-offset_position = Vector3(0, 0, 0)
-is_stackable = false
-max_stack = 0
 use_animation = 0
 metadata/_custom_type_script = "uid://bd0s152hspgvo"
 

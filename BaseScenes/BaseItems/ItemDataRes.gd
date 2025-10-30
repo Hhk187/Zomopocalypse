@@ -17,7 +17,7 @@ class_name ItemDataRes
 @export var range_unit : int = 0
 @export var is_fire_auto : bool = false
 ## In ms
-@export var fire_rate : int = 1.0
+@export var fire_rate : float = 1.0
 
 
 @export var ammo : int = 0
