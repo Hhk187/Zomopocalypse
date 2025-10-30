@@ -17,7 +17,7 @@ func input(event : InputEvent):
 	if event is InputEventMouseMotion:
 		player.rotate_y(-(event.relative.x * 0.002))
 		player.neck.rotate_x(-(event.relative.y * 0.002))
-		player.neck.rotation_degrees.x = clamp(player.neck.rotation_degrees.x,-90.0, 90.0)
+		player.neck.rotation_degrees.x = clamp(player.neck.rotation_degrees.x,-110.0, 90.0)
 
 		CameraPOV.sway2D(event.relative)
 

@@ -1,6 +1,6 @@
 [gd_resource type="MeshLibrary" load_steps=368 format=4 uid="uid://bef7mwhbwqwiq"]
 
-[ext_resource type="Texture2D" uid="uid://ppgdjxlsnt76" path="res://Assets/Models/CIty/Roads/kenney_city-kit-roads/GLB format/Textures/colormap.png" id="1_t2cjk"]
+[ext_resource type="Texture2D" uid="uid://8y8h5pk5vhwj" path="res://Assets/Models/CIty/Roads/kenney_city-kit-roads/GLB format/Textures/colormap.png" id="1_t2cjk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ke0e2"]
 resource_name = "colormap"

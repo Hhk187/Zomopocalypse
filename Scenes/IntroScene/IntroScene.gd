@@ -6,7 +6,7 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	camera_animation_player.play("OpenUp")
-	player1_animation_player.play("SittingOnCouch")
+	player1_animation_player.play("Intro_SittingOnCouch")
 
 
 func _input(event: InputEvent) -> void:

@@ -15,10 +15,18 @@ class_name PlayerBaseEntity
 
 var equiped_weapon : BaseItem
 
+@onready var animation_tree = $AnimationTree
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('play_inspect'):
 		pass
+	if event.is_action_pressed("play_pickup"):
+		animation_tree.set("parameters/OneShot/request", 1)
+	if event.is_action_pressed("player_emote_1"):
+		if animation_tree.get("parameters/OneShot2/active"):
+			animation_tree.set("parameters/OneShot2/request", 2)
+		else:
+			animation_tree.set("parameters/OneShot2/request", 1)
 
 
 
