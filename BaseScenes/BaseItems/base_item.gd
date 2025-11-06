@@ -17,18 +17,15 @@ func un_equipe():
 	get_parent().remove_child(self)
 	if parent:
 		parent.add_child(self)
-	toggle(false)
+	_toggle(false)
 
 func equipe():
 	get_parent().remove_child(self)
-	toggle(true)
+	_toggle(true)
 
 
-func toggle(value : bool):
-	var meshs = model.find_children("*", "MeshInstance3D") as Array[MeshInstance3D]
-	for mesh in meshs:
-		mesh.set_layer_mask_value(1, !value)
-		mesh.set_layer_mask_value(2, value)
+## Prepare item to be equiped/unequiped
+func _toggle(value : bool):
 	freeze = value
 	sleeping = value
 	collision_shape_3d.disabled = value

@@ -16,8 +16,8 @@ func input(event : InputEvent):
 	var player = entity as PlayerBaseEntity
 	if event is InputEventMouseMotion:
 		player.rotate_y(-(event.relative.x * 0.002))
-		player.neck.rotate_x(-(event.relative.y * 0.002))
-		player.neck.rotation_degrees.x = clamp(player.neck.rotation_degrees.x,-110.0, 90.0)
+		player.pitch.rotate_x(-(event.relative.y * 0.002))
+		player.pitch.rotation_degrees.x = clamp(player.pitch.rotation_degrees.x,-110.0, 90.0)
 
 		CameraPOV.sway2D(event.relative)
 
@@ -58,22 +58,14 @@ func gravity(_delta : float):
 	if not entity.is_on_floor():
 		change_state("falling")
 
-
 func interaction():
 	var player = entity as PlayerBaseEntity
 	var item : Node3D = player.interaction_ray.get_collider()
 	if item:
 		if item.is_in_group("item"):
 			if Input.is_action_just_pressed("play_pickup") and not player.right_hand.get_child_count():
-				item.equipe()
-				player.right_hand.add_child(item)
+				print("TODO : logic not implemented for weapon picking")
 		elif item.is_in_group("interact"):
-			var world_decor := item as WorldDecor
+			var world_decor := item as WorldDecor 
 			if Input.is_action_just_pressed("play_use"):
 				world_decor.interact.emit()
-		
-	if player.right_hand.get_child_count():
-		if Input.is_action_just_pressed("play_drop"):
-			player.right_hand.get_child(0).un_equipe()
-		if Input.is_action_pressed('play_fire'):
-			player.use_weapon()

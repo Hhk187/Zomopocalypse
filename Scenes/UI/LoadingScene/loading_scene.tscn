@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcuk1uxok3s46"]
+
+[ext_resource type="Script" uid="uid://cfvccunfniisf" path="res://Scenes/UI/LoadingScene/loading_scene.gd" id="1_6m7ng"]
+[ext_resource type="PackedScene" uid="uid://eyxrj40ah7ti" path="res://Scenes/Levels/TestLevels/City2/City2.tscn" id="2_xk8hn"]
+
+[node name="LoadingScene" type="CanvasLayer"]
+script = ExtResource("1_6m7ng")
+SceneToLoad = ExtResource("2_xk8hn")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+value = 50.0

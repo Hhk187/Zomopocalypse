@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs7x65e5s6akq"]
+[gd_scene load_steps=3 format=3 uid="uid://cs7x65e5s6akq"]
 
+[ext_resource type="Script" uid="uid://sst33je17bbb" path="res://BaseScenes/BaseLevel/base_level.gd" id="1_q7o2k"]
 [ext_resource type="PackedScene" uid="uid://ry71rpvokoh3" path="res://Singleton/IngameMenu/IngameMenu.tscn" id="1_x7fhe"]
 
 [node name="BaseLevel" type="Node3D"]
+script = ExtResource("1_q7o2k")
 
 [node name="Envoirment" type="Node3D" parent="."]
 

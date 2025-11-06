@@ -9,8 +9,8 @@ func physics_process(delta):
 	
 	if entity.is_on_floor():
 		change_state("walking")
-	
+		
 	movements(delta)
-	interaction()
+	#interaction()
 
 	
