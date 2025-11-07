@@ -54,6 +54,7 @@ func _input(event: InputEvent) -> void:
 
 	elif event.is_action_pressed("play_fire"):
 		test_use_weapon()
+		
 
 
 func test_use_weapon():
