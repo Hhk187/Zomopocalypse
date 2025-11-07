@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://qsf1is5fnqvd" path="res://BaseScenes/BaseItems/BaseItem.tscn" id="1_gqu2v"]
 [ext_resource type="Script" uid="uid://bd0s152hspgvo" path="res://BaseScenes/BaseItems/ItemDataRes.gd" id="2_ja8ts"]
-[ext_resource type="PackedScene" uid="uid://nri5bordolg8" path="res://Assets/Unsanctioned_Dreams_assets/Weapons/Ranged/HandGuns/9MMPistol.blend" id="3_1km6r"]
+[ext_resource type="PackedScene" uid="uid://dtj6iyuqqeued" path="res://temp/9mm.blend" id="3_ja8ts"]
 
 [sub_resource type="Resource" id="Resource_1km6r"]
 script = ExtResource("2_ja8ts")
@@ -11,29 +11,24 @@ name = "9mm"
 item_type = 0
 damage = 10
 range_unit = 100
-is_fire_auto = false
 fire_rate = 100
 ammo = 12
 max_ammo = 12
 hand = 0
 offset_rotation = Vector3(0, 0, 8)
 offset_position = Vector3(-0.07, 0.03, -0.305)
-is_stackable = false
-max_stack = 0
 use_animation = 0
 metadata/_custom_type_script = "uid://bd0s152hspgvo"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1km6r"]
-size = Vector3(0.451172, 0.325928, 0.205078)
+size = Vector3(0.3223877, 0.22595228, 0.09765625)
 
 [node name="9mm" instance=ExtResource("1_gqu2v")]
 item_data = SubResource("Resource_1km6r")
 
-[node name="9MMPistol" parent="Model" index="0" instance=ExtResource("3_1km6r")]
-transform = Transform3D(-3.93403e-08, 0, -0.9, 0, 0.9, 0, 0.9, 0, -3.93403e-08, 2.98023e-08, -0.17973, 0.114174)
+[node name="9mm" parent="Model" index="0" instance=ExtResource("3_ja8ts")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.000505634, -0.0409118, -0.00152116)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00050563435, 0.009076059, -0.009272625)
 shape = SubResource("BoxShape3D_1km6r")
-
-[editable path="Model/9MMPistol"]

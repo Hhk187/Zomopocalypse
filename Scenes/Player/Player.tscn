@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://baq5fam5xesra"]
+[gd_scene load_steps=21 format=3 uid="uid://baq5fam5xesra"]
 
 [ext_resource type="PackedScene" uid="uid://d30ipjyyopunc" path="res://BaseScenes/BaseEntity/BaseEntity.tscn" id="1_s0eop"]
 [ext_resource type="Script" uid="uid://bo2urmd8u6hwt" path="res://BaseScenes/BaseNodes/BaseStateManagerNode.gd" id="2_ft8w5"]
@@ -7,9 +7,7 @@
 [ext_resource type="Script" uid="uid://biai3ifmf1pj5" path="res://Scenes/Player/camera_3d.gd" id="4_825xp"]
 [ext_resource type="Script" uid="uid://bbsuhw005il5g" path="res://Scenes/Player/ik.gd" id="4_esmjy"]
 [ext_resource type="Script" uid="uid://0a3iovwytv30" path="res://BaseScenes/BaseNodes/BaseInputsNode.gd" id="4_t26db"]
-[ext_resource type="PackedScene" uid="uid://dnblltv50fky0" path="res://Scenes/Weapons/Ranged/Ak/Ak.tscn" id="6_0kmp4"]
 [ext_resource type="Script" uid="uid://dt7l4c1kofq27" path="res://Scenes/Player/interaction.gd" id="10_ji083"]
-[ext_resource type="Texture2D" uid="uid://b1xupxxgrxkvg" path="res://temp/PistolTextureMetal.png" id="13_6tu5v"]
 [ext_resource type="Script" uid="uid://dfuffywxc0cga" path="res://Scenes/Player/ledge_contact.gd" id="14_0u84n"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6tu5v"]
@@ -19,7 +17,7 @@ animation = &"Interact_R"
 animation = &"Emote_69"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0kmp4"]
-animation = &"Gun_Equipe"
+animation = &"Equipe_AK"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_spxdj"]
 animation = &"Idle"
@@ -38,7 +36,7 @@ fadeout_time = 0.1
 filters = ["rig/Skeleton3D:DEF-forearm.L", "rig/Skeleton3D:DEF-forearm.L.001", "rig/Skeleton3D:DEF-forearm.R", "rig/Skeleton3D:DEF-forearm.R.001", "rig/Skeleton3D:DEF-hand.L", "rig/Skeleton3D:DEF-hand.R", "rig/Skeleton3D:DEF-upper_arm.L", "rig/Skeleton3D:DEF-upper_arm.L.001", "rig/Skeleton3D:DEF-upper_arm.R", "rig/Skeleton3D:DEF-upper_arm.R.001"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_spxdj"]
-graph_offset = Vector2(-903.5416, 103.298645)
+graph_offset = Vector2(-913.0215, 123.33979)
 nodes/output/position = Vector2(400, 200)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_spxdj")
 nodes/Animation/position = Vector2(-360, 180)
@@ -58,45 +56,6 @@ node_connections = [&"output", 0, &"OneShot2", &"OneShot", 0, &"Blend2", &"OneSh
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0kmp4"]
 radius = 0.3
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sr3r7"]
-resource_name = "Material.001"
-cull_mode = 2
-albedo_texture = ExtResource("13_6tu5v")
-metallic = 1.0
-texture_filter = 2
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_dy244"]
-_surfaces = [{
-"aabb": AABB(-0.015000001, -0.093651906, -0.12254188, 0.030000001, 0.17922005, 0.27907848),
-"format": 34896613377,
-"index_count": 855,
-"index_data": PackedByteArray("AAABAAIAAQACAAMAAQAEAAIAAgAFAAMAAgAAAAUABQAGAAMAAQADAAYAAgAEAAcAAgAHAAAABwAEAAgAAQAIAAQABwAIAAkAAAAHAAkACgAIAAEACgABAAYAAAALAAEACwAKAAEAAAAJAAsAAAAMAAUABQAMAAYAAAALAAwACgANAAgACQAIAA0ACgAGAA4ADAAOAAYACwAJAA8ACwAQAAwACQARAA8AEgAPABEACwAPABIACwASABAADAAQABMAEgATABAADAATABQADAAUAA4AEgAVABMAFQAUABMACwASABUAEgARABUACwAVABYAFQAWABQACwAWAAoAFQARABcACQAXABEAFQAXABYACQANABcAFgAYABQAGAAOABQAFgAXABkADQAZABcAFgAaABgAFgAZABoAGgAKABYAGQANABsAGgAZABsADgAYABwAGgAcABgAHQAKAA4AHQANAAoADgAcAB4AHQAOAB4ACgAaAB8AGgAfABwACgAfAB0AGgAbAB8AIAAeABwAHwAgABwAHQAhAA0AGwANACEAIgAdAB8AHwAiACAAIwAdAB4AIwAhAB0AIwAdACIAJAAbACEAIwAkACEAHwAbACUAHwAlACIAJgAbACQAGwAnACUAGwAmACcAIgAlACgAJQApACgAKQAlACcAIgAoACoAKgAoACkAIgAqACsAKgAsACsAIgArACAALAAgACsALQAiACoAKgAtACwAKgApAC0AKQAnAC4ALQAvACwALAAvADAALAAwADEAIAAsADEALwAyADAAMgAxADAALwAzADIALQA0AC8ANAAzAC8ALQA0ADUALQApADYALQA2ADQAKQA3ADYAKQAuADcALQA1ADgAIgAtADgAOAAuACcANgA3ADkANgA5ADoANAA2ADoANwA7ADkAPAA3AC4AOwA3ADwAOgA5AD0AOQA7AD0ANAA6AD4ANAA+ADMAPgA6AD8AOgA9AD8ANAA+AEAANABAADUAQAA4ADUAPgBBADMAMwBBAEIAPgA/AEMAPgBDAEEAMwBCADIARABCAEEAQwBEAEEAQwA/AEUAPQBFAD8APgBDAEYAPgBGAEAAQwBHAEQAQwBFAEcARwBGAEMARwBIAEQARABIAEkASgBJAEgARwBKAEgARABJAEsAQgBEAEsATABLAEkASgBMAEkARwBKAEwARwBNAEoARwBFAE0ASgBNAE4ARQBOAE0ASgBOAEwARQBPAE4ATABOAE8ARQBQAE8ARQA9AFAATABPAFEARwBMAFEAUQBPAFAATABRAEsARgBHAFEAUQBSAEsAQgBLAFIAUQBQAFMAUQBTAFIAUwBCAFIAUwBQAD0ARgBRAFMAUwA9AEYAUwBGAEIARgA9ADsARgBUAEIAVAAyAEIARgA7AFUARgBVAFQAVgAyAFQAVQBWAFQAVQBAAEYAMgBWAFcAVQA7AFgAOwBZAFgAVQBaAFYAVQBYAFoAWgBAAFUAWgBXAFYAWgBYAFkAOwA8AFkAQABaAFsAWgBZAFsAWgBbAFcAXABZADwAQABbAF0AXQA8AC4AQABdADgAXQAuADgAXgA8AF0AXgBcADwAXgBdAFsAXABfAFkAWwBZAF8AYABfAFwAWwBfAGEAXgBbAGEAYABiAF8AYQBfAGIAYwBgAFwAYwBcAF4AYwBeAGEAZABiAGAAXgBdAGUAZgBkAGAAZgBgAGMAZABnAGIAXQAxAGUAMgBlADEAMgBXAGUAXQA4ADEAaABlAFcAXgBlAGgAYwBeAGgAaABXAGkAWwBpAFcAWwBhAGkAagBoAGkAYwBoAGoAYQBrAGkAagBpAGsAYwBhAGwAYQBsAGsAYQBiAGwAZgBjAGoAZgBjAGwAbQBqAGsAZgBqAG0AbQBrAG4AbABuAGsAbABiAGcAbwBtAG4AcABmAG0AcABtAG8AcABkAGYAZgBsAHEAbABxAG4AbABnAHEAcABmAHEAcgBnAGQAcAByAGQAcgBzAGcAcQBnAHMAdAByAHAAdABwAG8AJgBzAHIAdAAmAHIAJgAkAHMAdQBzACQAcQBzAHUAcABxAHUAdABwAHUAcQB2AG4AbwBuAHYAcQB1AHYAdQAkACMAdAB1ACMAdwBvAHYAdABvAHcAdQB4AHYAdQAjAHgAdwB2AHgAIwAeAHgAeAAeACAAeAAgAHcAIwAiAHQAdwAgAHkAIAAxAHkAOAB5ADEAegB3AHkAOAB6AHkAegB0AHcAIgA4AHoAdAAiAHoAOAAnAHoAegAmAHQAegAnACYA"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(0, 0, 0, 0),
-"vertex_count": 123,
-"vertex_data": PackedByteArray("/3+g9v//AAD/f8mosfkAAP9/yaj//wAA///JqP//AAAAAMmo//8AAP//oPb//wAA///JqLH5AAAAAKD2//8AAAAAyaix+QAAAACg9rH5AAD/f6aodO4AAP9/oPax+QAA//+g9rH5AAAAAKaodO4AAP//pqh07gAAAAD//wf4AAD/////B/gAAAAA///A7wAA/3///wf4AAD/////wO8AAP//oPZ07gAA/3///8DvAAD/f6D2dO4AAAAAoPZ07gAA//+g9gmjAAAAAKD2CaMAAP9/oPYJowAAAAC24AmjAAD//7bgCaMAAP9/pqgJowAA//+mqAmjAAD/f7bgCaMAAP//tuD6cwAAAACmqAmjAAD/f7bg+nMAAP9/pqiPngAAAACmqI+eAAAAALbg+nMAAAAApqjVgwAAAACmqPpzAAAAAKD2+nMAAAAAoPZPUwAA/3+g9vpzAAD//6D2+nMAAP//oPZPUwAA/3+g9k9TAAAAAKaoT1MAAP//oPakMgAA//+XraQyAAD//6aoT1MAAP//l61nJgAA//+g9mcmAAD/f6D2pDIAAP9/l62kMgAAAACg9qQyAAAAAJetpDIAAP9/pqhPUwAAAACXrWcmAAAAAKD2ZyYAAAAAAAAAAAAAAACGfsJMAAAAAJetKhoAAP9/oPZnJgAAAACg9ioaAAD/f5etZyYAAP//oPYqGgAA//+XrSoaAAD/f6D2KhoAAP//0+z4FgAAAADT7PgWAAD/f5etKhoAAP9/0+z4FgAA//917noGAAD//6LkRgMAAP9/de56BgAA//8h0e8NAAD/f6LkRgMAAAAAde56BgAAAACi5EYDAAAAACHR7w0AAAAAl61WAgAA/38h0e8NAAD//5etVgIAAP9/l61WAgAA//8AAAAAAAD/fwAAAAAAAP//AAAkOQAA//9TYBNIAAAAAAAAJDkAAAAAU2ATSAAA/38AACQ5AAD/f1NgE0gAAAAAWnJCVwAA/3+GfsJMAAD/f1pyQlcAAAAAAmklVQAAAAAmcUqDAAD/fwJpJVUAAAAAfmlohwAA/38mcUqDAAAAADSRxo4AAP//hn7CTAAA/380kcaOAAAAADSRnZMAAP//WnJCVwAA//8CaSVVAAD//yZxSoMAAP//fmlohwAA/39+aWiHAAD//zSRxo4AAP//NJGdkwAA///+nDWMAAD/f/6cNYwAAP9/NJGdkwAAAAD+nDWMAAAAAP6cLpYAAP9/pqjVgwAA/3/+nC6WAAD///6cLpYAAP//pqjVgwAA//+mqI+eAAD//6ao+nMAAP9/pqj6cwAA")
-}]
-blend_shape_mode = 0
-
-[sub_resource type="ArrayMesh" id="ArrayMesh_k1pxx"]
-resource_name = "BaseCharacter_Plane"
-_surfaces = [{
-"aabb": AABB(-0.015000001, -0.093651906, -0.12254188, 0.030000001, 0.17922005, 0.27907848),
-"attribute_data": PackedByteArray("tHvZqfZ+DsK0ew7C9n7ZqcWEGcLSf++mGYTvpsWE2am+q9mpvqupsL6rGcIQxKmwDq4Zwt67GcJisrnFEMQZwoq3ucW2s2TJNrZkyQW6vdUmvFzT/tPk1efS/NK/2pfYVNgzzybskMB34oz2//+M9vHUGcLx1NmpEMTZqdPlkMDT5dmpJuzZqXnykMB58tmpIPTlrMv4grXJ/pDATf5xr6X8Y6y0e9mp9n4OwvZ+2am0ew7CxYQZwhmE76bSf++mxYTZqb6r2am+q6mwvqsZwg6uGcLeuxnCYrK5xRDEGcKKt7nFtrNkyTa2ZMkFur3VJrxc0/7T5NXn0vzSv9qX2FTYM88QxKmw8dTZqRDE2anx1BnC0+WQwNPl2an//4z2d+KM9ibskMAm7NmpefKQwHny2akg9OWsyf6QwMv4grVN/nGvpfxjrCTCDsIIu9mpJMLZqQi7DsJAydmpQMkOwiTC8fwIu///JML//wi78fxAyf//QMnx/CTC//8Iu/H8JMLx/Ai7//9AyfH8QMn//yTCgPcIu/H8JMLx/Ai7gPdAyfH8QMmA9yTC+dIIu4D3JMKA90DJgPcIu/nSQMn50iTCz9AIu8/QQMnP0CTCgPcIu/nSJML50gi7gPdAyfnSQMmA9yTCL7wIu93DJMLdw0DJ3cMIuy+8QMkvvCTCXawIu12sQMldrCTCL7wIu12sJMJdrAi7L7wIu4ucQMldrEDJL7xAyYucJMKLnAi7npZAyZ6WJMKelgi7sZBAybGQJMKxkCTCJ4UIu7GQJMKxkAi7J4VAybGQQMknhSTCgrUIu5DAJMKQwAi7grVAyZDAQMmCtSTCM88IuxnCJMIZwgi7M89AyRnCQMkzzyTCBYQIu7GfJMKxnwi7BYRAybGfQMkFhCTCkMAIu4z2JMKM9gi7kMBAyYz2QMmQwCTCjPYIu5fYJMKX2Ai7jPZAyZfYQMmM9iTCmsMIu0euJMJHrgi7msNAyUeuQMmawyTCQa0Iu5jFJMKYxQi7Qa1AyZjFQMlBrSTC3cMIu+zHJMLsxwi73cNAyezHQMndwyTCZMkIu7nFJMK5xQi7ZMlAybnFQMlkySTCZMkIu1zTJMJc0wi7ZMlAyVzTQMlkySTCvdUIu2TJJMJkyQi7vdVAyWTJQMm91STCucUIu2TJJMJkyQi7ucVAyWTJQMm5xSTCwMwIu8/QJMLP0Ai7wMxAyc/QQMnAzCTC7aYIu0GtJMJBrQi77aZAyUGtQMntpiTC2akIu+WsJMLlrAi72akkwkeuCLsxqSTCMakIu0euQMkxqUDJR64kwmOsCLtxryTCca8Iu2OsQMlxr0DJY6wkwiWPCLsohyTCKIcIuyWPQMkoh0DJJY8kwnGvCLuCtSTCgrUIu3GvQMmCtUDJca8kwtmpCLupsCTCqbAIu9mpQMmpsEDJ2akkwqmwCLvZqSTC2akIu6mwQMnZqUDJqbAkwvnSCLsvvCTCL7wIu/nSQMkvvEDJ+dIkwiP8CLsh+CTCIfgIuyP8QMkh+EDJI/wkwtmpCLvvpiTC76YIu9mpQMnvpkDJ2akkwu+mCLvZqSTC2akIu++mQMnZqUDJ76a0e9mp9n4OwrR7DsL2ftmpxYQZwtJ/76YZhO+mxYTZqb6r2am+q6mwvqsZwhDEqbAOrhnC3rsZwmKyucUQxBnCire5xbazZMk2tmTJBbq91Sa8XNP+0+TV59L80r/al9hU2DPPJuyQwHfijPb//4z28dQZwvHU2akQxNmp0+WQwNPl2akm7NmpefKQwHny2akg9OWsy/iCtcn+kMBN/nGvpfxjrCTC2alAyeWsQMnZqSTC5aw="),
-"format": 34896613399,
-"index_count": 855,
-"index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAYAAwAGAAcAAwAHAAQACAAEAAcABAAIAAkABAAJAAoACwAKAAkADAAKAAsADAALAA0ADQAOAAwADQALAA8ADQAQAA4AEAARAA4AEAASABEAEgATABEAEgAUABMAFAAVABMAFAAWABUAFgAXABUAFgAYABcAGQAXABgAGQAaABcAGgAZABsAGQAYABwACwAcAA8ACwAdABwAHQALAB4AHQAfABwAGQAcAB8AHQAgAB8AIAAZAB8AIAAhABkAGwAZACIAIQAiABkAIQAjACIAJAAiACMAIgAkACUAIgAlACYAJAAnACUAJAAoACcAKQAqACsAKQAsACoAKwAqAC0AKwAuAC8AKwAwAC4AKwAtADAALQAxADAAMQAtADIAMgAtADMANAAyADMANQAyADQANQA0ADYAMgA1ADcANQA2ADgAOAA2ADkAOAA5ADoAOgA5ADsAOgA7ADwAPAA7AD0APAA9AD4APgA9AD8APgA/AEAAMgA3AEEAQgBBADcAQQBCAEMAQgA3AEQAQgBEAEUAQABFAEQAQgBFAEYARwBAAD8ARwBFAEAARwA/AEgARgBFAEkARQBHAEkARgBJAEoASQBHAEsASgBJAEsASgBLAEwASwBNAEwATQBLAE4ATQBOAE8ATQBPAFAATQBQAFEAUgBTAFQAUgBVAFMAUgBUAFYAUgBWAFcAWABZAFoAWABbAFkAWABaAFwAWABcAF0AXgBfAGAAXgBhAF8AXgBgAGIAXgBiAGMAZABlAGYAZABnAGUAZABmAGgAZABoAGkAagBrAGwAagBsAG0AagBuAGsAagBtAG8AcABuAGoAcABqAG8AcABxAG4AcABvAHIAcwB0AHUAcwB2AHQAcwB1AHcAcwB3AHgAeQB6AHsAeQB7AHwAeQB9AHoAeQB8AH4AfwB9AHkAfwB5AH4AfwCAAH0AfwB+AIEAggCDAIQAggCFAIMAhACDAIYAggCEAIcAggCHAIgAhACJAIcAhACGAIoAhACKAIkAigCGAIsAigCMAIkAigCLAI0AigCNAIwAjQCLAI4AjQCPAIwAjQCOAJAAjQCQAI8AkQCSAJMAkQCUAJIAkQCTAJUAkQCVAJYAlwCYAJkAlwCaAJgAlwCZAJsAlwCbAJwAnQCeAJ8AnQCgAJ4AnQCfAKEAnQChAKIAowCkAKUAowCmAKQAowClAKcAowCnAKgAqQCqAKsAqQCsAKoAqQCrAK0AqQCtAK4ArwCwALEArwCyALAArwCxALMArwCzALQAtQC2ALcAtQC4ALYAtQC3ALkAtQC5ALoAuwC8AL0AuwC+ALwAuwC9AL8AuwC/AMAAwQDCAMMAwQDEAMIAwQDDAMUAwQDFAMYAxwDIAMkAxwDKAMgAxwDJAMsAxwDLAMwAzQDOAM8AzQDQAM4AzQDPANEAzQDRANIA0wDUANUA0wDWANQA0wDVANcA0wDXANgA2QDaANsA2QDcANoA2QDbAN0A2QDdAN4A3wDgAOEA3wDiAOAA3wDhAOMA3wDjAOQA5QDmAOcA5QDoAOYA5QDnAOkA5QDpAOoA6wDsAO0A6wDuAOwA7wDwAPEA7wDyAPAA7wDxAPMA7wDzAPQA9QD2APcA9QD4APYA9QD3APkA9QD5APoA+wD8AP0A+wD+APwA+wD9AP8A+wD/AAABAQECAQMBAQEEAQIBAQEDAQUBAQEFAQYBBwEIAQkBBwEKAQgBBwEJAQsBBwELAQwBDQEOAQ8BDQEQAQ4BDQEPAREBDQERARIBEwEUARUBEwEWARQBEwEVARcBEwEXARgBGQEaARsBGQEcARoBGQEbAR0BGQEdAR4BHwEgASEBHwEiASABHwEhASMBHwEjASQBJQEmAScBJQEoASYBJQEnASkBJQEpASoBKwEsAS0BKwEuASwBLgEvASwBLgEwATEBLgExATIBLgEyAS8BMwEvATIBLwEzATQBLwE0ATUBNgE1ATQBNwE1ATYBNwE2ATgBOAE5ATcBOAE2AToBOAE7ATkBOwE8ATkBOwE9ATwBPQE+ATwBPQE/AT4BPwFAAT4BPwFBAUABQQFCAUABQQFDAUIBRAFCAUMBRAFFAUIBRQFEAUYBRAFDAUcBNgFHAToBNgFIAUcBSAE2AUkBSAFKAUcBRAFHAUoBSAFLAUoBSwFEAUoBSwFMAUQBRgFEAU0BTAFNAUQBTAFOAU0BTwFNAU4BTQFPAVABTQFQAVEBTwFSAVABTwFTAVIBVAFVAVYBVAFXAVUB"),
-"material": SubResource("StandardMaterial3D_sr3r7"),
-"name": "Material.001",
-"primitive": 3,
-"uv_scale": Vector4(1.9351053, 2.0648947, 0, 0),
-"vertex_count": 344,
-"vertex_data": PackedByteArray("/3+g9v///7//f8mosfn/v/9/yaj///+//3+g9rH5/7//f6aodO7/v/9///8H+P+//3///8Dv/7//f6D2dO7/v/9/oPYJo/+//3+24Amj/7//f6aoCaP/v/9/tuD6c/+//3+mqI+e/7//f6ao1YP/v/9//pwulv+//3+mqPpz/7//f/6cNYz/v/9/NJGdk/+//380kcaO/7//f35paIf/v/9/JnFKg/+//38CaSVV/7//f1pyQlf/v/9/U2ATSP+//3+GfsJM/7//f5etZyb/v/9/AAAkOf+//38AAAAA/7//f6aoT1P/v/9/oPZPU/+//3+g9vpz/7//f5etpDL/v/9/oPakMv+//3+g9mcm/7//f5etKhr/v/9/oPYqGv+//3/T7PgW/7//fyHR7w3/v/9/l61WAv+//3+i5EYD/7//f3Xuegb/vwAAoPb//wAAAADJqLH5AAAAAKD2sfkAAAAAyaj//wAAAACmqHTuAAAAAP//wO8AAAAA//8H+AAAAACg9nTuAAAAAKD2CaMAAAAAtuAJowAAAACmqAmjAAAAAKaoj54AAAAApqjVgwAAAAD+nC6WAAAAAKao+nMAAAAA/pw1jAAAAAA0kZ2TAAAAADSRxo4AAAAAfmlohwAAAAAmcUqDAAAAAAJpJVUAAAAAWnJCVwAAAABTYBNIAAAAAIZ+wkwAAAAAtuD6cwAAAACg9k9TAAAAAKD2+nMAAAAApqhPUwAAAACXraQyAAAAAKD2pDIAAAAAAAAAAAAAAAAAACQ5AAAAAJetZyYAAAAAoPZnJgAAAACXrSoaAAAAAKD2KhoAAAAA0+z4FgAAAACXrVYCAAAAACHR7w1pAQAAouRGAwAAAAB17noGAAD/f8mo//8AgAAAoPb//wCA/3+g9v//AIAAAMmo//8AgP//oPb//wCA///JqP//AID/f8mosfn/PwAAyaj///8//3/JqP///z8AAMmosfn/P///yaj///8////JqLH5/z//f6D2////vwAAoPax+f+//3+g9rH5/78AAKD2////v///oPax+f+///+g9v///7//f6aodO5RQAAAyaix+VFA/3/JqLH5UUAAAKaodO5RQP//yaix+VFA//+mqHTuUUD/f6aoCaP/PwAApqh07v8//3+mqHTu/z///6aodO7/PwAApqgJo/8///+mqAmj/z//f6aoj57/PwAApqiPnv8///+mqI+e/z//f6D2dO7/vwAAoPYJo/+//3+g9gmj/78AAKD2dO7/v///oPYJo/+///+g9nTu/7//f6ao+nP/PwAApqjVg/8//3+mqNWD/z///6ao1YP/PwAApqj6c/8///+mqPpz/z//f6aoT1P/PwAApqhPU/8///+mqE9T/z//f6D2+nP/vwAAoPZPU/+//3+g9k9T/78AAKD2+nP/vwAAoPakMv+///+g9k9T/7///6D2+nP/v///oPakMv+//3+g9qQy/78AAKD2Zyb/v///oPZnJv+//3+g9mcm/78AAKD2Khr/v///oPYqGv+//3+g9ioa/7//f5etVgL/PwAAl60qGv8//3+XrSoa/z8AAJetVgL/P///l60qGv8///+XrVYC/z//fyHR7w0mEwAAl61WAiYT/3+XrVYCJhMAACHR7w0mE///l61WAiYT//8h0e8NJhP/f4Z+wkyuiQAApqhPU66J/3+mqE9TrokAAIZ+wkyuif//pqhPU66J//+GfsJMron/fwAAAAD/PwAAAAAkOf8//38AACQ5/z8AAAAAAAD/P///AAAkOf8///8AAAAA/z//f5etKhpkCQAAAAAAAGQJ/38AAAAAZAkAAJetKhpkCf//AAAAAGQJ//+XrSoaZAn/fwAAJDmmiQAAU2ATSKaJ/39TYBNIpokAAAAAJDmmif//U2ATSKaJ//8AACQ5pon/fyZxSoNIvwAAWnJCV0i//39ackJXSL8AACZxSoNIv///WnJCV0i///8mcUqDSL//fwJpJVVAQAAAfmloh0BA/39+aWiHQEAAAAJpJVVAQP//fmloh0BA//8CaSVVQED/f6ao1YNKIgAA/pw1jEoi/3/+nDWMSiIAAKao1YNKIv///pw1jEoi//+mqNWDSiL/fzSRnZNRjQAA/pwullGN/3/+nC6WUY0AADSRnZNRjf///pwullGN//80kZ2TUY3/fzSRxo67FAAAJnFKg7sU/38mcUqDuxQAADSRxo67FP//JnFKg7sU//80kcaOuxT/f35paIcwkgAANJGdkzCS/380kZ2TMJIAAH5paIcwkv//NJGdkzCS//9+aWiHMJL/f/6cNYxRDQAANJHGjlEN/380kcaOUQ0AAP6cNYxRDf//NJHGjlEN///+nDWMUQ3/f/6cLpa0XQAApqiPnrRd/3+mqI+etF0AAP6cLpa0Xf//pqiPnrRd///+nC6WtF3/f1NgE0huUAAAAmklVW5Q/38CaSVVblAAAFNgE0huUP//AmklVW5Q//9TYBNIblD/f6D2KhonEwAA0+z4FicT/3/T7PgWJxMAAKD2KhonE/9/WnJCV+2lAACGfsJM7aX/f4Z+wkztpQAAWnJCV+2l//+GfsJM7aX//1pyQlftpf9/de56BicTAACi5EYDJxP/f6LkRgMnEwAAde56BicT//+i5EYDJxP//3XuegYnE/9/0+z4Fme9AAB17noGZ73/f3XuegZnvQAA0+z4Fme9//917noGZ73//9Ps+BZnvf9/ouRGA7scAAAh0e8Nuxz/fyHR7w27HAAAouRGA7sc//8h0e8Nuxz//6LkRgO7HP9/oPYJowAAAAC24AmjAAD/f7bgCaMAAAAAoPYJowAA//+24AmjAAD//6D2CaMAAP9/tuD6cwCAAACg9vpzAID/f6D2+nMAgAAAtuD6cwCA//+g9vpzAID//7bg+nMAgP9/tuAJo/+/AAC24Ppz/7//f7bg+nP/vwAAtuAJo/+///+24Ppz/7///7bgCaP/v/9///8H+P+/AAD//8Dv/7//f///wO//vwAA//8H+P+//////8Dv/7//////B/j/v/9/oPax+f2KAAD//wf4/Yr/f///B/j9igAAoPax+f2K/////wf4/Yr//6D2sfn9iv9////A76kIAACg9nTuqQj/f6D2dO6pCAAA///A76kI//+g9nTuqQj/////wO+pCP//oPb///+////JqLH5/7///8mo////v///oPax+f+///+mqHTu/7//////B/j/v//////A7/+///+g9nTu/7///6D2CaP/v///tuAJo/+///+mqAmj/7///7bg+nP/v///pqiPnv+///+mqNWD/7////6cLpb/v///pqj6c/+////+nDWM/7///zSRnZP/v///NJHGjv+///9+aWiH/7///yZxSoP/v///AmklVf+///9ackJX/7///1NgE0j/v///hn7CTP+///+XrWcm/7///wAAJDn/v///AAAAAP+///+mqE9T/7///6D2T1P/v///oPb6c/+///+XraQy/7///6D2pDL/v///oPZnJv+///+XrSoa/7///6D2Khr/v///0+z4Fv+///8h0e8N/7///5etVgL/v///ouRGA/+///917noG/7//f6D2KhomE///0+z4FiYT//+g9ioaJhP/f9Ps+BYmE/9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//3//P/9//z//f/8//39y/sXA/z//f/8//3//f////3////9/////f////3////9///8AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/////f////3////9/////f////3////9//3////9/////f////3////9/////f///////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9//38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD///9/////f////3////9/")
-}]
-blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_dy244")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0u84n"]
 radius = 0.63
@@ -172,185 +131,188 @@ mesh = SubResource("CapsuleMesh_0kmp4")
 [node name="BaseCharacter" parent="Model" index="1" instance=ExtResource("3_esmjy")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="Camera" parent="Model/BaseCharacter" index="0"]
+[node name="Center" parent="Model/BaseCharacter" index="0"]
+visible = false
+
+[node name="Camera" parent="Model/BaseCharacter" index="1"]
 transform = Transform3D(-1, 0, -3.8941437e-07, 0, 1, 0, 3.8941437e-07, 0, -1, 0, 1.8, 0.1)
 
 [node name="Skeleton3D" parent="Model/BaseCharacter/rig" index="0"]
-bones/1/position = Vector3(0, 0.05519998, 0.9998038)
+bones/1/position = Vector3(0, 0.055199996, 0.99103194)
 bones/1/rotation = Quaternion(0.7904554, 0, 0, 0.6125197)
 bones/2/rotation = Quaternion(-0.06447636, 0, 0, 0.99791926)
 bones/3/rotation = Quaternion(-0.07746411, 0, 0, 0.99699515)
 bones/3/scale = Vector3(1, 1.0000004, 1.0000002)
 bones/4/rotation = Quaternion(0.0016272486, 0, 0, 0.9999987)
 bones/4/scale = Vector3(1, 0.9999996, 0.99999976)
-bones/5/rotation = Quaternion(0.20173766, 0, 0, 0.9794396)
-bones/6/rotation = Quaternion(-0.094857275, 0, 0, 0.99549097)
-bones/7/rotation = Quaternion(-0.09371203, 0, 0, 0.9955994)
-bones/9/rotation = Quaternion(-0.38720092, 0.660745, -0.49240294, 0.41355884)
-bones/9/scale = Vector3(1.0055164, 0.98905796, 1.0055164)
-bones/10/rotation = Quaternion(-3.0061482e-09, 0.046342246, 2.1638213e-09, 0.9989257)
-bones/11/rotation = Quaternion(0.1879163, 0.046286356, -0.008762238, 0.98105466)
-bones/11/scale = Vector3(1.0012594, 0.99524385, 1.003581)
-bones/12/rotation = Quaternion(4.295657e-08, 0.011426933, -4.1751704e-08, 0.9999348)
-bones/13/rotation = Quaternion(-0.0624294, 0.011022011, -0.025881298, 0.9976529)
-bones/13/scale = Vector3(0.9933146, 1.0132523, 0.9935787)
-bones/15/position = Vector3(-0.025791006, 0.15203236, -0.014762825)
-bones/15/rotation = Quaternion(0.20727979, -0.5498844, 0.70306396, 0.4004539)
-bones/15/scale = Vector3(1.0195682, 0.9619827, 1.0195681)
-bones/16/rotation = Quaternion(8.158279e-08, 0.112596974, -4.5337853e-08, 0.9936408)
-bones/17/rotation = Quaternion(0.82045203, 0.11128545, -0.17035566, 0.534278)
-bones/17/scale = Vector3(1.0051075, 0.9432964, 1.0556988)
-bones/18/rotation = Quaternion(-1.1133404e-07, -0.06853786, -1.6435175e-08, 0.99764854)
-bones/19/rotation = Quaternion(-0.55476004, -0.0638288, 0.15489136, 0.8149698)
-bones/19/scale = Vector3(0.9836116, 0.9849183, 1.0342878)
-bones/22/position = Vector3(0.24811256, 0.06436078, 1.1763173)
-bones/22/rotation = Quaternion(0.30898604, 0.79821074, 0.11496633, 0.5041527)
-bones/22/scale = Vector3(1, 26.512487, 1)
-bones/23/position = Vector3(-0.25384244, 0.056070484, 1.1749505)
-bones/23/rotation = Quaternion(-0.3049583, 0.79732347, 0.11550713, -0.50787187)
-bones/23/scale = Vector3(1, 26.661325, 0.99999994)
-bones/24/position = Vector3(0.117984414, -0.051962826, 0.5337916)
-bones/24/rotation = Quaternion(0.9999516, -1.9071158e-06, -0.00011499969, -0.009844079)
-bones/24/scale = Vector3(1, 22.161112, 1)
-bones/25/position = Vector3(-0.11797312, -0.051962823, 0.5337916)
-bones/25/rotation = Quaternion(0.9999516, -1.9206564e-06, -0.000115222196, -0.009844079)
-bones/25/scale = Vector3(1, 22.161112, 1)
-bones/27/position = Vector3(0, 0, -0.010096189)
+bones/5/rotation = Quaternion(0.20173799, 0, 0, 0.9794396)
+bones/6/rotation = Quaternion(-0.09485776, 0, 0, 0.99549085)
+bones/7/rotation = Quaternion(-0.09371185, 0, 0, 0.9955994)
+bones/9/rotation = Quaternion(-0.40947044, 0.6682598, -0.45421103, 0.4236215)
+bones/9/scale = Vector3(1.0075316, 0.9851052, 1.0075318)
+bones/10/rotation = Quaternion(2.4030049e-08, 0.059953287, -1.7041417e-08, 0.99820125)
+bones/11/rotation = Quaternion(0.26418564, 0.05983529, -0.016212285, 0.96247756)
+bones/11/scale = Vector3(1.0017446, 0.99077916, 1.0077461)
+bones/12/rotation = Quaternion(5.267266e-08, 0.010865674, -3.2805083e-08, 0.99994105)
+bones/13/rotation = Quaternion(-0.105465166, 0.010494511, -0.028788945, 0.99395084)
+bones/13/scale = Vector3(0.9909109, 1.0173504, 0.9920295)
+bones/15/position = Vector3(-0.04505014, 0.17719243, -0.019528387)
+bones/15/rotation = Quaternion(0.12434779, -0.57582706, 0.6982985, 0.40662017)
+bones/15/scale = Vector3(1.0196052, 0.96191305, 1.0196054)
+bones/16/rotation = Quaternion(-1.4790213e-07, 0.030238954, 2.538031e-07, 0.9995427)
+bones/17/rotation = Quaternion(0.88952976, 0.029543336, -0.058639716, 0.45213434)
+bones/17/scale = Vector3(1.0050812, 0.95370805, 1.0448418)
+bones/18/rotation = Quaternion(-3.8702773e-08, 0.098357946, 1.536238e-07, 0.9951511)
+bones/19/rotation = Quaternion(-0.49812412, 0.0940583, -0.116025254, 0.85414493)
+bones/19/scale = Vector3(0.9821719, 0.9935074, 1.0274233)
+bones/22/position = Vector3(0.24884754, 0.092147246, 1.1760888)
+bones/22/rotation = Quaternion(0.31537807, 0.79868495, 0.116070315, 0.49916607)
+bones/22/scale = Vector3(0.9999999, 25.740532, 0.9999999)
+bones/23/position = Vector3(-0.25465044, 0.08572605, 1.1748209)
+bones/23/rotation = Quaternion(-0.31164175, 0.7977809, 0.116825044, -0.5027694)
+bones/23/scale = Vector3(0.99999994, 25.840584, 0.99999994)
+bones/24/position = Vector3(0.117988855, -0.07022978, 0.5287049)
+bones/24/rotation = Quaternion(0.9999299, -3.973655e-06, -0.00011269403, -0.01184742)
+bones/24/scale = Vector3(1, 21.725828, 1)
+bones/25/position = Vector3(-0.117968656, -0.070229776, 0.5287049)
+bones/25/rotation = Quaternion(0.9999299, -3.994661e-06, -0.00011290862, -0.011847421)
+bones/25/scale = Vector3(1, 21.725828, 1)
+bones/27/position = Vector3(0, 0, -0.01886806)
 bones/31/rotation = Quaternion(0.74931765, 0, 0, 0.66221076)
 bones/32/rotation = Quaternion(-0.74931765, 0, 0, 0.66221076)
-bones/40/rotation = Quaternion(0.9826579, 5.290449e-06, -3.869568e-07, 0.18542773)
-bones/40/scale = Vector3(0.9965261, 0.99652624, 0.99652606)
-bones/41/rotation = Quaternion(0.15457435, -0.00011790619, -6.309605e-06, 0.9879812)
-bones/41/scale = Vector3(0.9991688, 0.99916875, 0.99916875)
-bones/42/rotation = Quaternion(-0.5952478, 9.974182e-05, 6.472766e-05, 0.8035422)
-bones/42/scale = Vector3(1.0044906, 1.0044907, 1.0044903)
-bones/43/position = Vector3(-6.2384395e-09, 0.20491734, -1.3330694e-05)
+bones/40/rotation = Quaternion(0.9792785, 9.51046e-06, -6.9408964e-07, 0.2025181)
+bones/40/scale = Vector3(0.9944208, 0.9944207, 0.99442077)
+bones/41/rotation = Quaternion(0.1941784, -0.000118064534, -1.5632066e-06, 0.9809663)
+bones/41/scale = Vector3(0.99867576, 0.99867564, 0.9986755)
+bones/42/rotation = Quaternion(-0.6134137, 0.00010158203, 6.275052e-05, 0.7897618)
+bones/42/scale = Vector3(1.0072291, 1.007229, 1.0072286)
+bones/43/position = Vector3(1.6098836e-08, 0.20492387, -1.1421826e-07)
 bones/43/rotation = Quaternion(1.4322548e-07, 0.97070044, -0.24029283, 5.7858296e-07)
-bones/47/scale = Vector3(1.0044812, 1.0044814, 1.0044816)
-bones/49/rotation = Quaternion(3.3524287e-08, 5.3498217e-05, 1.3046686e-09, 1)
-bones/49/scale = Vector3(1.0044812, 1.0044812, 1.0044813)
-bones/51/scale = Vector3(1.0034863, 1.003486, 1.0034864)
-bones/52/rotation = Quaternion(3.5947403e-07, -5.8882793e-05, -7.992801e-09, 1)
-bones/52/scale = Vector3(1.0034863, 1.0034858, 1.0034863)
-bones/54/rotation = Quaternion(0.9826579, 5.3141243e-06, -3.8838627e-07, 0.18542773)
-bones/54/scale = Vector3(0.9965261, 0.99652624, 0.99652606)
-bones/55/rotation = Quaternion(0.15457435, -0.00011814425, -6.322343e-06, 0.9879812)
-bones/55/scale = Vector3(0.9991688, 0.99916875, 0.99916875)
-bones/56/rotation = Quaternion(-0.5952479, 9.8978344e-05, 6.5580796e-05, 0.8035421)
-bones/56/scale = Vector3(1.0044906, 1.0044907, 1.0044903)
-bones/57/position = Vector3(6.2598486e-09, 0.20491734, -1.33307685e-05)
+bones/47/scale = Vector3(1.0072291, 1.007229, 1.007229)
+bones/49/rotation = Quaternion(2.980096e-08, 5.3478398e-05, -1.1676736e-08, 1)
+bones/49/scale = Vector3(1.0072291, 1.0072287, 1.0072286)
+bones/51/scale = Vector3(1.0056105, 1.0056106, 1.0056107)
+bones/52/rotation = Quaternion(1.1920926e-07, -5.887602e-05, 2.132939e-09, 1)
+bones/52/scale = Vector3(1.0056105, 1.0056103, 1.0056106)
+bones/54/rotation = Quaternion(0.9792785, 9.544213e-06, -6.9596996e-07, 0.2025181)
+bones/54/scale = Vector3(0.9944208, 0.9944207, 0.99442077)
+bones/55/rotation = Quaternion(0.1941784, -0.00011830293, -1.5663626e-06, 0.9809663)
+bones/55/scale = Vector3(0.99867576, 0.99867564, 0.9986755)
+bones/56/rotation = Quaternion(-0.6134137, 0.0001008385, 6.362238e-05, 0.7897618)
+bones/56/scale = Vector3(1.0072291, 1.007229, 1.0072286)
+bones/57/position = Vector3(-1.6077426e-08, 0.20492387, -1.1429294e-07)
 bones/57/rotation = Quaternion(-1.4322552e-07, 0.97070044, -0.24029283, -5.7858296e-07)
-bones/61/scale = Vector3(1.0044812, 1.0044814, 1.0044816)
-bones/63/rotation = Quaternion(1.1174606e-08, 5.3068932e-05, 8.964957e-09, 1)
-bones/63/scale = Vector3(1.0044906, 1.0044906, 1.0044907)
-bones/65/scale = Vector3(1.0034863, 1.003486, 1.0034864)
-bones/66/rotation = Quaternion(3.5947406e-07, -5.9002457e-05, -6.958729e-11, 1)
-bones/66/scale = Vector3(1.0034863, 1.0034858, 1.0034863)
-bones/76/rotation = Quaternion(-0.701857, 5.5110863e-09, 5.5932188e-09, 0.71231794)
-bones/77/rotation = Quaternion(-0.06775884, 2.4245296e-07, -5.3021568e-06, 0.9977017)
-bones/77/scale = Vector3(0.9965261, 0.99652654, 0.9965262)
-bones/78/rotation = Quaternion(0.15457432, -0.00011790617, -6.3096018e-06, 0.9879812)
-bones/78/scale = Vector3(0.9991688, 0.9991688, 0.99916875)
-bones/79/rotation = Quaternion(0.9826575, 5.2027353e-06, -8.6318005e-07, 0.18543038)
-bones/81/rotation = Quaternion(0.9826676, 5.191074e-06, -8.6124504e-07, 0.18537678)
-bones/81/scale = Vector3(1.001731, 0.99654776, 1.001731)
-bones/82/rotation = Quaternion(-1.1175871e-08, -1.9023827e-09, -6.9456654e-09, 1)
-bones/83/rotation = Quaternion(0.15458246, -0.00011723219, -6.418122e-06, 0.9879799)
-bones/83/scale = Vector3(1.0004928, 0.99848986, 1.0010252)
-bones/84/rotation = Quaternion(5.5879525e-08, 1.9027322e-08, 1.2890335e-09, 1)
-bones/85/rotation = Quaternion(-0.5956242, 9.824209e-05, 6.368341e-05, 0.8032633)
-bones/85/scale = Vector3(0.9979893, 0.99787706, 1.0041543)
-bones/86/rotation = Quaternion(1.7845737e-07, 0.9707083, -0.24026115, 5.696774e-07)
-bones/86/scale = Vector3(0.99998415, 1.0000215, 0.999995)
+bones/61/scale = Vector3(1.0072291, 1.007229, 1.007229)
+bones/63/rotation = Quaternion(3.7254292e-08, 5.3049873e-05, 1.1713746e-08, 1)
+bones/63/scale = Vector3(1.0072291, 1.0072289, 1.0072287)
+bones/65/scale = Vector3(1.0056105, 1.0056106, 1.0056107)
+bones/66/rotation = Quaternion(1.1920926e-07, -5.899575e-05, -2.1936286e-09, 1)
+bones/66/scale = Vector3(1.0056105, 1.0056106, 1.0056106)
+bones/76/rotation = Quaternion(-0.7018575, 0, 0, 0.7123174)
+bones/77/rotation = Quaternion(-0.08521746, 4.3683787e-07, -9.5337555e-06, 0.99636245)
+bones/77/scale = Vector3(0.9944208, 0.9944209, 0.9944209)
+bones/78/rotation = Quaternion(0.1941784, -0.00011806453, -1.5632057e-06, 0.9809663)
+bones/78/scale = Vector3(0.99867576, 0.9986756, 0.99867564)
+bones/79/rotation = Quaternion(0.97927856, 9.335118e-06, -1.548779e-06, 0.20251814)
+bones/81/rotation = Quaternion(0.9792785, 9.33512e-06, -1.5487793e-06, 0.2025181)
+bones/81/scale = Vector3(1.0026152, 0.9947901, 1.0026151)
+bones/82/rotation = Quaternion(-1.11758744e-08, -5.6249216e-10, 2.0654716e-15, 1)
+bones/83/rotation = Quaternion(0.19418259, -0.000116905, -1.7859682e-06, 0.98096544)
+bones/83/scale = Vector3(1.0007807, 0.99731296, 1.0019283)
+bones/84/rotation = Quaternion(1.1174492e-08, -7.9830925e-10, -1.1670258e-08, 1)
+bones/85/rotation = Quaternion(-0.61374485, 9.8952e-05, 6.0738068e-05, 0.78950447)
+bones/85/scale = Vector3(0.9966314, 0.9966778, 1.0067384)
+bones/86/rotation = Quaternion(1.0788998e-07, 0.97070056, -0.24029243, 5.871465e-07)
+bones/86/scale = Vector3(1, 1.0000001, 1.0000005)
 bones/93/rotation = Quaternion(-1.5373172e-07, 0.97070044, -0.24029285, -5.361513e-07)
-bones/95/rotation = Quaternion(-0.701857, -5.5110863e-09, -5.5932188e-09, 0.71231794)
-bones/96/rotation = Quaternion(-0.06775884, 2.4292805e-07, -5.3123044e-06, 0.9977017)
-bones/96/scale = Vector3(0.9965261, 0.99652654, 0.9965262)
-bones/97/rotation = Quaternion(0.15457432, -0.00011814424, -6.3223442e-06, 0.9879812)
-bones/97/scale = Vector3(0.9991688, 0.9991688, 0.99916875)
-bones/98/rotation = Quaternion(0.9826575, 5.222329e-06, -8.664308e-07, 0.18543038)
-bones/100/rotation = Quaternion(0.9826676, 5.211139e-06, -8.645741e-07, 0.18537678)
-bones/100/scale = Vector3(1.001731, 0.99654776, 1.001731)
-bones/101/rotation = Quaternion(-1.1175871e-08, -1.9621984e-09, 9.745173e-15, 1)
-bones/102/rotation = Quaternion(0.15458246, -0.00011746795, -6.430629e-06, 0.9879799)
-bones/102/scale = Vector3(1.0004928, 0.99849, 1.0010252)
-bones/103/rotation = Quaternion(4.470455e-08, 1.9538454e-08, 8.954002e-09, 1)
-bones/104/rotation = Quaternion(-0.5956223, 9.7470125e-05, 6.451062e-05, 0.8032647)
-bones/104/scale = Vector3(0.9979892, 0.9978768, 1.0041543)
-bones/105/rotation = Quaternion(-1.7854302e-07, 0.9707083, -0.24026115, -5.700235e-07)
-bones/105/scale = Vector3(0.99998415, 1.0000215, 0.999995)
-bones/112/position = Vector3(0, 1.6911052e-08, -1.5798943e-08)
+bones/95/rotation = Quaternion(-0.7018575, 0, 0, 0.7123174)
+bones/96/rotation = Quaternion(-0.08521746, 4.376018e-07, -9.55153e-06, 0.99636245)
+bones/96/scale = Vector3(0.9944208, 0.9944209, 0.9944209)
+bones/97/rotation = Quaternion(0.1941784, -0.00011830293, -1.5663653e-06, 0.9809663)
+bones/97/scale = Vector3(0.99867576, 0.9986756, 0.99867564)
+bones/98/rotation = Quaternion(0.97927856, 9.368326e-06, -1.5542885e-06, 0.20251814)
+bones/100/rotation = Quaternion(0.9792785, 9.368325e-06, -1.5542881e-06, 0.2025181)
+bones/100/scale = Vector3(1.0026152, 0.9947901, 1.0026151)
+bones/101/rotation = Quaternion(-1.11758744e-08, 7.3415096e-10, -2.4053893e-15, 1)
+bones/102/rotation = Quaternion(0.19418259, -0.000117140626, -1.7952641e-06, 0.98096544)
+bones/102/scale = Vector3(1.0007807, 0.99731296, 1.0019283)
+bones/103/rotation = Quaternion(6.333131e-08, 4.866937e-10, 1.1717017e-08, 1)
+bones/104/rotation = Quaternion(-0.6137449, 9.821651e-05, 6.163658e-05, 0.7895044)
+bones/104/scale = Vector3(0.9966314, 0.9966777, 1.0067383)
+bones/105/rotation = Quaternion(-1.0797568e-07, 0.97070056, -0.24029243, -5.874926e-07)
+bones/105/scale = Vector3(1, 1.0000001, 1.0000005)
+bones/112/position = Vector3(0, 2.0363562e-08, 6.284546e-09)
 bones/114/rotation = Quaternion(-0.6957685, 0, 0, 0.7182661)
-bones/116/rotation = Quaternion(0.20173769, 0, 0, 0.9794397)
-bones/117/rotation = Quaternion(-0.09485729, 0, 0, 0.99549097)
-bones/118/rotation = Quaternion(-0.093712024, 0, 0, 0.9955994)
+bones/116/rotation = Quaternion(0.20173799, 0, 0, 0.9794396)
+bones/117/rotation = Quaternion(-0.094857745, 0, 0, 0.99549085)
+bones/118/rotation = Quaternion(-0.09371185, 0, 0, 0.9955994)
 bones/121/rotation = Quaternion(-0.80043954, 0, 0, 0.59941345)
 bones/125/rotation = Quaternion(-3.1292439e-07, 0, 0, 1)
-bones/130/rotation = Quaternion(-0.33950844, 0.6964904, -0.52642655, 0.35001466)
-bones/130/scale = Vector3(0.9890451, 0.9890452, 0.9890446)
-bones/131/rotation = Quaternion(0.18810478, 5.8488416e-07, -1.0682422e-07, 0.98214906)
-bones/131/scale = Vector3(0.99749285, 0.99749273, 0.9974929)
-bones/132/rotation = Quaternion(-0.06270444, 0.022094326, -0.025159802, 0.9974704)
-bones/132/scale = Vector3(1.0136403, 1.0136399, 1.0136405)
-bones/135/scale = Vector3(1.0136402, 1.0136399, 1.0136404)
-bones/137/rotation = Quaternion(-2.2043336e-08, 0.011372826, -3.259241e-08, 0.9999353)
-bones/137/scale = Vector3(1.0136408, 1.0136402, 1.0136406)
-bones/139/scale = Vector3(1.0110766, 1.0110762, 1.0110769)
-bones/140/rotation = Quaternion(7.87942e-08, -0.047186755, 2.5915986e-08, 0.9988861)
-bones/140/scale = Vector3(1.0110769, 1.0110765, 1.0110768)
-bones/148/rotation = Quaternion(0.052947383, 0.716821, -0.69413674, 0.039224815)
-bones/149/rotation = Quaternion(-0.084677935, 0.0019147644, 0.00016280836, 0.99640656)
-bones/149/scale = Vector3(0.9890451, 0.98904544, 0.9890448)
-bones/150/rotation = Quaternion(0.1881048, 5.842572e-07, -1.0779091e-07, 0.98214906)
-bones/150/scale = Vector3(0.99749285, 0.99749273, 0.99749285)
-bones/151/rotation = Quaternion(-0.38720098, 0.6607451, -0.49240297, 0.41355866)
-bones/154/position = Vector3(-0.045050163, 0.17719248, -0.019528583)
-bones/154/rotation = Quaternion(-0.3315475, -0.69310015, 0.5307731, 0.35772672)
-bones/154/scale = Vector3(0.99039626, 0.99039626, 0.9903958)
-bones/155/rotation = Quaternion(0.16537212, -5.856854e-07, 1.0278776e-07, 0.9862313)
-bones/155/scale = Vector3(0.9977971, 0.99779713, 0.9977972)
-bones/156/rotation = Quaternion(-0.047347445, -0.016805017, 0.07505034, 0.9959133)
-bones/156/scale = Vector3(1.0119344, 1.0119344, 1.0119346)
-bones/159/scale = Vector3(1.0119343, 1.0119343, 1.0119346)
-bones/161/rotation = Quaternion(-7.524252e-08, -0.008420033, 7.241052e-08, 0.99996465)
-bones/161/scale = Vector3(1.0119346, 1.0119345, 1.0119348)
-bones/163/scale = Vector3(1.009697, 1.0096971, 1.0096976)
-bones/164/rotation = Quaternion(4.2126135e-07, 0.042145483, -1.0862646e-08, 0.99911153)
-bones/164/scale = Vector3(1.009697, 1.0096968, 1.0096973)
-bones/172/rotation = Quaternion(-0.05810415, 0.71648854, -0.69378614, -0.043920174)
-bones/173/position = Vector3(3.445406e-08, 3.4933097e-07, 4.842161e-09)
-bones/173/rotation = Quaternion(-0.074399814, -0.0019163415, -0.00014306634, 0.99722666)
-bones/173/scale = Vector3(0.9903963, 0.9903965, 0.9903959)
-bones/174/rotation = Quaternion(0.1653721, -5.8573124e-07, 1.0436652e-07, 0.98623127)
-bones/174/scale = Vector3(0.9977971, 0.99779713, 0.9977973)
-bones/175/position = Vector3(-0.04505015, 0.17719248, -0.019528726)
-bones/175/rotation = Quaternion(-0.3747894, -0.6607407, 0.50116897, 0.41446888)
+bones/130/rotation = Quaternion(-0.35099193, 0.71495414, -0.50077915, 0.33891818)
+bones/130/scale = Vector3(0.9850868, 0.9850866, 0.9850864)
+bones/131/rotation = Quaternion(0.2646616, 5.732064e-07, -1.5913405e-07, 0.96434134)
+bones/131/scale = Vector3(0.9965404, 0.9965404, 0.99654037)
+bones/132/rotation = Quaternion(-0.10573042, 0.020964747, -0.0276042, 0.99379057)
+bones/132/scale = Vector3(1.0187263, 1.0187266, 1.0187263)
+bones/135/scale = Vector3(1.0187262, 1.0187265, 1.0187263)
+bones/137/rotation = Quaternion(-1.0520201e-07, 0.010811567, -6.606014e-08, 0.99994165)
+bones/137/scale = Vector3(1.0187265, 1.0187265, 1.0187263)
+bones/139/scale = Vector3(1.0151392, 1.0151393, 1.0151396)
+bones/140/rotation = Quaternion(-1.4941712e-08, -0.062231082, 2.7463331e-08, 0.99806184)
+bones/140/scale = Vector3(1.0151393, 1.0151396, 1.0151396)
+bones/148/rotation = Quaternion(0.053811565, 0.71699476, -0.69381976, 0.040460616)
+bones/149/rotation = Quaternion(-0.11948248, 0.0019078999, 0.00022972895, 0.9928345)
+bones/149/scale = Vector3(0.98508656, 0.98508674, 0.9850864)
+bones/150/rotation = Quaternion(0.26466164, 5.7245984e-07, -1.6035987e-07, 0.9643414)
+bones/150/scale = Vector3(0.9965404, 0.9965404, 0.9965403)
+bones/151/rotation = Quaternion(-0.4094705, 0.6682598, -0.4542111, 0.42362154)
+bones/154/position = Vector3(-0.045050174, 0.17719248, -0.019528342)
+bones/154/rotation = Quaternion(-0.34394836, -0.71285254, 0.5036423, 0.34624448)
+bones/154/scale = Vector3(0.9859707, 0.9859705, 0.9859702)
+bones/155/rotation = Quaternion(0.24692401, -5.7275423e-07, 1.5061643e-07, 0.96903485)
+bones/155/scale = Vector3(0.99716586, 0.9971657, 0.99716574)
+bones/156/rotation = Quaternion(-0.09288633, -0.013302503, 0.07739527, 0.99257505)
+bones/156/scale = Vector3(1.0176032, 1.0176034, 1.0176029)
+bones/159/scale = Vector3(1.0176029, 1.0176033, 1.0176029)
+bones/161/rotation = Quaternion(-2.904193e-07, -0.0067572384, 2.2080745e-07, 0.99997723)
+bones/161/scale = Vector3(1.0176028, 1.0176035, 1.017603)
+bones/163/scale = Vector3(1.014255, 1.0142552, 1.0142554)
+bones/164/rotation = Quaternion(5.552012e-08, 0.057824004, -5.8120396e-08, 0.9983268)
+bones/164/scale = Vector3(1.0142552, 1.0142553, 1.0142553)
+bones/172/rotation = Quaternion(-0.05885832, 0.71660966, -0.69353133, -0.044950753)
+bones/173/position = Vector3(7.115026e-08, -1.8117439e-07, 5.8580447e-09)
+bones/173/rotation = Quaternion(-0.11138868, -0.0019097049, -0.00021419194, 0.9937751)
+bones/173/scale = Vector3(0.98597056, 0.98597056, 0.9859703)
+bones/174/rotation = Quaternion(0.24692404, -5.735445e-07, 1.5572212e-07, 0.96903485)
+bones/174/scale = Vector3(0.99716586, 0.9971657, 0.9971658)
+bones/175/position = Vector3(-0.045050174, 0.1771925, -0.019528368)
+bones/175/rotation = Quaternion(-0.39896792, -0.668874, 0.46127987, 0.425033)
 bones/177/rotation = Quaternion(-3.134689e-08, 0.6969363, 0.71713305, -3.046405e-08)
 bones/178/rotation = Quaternion(-3.134689e-08, 0.6969363, 0.71713305, -3.046405e-08)
 bones/179/rotation = Quaternion(-3.134689e-08, 0.6969363, 0.71713305, -3.046405e-08)
 bones/180/rotation = Quaternion(-3.134689e-08, 0.6969363, 0.71713305, -3.046405e-08)
-bones/185/position = Vector3(-0.6569769, 9.403884e-08, -0.7098139)
+bones/185/position = Vector3(-0.6569769, 9.261882e-08, -0.70217144)
 bones/185/rotation = Quaternion(0.056558516, 0.68913686, -0.7224176, 0.0021235943)
-bones/187/position = Vector3(0.5872935, 1.6213435, -0.7675778)
+bones/187/position = Vector3(0.5872935, 1.6125716, -0.7675778)
 bones/187/rotation = Quaternion(-0.7071068, 5.265561e-09, 5.244982e-09, 0.7071068)
 bones/188/rotation = Quaternion(0.9430096, 1.8951752e-08, 0.3302151, -0.041121416)
-bones/190/position = Vector3(0.6462507, 9.784125e-08, -0.7124954)
+bones/190/position = Vector3(0.6462507, 9.766051e-08, -0.7048529)
 bones/190/rotation = Quaternion(0.024993341, -0.6885736, 0.72419703, -0.027938157)
-bones/191/position = Vector3(3.585592e-08, 8.338247e-08, -1.7763568e-15)
-bones/192/position = Vector3(-0.5872935, 1.6213435, -0.7675778)
+bones/191/position = Vector3(4.02797e-08, 2.377783e-08, -1.7763568e-15)
+bones/192/position = Vector3(-0.5872935, 1.6125716, -0.7675778)
 bones/192/rotation = Quaternion(-0.7071068, -5.265561e-09, -5.244982e-09, 0.7071068)
 bones/193/rotation = Quaternion(0.9430096, -1.8951752e-08, -0.3302151, -0.041121416)
 bones/202/rotation = Quaternion(0.97070044, -1.4322596e-07, 5.785834e-07, -0.24029295)
 bones/203/position = Vector3(-2.8773668e-09, -5.587853e-09, -2.8846728e-08)
 bones/204/rotation = Quaternion(0.97070044, -1.4322558e-07, 5.785826e-07, 0.24029283)
 bones/205/rotation = Quaternion(3.979042e-13, -1.3481929e-33, 1, 0)
-bones/206/position = Vector3(0.11797878, 0.51556486, 0.97746295)
+bones/206/position = Vector3(0.11797878, 0.506793, 0.97746295)
 bones/206/rotation = Quaternion(-0.7071069, 0, 0, 0.70710665)
 bones/216/rotation = Quaternion(0.97070044, 1.4322596e-07, -5.785834e-07, -0.24029295)
 bones/217/position = Vector3(2.8773668e-09, -5.587853e-09, -2.8846728e-08)
 bones/218/rotation = Quaternion(0.97070044, 1.4322558e-07, -5.785826e-07, 0.24029283)
 bones/219/rotation = Quaternion(-3.979042e-13, -1.3481929e-33, 1, 0)
-bones/220/position = Vector3(-0.11797878, 0.51556486, 0.97746295)
+bones/220/position = Vector3(-0.11797878, 0.506793, 0.97746295)
 bones/220/rotation = Quaternion(-0.7071069, 0, 0, 0.70710665)
 
 [node name="Model_BaseCharacter_Armature_Skeleton3D#Head_IK" type="SkeletonIK3D" parent="Model/BaseCharacter/rig/Skeleton3D" index="15"]
@@ -362,26 +324,12 @@ target_node = NodePath("../../../../../Pitch/HeadTarget_IK")
 script = ExtResource("4_esmjy")
 
 [node name="HandAttachBone" type="BoneAttachment3D" parent="Model/BaseCharacter/rig/Skeleton3D" index="16"]
-transform = Transform3D(-0.74773735, -0.032034934, 0.6915226, 0.66338724, 0.004319221, 0.70716685, -0.029956609, 1.0147002, 0.006162554, -0.18350904, 1.6168305, 0.41717497)
+transform = Transform3D(-0.90589297, 0.34332502, 0.17481746, 0.26055813, 0.03221494, 0.9596646, 0.32575056, 0.9660913, -0.12409365, -0.1407682, 1.5270733, 0.35404986)
 bone_name = "DEF-hand.R"
 bone_idx = 19
 
-[node name="Plane2" type="MeshInstance3D" parent="Model/BaseCharacter/rig/Skeleton3D/HandAttachBone" index="0"]
-transform = Transform3D(-0.9963179, 0.083090976, -0.021144316, -0.018878987, 0.027955813, 0.9994308, 0.08363471, 0.9961499, -0.02628419, -0.028033018, 0.13892311, 0.02251777)
-visible = false
-mesh = SubResource("ArrayMesh_k1pxx")
-skeleton = NodePath("")
-
-[node name="Offset" type="Marker3D" parent="Model/BaseCharacter/rig/Skeleton3D/HandAttachBone" index="1"]
-transform = Transform3D(0.99423015, 0.063315585, -0.08849575, -0.07898255, -0.0036440752, -0.99840486, -0.064082555, 0.9961281, 0.011155877, -0.023375452, 0.1743781, 0.047257192)
-
-[node name="Ak" parent="Model/BaseCharacter/rig/Skeleton3D/HandAttachBone/Offset" index="0" instance=ExtResource("6_0kmp4")]
-transform = Transform3D(0.9999999, -2.3283064e-10, 0, 4.656613e-10, 0.9999999, 3.7252903e-09, -7.450581e-09, 0, 0.99999994, 0, 0, 0)
-sleeping = true
-freeze = true
-
-[node name="CollisionShape3D" parent="Model/BaseCharacter/rig/Skeleton3D/HandAttachBone/Offset/Ak" index="1"]
-disabled = true
+[node name="Offset" type="Marker3D" parent="Model/BaseCharacter/rig/Skeleton3D/HandAttachBone" index="0"]
+transform = Transform3D(0.9975051, -0.061084606, 0.009054159, 0.011067316, 0.033034634, -1.00177, 0.060826354, 0.99572647, 0.033790577, -0.025535762, 0.14533359, 0.037933588)
 
 [node name="Pitch" type="Node3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.9999998, 0, 0, 0, 0.9999998, 0, 1.221, 0)
@@ -443,4 +391,3 @@ shape = SubResource("BoxShape3D_825xp")
 debug_color = Color(0.06482514, 0.649749, 0.033422377, 0.41960785)
 
 [editable path="Model/BaseCharacter"]
-[editable path="Model/BaseCharacter/rig/Skeleton3D/HandAttachBone/Offset/Ak"]

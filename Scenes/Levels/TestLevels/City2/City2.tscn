@@ -1643,7 +1643,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87445, 0.212158)
 shape = SubResource("BoxShape3D_miyio")
 
 [node name="Player" parent="Players" index="0" instance=ExtResource("4_smmf0")]
-transform = Transform3D(0.5098078, 0, 0.86028904, 0, 1, 0, -0.86028904, 0, 0.5098078, -215.838, -0.0278438, 108.86827)
+transform = Transform3D(0.5098078, 0, 0.86028904, 0, 1, 0, -0.86028904, 0, 0.5098078, -215.838, 0, 108.868)
 
 [node name="Ak" parent="Items" index="0" instance=ExtResource("5_6as6a")]
 transform = Transform3D(0.7921086, -0.61038023, 0, 0.61038023, 0.7921086, 0, 0, 0, 1, -218.14166, 0.48455703, 107.30408)

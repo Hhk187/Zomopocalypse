@@ -32,6 +32,7 @@ func _toggle(value : bool):
 	if value:
 		linear_velocity = Vector3.ZERO
 		position = Vector3.ZERO
+		rotation = Vector3.ZERO
 	else:
 		rotation = Vector3(
 			randf() * PI,

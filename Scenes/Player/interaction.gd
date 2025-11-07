@@ -12,4 +12,3 @@ func pick_up_item():
 	
 	items[0].equipe()
 	hand_attach_bone.add_child(items[0])
-	
