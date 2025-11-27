@@ -12,6 +12,8 @@ const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 @onready var pitch: Node3D = $Pitch
 @onready var yaw: Node3D = $Pitch/Yaw
 
+@onready var head_target_ik: Marker3D = $HeadTarget_IK
+
 
 var equiped_weapon : BaseItem
 @onready var interaction_area: InteractionArea = $InteractionArea
@@ -26,8 +28,10 @@ var equiped_weapon : BaseItem
 		
 		is_third_person = value
 		if not is_third_person:
+			camera_spring_arm_3d.spring_length = 0
 			camera_spring_arm_3d.position = Vector3.ZERO
 		else:
+			camera_spring_arm_3d.spring_length = 1
 			camera_spring_arm_3d.position = THIRD_PERSON_POS
 
 
@@ -37,24 +41,19 @@ func toggle_pov() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	var input_dir := Input.get_vector("play_left", "play_right", "play_backward", "play_forward").normalized()
+	
 	if event.is_action_pressed("play_toggle_pov"):
 		toggle_pov()
 	
-	elif event.is_action_pressed('play_inspect'):
-		pass
+	if input_dir:
+		animation_tree.set("parameters/movements/locomotive/blend_position", input_dir)
+	else:
+		animation_tree.set("parameters/movements/locomotive/blend_position", Vector2.ZERO)
 	
-	elif event.is_action_pressed("play_pickup"):
-		interaction_area.pick_up_item()
-		animation_tree.set("parameters/OneShot/request", 1)
-	elif event.is_action_pressed("player_emote_1"):
-		if animation_tree.get("parameters/OneShot2/active"):
-			animation_tree.set("parameters/OneShot2/request", 2)
-		else:
-			animation_tree.set("parameters/OneShot2/request", 1)
-
-	elif event.is_action_pressed("play_fire"):
+	if event.is_action_pressed("play_fire"):
 		test_use_weapon()
-		
+	
 
 
 func test_use_weapon():
