@@ -1,6 +1,6 @@
 @tool
 extends Marker3D
-
+class_name HeadTargetIK
 
 const LOOKING_DICT = {
 	"u":{
