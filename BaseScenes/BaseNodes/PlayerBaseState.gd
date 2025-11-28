@@ -16,8 +16,11 @@ func input(event : InputEvent):
 	var player = entity as PlayerBaseEntity
 	if event is InputEventMouseMotion:
 		player.rotate_y(-(event.relative.x * 0.002))
+			
 		player.head_target_ik.look_slider = clamp(player.head_target_ik.look_slider + event.relative.y * 0.02, -10.0, 10.0)
-
+		player.right_hand_target_ik.look_slider = clamp(player.right_hand_target_ik.look_slider + event.relative.y * 0.02, -10.0, 10.0)
+		
+		
 		CameraPOV.sway2D(event.relative)
 
 

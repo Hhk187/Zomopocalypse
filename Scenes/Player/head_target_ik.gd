@@ -51,4 +51,5 @@ func _update_look_from_slider() -> void:
 	rotation = target_rot * (PI/180)
 
 func _physics_process(delta: float) -> void:
-	_update_look_from_slider()
+	#_update_look_from_slider()
+	pass

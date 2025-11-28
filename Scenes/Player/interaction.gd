@@ -1,7 +1,7 @@
 extends Area3D
 class_name InteractionArea
 
-@onready var hand_attach_bone: Marker3D = $"../Model/BaseCharacter/rig/Skeleton3D/HandAttachBone/Offset"
+@onready var hand_attach_bone: Marker3D = $"../Model/BaseCharacter/Armature/Skeleton3D/HandAttachBone/Offset"
 
 
 func pick_up_item():

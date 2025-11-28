@@ -12,7 +12,8 @@ const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 @onready var pitch: Node3D = $Pitch
 @onready var yaw: Node3D = $Pitch/Yaw
 
-@onready var head_target_ik: Marker3D = $HeadTarget_IK
+@onready var head_target_ik: Marker3D = $HeadTargetIK
+@onready var right_hand_target_ik: TargetIK = $RightHandTargetIK
 
 
 var equiped_weapon : BaseItem
