@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://4dfvwoguwx1b"]
+
+[ext_resource type="Script" uid="uid://m0q215b5p6wt" path="res://Scenes/GameController/game_controller.gd" id="1_ovo16"]
+[ext_resource type="PackedScene" uid="uid://cu7xilfnsi6bn" path="res://Scenes/IntroScene/intro_scene.tscn" id="2_ifw7f"]
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_ovo16")
+
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="MainRoom" parent="World3D" instance=ExtResource("2_ifw7f")]
+
+[node name="World2D" type="Node2D" parent="."]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[editable path="World3D/MainRoom"]
+[editable path="World3D/MainRoom/BaseCharacter"]

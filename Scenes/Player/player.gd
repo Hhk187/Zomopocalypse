@@ -6,7 +6,7 @@ const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 
 @onready var animation_player: AnimationPlayer = $Model/BaseCharacter/AnimationPlayer
 
-@onready var camera_3d: CameraPlayer = $HeadTargetIK/Camera3D
+@onready var camera_3d: CameraPOV = $HeadTargetIK/Camera3D
 @onready var camera_spring_arm_3d: SpringArm3D = $Pitch/Yaw/CameraSpringArm3D
 
 @onready var pitch: Node3D = $Pitch

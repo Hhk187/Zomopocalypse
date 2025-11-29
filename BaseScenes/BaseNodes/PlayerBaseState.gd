@@ -16,17 +16,18 @@ func input(event : InputEvent):
 	var player = entity as PlayerBaseEntity
 	if event is InputEventMouseMotion:
 		player.rotate_y(-(event.relative.x * 0.002))
-			
+		
 		player.head_target_ik.look_slider = clamp(player.head_target_ik.look_slider + event.relative.y * 0.02, -10.0, 10.0)
 		player.right_hand_target_ik.look_slider = clamp(player.right_hand_target_ik.look_slider + event.relative.y * 0.02, -10.0, 10.0)
 		
 		
-		CameraPOV.sway2D(event.relative)
+		player.camera_3d.sway2D(event.relative)
 
 
 
 func movements(_delta : float):
 	
+	var player = entity as PlayerBaseEntity
 	var speed : float
 	# Handle jump.
 	if Input.is_action_just_pressed("play_jump") and entity.is_on_floor():
@@ -48,8 +49,7 @@ func movements(_delta : float):
 		entity.velocity.x = lerp(entity.velocity.x, 0.0, 0.3)
 		entity.velocity.z = lerp(entity.velocity.z, 0.0, 0.3)
 
-	CameraPOV.sway3D(Vector3(input_dir.x, 0, input_dir.y) * 0.003)
-	CameraPlayer.sway3D(Vector3(input_dir.x, 0, input_dir.y) * 0.003)
+	player.camera_3d.sway3D(Vector3(input_dir.y, 0, input_dir.x) * 0.003)
 
 	entity.move_and_slide()
 

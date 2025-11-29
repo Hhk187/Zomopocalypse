@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Zomopocalypse"
-run/main_scene="uid://cu7xilfnsi6bn"
+run/main_scene="uid://4dfvwoguwx1b"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://Singleton/global.gd"
 
 [display]
 
