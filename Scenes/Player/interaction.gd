@@ -10,5 +10,17 @@ func pick_up_item():
 		if item.is_in_group("item"):
 			items.append(item)
 	
-	items[0].equipe()
-	hand_attach_bone.add_child(items[0])
+	if items:
+		items[0].equipe(hand_attach_bone)
+
+func drop_item():
+	hand_attach_bone.get_children()[0].un_equipe()
+
+
+func interact():
+	var interactibles : Array[WorldDecor]
+	for interactible in get_overlapping_bodies():
+		if interactible.is_in_group("interact"):
+			interactibles.append(interactible)
+	if interactibles:
+		interactibles[0].emit_signal("interact")

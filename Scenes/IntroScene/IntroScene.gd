@@ -15,4 +15,4 @@ func _input(event: InputEvent) -> void:
 
 
 func spawn_ui():
-	Global.game_controller.change_gui_scene("res://Scenes/UI/MainMenu/MainMenu.tscn")
+	Global.game_controller.change_scene(GameController.SCENES["gui"]["main_menu"], "gui")

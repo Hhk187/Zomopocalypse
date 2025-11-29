@@ -1651,7 +1651,7 @@ transform = Transform3D(0.7921086, -0.61038023, 0, 0.61038023, 0.7921086, 0, 0, 
 [node name="9mm" parent="Items" index="1" instance=ExtResource("6_veadp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.725, 2.18095, 155.311)
 
-[node name="BaseCharacter" type="Node3D" parent="." index="8"]
+[node name="BaseCharacter" type="Node3D" parent="." index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -218.208, 2.19438e-06, 112.66)
 
 [node name="Armature" type="Node3D" parent="BaseCharacter" index="0"]

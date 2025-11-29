@@ -41,9 +41,13 @@ func _input(event: InputEvent) -> void:
 	else:
 		animation_tree.set("parameters/movements/locomotive/blend_position", Vector2.ZERO)
 	
-	if event.is_action_pressed("play_fire"):
-		test_use_weapon()
+	if event.is_action_pressed("play_pickup"):
+		interaction_area.pick_up_item()
+	if event.is_action_pressed("play_drop"):
+		interaction_area.drop_item()
 	
+	if event.is_action_pressed("play_use"):
+		interaction_area.interact()
 
 
 func test_use_weapon():
@@ -84,6 +88,15 @@ func test_use_weapon():
 
 	#print(ray_origin, ray_origin)
 
+
+var number = 0
+func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint(): return
+	if Input.is_action_pressed("play_fire"):
+		test_use_weapon()
+		number += 1
+		Global.debug_manager.update_debug_info("bullets", number)
+	Global.debug_manager.update_debug_info("Player pos", global_position)
 
 
 

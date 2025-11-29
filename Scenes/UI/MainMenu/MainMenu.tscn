@@ -66,3 +66,4 @@ text = "Quit
 "
 
 [connection signal="pressed" from="MainMenu/Main/MarginContainer/VBoxContainer/PlayOffline" to="MainMenu" method="_on_play_offline_pressed"]
+[connection signal="pressed" from="MainMenu/Main/MarginContainer/VBoxContainer/Quit" to="MainMenu" method="_on_quit_pressed"]
