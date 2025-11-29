@@ -7,10 +7,7 @@ const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 @onready var animation_player: AnimationPlayer = $Model/BaseCharacter/AnimationPlayer
 
 @onready var camera_3d: CameraPOV = $HeadTargetIK/Camera3D
-@onready var camera_spring_arm_3d: SpringArm3D = $Pitch/Yaw/CameraSpringArm3D
 
-@onready var pitch: Node3D = $Pitch
-@onready var yaw: Node3D = $Pitch/Yaw
 
 @onready var head_target_ik: Marker3D = $HeadTargetIK
 @onready var right_hand_target_ik: TargetIK = $RightHandTargetIK
@@ -24,16 +21,8 @@ var equiped_weapon : BaseItem
 
 @export var is_third_person: bool = false :
 	set(value):
-		# fix bug where camera_spring_arm_3d is null
-		if not camera_spring_arm_3d: return
-		
 		is_third_person = value
-		if not is_third_person:
-			camera_spring_arm_3d.spring_length = 0
-			camera_spring_arm_3d.position = Vector3.ZERO
-		else:
-			camera_spring_arm_3d.spring_length = 1
-			camera_spring_arm_3d.position = THIRD_PERSON_POS
+		#TODO: make third person toggler
 
 
 func toggle_pov() -> void:

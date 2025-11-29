@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cu7xilfnsi6bn"]
+[gd_scene load_steps=14 format=3 uid="uid://cu7xilfnsi6bn"]
 
 [ext_resource type="PackedScene" uid="uid://ce8jnr54c0f3d" path="res://Scenes/BuildingsBlock/PreMadeBlocks/MainRoom/main_room.tscn" id="1_c85ce"]
 [ext_resource type="Script" uid="uid://dcqb36lmrurfd" path="res://Scenes/IntroScene/IntroScene.gd" id="2_wfuan"]
 [ext_resource type="Texture2D" uid="uid://btgf2t4vjj8ji" path="res://temp/SPC Click Flooring - Stonecreek Luxury Flooring.jpg" id="3_b53ee"]
-[ext_resource type="Script" uid="uid://depa8b510g1oo" path="res://Scenes/IntroScene/main_menu.gd" id="3_wfuan"]
 [ext_resource type="PackedScene" uid="uid://d2a7pndqqmwnf" path="res://Scenes/BuildingsBlock/Apartement/TestMeduimBuilding/test_apartement_buidling.tscn" id="4_622t3"]
 [ext_resource type="PackedScene" uid="uid://c44062ic1rytu" path="res://temp/BaseCharacter.blend" id="5_rdoje"]
 
@@ -58,26 +57,28 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MainMenu:visible")
-tracks/2/interp = 1
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(6, 6.0001),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimationPlayer:speed_scale")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(6),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_ui"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_l2o17"]
@@ -109,22 +110,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("UI/MainMenu:visible")
+tracks/2/path = NodePath("AnimationPlayer:speed_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("AnimationPlayer:speed_scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -171,79 +160,15 @@ material_override = SubResource("StandardMaterial3D_leo3h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.607, 1.065, -5.608)
 fov = 20.0
 
-[node name="UI" type="CanvasLayer" parent="." index="6"]
-
-[node name="MainMenu" type="Control" parent="UI" index="0"]
-visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_wfuan")
-
-[node name="Main" type="PanelContainer" parent="UI/MainMenu" index="0"]
-self_modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -960.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UI/MainMenu/Main" index="0"]
-layout_mode = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MainMenu/Main/MarginContainer" index="0"]
-layout_mode = 2
-theme_override_constants/separation = 55
-
-[node name="CreateLobby" type="Button" parent="UI/MainMenu/Main/MarginContainer/VBoxContainer" index="0"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 86
-text = "Create lobby"
-
-[node name="JoinLobby" type="Button" parent="UI/MainMenu/Main/MarginContainer/VBoxContainer" index="1"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 86
-text = "Join lobby"
-
-[node name="PlayOffline" type="Button" parent="UI/MainMenu/Main/MarginContainer/VBoxContainer" index="2"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 86
-text = "Play offline"
-
-[node name="Settings" type="Button" parent="UI/MainMenu/Main/MarginContainer/VBoxContainer" index="3"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 86
-text = "Settings"
-
-[node name="Quit" type="Button" parent="UI/MainMenu/Main/MarginContainer/VBoxContainer" index="4"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 86
-text = "Quit
-"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="7"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
 libraries = {
 &"": SubResource("AnimationLibrary_r7e4p")
 }
 
-[node name="TestApartementBuidling" parent="." index="8" instance=ExtResource("4_622t3")]
+[node name="TestApartementBuidling" parent="." index="7" instance=ExtResource("4_622t3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, -5, 0)
 
-[node name="BaseCharacter" parent="." index="9" instance=ExtResource("5_rdoje")]
+[node name="BaseCharacter" parent="." index="8" instance=ExtResource("5_rdoje")]
 transform = Transform3D(-0.985052, 0, 0.172256, 0, 1, 0, -0.172256, 0, -0.985052, 2.62414, -0.029772423, -4.4863853)
 
 [node name="Skeleton3D" parent="BaseCharacter/rig" index="0"]
@@ -449,10 +374,11 @@ bones/219/rotation = Quaternion(9.3092467e-10, 1.8626454e-09, 1, 1.3969839e-09)
 bones/220/position = Vector3(-0.027461037, 0.437582, 1.1222566)
 bones/220/rotation = Quaternion(-0.83389276, 0.0726249, 0.0053079543, 0.54710186)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="10"]
+[node name="AK" parent="BaseCharacter" index="2"]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.088000506, 0, 0)
 mesh = SubResource("BoxMesh_rdoje")
-
-[connection signal="pressed" from="UI/MainMenu/Main/MarginContainer/VBoxContainer/PlayOffline" to="UI/MainMenu" method="_on_play_offline_pressed"]
 
 [editable path="BaseCharacter"]

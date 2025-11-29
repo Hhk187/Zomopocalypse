@@ -1,10 +1,10 @@
-extends Control
+extends CanvasLayer
 class_name InGameMenu
 
 @onready var center_container: CenterContainer = $CenterContainer
 @onready var fps_label: Label = $FPSLabel
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	fps_label.text = "FPS : %s" % Engine.get_frames_per_second()
 
 

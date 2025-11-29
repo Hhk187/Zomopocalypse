@@ -2,18 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dtn0o8sijbrvb" path="res://Singleton/IngameMenu/ingame_menu.gd" id="1_30l4m"]
 
-[node name="IngameMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="IngameMenu" type="CanvasLayer"]
 script = ExtResource("1_30l4m")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 visible = false
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -66,7 +59,6 @@ text = "Quit
 "
 
 [node name="FPSLabel" type="Label" parent="."]
-layout_mode = 0
 offset_right = 85.0
 offset_bottom = 43.0
 theme_override_constants/outline_size = 5

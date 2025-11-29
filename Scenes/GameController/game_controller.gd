@@ -12,7 +12,7 @@ var current_gui_scene: CanvasLayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Global.game_controller = self
-	
+	current_3d_scene = $World3D/MainRoom
 
 
 func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> void:
@@ -27,7 +27,7 @@ func change_gui_scene(new_scene: String, delete: bool = true, keep_running: bool
 	var new = load(new_scene).instantiate() as CanvasLayer
 	gui.add_child(new)
 	current_gui_scene = new
-			
+	
 func change_3d_scene(new_scene: String, delete: bool = true, keep_running: bool = false) -> void:
 	if current_3d_scene:
 		if delete:
