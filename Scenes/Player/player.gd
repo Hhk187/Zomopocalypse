@@ -10,7 +10,7 @@ const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 
 
 @onready var head_target_ik: Marker3D = $HeadTargetIK
-@onready var right_hand_target_ik: TargetIK = $RightHandTargetIK
+@onready var right_hand_target_ik: TargetIK = $RightHandIK
 
 
 var equiped_weapon : BaseItem
@@ -94,7 +94,7 @@ func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	if Input.is_action_pressed("play_fire"):
 		test_use_weapon()
-		number += 1
+		
 		Global.debug_manager.update_debug_info("bullets", number)
 	Global.debug_manager.update_debug_info("Player pos", global_position)
 

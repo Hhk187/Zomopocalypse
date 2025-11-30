@@ -14,7 +14,8 @@ func pick_up_item():
 		items[0].equipe(hand_attach_bone)
 
 func drop_item():
-	hand_attach_bone.get_children()[0].un_equipe()
+	if hand_attach_bone.get_children():
+		hand_attach_bone.get_children()[0].un_equipe()
 
 
 func interact():

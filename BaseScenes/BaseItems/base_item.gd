@@ -6,20 +6,23 @@ class_name BaseItem
 @onready var model: Node3D = $Model
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 
-var items_parent : Node
+var og_parent : Node
 var equiped_pos : Vector3
 var basis_z : Vector3
 
 func _ready() -> void:
-	items_parent = get_parent() as Node
+	og_parent = get_parent() as Node
 
 func un_equipe():
+	equiped_pos = get_parent().global_position
+	basis_z = get_parent().global_basis.z
+
 	get_parent().remove_child(self)
-	if items_parent:
-		items_parent.add_child(self)
+	if og_parent:
+		og_parent.add_child(self)
 	_toggle(false)
 
-func equipe(new_parent : Node):
+func equipe(new_parent : Node3D):
 	get_parent().remove_child(self)
 	new_parent.add_child(self)
 	_toggle(true)
@@ -47,7 +50,8 @@ func _toggle(value : bool):
 		)
 		global_position = equiped_pos
 		linear_velocity -= basis_z * 5
-		top_level = !value
 
-func _physics_process(delta: float) -> void:
-	Global.debug_manager.update_debug_info(name, global_position)
+var rdmi = str(randi())
+func _physics_process(_delta: float) -> void:
+	Global.debug_manager.update_debug_info((name + rdmi), global_position)
+	Global.debug_manager.update_debug_info((name + rdmi + "equiped_pos"), equiped_pos)
