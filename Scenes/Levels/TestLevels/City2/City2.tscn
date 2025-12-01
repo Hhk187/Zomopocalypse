@@ -1648,7 +1648,13 @@ transform = Transform3D(0.5098078, 0, 0.86028904, 0, 1, 0, -0.86028904, 0, 0.509
 [node name="Ak" parent="Items" index="0" instance=ExtResource("5_6as6a")]
 transform = Transform3D(0.7921086, -0.61038023, 0, 0.61038023, 0.7921086, 0, 0, 0, 1, -218.14166, 0.48455703, 107.30408)
 
-[node name="9mm" parent="Items" index="1" instance=ExtResource("6_veadp")]
+[node name="Ak2" parent="Items" index="1" instance=ExtResource("5_6as6a")]
+transform = Transform3D(0.7921086, -0.61038023, 0, 0.61038023, 0.7921086, 0, 0, 0, 1, -218.63966, 0.48455703, 107.30408)
+
+[node name="Ak3" parent="Items" index="2" instance=ExtResource("5_6as6a")]
+transform = Transform3D(0.7921086, -0.61038023, 0, 0.61038023, 0.7921086, 0, 0, 0, 1, -217.75266, 0.48455703, 107.30408)
+
+[node name="9mm" parent="Items" index="3" instance=ExtResource("6_veadp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -163.725, 2.18095, 155.311)
 
 [node name="BaseCharacter" type="Node3D" parent="." index="7"]
