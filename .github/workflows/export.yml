@@ -45,6 +45,13 @@ jobs:
         with:
           lfs: true
       
+      - name: Extract version from project.godot
+        id: version
+        run: |
+          VERSION=$(grep 'config/version=' project.godot | cut -d'"' -f2)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Extracted version: $VERSION"
+      
       - name: Setup Godot
         uses: chickensoft-games/setup-godot@v1
         with:
@@ -76,13 +83,13 @@ jobs:
       - name: Upload Web build
         uses: actions/upload-artifact@v4
         with:
-          name: web-build
+          name: web-build-v${{ steps.version.outputs.version }}
           path: build/web/
           if-no-files-found: warn
       
       - name: Upload Windows build
         uses: actions/upload-artifact@v4
         with:
-          name: windows-build
+          name: windows-build-v${{ steps.version.outputs.version }}
           path: build/windows/
           if-no-files-found: warn
