@@ -49,6 +49,10 @@ jobs:
         id: version
         run: |
           VERSION=$(grep 'config/version=' project.godot | cut -d'"' -f2)
+          if [ -z "$VERSION" ]; then
+            echo "Error: config/version not found in project.godot"
+            exit 1
+          fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Extracted version: $VERSION"
       
