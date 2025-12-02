@@ -29,10 +29,6 @@ window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
 
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/godot_3d_cursor/plugin.cfg")
-
 [global_group]
 
 item=""

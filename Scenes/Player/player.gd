@@ -89,14 +89,11 @@ func test_use_weapon():
 	#print(ray_origin, ray_origin)
 
 
-var number = 0
+
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
 	if Input.is_action_pressed("play_fire"):
 		test_use_weapon()
-		
-		Global.debug_manager.update_debug_info("bullets", number)
-	Global.debug_manager.update_debug_info("Player pos", global_position)
 
 
 

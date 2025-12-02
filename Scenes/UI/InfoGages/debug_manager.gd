@@ -31,5 +31,6 @@ func clear_debug_info() -> void:
 func _process(_delta: float) -> void:
 	for i in debug_info.keys():
 		var label : Label = debug_container.get_node(i) as Label
-		label.text = str(i) + ": " + str(debug_info[i])
+		if label:
+			label.text = str(i) + ": " + str(debug_info[i])
 	update_debug_info("FPS", Engine.get_frames_per_second())
