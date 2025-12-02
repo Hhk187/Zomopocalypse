@@ -44,7 +44,8 @@ jobs:
       - name: Setup Godot
         uses: chickensoft-games/setup-godot@v1
         with:
-          # Update this to match your Godot version
+          # Version must match the Godot version used for this project
+          # Update this when upgrading the project to a new Godot version
           version: 4.2.1
           use-dotnet: false
       
@@ -59,11 +60,13 @@ jobs:
       - name: Export for Web
         run: |
           mkdir -p build/web
+          # Export preset name must match preset in export_presets.cfg
           godot --headless --export-release "Web" build/web/index.html
       
       - name: Export for Windows
         run: |
           mkdir -p build/windows
+          # Export preset name must match preset in export_presets.cfg
           godot --headless --export-release "Windows Desktop" build/windows/game.exe
       
       - name: Upload Web build
