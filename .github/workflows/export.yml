@@ -1,0 +1,81 @@
+# Godot Game Export Workflow
+#
+# This workflow builds and exports the Godot game for multiple platforms.
+# 
+# TRIGGER CONDITIONS:
+# 1. Tag Push: Automatically runs when you push a lightweight tag matching 'v*' pattern
+#    Example: git tag v1.2.3 && git push origin v1.2.3
+# 2. Manual Trigger: Run from GitHub Actions UI using the "Run workflow" button
+#
+# USAGE:
+# - To create a release build, create and push a lightweight tag:
+#   $ git tag v1.2.3
+#   $ git push origin v1.2.3
+# - The workflow will build exports for all configured platforms
+# - Built artifacts will be available in the Actions run
+
+name: Export Game
+
+on:
+  # Trigger on lightweight tag pushes matching v* (e.g., v1.0.0, v1.2.3)
+  push:
+    tags:
+      - 'v*'
+  
+  # Allow manual workflow dispatch from Actions UI
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag for this build (e.g., v1.2.3)'
+        required: false
+        default: 'manual-build'
+
+jobs:
+  export:
+    name: Export Game
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          lfs: true
+      
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v1
+        with:
+          # Update this to match your Godot version
+          version: 4.2.1
+          use-dotnet: false
+      
+      - name: Verify Godot installation
+        run: godot --version
+      
+      - name: Import assets
+        run: |
+          mkdir -p .godot/imported
+          godot --headless --editor --quit || true
+      
+      - name: Export for Web
+        run: |
+          mkdir -p build/web
+          godot --headless --export-release "Web" build/web/index.html
+      
+      - name: Export for Windows
+        run: |
+          mkdir -p build/windows
+          godot --headless --export-release "Windows Desktop" build/windows/game.exe
+      
+      - name: Upload Web build
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-build
+          path: build/web/
+          if-no-files-found: warn
+      
+      - name: Upload Windows build
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: build/windows/
+          if-no-files-found: warn
