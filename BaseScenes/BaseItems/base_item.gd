@@ -50,8 +50,3 @@ func _toggle(value : bool):
 		)
 		global_position = equiped_pos
 		linear_velocity -= basis_z * 5
-
-var rdmi = str(randi())
-func _physics_process(_delta: float) -> void:
-	Global.debug_manager.update_debug_info((name + rdmi), global_position)
-	Global.debug_manager.update_debug_info((name + rdmi + "equiped_pos"), equiped_pos)

@@ -7,6 +7,7 @@ const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 @onready var animation_player: AnimationPlayer = $Model/BaseCharacter/AnimationPlayer
 
 @onready var camera_3d: CameraPOV = $HeadTargetIK/Camera3D
+@onready var camera_ray_cast = $HeadTargetIK/Camera3D/CameraRayCast
 
 
 @onready var head_target_ik: Marker3D = $HeadTargetIK

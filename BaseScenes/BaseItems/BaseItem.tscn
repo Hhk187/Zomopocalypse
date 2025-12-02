@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://qsf1is5fnqvd"]
+[gd_scene load_steps=3 format=3 uid="uid://qsf1is5fnqvd"]
 
 [ext_resource type="Script" uid="uid://dqubptjcohlg8" path="res://BaseScenes/BaseItems/base_item.gd" id="1_x0e0j"]
+[ext_resource type="Script" uid="uid://c1ew25wv2svhc" path="res://BaseScripts/info_label.gd" id="2_xbkyl"]
 
 [node name="BaseItem" type="RigidBody3D" groups=["item"]]
 collision_layer = 8
@@ -10,3 +11,14 @@ script = ExtResource("1_x0e0j")
 [node name="Model" type="Node3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="InfoLabel" type="Label3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1.0000004, 5.9604645e-08, 0, -5.9604645e-08, 1.0000004, 0, 0, 0, 1, 0, 0.25, 0)
+top_level = true
+visible = false
+billboard = 1
+text = "F : Pick Up"
+font_size = 24
+script = ExtResource("2_xbkyl")
+y_pos = 0.25
+target = NodePath("..")

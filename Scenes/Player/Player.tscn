@@ -74,7 +74,7 @@ radius = 0.3
 radius = 0.63
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_825xp"]
-size = Vector3(1, 1.960022, 1.1362305)
+size = Vector3(1.6162109, 2.218155, 1.6340332)
 
 [node name="Player" instance=ExtResource("1_s0eop")]
 collision_layer = 2
@@ -345,6 +345,9 @@ current = true
 fov = 100.0
 script = ExtResource("11_epg6k")
 
+[node name="CameraRayCast" type="RayCast3D" parent="HeadTargetIK/Camera3D" index="0"]
+target_position = Vector3(0, 0, -2)
+
 [node name="RightHandIK" type="Marker3D" parent="." index="7"]
 transform = Transform3D(-0.31540397, -0.02496327, -0.948629, 0.4366675, -0.8913494, -0.121729076, -0.8425209, -0.45262945, 0.2920358, 0.17522629, 1.3383633, -0.21205957)
 script = ExtResource("9_epg6k")
@@ -397,8 +400,11 @@ collision_mask = 12
 script = ExtResource("10_ji083")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionArea" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98686385, -0.5078702)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1159303, -0.75677156)
 shape = SubResource("BoxShape3D_825xp")
 debug_color = Color(0.06482514, 0.649749, 0.033422377, 0.41960785)
+
+[connection signal="body_entered" from="InteractionArea" to="InteractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="InteractionArea" to="InteractionArea" method="_on_body_exited"]
 
 [editable path="Model/BaseCharacter"]
