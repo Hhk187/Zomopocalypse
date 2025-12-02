@@ -35,6 +35,10 @@ jobs:
     name: Export Game
     runs-on: ubuntu-latest
     
+    # Set minimal permissions for security
+    permissions:
+      contents: read
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
