@@ -59,9 +59,8 @@ jobs:
       - name: Setup Godot
         uses: chickensoft-games/setup-godot@v1
         with:
-          # Version must match the Godot version used for this project
-          # Update this when upgrading the project to a new Godot version
-          version: 4.2.1
+          # Using extracted Godot version from project.godot
+          version: ${{ steps.version.outputs.version }}
           use-dotnet: false
       
       - name: Verify Godot installation
