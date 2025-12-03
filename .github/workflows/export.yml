@@ -27,25 +27,33 @@ jobs:
         id: version
         run: |
           set -eo pipefail
+          # Debug: which workflow/ref/sha is running
+          echo "DEBUG - workflow=\"$GITHUB_WORKFLOW\" ref=\"$GITHUB_REF\" sha=\"$GITHUB_SHA\""
+          echo "DEBUG - runner: $RUNNER_OS $RUNNER_TEMP"
           echo "DEBUG - dumping project.godot line(s):"
           grep 'config/features=' project.godot || true
+
           # Capture major.minor or major.minor.patch from project.godot's PackedStringArray
           VERSION=$(grep 'config/features=' project.godot | grep -oP '"\K[0-9]+\.[0-9]+(?:\.[0-9]+)?(?=")' || true)
           echo "DEBUG - raw VERSION=\"$VERSION\""
+
           if [ -z "$VERSION" ]; then
             echo "Error: Godot version not found in config/features"
             exit 1
           fi
+
           # Normalize major.minor -> major.minor.0
           if [[ "$VERSION" =~ ^[0-9]+\.[0-9]+$ ]]; then
             VERSION="$VERSION.0"
             echo "DEBUG - normalized to patch: $VERSION"
           fi
+
           # Validate normalized format (X.Y.Z)
           if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "Error: normalized version does not match X.Y.Z: $VERSION"
             exit 1
           fi
+
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Extracted Godot version: $VERSION"
 
@@ -86,4 +94,3 @@ jobs:
           name: windows-build-v${{ steps.version.outputs.version }}
           path: build/windows/
           if-no-files-found: warn
-          
