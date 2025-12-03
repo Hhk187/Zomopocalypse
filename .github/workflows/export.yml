@@ -26,15 +26,25 @@ jobs:
       - name: Extract Godot version from project.godot
         id: version
         run: |
-          # Capture major.minor or major.minor.patch from project.godot
-          VERSION=$(grep 'config/features=' project.godot | grep -oP '"\K[0-9]+\.[0-9]+(?:\.[0-9]+)?(?=")')
+          set -eo pipefail
+          echo "DEBUG - dumping project.godot line(s):"
+          grep 'config/features=' project.godot || true
+          # Capture major.minor or major.minor.patch from project.godot's PackedStringArray
+          VERSION=$(grep 'config/features=' project.godot | grep -oP '"\K[0-9]+\.[0-9]+(?:\.[0-9]+)?(?=")' || true)
+          echo "DEBUG - raw VERSION=\"$VERSION\""
           if [ -z "$VERSION" ]; then
             echo "Error: Godot version not found in config/features"
             exit 1
           fi
-          # If only major.minor (e.g. 4.5) was found, normalize to patch .0 (-> 4.5.0)
+          # Normalize major.minor -> major.minor.0
           if [[ "$VERSION" =~ ^[0-9]+\.[0-9]+$ ]]; then
             VERSION="$VERSION.0"
+            echo "DEBUG - normalized to patch: $VERSION"
+          fi
+          # Validate normalized format (X.Y.Z)
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Error: normalized version does not match X.Y.Z: $VERSION"
+            exit 1
           fi
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "Extracted Godot version: $VERSION"
@@ -76,3 +86,4 @@ jobs:
           name: windows-build-v${{ steps.version.outputs.version }}
           path: build/windows/
           if-no-files-found: warn
+          
