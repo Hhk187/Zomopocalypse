@@ -20,16 +20,17 @@ use_animation = 0
 metadata/_custom_type_script = "uid://bd0s152hspgvo"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1erx4"]
-size = Vector3(0.113525, 0.304688, 1.05762)
+size = Vector3(0.06225586, 0.304688, 0.95947266)
 
 [node name="Ak" instance=ExtResource("1_1erx4")]
+max_contacts_reported = 1
 item_data = SubResource("Resource_k25jp")
 
 [node name="AK" parent="Model" index="0" instance=ExtResource("3_1erx4")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -0.10504692)
 
 [node name="CollisionShape3D" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0289819, -0.122398)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0289819, -0.11873589)
 shape = SubResource("BoxShape3D_1erx4")
 
 [node name="InfoLabel" parent="." index="2"]

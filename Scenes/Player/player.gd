@@ -1,4 +1,3 @@
-@tool
 extends BaseEntity
 class_name PlayerBaseEntity
 
@@ -6,8 +5,11 @@ const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 
 @onready var animation_player: AnimationPlayer = $Model/BaseCharacter/AnimationPlayer
 
-@onready var camera_3d: CameraPOV = $HeadTargetIK/Camera3D
-@onready var camera_ray_cast = $HeadTargetIK/Camera3D/CameraRayCast
+
+@onready var camera_3d: CameraPOV = $HeadTargetIK/SpringArm3D/Camera3D
+@onready var camera_ray_cast: RayCast3D = $HeadTargetIK/SpringArm3D/Camera3D/CameraRayCast
+@onready var spring_arm_3d: SpringArm3D = $HeadTargetIK/SpringArm3D
+
 
 
 @onready var head_target_ik: Marker3D = $HeadTargetIK
@@ -22,8 +24,15 @@ var equiped_weapon : BaseItem
 
 @export var is_third_person: bool = false :
 	set(value):
+		if not spring_arm_3d: return
 		is_third_person = value
+		0.196
 		#TODO: make third person toggler
+		if is_third_person:
+			pass
+		else:
+			spring_arm_3d.spring_length = 0
+			
 
 
 func toggle_pov() -> void:
@@ -42,10 +51,10 @@ func _input(event: InputEvent) -> void:
 	else:
 		animation_tree.set("parameters/movements/locomotive/blend_position", Vector2.ZERO)
 	
-	if event.is_action_pressed("play_pickup"):
-		interaction_area.pick_up_item()
-	if event.is_action_pressed("play_drop"):
-		interaction_area.drop_item()
+	#if event.is_action_pressed("play_pickup"):
+		#interaction_area.pick_up_item()
+	#if event.is_action_pressed("play_drop"):
+		#interaction_area.drop_item()
 	
 	if event.is_action_pressed("play_use"):
 		interaction_area.interact()
@@ -90,11 +99,20 @@ func test_use_weapon():
 	#print(ray_origin, ray_origin)
 
 
-
+var cooldown = Time.get_ticks_msec()
 func _physics_process(_delta: float) -> void:
 	if Engine.is_editor_hint(): return
-	if Input.is_action_pressed("play_fire"):
+	if Input.is_action_pressed("play_fire") and Time.get_ticks_msec() - cooldown > 50:
 		test_use_weapon()
+		$AudioStreamPlayer3D.pitch_scale = randf_range(0.8, 2)
+		
+		$AudioStreamPlayer3D.play()
+		cooldown = Time.get_ticks_msec()
+	
+	if Input.is_action_pressed("play_pickup"):
+		interaction_area.pick_up_item()
+	if Input.is_action_pressed("play_drop"):
+		interaction_area.drop_item()
 
 
 

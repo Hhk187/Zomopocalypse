@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://qsf1is5fnqvd"]
+[gd_scene load_steps=4 format=3 uid="uid://qsf1is5fnqvd"]
 
 [ext_resource type="Script" uid="uid://dqubptjcohlg8" path="res://BaseScenes/BaseItems/base_item.gd" id="1_x0e0j"]
 [ext_resource type="Script" uid="uid://c1ew25wv2svhc" path="res://BaseScripts/info_label.gd" id="2_xbkyl"]
+[ext_resource type="AudioStream" uid="uid://bvbr0idslgyl7" path="res://Assets/SFX/WAV/impact_item.wav" id="3_ksj2v"]
 
 [node name="BaseItem" type="RigidBody3D" groups=["item"]]
 collision_layer = 8
 collision_mask = 13
+continuous_cd = true
+contact_monitor = true
 script = ExtResource("1_x0e0j")
 
 [node name="Model" type="Node3D" parent="."]
@@ -22,3 +25,9 @@ font_size = 24
 script = ExtResource("2_xbkyl")
 y_pos = 0.25
 target = NodePath("..")
+
+[node name="Contact" type="AudioStreamPlayer3D" parent="."]
+visible = false
+stream = ExtResource("3_ksj2v")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

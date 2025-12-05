@@ -18,9 +18,8 @@ func pick_up_item():
 		if item.is_in_group("item"):
 			items.append(item)
 	
-	var item : BaseItem = camera_ray_cast.get_collider()
-	if item in items:
-		item.equipe(hand_attach_bone)
+	if focused_item in items:
+		focused_item.equipe(hand_attach_bone)
 
 
 func drop_item():
@@ -44,7 +43,6 @@ func _physics_process(_delta):
 var focused_intercatible : WorldDecor 
 var focused_item : BaseItem
 func detect_ray():
-	Global.debug_manager.update_debug_info("colliding with", "Null")
 	if not camera_ray_cast: return
 	if camera_ray_cast.is_colliding():
 		var col: Node3D = camera_ray_cast.get_collider()
@@ -54,14 +52,12 @@ func detect_ray():
 			focused_intercatible = col
 			focused_intercatible.get_node("InfoLabel").show()
 			
-			Global.debug_manager.update_debug_info("can interact with", col.name)
 		elif col.is_in_group("item"):
 			if focused_item:
 				focused_item.get_node("InfoLabel").hide()
 			focused_item = col
 			focused_item.get_node("InfoLabel").show()
 			
-			Global.debug_manager.update_debug_info("can pickup", col.name)
 	else:
 		if focused_intercatible:
 			focused_intercatible.get_node("InfoLabel").hide()
@@ -70,7 +66,6 @@ func detect_ray():
 			focused_item.get_node("InfoLabel").hide()
 			focused_item = null
 			
-		Global.debug_manager.update_debug_info("colliding with", "N/A")
 
 
 #func _on_body_entered(body: Node3D):

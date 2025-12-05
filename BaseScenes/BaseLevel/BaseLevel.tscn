@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cs7x65e5s6akq"]
+[gd_scene load_steps=3 format=3 uid="uid://cs7x65e5s6akq"]
 
 [ext_resource type="Script" uid="uid://sst33je17bbb" path="res://BaseScenes/BaseLevel/base_level.gd" id="1_q7o2k"]
+[ext_resource type="Script" uid="uid://vi4cy2bm4uq7" path="res://BaseScenes/BaseLevel/items.gd" id="2_q7o2k"]
 
 [node name="BaseLevel" type="Node3D"]
 script = ExtResource("1_q7o2k")
@@ -23,3 +24,4 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="Zombies" type="Node" parent="."]
 
 [node name="Items" type="Node" parent="."]
+script = ExtResource("2_q7o2k")

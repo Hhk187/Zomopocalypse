@@ -52,3 +52,11 @@ func _toggle(value : bool):
 		)
 		global_position = equiped_pos
 		linear_velocity -= basis_z * 5
+
+@onready var contact: AudioStreamPlayer3D = $Contact
+## Contact sfx
+var sfx_cooldown: float
+func _on_body_entered(_body: Node) -> void:
+	if Time.get_ticks_msec() - sfx_cooldown > 1000:
+		contact.play()
+		sfx_cooldown = Time.get_ticks_msec()
