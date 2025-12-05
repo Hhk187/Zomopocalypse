@@ -5,6 +5,7 @@ class_name BaseItem
 
 @onready var model: Node3D = $Model
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+@onready var info_label: InfoLabel = $InfoLabel
 
 var og_parent : Node
 var equiped_pos : Vector3
@@ -23,6 +24,7 @@ func un_equipe():
 	_toggle(false)
 
 func equipe(new_parent : Node3D):
+	info_label.hide()
 	get_parent().remove_child(self)
 	new_parent.add_child(self)
 	_toggle(true)

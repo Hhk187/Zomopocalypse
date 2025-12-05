@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3hvmwx2y717q"]
 
-[ext_resource type="PackedScene" uid="uid://dr7gtm78pwglv" path="res://BaseScenes/BaseBuildings/BaseWorldDecor/base_world_decor.tscn" id="1_gne2t"]
+[ext_resource type="PackedScene" uid="uid://dr7gtm78pwglv" path="res://BaseScenes/BaseBuildings/BaseWorldDecor/BaseWorldDecor.tscn" id="1_gne2t"]
 [ext_resource type="PackedScene" uid="uid://cbdl8j4cs4eqi" path="res://Assets/Models/CIty/Buildings/Furniture/Seats/Couch.blend" id="2_hxtg1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mqiao"]

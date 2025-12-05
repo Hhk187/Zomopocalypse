@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr7gtm78pwglv"]
+
+[ext_resource type="Script" uid="uid://dq8kn7ve3l6ea" path="res://BaseScenes/BaseBuildings/BaseWorldDecor/base_world_decor.gd" id="1_gym2y"]
+[ext_resource type="Script" uid="uid://c1ew25wv2svhc" path="res://BaseScripts/info_label.gd" id="2_jhv5i"]
+
+[node name="BaseWorldDecor" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 7
+sleeping = true
+freeze = true
+script = ExtResource("1_gym2y")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="InfoLabel" type="Label3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+billboard = 1
+text = "Use"
+script = ExtResource("2_jhv5i")
+top_lvl = false
+target = NodePath("..")
+metadata/_custom_type_script = "uid://c1ew25wv2svhc"
+
+[connection signal="interact" from="." to="." method="_on_interact"]
+[connection signal="receive_damage" from="." to="." method="_on_receive_damage"]
+[connection signal="state_changed" from="." to="." method="_on_state_changed"]

@@ -2,20 +2,26 @@ extends Area3D
 class_name InteractionArea
 
 @onready var hand_attach_bone: Marker3D = $"../Model/BaseCharacter/Armature/Skeleton3D/HandAttachBone/Offset"
-@onready var camera_ray_cast: RayCast3D = owner.camera_ray_cast
+@onready var camera_ray_cast: RayCast3D:
+	get():
+		if not camera_ray_cast:
+			camera_ray_cast = owner.camera_ray_cast
+		return camera_ray_cast
 
 var has_pickable: BaseItem
 var has_interactibles: Array[WorldDecor]
 
 
-#func pick_up_item():
-	#var items: Array[BaseItem]
-	#for item in get_overlapping_bodies():
-		#if item.is_in_group("item"):
-			#items.append(item)
-	#
-	#if items:
-		#items[0].equipe(hand_attach_bone)
+func pick_up_item():
+	var items: Array[BaseItem]
+	for item in get_overlapping_bodies():
+		if item.is_in_group("item"):
+			items.append(item)
+	
+	var item : BaseItem = camera_ray_cast.get_collider()
+	if item in items:
+		item.equipe(hand_attach_bone)
+
 
 func drop_item():
 	if hand_attach_bone.get_children():
@@ -27,15 +33,44 @@ func interact():
 	for interactible in get_overlapping_bodies():
 		if interactible.is_in_group("interact"):
 			interactibles.append(interactible)
-	if interactibles:
-		interactibles[0].emit_signal("interact")
+		
+
+	if focused_intercatible in interactibles:
+		focused_intercatible.emit_signal("interact")
 
 func _physics_process(_delta):
-	if camera_ray_cast.is_colliding():
-		var col : Node3D = camera_ray_cast.get_collider()
-		if col.is_in_group("item"):
-			col.get_node("InfoLabel").show()
+	detect_ray()
 
+var focused_intercatible : WorldDecor 
+var focused_item : BaseItem
+func detect_ray():
+	Global.debug_manager.update_debug_info("colliding with", "Null")
+	if not camera_ray_cast: return
+	if camera_ray_cast.is_colliding():
+		var col: Node3D = camera_ray_cast.get_collider()
+		if col.is_in_group("interact"):
+			if focused_intercatible:
+				focused_intercatible.get_node("InfoLabel").hide()
+			focused_intercatible = col
+			focused_intercatible.get_node("InfoLabel").show()
+			
+			Global.debug_manager.update_debug_info("can interact with", col.name)
+		elif col.is_in_group("item"):
+			if focused_item:
+				focused_item.get_node("InfoLabel").hide()
+			focused_item = col
+			focused_item.get_node("InfoLabel").show()
+			
+			Global.debug_manager.update_debug_info("can pickup", col.name)
+	else:
+		if focused_intercatible:
+			focused_intercatible.get_node("InfoLabel").hide()
+			focused_intercatible = null
+		if focused_item:
+			focused_item.get_node("InfoLabel").hide()
+			focused_item = null
+			
+		Global.debug_manager.update_debug_info("colliding with", "N/A")
 
 
 #func _on_body_entered(body: Node3D):
