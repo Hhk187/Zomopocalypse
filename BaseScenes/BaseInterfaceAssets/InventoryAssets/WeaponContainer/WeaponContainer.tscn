@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctdhrvc8dx5rc"]
+
+[ext_resource type="Texture2D" uid="uid://k1j3go5plmxi" path="res://icon.svg" id="1_h4myb"]
+
+[node name="WeaponContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 200)
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_h4myb")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "SomeStats"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "SomeStats"
+vertical_alignment = 1

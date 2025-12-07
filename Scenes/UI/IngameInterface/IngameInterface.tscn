@@ -1,0 +1,262 @@
+[gd_scene load_steps=6 format=3 uid="uid://debsq2qig2d28"]
+
+[ext_resource type="Script" uid="uid://ld8keue41g2m" path="res://Scenes/UI/IngameInterface/ingame_interface.gd" id="1_g3kp2"]
+[ext_resource type="Script" uid="uid://c8786xrjmywox" path="res://Scenes/UI/IngameInterface/personnal_inventory.gd" id="2_fr8q6"]
+[ext_resource type="PackedScene" uid="uid://4w6ddhg7hmeu" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/ItemContainer/ItemContainer.tscn" id="2_s1yv4"]
+[ext_resource type="PackedScene" uid="uid://ctdhrvc8dx5rc" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/WeaponContainer/WeaponContainer.tscn" id="2_y8k6d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj3iu"]
+bg_color = Color(0.20871013, 0.20871016, 0.20871004, 1)
+
+[node name="IngameInterface" type="CanvasLayer"]
+script = ExtResource("1_g3kp2")
+
+[node name="InventoryInterface" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_fr8q6")
+
+[node name="PersonnelInventory" type="PanelContainer" parent="InventoryInterface"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 598.0
+offset_top = 64.0
+offset_right = -47.0
+offset_bottom = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qj3iu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/PersonnelInventory"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Stats" type="GridContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+
+[node name="Label" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label9" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label10" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label11" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label12" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label13" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label14" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label15" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SomeStats"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Inventory" type="HBoxContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="WeaponContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer" instance=ExtResource("2_y8k6d")]
+layout_mode = 2
+
+[node name="WeaponContainer2" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer" instance=ExtResource("2_y8k6d")]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="ItemContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer2" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer3" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer4" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Grid" type="GridContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 4
+
+[node name="ItemContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer2" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer3" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer4" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer5" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer6" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer7" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer8" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer9" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer10" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer11" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer12" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer13" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer14" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3

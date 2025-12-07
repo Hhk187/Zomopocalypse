@@ -7,11 +7,10 @@
 [sub_resource type="Resource" id="Resource_k25jp"]
 script = ExtResource("3_lql1c")
 id = "Ak01"
-name = "Ak"
+name = "Ak-47"
 item_type = 0
 damage = 15
 range_unit = 100
-is_fire_auto = true
 fire_rate = 100.0
 ammo = 30
 max_ammo = 30

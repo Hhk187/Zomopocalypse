@@ -1,4 +1,4 @@
-import os
+import os, random
 
 
 
@@ -34,7 +34,7 @@ for root, dirs, files in os.walk('.'):
         file_ext = os.path.splitext(file)[1].lower()
         
         if file_ext in allowed_extensions:
-            output_file = os.path.splitext(file_path)[0] + '.wav'
+            output_file = f"{os.path.splitext(file_path)[0]}{random.randint(1000,9999)}.wav"
             success = convert_webm_to_wav(file_path, output_file)
             
             if success:

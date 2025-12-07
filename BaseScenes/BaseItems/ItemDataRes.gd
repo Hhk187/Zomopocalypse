@@ -1,21 +1,26 @@
 extends Resource
 class_name ItemDataRes
 
+enum FIRE_TYPE {
+	SINGLE,
+	BURST_3_SHOTS,
+	FULL_AUTO
+}
 
 @export var id : String
-@export var name : String = "Name_Placholder"
+@export var name : String = "Name_Placeholder"
 
 @export_group("Type")
 @export_enum(
 	ConstItemType.TYPE_WEAPON,
-	ConstItemType.TYPE_CONUMABLE,
+	ConstItemType.TYPE_CONSUMABLE,
 	ConstItemType.TYPE_TRAP
 	) var item_type
 
 @export_group("Stats")
 @export var damage : int = 0
 @export var range_unit : int = 0
-@export var is_fire_auto : bool = false
+@export var firing_type : FIRE_TYPE
 ## In ms
 @export var fire_rate : float = 1.0
 
@@ -45,23 +50,22 @@ class_name ItemDataRes
 	) var use_animation
 
 
-
-
 var on_cooldown : bool = false
 var cooldown_timer : float = 0.0
 var cooldown_delta : float = 0.0
 
-func can_be_used():
-	if Time.get_ticks_msec() - cooldown_delta > fire_rate:
-		if is_fire_auto:
-			on_cooldown = true
-			cooldown_delta = Time.get_ticks_msec()
-			return true
-		elif Input.is_action_just_pressed("play_fire"):
-			on_cooldown = true
-			cooldown_delta = Time.get_ticks_msec()
-			return true
-		
-	else :
-		on_cooldown = false
-		return false
+#func can_be_used():
+	#if Time.get_ticks_msec() - cooldown_delta > fire_rate:
+		#match firing_type:
+			#FIRE_TYPE.FULL_AUTO:
+				#on_cooldown = true
+				#cooldown_delta = Time.get_ticks_msec()
+				#return true
+			#elif Input.is_action_just_pressed("play_fire"):
+				#on_cooldown = true
+				#cooldown_delta = Time.get_ticks_msec()
+				#return true
+			#
+	#else :
+		#on_cooldown = false
+		#return false

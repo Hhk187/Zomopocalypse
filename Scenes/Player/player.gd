@@ -51,10 +51,10 @@ func _input(event: InputEvent) -> void:
 	else:
 		animation_tree.set("parameters/movements/locomotive/blend_position", Vector2.ZERO)
 	
-	#if event.is_action_pressed("play_pickup"):
-		#interaction_area.pick_up_item()
-	#if event.is_action_pressed("play_drop"):
-		#interaction_area.drop_item()
+	if event.is_action_pressed("play_pickup"):
+		interaction_area.pick_up_item()
+	if event.is_action_pressed("play_drop"):
+		interaction_area.drop_item()
 	
 	if event.is_action_pressed("play_use"):
 		interaction_area.interact()
@@ -109,11 +109,11 @@ func _physics_process(_delta: float) -> void:
 		$AudioStreamPlayer3D.play()
 		cooldown = Time.get_ticks_msec()
 	
-	if Input.is_action_pressed("play_pickup"):
-		interaction_area.pick_up_item()
-	if Input.is_action_pressed("play_drop"):
-		interaction_area.drop_item()
-
+	#if Input.is_action_pressed("play_pickup"):
+		#interaction_area.pick_up_item()
+	#if Input.is_action_pressed("play_drop"):
+		#interaction_area.drop_item()
+#
 
 
 
