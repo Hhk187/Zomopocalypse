@@ -1,7 +1,7 @@
 extends Resource
 class_name InventoryContainerData
 
+@export var item_data: ItemDataRes
 
-
-
-@export var item: ItemDataRes
+@export var amount: int
+@export var icon : Texture2D

@@ -1,12 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://debsq2qig2d28"]
+[gd_scene load_steps=11 format=3 uid="uid://debsq2qig2d28"]
 
 [ext_resource type="Script" uid="uid://ld8keue41g2m" path="res://Scenes/UI/IngameInterface/ingame_interface.gd" id="1_g3kp2"]
 [ext_resource type="Script" uid="uid://c8786xrjmywox" path="res://Scenes/UI/IngameInterface/personnal_inventory.gd" id="2_fr8q6"]
 [ext_resource type="PackedScene" uid="uid://4w6ddhg7hmeu" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/ItemContainer/ItemContainer.tscn" id="2_s1yv4"]
 [ext_resource type="PackedScene" uid="uid://ctdhrvc8dx5rc" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/WeaponContainer/WeaponContainer.tscn" id="2_y8k6d"]
+[ext_resource type="PackedScene" uid="uid://cd4shomxx12md" path="res://temp/assets/mixamo/BaseCharacter.blend" id="5_0e7dp"]
+[ext_resource type="Script" uid="uid://c2ksyn8fgxgxr" path="res://Scenes/UI/IngameInterface/animation_player.gd" id="6_fbsg5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj3iu"]
 bg_color = Color(0.20871013, 0.20871016, 0.20871004, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0e7dp"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_fbsg5"]
+sky_material = SubResource("ProceduralSkyMaterial_0e7dp")
+
+[sub_resource type="Environment" id="Environment_f84y6"]
+background_mode = 2
+sky = SubResource("Sky_fbsg5")
+tonemap_mode = 2
+glow_enabled = true
 
 [node name="IngameInterface" type="CanvasLayer"]
 script = ExtResource("1_g3kp2")
@@ -202,52 +217,10 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Grid" type="GridContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2"]
+[node name="PolyItems" type="GridContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 4
-
-[node name="ItemContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer2" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer3" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer4" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer5" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer6" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer7" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer8" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer9" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer10" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer11" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer12" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer13" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer14" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/Grid" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
 
 [node name="MarginContainer3" type="MarginContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory"]
 layout_mode = 2
@@ -260,3 +233,34 @@ theme_override_constants/margin_bottom = 15
 [node name="PanelContainer" type="PanelContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(393, 750)
+render_target_update_mode = 4
+
+[node name="Model" type="Node3D" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport"]
+
+[node name="BaseCharacter" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport/Model" instance=ExtResource("5_0e7dp")]
+
+[node name="AnimationPlayer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport/Model/BaseCharacter" index="1"]
+script = ExtResource("6_fbsg5")
+
+[node name="Camera3D" type="Camera3D" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9167578, 2.1761148)
+fov = 53.5
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_f84y6")
+
+[editable path="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport/Model/BaseCharacter"]

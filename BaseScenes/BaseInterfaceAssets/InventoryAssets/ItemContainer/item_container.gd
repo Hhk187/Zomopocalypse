@@ -1,8 +1,10 @@
 extends PanelContainer
+class_name ItemContainer
 
 
 
-
+@onready var amount: Label = $Label
+@onready var icon: TextureRect = $MarginContainer/TextureRect
 
 
 
@@ -11,4 +13,4 @@ func _on_gui_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			print(name + "pressing")
 		elif event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
-			print(name + "relEased")
+			print(name + "released")

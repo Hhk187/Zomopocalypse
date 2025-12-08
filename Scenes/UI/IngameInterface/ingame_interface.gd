@@ -1,7 +1,7 @@
 extends CanvasLayer
 class_name IngameInterface
 
-signal open_inventory
+signal open_inventory(inventory_data : InventoryData)
 signal close_inventory
 signal toggle_inventory
 

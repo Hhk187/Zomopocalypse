@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctp8xbnh5cvbk"]
+
+[ext_resource type="Script" uid="uid://btupl5qkfywk" path="res://Singleton/TextureExtractor/TextureExtractor.gd" id="1_awbao"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wnusb"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_440cl"]
+sky_material = SubResource("ProceduralSkyMaterial_wnusb")
+
+[sub_resource type="Environment" id="Environment_rm7hq"]
+background_mode = 2
+sky = SubResource("Sky_440cl")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="TextureExtractor" type="Node3D"]
+script = ExtResource("1_awbao")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
+transparent_bg = true
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport"]
+environment = SubResource("Environment_rm7hq")
+
+[node name="Target" type="Marker3D" parent="SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(0.34202015, 0, 0.9396926, 0, 1, 0, -0.9396926, 0, 0.34202015, 1, 0, 0.352)
+projection = 1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.6136975, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="SubViewport"]
+transform = Transform3D(-1.5999479e-08, 0.49999997, 0.8660254, -1, 5.8562146e-09, -2.1855694e-08, -1.5999477e-08, -0.8660254, 0.49999997, 0.80531985, 0, 0.40192056)
+spot_range = 1.065
+spot_angle = 28.55

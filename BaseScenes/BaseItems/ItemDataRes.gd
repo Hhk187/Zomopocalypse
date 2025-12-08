@@ -41,6 +41,7 @@ enum FIRE_TYPE {
 @export var is_stackable : bool
 @export var max_stack : int
 
+
 @export_group("Animation")
 # ANIMATION
 @export_enum(

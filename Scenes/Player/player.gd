@@ -3,6 +3,10 @@ class_name PlayerBaseEntity
 
 const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 
+@export var can_move: bool = true
+@export var can_look_around: bool = true
+
+
 @onready var animation_player: AnimationPlayer = $Model/BaseCharacter/AnimationPlayer
 
 
@@ -26,7 +30,7 @@ var equiped_weapon : BaseItem
 	set(value):
 		if not spring_arm_3d: return
 		is_third_person = value
-		0.196
+		# 0.196
 		#TODO: make third person toggler
 		if is_third_person:
 			pass
@@ -58,6 +62,9 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("play_use"):
 		interaction_area.interact()
+
+	if event.is_action_pressed("play_inventory"):
+		Global.ingame_interface.emit_signal("toggle_inventory", self)
 
 
 func test_use_weapon():

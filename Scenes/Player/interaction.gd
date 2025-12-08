@@ -18,8 +18,12 @@ func pick_up_item():
 		if item.is_in_group("item"):
 			items.append(item)
 	
+	
 	if focused_item in items:
-		focused_item.equipe(hand_attach_bone)
+		#focused_item.equipe(hand_attach_bone)
+		var player : PlayerBaseEntity = get_parent()
+		print(player.inventory_data.emit_signal("add", focused_item))
+		
 
 
 func drop_item():

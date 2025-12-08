@@ -21,9 +21,11 @@ const SCENES : Dictionary = {
 	"gui" : {
 		"main_menu" : "res://Scenes/UI/MainMenu/MainMenu.tscn",
 		"ingame_menu" : "res://Scenes/UI/IngameMenu/IngameMenu.tscn",
-		"info_gages" : "res://Scenes/UI/InfoGages/InfoGages.tscn"
+		"info_gages" : "res://Scenes/UI/InfoGages/InfoGages.tscn",
+		"ingame_ui" : "res://Scenes/UI/IngameInterface/IngameInterface.tscn"
 	}
 }
+
 
 @onready var parent_nodes: Dictionary = {
 	"3d": $World3D,

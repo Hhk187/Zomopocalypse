@@ -15,13 +15,14 @@ func input(event : InputEvent):
 	if not can_look_around: return
 	var player = entity as PlayerBaseEntity
 	if event is InputEventMouseMotion:
-		player.rotate_y(-(event.relative.x * 0.002))
-		
-		player.head_target_ik.look_slider = clamp(player.head_target_ik.look_slider + event.relative.y * 0.02, -10.0, 10.0)
-		player.right_hand_target_ik.look_slider = clamp(player.right_hand_target_ik.look_slider + event.relative.y * 0.02, -10.0, 10.0)
-		
-		
-		player.camera_3d.sway2D(event.relative)
+		if player.can_look_around:
+			player.rotate_y(-(event.relative.x * 0.002))
+			
+			player.head_target_ik.look_slider = clamp(player.head_target_ik.look_slider + event.relative.y * 0.02, -10.0, 10.0)
+			player.right_hand_target_ik.look_slider = clamp(player.right_hand_target_ik.look_slider + event.relative.y * 0.02, -10.0, 10.0)
+			
+			
+			player.camera_3d.sway2D(event.relative)
 
 
 
