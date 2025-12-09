@@ -2,14 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://t83dbsb1w6ix"
+uid="uid://bcldvshl76ceb"
 path.s3tc="res://.godot/imported/SM_Powerline4_texture_atlas.png-37802478f13016e771750e4550bc68e9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "9597fe92d219dc6a33445c8ba2741242"
 }
 
 [deps]

@@ -1,5 +1,8 @@
+@tool
 extends Node3D
 
+@onready var top_light: SpotLight3D = $SubViewport/TopLight
+@onready var front_light: SpotLight3D = $SubViewport/FrontLight
 
 
 
@@ -17,16 +20,26 @@ func get_texture(item : BaseItem) -> ImageTexture:
 	if cached_textures.has(key):
 		return cached_textures[key]
 	else:
-		item._toggle(true)
 		item.get_parent().remove_child(item)
+		item._toggle(true)
 		target.add_child(item)
+		# setup to camera
+		item.position = item.item_data.offset_pos
+		camera_3d.size = item.item_data.offset_camera_size
+		
 		await RenderingServer.frame_post_draw
 		
 		var img = sub_viewport.get_texture().get_image()
-		img.flip_x()
+		#img.flip_x()
 		var texture = ImageTexture.create_from_image(img)
 		
 		cached_textures[key] = texture
 		
 		
 		return texture
+
+
+
+func _process(delta: float) -> void:
+	camera_3d.look_at(Vector3.ZERO)
+	front_light.look_at(Vector3.ZERO)

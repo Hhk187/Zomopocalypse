@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r24awlffdp3f"
-path.s3tc="res://.godot/imported/asphalt.png-998a028a8c03930edccf9326154baedb.s3tc.ctex"
+uid="uid://dbo7bm7amlsog"
+path.s3tc="res://.godot/imported/roof.png-4ae5b54cad465aafb2fff228cb9668c8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Models/CIty/Buildings/kenney_retro-urban-kit/Models/GLB format/Textures/asphalt.png"
-dest_files=["res://.godot/imported/asphalt.png-998a028a8c03930edccf9326154baedb.s3tc.ctex"]
+source_file="res://Assets/Models/CIty/Buildings/kenney_retro-urban-kit/Models/GLB format/Textures/roof.png"
+dest_files=["res://.godot/imported/roof.png-4ae5b54cad465aafb2fff228cb9668c8.s3tc.ctex"]
 
 [params]
 

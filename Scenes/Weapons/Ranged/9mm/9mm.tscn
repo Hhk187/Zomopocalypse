@@ -11,12 +11,13 @@ name = "9mm"
 item_type = 0
 damage = 10
 range_unit = 100
-fire_rate = 100
 ammo = 12
 max_ammo = 12
 hand = 0
 offset_rotation = Vector3(0, 0, 8)
 offset_position = Vector3(-0.07, 0.03, -0.305)
+offset_camera_size = 0.3
+offset_pos = Vector3(0, 0, 0.015)
 use_animation = 0
 metadata/_custom_type_script = "uid://bd0s152hspgvo"
 

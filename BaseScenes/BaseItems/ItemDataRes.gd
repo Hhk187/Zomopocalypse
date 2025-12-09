@@ -40,6 +40,10 @@ enum FIRE_TYPE {
 @export_group("Inventory")
 @export var is_stackable : bool
 @export var max_stack : int
+# icon creation
+@export var offset_camera_size: float = 1.0
+@export var offset_pos: Vector3
+
 
 
 @export_group("Animation")

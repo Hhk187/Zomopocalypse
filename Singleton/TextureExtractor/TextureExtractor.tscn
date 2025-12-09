@@ -30,13 +30,14 @@ environment = SubResource("Environment_rm7hq")
 [node name="Target" type="Marker3D" parent="SubViewport"]
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
-transform = Transform3D(0.34202015, 0, 0.9396926, 0, 1, 0, -0.9396926, 0, 0.34202015, 1, 0, 0.352)
+transform = Transform3D(-0.5726453, 0, -0.81980324, 0, 1, 0, 0.81980324, 0, -0.5726453, -0.79793614, 0, -0.5573707)
 projection = 1
+size = 0.32
 
-[node name="SpotLight3D" type="SpotLight3D" parent="SubViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.6136975, 0)
+[node name="TopLight" type="SpotLight3D" parent="SubViewport"]
+transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 1.6136975, 0)
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="SubViewport"]
-transform = Transform3D(-1.5999479e-08, 0.49999997, 0.8660254, -1, 5.8562146e-09, -2.1855694e-08, -1.5999477e-08, -0.8660254, 0.49999997, 0.80531985, 0, 0.40192056)
-spot_range = 1.065
-spot_angle = 28.55
+[node name="FrontLight" type="SpotLight3D" parent="SubViewport"]
+transform = Transform3D(-0.013686868, 0, -0.99990624, 0, 1, 0, 0.99990624, 0, -0.013686868, -0.80765706, 0, -0.0110553205)
+spot_range = 2.493763
+spot_angle = 41.060177
