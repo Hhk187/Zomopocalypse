@@ -26,32 +26,55 @@ glow_enabled = true
 [node name="IngameInterface" type="CanvasLayer"]
 script = ExtResource("1_g3kp2")
 
-[node name="InventoryInterface" type="Control" parent="."]
-layout_mode = 3
+[node name="InventoryInterface" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InventoryInterface"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="InventoryInterface/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/HBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="ExternalInverntory" type="GridContainer" parent="InventoryInterface/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="InventoryInterface/HBoxContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+theme_override_font_sizes/font_size = 24
+text = "Drag here to drop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PersonnelInventory" type="PanelContainer" parent="InventoryInterface/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_qj3iu")
 script = ExtResource("2_fr8q6")
 
-[node name="PersonnelInventory" type="PanelContainer" parent="InventoryInterface"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 598.0
-offset_top = 64.0
-offset_right = -47.0
-offset_bottom = -77.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qj3iu")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/PersonnelInventory"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
@@ -60,121 +83,121 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="Stats" type="GridContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer"]
+[node name="Stats" type="GridContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 columns = 5
 
-[node name="Label" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label2" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label3" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label4" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label5" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label5" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label6" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label6" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label7" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label7" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label8" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label8" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label9" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label9" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label10" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label10" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label11" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label11" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label12" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label12" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label13" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label13" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label14" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label14" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label15" type="Label" parent="InventoryInterface/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
+[node name="Label15" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "SomeStats"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Inventory" type="HBoxContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer"]
+[node name="Inventory" type="HBoxContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory"]
+[node name="WeaponSection" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
@@ -182,34 +205,34 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="WeaponContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer" instance=ExtResource("2_y8k6d")]
+[node name="MainWeapon" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer" instance=ExtResource("2_y8k6d")]
 layout_mode = 2
 
-[node name="WeaponContainer2" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer" instance=ExtResource("2_y8k6d")]
+[node name="SecondWeapon" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer" instance=ExtResource("2_y8k6d")]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 2
 
-[node name="ItemContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
+[node name="MeleeWeapon1" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
 layout_mode = 2
 
-[node name="ItemContainer2" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
+[node name="MeleeWeapon2" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
 layout_mode = 2
 
-[node name="ItemContainer3" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
+[node name="MeleeWeapon3" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
 layout_mode = 2
 
-[node name="ItemContainer4" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
+[node name="MeleeWeapon4" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory"]
+[node name="InventorySection" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
@@ -217,12 +240,12 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="PolyItems" type="GridContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer2"]
+[node name="PolyItems" type="GridContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection"]
 layout_mode = 2
 size_flags_horizontal = 4
 columns = 4
 
-[node name="MarginContainer3" type="MarginContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory"]
+[node name="WearableSection" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 15
@@ -230,37 +253,53 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="PanelContainer" type="PanelContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3"]
+[node name="PanelContainer" type="PanelContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer"]
 layout_mode = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer"]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(393, 750)
+size = Vector2i(385, 701)
 render_target_update_mode = 4
 
-[node name="Model" type="Node3D" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport"]
+[node name="Model" type="Node3D" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport"]
 
-[node name="BaseCharacter" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport/Model" instance=ExtResource("5_0e7dp")]
+[node name="BaseCharacter" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport/Model" instance=ExtResource("5_0e7dp")]
 
-[node name="AnimationPlayer" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport/Model/BaseCharacter" index="1"]
+[node name="AnimationPlayer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport/Model/BaseCharacter" index="1"]
 script = ExtResource("6_fbsg5")
 
-[node name="Camera3D" type="Camera3D" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9167578, 2.1761148)
 fov = 53.5
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_f84y6")
 
-[editable path="InventoryInterface/PersonnelInventory/VBoxContainer/Inventory/MarginContainer3/PanelContainer/SubViewportContainer/SubViewport/Model/BaseCharacter"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection"]
+modulate = Color(1, 1, 1, 0.39215687)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 134
+
+[node name="ItemContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/VBoxContainer" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer2" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/VBoxContainer" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[node name="ItemContainer3" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/VBoxContainer" instance=ExtResource("2_s1yv4")]
+layout_mode = 2
+
+[editable path="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport/Model/BaseCharacter"]

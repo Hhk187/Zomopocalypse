@@ -3,11 +3,13 @@ extends Control
 @export var ITEM_CONTAINER_PACKED : PackedScene = load("res://BaseScenes/BaseInterfaceAssets/InventoryAssets/ItemContainer/ItemContainer.tscn")
 
 @onready var personnal_inventory: PanelContainer = $PersonnelInventory
-@onready var poly_items: GridContainer = $PersonnelInventory/VBoxContainer/Inventory/MarginContainer2/PolyItems
+@onready var poly_items: GridContainer = $PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems
+
 
 
 
 func _ready() -> void:
+	_on_close_inventory()
 	get_parent().open_inventory.connect(_on_open_inventory)
 	get_parent().close_inventory.connect(_on_close_inventory)
 	get_parent().toggle_inventory.connect(_on_toggle_inventory)
@@ -27,7 +29,7 @@ func _on_open_inventory(player : BaseEntity):
 
 func _on_close_inventory():
 	personnal_inventory.hide()
-	
+
 
 func _on_toggle_inventory(player : BaseEntity):
 	if personnal_inventory.visible:
