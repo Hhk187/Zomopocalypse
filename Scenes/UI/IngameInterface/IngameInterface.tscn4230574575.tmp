@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://debsq2qig2d28"]
+[gd_scene load_steps=11 format=3 uid="uid://debsq2qig2d28"]
 
 [ext_resource type="Script" uid="uid://ld8keue41g2m" path="res://Scenes/UI/IngameInterface/ingame_interface.gd" id="1_g3kp2"]
 [ext_resource type="Script" uid="uid://c8786xrjmywox" path="res://Scenes/UI/IngameInterface/personnal_inventory.gd" id="2_fr8q6"]
 [ext_resource type="PackedScene" uid="uid://4w6ddhg7hmeu" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/ItemContainer/ItemContainer.tscn" id="2_s1yv4"]
 [ext_resource type="PackedScene" uid="uid://ctdhrvc8dx5rc" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/WeaponContainer/WeaponContainer.tscn" id="2_y8k6d"]
 [ext_resource type="PackedScene" uid="uid://cd4shomxx12md" path="res://temp/assets/mixamo/BaseCharacter.blend" id="5_0e7dp"]
-[ext_resource type="PackedScene" uid="uid://dqin6gxt05ret" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/InventoryItemDisplay/InventoryItemDisplay.tscn" id="5_f84y6"]
 [ext_resource type="Script" uid="uid://c2ksyn8fgxgxr" path="res://Scenes/UI/IngameInterface/animation_player.gd" id="6_fbsg5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj3iu"]
@@ -255,31 +254,6 @@ size_flags_horizontal = 4
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 1
 columns = 8
-
-[node name="HFlowContainer" type="HFlowContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection"]
-layout_mode = 2
-
-[node name="InventoryItemDisplay" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-custom_minimum_size = Vector2(150, 100)
-layout_mode = 2
-
-[node name="InventoryItemDisplay2" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay3" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay4" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay5" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay6" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay7" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
 
 [node name="WearableSection" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory"]
 layout_mode = 2
