@@ -1,15 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://debsq2qig2d28"]
+[gd_scene load_steps=9 format=3 uid="uid://debsq2qig2d28"]
 
 [ext_resource type="Script" uid="uid://ld8keue41g2m" path="res://Scenes/UI/IngameInterface/ingame_interface.gd" id="1_g3kp2"]
 [ext_resource type="Script" uid="uid://c8786xrjmywox" path="res://Scenes/UI/IngameInterface/personnal_inventory.gd" id="2_fr8q6"]
-[ext_resource type="PackedScene" uid="uid://4w6ddhg7hmeu" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/ItemContainer/ItemContainer.tscn" id="2_s1yv4"]
-[ext_resource type="PackedScene" uid="uid://ctdhrvc8dx5rc" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/WeaponContainer/WeaponContainer.tscn" id="2_y8k6d"]
+[ext_resource type="Script" uid="uid://bcjn08ipsuuvt" path="res://Scenes/UI/IngameInterface/grid_inventory.gd" id="3_0e7dp"]
 [ext_resource type="PackedScene" uid="uid://cd4shomxx12md" path="res://temp/assets/mixamo/BaseCharacter.blend" id="5_0e7dp"]
-[ext_resource type="PackedScene" uid="uid://dqin6gxt05ret" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/InventoryItemDisplay/InventoryItemDisplay.tscn" id="5_f84y6"]
 [ext_resource type="Script" uid="uid://c2ksyn8fgxgxr" path="res://Scenes/UI/IngameInterface/animation_player.gd" id="6_fbsg5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj3iu"]
-bg_color = Color(0.20871013, 0.20871016, 0.20871004, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0e7dp"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -27,321 +22,325 @@ glow_enabled = true
 [node name="IngameInterface" type="CanvasLayer"]
 script = ExtResource("1_g3kp2")
 
-[node name="InventoryInterface" type="MarginContainer" parent="."]
+[node name="InventoryInterface" type="Panel" parent="."]
+anchors_preset = -1
+anchor_left = 0.295
+anchor_top = 0.10462963
+anchor_right = 0.94635415
+anchor_bottom = 0.89237964
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="PersonnalInventory" type="Control" parent="InventoryInterface"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
-
-[node name="HBoxContainer" type="HBoxContainer" parent="InventoryInterface"]
-layout_mode = 2
-theme_override_constants/separation = 30
-
-[node name="PanelContainer" type="PanelContainer" parent="InventoryInterface/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.35
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/HBoxContainer/PanelContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-
-[node name="ExternalInverntory" type="GridContainer" parent="InventoryInterface/HBoxContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="InventoryInterface/HBoxContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.4
-theme_override_font_sizes/font_size = 24
-text = "Drag here to drop"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="PersonnelInventory" type="PanelContainer" parent="InventoryInterface/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_qj3iu")
 script = ExtResource("2_fr8q6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory"]
-layout_mode = 2
+[node name="Equipements" type="Control" parent="InventoryInterface/PersonnalInventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.1035156e-05
+offset_right = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+[node name="Weapon1" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 1
+offset_left = -605.69995
+offset_top = -158.38501
+offset_right = -355.69995
+offset_bottom = -8.38501
 
-[node name="Stats" type="GridContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-columns = 5
+[node name="Weapon2" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 1
+offset_left = -605.69995
+offset_top = 10.61499
+offset_right = -355.69995
+offset_bottom = 160.61499
 
-[node name="Label" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Weapon3" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(150, 250)
+layout_mode = 1
+offset_left = -337.69995
+offset_top = -115.38501
+offset_right = -187.69995
+offset_bottom = 134.61499
 
-[node name="Label2" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="item1" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -610.69995
+offset_top = 180.61499
+offset_right = -510.69995
+offset_bottom = 280.615
 
-[node name="Label3" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="item2" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -488.69995
+offset_top = 178.61499
+offset_right = -388.69995
+offset_bottom = 278.615
 
-[node name="Label4" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="item3" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -366.69995
+offset_top = 178.61499
+offset_right = -266.69995
+offset_bottom = 278.615
 
-[node name="Label5" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="item4" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -366.69995
+offset_top = 297.615
+offset_right = -266.69995
+offset_bottom = 397.615
 
-[node name="Label6" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="item5" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -488.69995
+offset_top = 295.615
+offset_right = -388.69995
+offset_bottom = 395.615
 
-[node name="Label7" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="item6" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -608.69995
+offset_top = 297.615
+offset_right = -508.69995
+offset_bottom = 397.615
 
-[node name="Label8" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="GridInventory" type="Control" parent="InventoryInterface/PersonnalInventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.1035156e-05
+offset_right = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_0e7dp")
 
-[node name="Label9" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Grid" type="Control" parent="InventoryInterface/PersonnalInventory/GridInventory"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Label10" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Items" type="Control" parent="InventoryInterface/PersonnalInventory/GridInventory"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Label11" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Character" type="Control" parent="InventoryInterface/PersonnalInventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.1035156e-05
+offset_right = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Label12" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Panel" type="Panel" parent="InventoryInterface/PersonnalInventory/Character"]
+layout_mode = 0
+offset_left = 257.30005
+offset_top = -264.385
+offset_right = 607.30005
+offset_bottom = 385.615
 
-[node name="Label13" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label14" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label15" type="Label" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/MarginContainer/Stats"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "SomeStats"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Inventory" type="HBoxContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="WeaponSection" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="MainWeapon" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer" instance=ExtResource("2_y8k6d")]
-layout_mode = 2
-
-[node name="SecondWeapon" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer" instance=ExtResource("2_y8k6d")]
-layout_mode = 2
-
-[node name="GridContainer" type="GridContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-columns = 2
-
-[node name="MeleeWeapon1" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="MeleeWeapon2" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="MeleeWeapon3" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="MeleeWeapon4" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WeaponSection/VBoxContainer/GridContainer" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="InventorySection" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="GridInventory" type="GridContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection"]
-custom_minimum_size = Vector2(400, 600)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/h_separation = 1
-theme_override_constants/v_separation = 1
-columns = 8
-
-[node name="Inventory" type="GridContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/h_separation = 1
-theme_override_constants/v_separation = 1
-columns = 8
-
-[node name="HFlowContainer" type="HFlowContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection"]
-layout_mode = 2
-
-[node name="InventoryItemDisplay" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-custom_minimum_size = Vector2(150, 100)
-layout_mode = 2
-
-[node name="InventoryItemDisplay2" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay3" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay4" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay5" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay6" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="InventoryItemDisplay7" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/HFlowContainer" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="WearableSection" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="PanelContainer" type="PanelContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer"]
-layout_mode = 2
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryInterface/PersonnalInventory/Character"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 260.30005
+offset_top = -260.385
+offset_right = 610.30005
+offset_bottom = 389.615
+grow_horizontal = 2
+grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="InventoryInterface/PersonnalInventory/Character/SubViewportContainer"]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(377, 701)
+size = Vector2i(350, 650)
 render_target_update_mode = 4
 
-[node name="Model" type="Node3D" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport"]
+[node name="Model" type="Node3D" parent="InventoryInterface/PersonnalInventory/Character/SubViewportContainer/SubViewport"]
 
-[node name="BaseCharacter" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport/Model" instance=ExtResource("5_0e7dp")]
+[node name="BaseCharacter" parent="InventoryInterface/PersonnalInventory/Character/SubViewportContainer/SubViewport/Model" instance=ExtResource("5_0e7dp")]
 
-[node name="AnimationPlayer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport/Model/BaseCharacter" index="1"]
+[node name="Skeleton3D" parent="InventoryInterface/PersonnalInventory/Character/SubViewportContainer/SubViewport/Model/BaseCharacter/Armature" index="0"]
+bones/0/position = Vector3(0.0011351544, 0.99127764, 0.00128933)
+bones/0/rotation = Quaternion(-3.7687762e-08, -1.393259e-06, 4.3904816e-05, 1)
+bones/1/rotation = Quaternion(-0.049456313, 0.009377272, 0.030522706, 0.99826574)
+bones/2/rotation = Quaternion(-0.002872769, 0.00083114393, 0.016711764, 0.99985594)
+bones/3/rotation = Quaternion(0.057143115, 0.0018227508, 0.017440718, 0.99821204)
+bones/4/rotation = Quaternion(0.0028276453, 1.7140836e-11, -3.5673048e-10, 0.999996)
+bones/5/rotation = Quaternion(-3.6448523e-06, -0.033962026, 1.3289144e-06, 0.9994231)
+bones/7/rotation = Quaternion(-0.45383492, -0.54484934, 0.55113876, -0.43979436)
+bones/8/rotation = Quaternion(0.57350373, 0.36184332, 0.35000598, 0.64626515)
+bones/9/position = Vector3(1.15454895e-07, 0.27404687, -1.5896049e-08)
+bones/9/rotation = Quaternion(-9.531892e-08, 7.119088e-07, 0.00011740273, 1)
+bones/10/rotation = Quaternion(0.09158056, -0.39762643, 0.041936524, 0.912002)
+bones/11/rotation = Quaternion(0.25189495, -0.059463896, 0.22192302, 0.94008684)
+bones/12/rotation = Quaternion(6.8765717e-06, 3.12305e-07, 1.1883678e-06, 1)
+bones/13/rotation = Quaternion(4.5234938e-07, -1.2348153e-07, -7.0780516e-08, 1)
+bones/15/rotation = Quaternion(1.0887857e-06, -1.6001366e-08, 4.71408e-06, 1)
+bones/16/rotation = Quaternion(-2.4961955e-06, 1.1210879e-07, -6.254514e-06, 1)
+bones/17/rotation = Quaternion(8.3872874e-07, -4.2575508e-09, -4.0278486e-08, 1)
+bones/20/rotation = Quaternion(1.460834e-06, -3.0329964e-08, 2.2970243e-09, 1)
+bones/21/rotation = Quaternion(-6.594855e-07, -5.5762875e-08, -3.224652e-09, 1)
+bones/24/rotation = Quaternion(-3.6609683e-07, 8.513146e-09, -8.162974e-06, 1)
+bones/27/rotation = Quaternion(2.1866322e-06, 1.9939863e-07, 0.00014089192, 1)
+bones/28/rotation = Quaternion(-6.454856e-06, -4.623272e-07, -0.00036822463, 0.99999994)
+bones/29/rotation = Quaternion(7.467385e-06, 5.2160846e-07, 0.0002303227, 1)
+bones/31/rotation = Quaternion(0.25189495, -0.059463896, 0.22192302, 0.94008684)
+bones/32/rotation = Quaternion(6.8765717e-06, 3.12305e-07, 1.1883678e-06, 1)
+bones/33/rotation = Quaternion(4.5234938e-07, -1.2348153e-07, -7.0780516e-08, 1)
+bones/34/rotation = Quaternion(1.0887857e-06, -1.6001366e-08, 4.71408e-06, 1)
+bones/35/rotation = Quaternion(-2.4961955e-06, 1.1210879e-07, -6.254514e-06, 1)
+bones/36/rotation = Quaternion(8.3872874e-07, -4.2575508e-09, -4.0278486e-08, 1)
+bones/38/rotation = Quaternion(1.460834e-06, -3.0329964e-08, 2.2970243e-09, 1)
+bones/39/rotation = Quaternion(-6.594855e-07, -5.5762875e-08, -3.224652e-09, 1)
+bones/41/rotation = Quaternion(-3.6609683e-07, 8.513146e-09, -8.162974e-06, 1)
+bones/43/rotation = Quaternion(2.1866322e-06, 1.9939863e-07, 0.00014089192, 1)
+bones/44/rotation = Quaternion(-6.454856e-06, -4.623272e-07, -0.00036822463, 0.99999994)
+bones/45/rotation = Quaternion(7.467385e-06, 5.2160846e-07, 0.0002303227, 1)
+bones/46/rotation = Quaternion(0.45383766, -0.54484713, 0.55114, 0.43979266)
+bones/47/rotation = Quaternion(0.5090251, -0.37273327, -0.19856177, 0.7500245)
+bones/48/rotation = Quaternion(-3.833754e-08, -3.738482e-07, -0.1843213, 0.9828661)
+bones/49/rotation = Quaternion(-0.12541676, 0.33546585, 0.1068002, 0.9275382)
+bones/50/rotation = Quaternion(0.25189513, 0.059464198, -0.2219237, 0.94008654)
+bones/51/rotation = Quaternion(8.57206e-06, -2.0150212e-07, -6.076879e-07, 1)
+bones/52/rotation = Quaternion(-1.1298536e-06, 5.19998e-07, 1.9883737e-07, 1)
+bones/54/rotation = Quaternion(-2.9915639e-09, -1.2242907e-07, -4.7380104e-06, 1)
+bones/55/rotation = Quaternion(7.5083796e-07, 1.550298e-07, 4.133117e-06, 1)
+bones/56/rotation = Quaternion(2.843055e-06, -1.7962755e-08, 1.9465382e-08, 1)
+bones/58/rotation = Quaternion(-3.2450258e-09, -3.2377832e-09, -3.9926553e-07, 1)
+bones/59/rotation = Quaternion(1.911394e-06, 4.044406e-09, 7.551239e-08, 1)
+bones/60/rotation = Quaternion(-1.0708354e-06, 9.497324e-09, -6.252873e-08, 1)
+bones/62/rotation = Quaternion(1.804038e-06, -1.03348825e-07, -4.8360926e-06, 1)
+bones/63/rotation = Quaternion(-1.4356594e-06, -5.0999356e-09, 7.974339e-06, 1)
+bones/64/rotation = Quaternion(7.161583e-07, 1.2010733e-07, 2.3746341e-07, 1)
+bones/66/rotation = Quaternion(1.7814168e-06, -1.2425926e-07, -3.1969819e-06, 1)
+bones/67/rotation = Quaternion(-1.0221759e-06, 4.9047628e-08, 1.0553978e-05, 1)
+bones/68/rotation = Quaternion(1.2043173e-06, 1.22263195e-08, -1.0602169e-05, 1)
+bones/70/rotation = Quaternion(0.25189513, 0.059464198, -0.2219237, 0.94008654)
+bones/71/rotation = Quaternion(8.57206e-06, -2.0150212e-07, -6.076879e-07, 1)
+bones/72/rotation = Quaternion(-1.1298536e-06, 5.19998e-07, 1.9883737e-07, 1)
+bones/73/rotation = Quaternion(-2.9915639e-09, -1.2242907e-07, -4.7380104e-06, 1)
+bones/74/rotation = Quaternion(7.5083796e-07, 1.550298e-07, 4.133117e-06, 1)
+bones/75/rotation = Quaternion(2.843055e-06, -1.7962755e-08, 1.9465382e-08, 1)
+bones/76/rotation = Quaternion(-3.2450258e-09, -3.2377832e-09, -3.9926553e-07, 1)
+bones/77/rotation = Quaternion(1.911394e-06, 4.044406e-09, 7.551239e-08, 1)
+bones/78/rotation = Quaternion(-1.0708354e-06, 9.497324e-09, -6.252873e-08, 1)
+bones/79/rotation = Quaternion(1.804038e-06, -1.03348825e-07, -4.8360926e-06, 1)
+bones/80/rotation = Quaternion(-1.4356594e-06, -5.0999356e-09, 7.974339e-06, 1)
+bones/81/rotation = Quaternion(7.161583e-07, 1.2010733e-07, 2.3746341e-07, 1)
+bones/82/rotation = Quaternion(1.7814168e-06, -1.2425926e-07, -3.1969819e-06, 1)
+bones/83/rotation = Quaternion(-1.0221759e-06, 4.9047628e-08, 1.0553978e-05, 1)
+bones/84/rotation = Quaternion(1.2043173e-06, 1.22263195e-08, -1.0602169e-05, 1)
+bones/85/rotation = Quaternion(-0.00036093566, 0.048724104, 0.99881196, 0.0007714945)
+bones/86/rotation = Quaternion(-0.1277676, -1.3345735e-06, -1.8546456e-07, 0.99180424)
+bones/87/rotation = Quaternion(0.5859262, 0.011628694, 0.023918511, 0.80992794)
+bones/88/rotation = Quaternion(0.22766973, -0.03252283, -0.01536616, 0.97307384)
+bones/90/rotation = Quaternion(-0.000358196, 0.04872875, 0.9988117, 0.00077170477)
+bones/91/rotation = Quaternion(-0.12778752, 9.815712e-07, 1.4217599e-07, 0.9918016)
+bones/92/rotation = Quaternion(0.5859673, -0.011699815, -0.022294084, 0.8099435)
+bones/93/rotation = Quaternion(0.22768717, 0.03211911, 0.01525811, 0.9730849)
+bones/96/position = Vector3(0.0011222046, 0.99127746, 0.001300617)
+bones/96/rotation = Quaternion(-2.5721042e-07, -0.005001372, 4.3904074e-05, 0.9999875)
+bones/97/rotation = Quaternion(1, 5.1145834e-11, 4.2514006e-05, 6.359496e-14)
+bones/98/rotation = Quaternion(1, 5.1145834e-11, 4.2514006e-05, -5.76969e-14)
+bones/99/rotation = Quaternion(-0.00076941325, 0.99881274, -0.048708875, -0.0003184682)
+bones/100/rotation = Quaternion(-0.12777779, -1.3342773e-06, -1.870189e-07, 0.9918028)
+bones/106/rotation = Quaternion(-0.0007696334, 0.9988118, -0.04872881, -0.00031573264)
+bones/107/rotation = Quaternion(-0.1277875, 9.81643e-07, 1.422613e-07, 0.9918017)
+bones/113/rotation = Quaternion(-0.049456313, 0.009377271, 0.030522706, 0.99826574)
+bones/114/rotation = Quaternion(-0.002872769, 0.00083114393, 0.016711764, 0.99985594)
+bones/115/rotation = Quaternion(0.057143115, 0.0018227508, 0.017440718, 0.99821204)
+bones/116/rotation = Quaternion(0.0028276453, 1.6976736e-11, -3.5675102e-10, 0.999996)
+bones/117/rotation = Quaternion(-3.6448523e-06, -0.033962026, 1.3289144e-06, 0.9994231)
+bones/118/rotation = Quaternion(-0.45383498, -0.5448494, 0.5511389, -0.4397944)
+bones/119/rotation = Quaternion(0.5735038, 0.36184382, 0.35000604, 0.6462648)
+bones/120/rotation = Quaternion(-1.0157619e-07, 7.1498545e-07, 0.000117404794, 1)
+bones/121/position = Vector3(0.18760866, 0.0885508, -0.01845323)
+bones/124/rotation = Quaternion(0.45383766, -0.54484713, 0.55114, 0.43979266)
+bones/125/rotation = Quaternion(0.50902545, -0.3727322, -0.19856164, 0.7500248)
+bones/126/rotation = Quaternion(-3.59758e-08, -3.355589e-07, -0.18432169, 0.98286605)
+bones/127/position = Vector3(-0.18760736, 0.08855064, -0.018452832)
+bones/127/rotation = Quaternion(-0.5011841, 0.5016394, -0.4988099, -0.4983585)
+bones/130/position = Vector3(0.46276027, 1.4290261, -0.3347214)
+bones/130/rotation = Quaternion(0, 0, -1.4568967e-19, 1)
+bones/131/position = Vector3(0.27224582, 0.90181583, -0.061714854)
+bones/131/rotation = Quaternion(0.7071013, 0.002750516, -0.7071017, 0.0027505308)
+bones/132/position = Vector3(-0.4605495, 1.4290045, -0.33472052)
+bones/132/rotation = Quaternion(0, 0, -1.4568967e-19, 1)
+bones/133/position = Vector3(-0.2861509, 0.86827034, -0.06171397)
+bones/133/rotation = Quaternion(0.69809693, -0.11252043, 0.69809675, 0.112520605)
+bones/134/position = Vector3(0.09124464, 0.10492202, -0.026301049)
+bones/134/rotation = Quaternion(0.009454557, 0.70704365, 0.7070436, -0.0094519)
+bones/135/position = Vector3(6.889622e-08, -6.026095e-07, -7.805613e-06)
+bones/135/rotation = Quaternion(-0.23579343, 0.028307661, -0.0068706283, 0.9713666)
+bones/137/rotation = Quaternion(0.22767644, -0.032522775, -0.015366599, 0.97307223)
+bones/138/position = Vector3(1.4680609e-07, -2.7708595e-06, 1.3730016e-06)
+bones/138/rotation = Quaternion(-6.856955e-06, -4.2569006e-09, 6.950298e-07, 1)
+bones/146/rotation = Quaternion(-0.02912437, 1.5772635e-08, 0.9995758, -5.933748e-10)
+bones/148/rotation = Quaternion(9.458746e-11, 2.3555914e-07, 1.4406396e-09, 1)
+bones/150/position = Vector3(0.09124467, 0.50389653, 0.6845356)
+bones/150/rotation = Quaternion(1.0658141e-14, -6.7762636e-21, 3.410605e-13, 1)
+bones/151/position = Vector3(-0.091244645, 0.10492217, -0.02630156)
+bones/151/rotation = Quaternion(-0.00945482, 0.70704365, 0.7070436, 0.009451604)
+bones/152/position = Vector3(5.2211515e-08, -6.651082e-07, -7.4881336e-06)
+bones/152/rotation = Quaternion(-0.23579419, -0.028308019, 0.00687058, 0.97136635)
+bones/154/rotation = Quaternion(0.22769347, 0.032119665, 0.015258607, 0.9730834)
+bones/155/position = Vector3(-1.297987e-07, -2.6052003e-06, 1.2958195e-06)
+bones/155/rotation = Quaternion(-6.489763e-06, -6.101768e-07, -6.387162e-07, 1)
+bones/163/rotation = Quaternion(0.02912503, 2.7218727e-10, 0.99957585, -1.2570909e-09)
+bones/165/rotation = Quaternion(1.8699213e-09, -1.8958963e-07, -5.7480076e-10, 1)
+bones/167/position = Vector3(-0.09124467, 0.5038956, 0.6845485)
+bones/167/rotation = Quaternion(3.5527137e-15, -4.6566126e-10, -3.410605e-13, 1)
+
+[node name="AnimationPlayer" parent="InventoryInterface/PersonnalInventory/Character/SubViewportContainer/SubViewport/Model/BaseCharacter" index="1"]
 script = ExtResource("6_fbsg5")
 
-[node name="Camera3D" type="Camera3D" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="InventoryInterface/PersonnalInventory/Character/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9167578, 2.1761148)
 fov = 53.5
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="InventoryInterface/PersonnalInventory/Character/SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="InventoryInterface/PersonnalInventory/Character/SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_f84y6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection"]
-modulate = Color(1, 1, 1, 0.39215687)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 34
+[node name="Control" type="Control" parent="InventoryInterface"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ItemContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/VBoxContainer" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer5" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/VBoxContainer" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer4" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/VBoxContainer" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer2" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/VBoxContainer" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[node name="ItemContainer3" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/VBoxContainer" instance=ExtResource("2_s1yv4")]
-layout_mode = 2
-
-[editable path="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport/Model/BaseCharacter"]
+[editable path="InventoryInterface/PersonnalInventory/Character/SubViewportContainer/SubViewport/Model/BaseCharacter"]

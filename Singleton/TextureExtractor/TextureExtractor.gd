@@ -14,6 +14,10 @@ extends Node3D
 
 # Cycle through the array of models and create a texture for each model and save it to the disk
 func get_texture(item : BaseItem) -> ImageTexture:
+	if target.get_child_count():
+		for i in target.get_children():
+			i.queue_free()
+	
 	camera_3d.look_at(Vector3.ZERO)
 	var key = item.item_data.name
 	
@@ -23,9 +27,10 @@ func get_texture(item : BaseItem) -> ImageTexture:
 		item.get_parent().remove_child(item)
 		item._toggle(true)
 		target.add_child(item)
-		# setup to camera
+		# setup camera shot
 		item.position = item.item_data.offset_pos
 		camera_3d.size = item.item_data.offset_camera_size
+		sub_viewport.size = item.item_data.viewport_size
 		
 		await RenderingServer.frame_post_draw
 		

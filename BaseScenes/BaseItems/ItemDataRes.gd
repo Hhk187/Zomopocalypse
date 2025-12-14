@@ -46,6 +46,7 @@ enum FIRE_TYPE {
 # icon creation
 @export var offset_camera_size: float = 1.0
 @export var offset_pos: Vector3
+@export var viewport_size: Vector2i = Vector2i(512, 512)
 
 
 

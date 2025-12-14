@@ -38,11 +38,12 @@ func _populate_data():
 func _on_add(item: BaseItem):
 	var item_data : ItemDataRes = item.item_data.duplicate(true)
 	var inventory_container_data = InventoryContainerData.new() 
+	inventory_container_data.item_data = item_data
 	inventory_container_data.icon = await TextureExtractor.get_texture(item)
-
+	
 	items_data[inventory_container_data] = Vector2i.ZERO
 	var coord = _get_coords_from_inventory_container_data(inventory_container_data)
-	_set_coord_grid(coord, inventory_container_data)	
+	_set_coord_grid(coord, inventory_container_data)
 
 	for h in range(1, item_data.tiles_height):
 		grid[h][coord.y] = '|'
@@ -71,4 +72,4 @@ func _set_coord_grid(coord : Vector2i, data : Variant):
 
 
 func get_size() -> Vector2i:
-	return Vector2i(grid.size(), grid[0].size())
+	return Vector2i(grid[0].size(), grid.size())

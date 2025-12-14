@@ -19,7 +19,7 @@ theme_override_constants/margin_bottom = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
 texture = ExtResource("1_xp3kc")
-expand_mode = 3
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="."]
