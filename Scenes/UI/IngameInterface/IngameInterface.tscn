@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://4w6ddhg7hmeu" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/ItemContainer/ItemContainer.tscn" id="2_s1yv4"]
 [ext_resource type="PackedScene" uid="uid://ctdhrvc8dx5rc" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/WeaponContainer/WeaponContainer.tscn" id="2_y8k6d"]
 [ext_resource type="PackedScene" uid="uid://cd4shomxx12md" path="res://temp/assets/mixamo/BaseCharacter.blend" id="5_0e7dp"]
-[ext_resource type="PackedScene" uid="uid://bkqajk4bjyhkk" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/InventoryItemTile/InventoryItemTile.tscn" id="5_f84y6"]
+[ext_resource type="Script" uid="uid://bcjn08ipsuuvt" path="res://Scenes/UI/IngameInterface/grid_inventory.gd" id="5_f84y6"]
 [ext_resource type="Script" uid="uid://c2ksyn8fgxgxr" path="res://Scenes/UI/IngameInterface/animation_player.gd" id="6_fbsg5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj3iu"]
@@ -241,180 +241,13 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="PolyItems" type="GridContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection"]
+[node name="GridInventory" type="GridContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/h_separation = 1
 theme_override_constants/v_separation = 1
 columns = 8
-
-[node name="PanelContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer2" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer3" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer4" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer5" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer6" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer7" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer8" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer9" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer10" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer11" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer12" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer13" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer14" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer15" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer16" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer17" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer18" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer19" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer20" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer21" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer22" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer23" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer24" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer25" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer26" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer27" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer28" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer29" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer30" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer31" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer32" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer33" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer34" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer35" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer36" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer37" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer38" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer39" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer40" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer41" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer42" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer43" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer44" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer45" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer46" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer47" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer48" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer49" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer50" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer51" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer52" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer53" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer54" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer55" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
-
-[node name="PanelContainer56" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/InventorySection/PolyItems" instance=ExtResource("5_f84y6")]
-layout_mode = 2
+script = ExtResource("5_f84y6")
 
 [node name="WearableSection" type="MarginContainer" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory"]
 layout_mode = 2
@@ -436,7 +269,7 @@ stretch = true
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(374, 701)
+size = Vector2i(385, 701)
 render_target_update_mode = 4
 
 [node name="Model" type="Node3D" parent="InventoryInterface/HBoxContainer/PersonnelInventory/VBoxContainer/Inventory/WearableSection/PanelContainer/SubViewportContainer/SubViewport"]
