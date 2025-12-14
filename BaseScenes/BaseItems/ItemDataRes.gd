@@ -7,8 +7,8 @@ enum FIRE_TYPE {
 	FULL_AUTO
 }
 
-@export var id : String
-@export var name : String = "Name_Placeholder"
+@export var id: int = randi()
+@export var name: String = "Name_Placeholder"
 
 @export_group("Type")
 @export_enum(
@@ -38,8 +38,11 @@ enum FIRE_TYPE {
 
 
 @export_group("Inventory")
+# inventory info
 @export var is_stackable : bool
 @export var max_stack : int
+@export var tiles_width: int = 1
+@export var tiles_height: int = 1
 # icon creation
 @export var offset_camera_size: float = 1.0
 @export var offset_pos: Vector3
