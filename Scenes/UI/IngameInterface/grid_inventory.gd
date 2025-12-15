@@ -3,9 +3,9 @@ extends Control
 const INVENTORY_ITEM_DISPLAY = preload("uid://dqin6gxt05ret")
 
 
-const MARKER_POS = Vector2(-170, -260)
-const TILE_SIZE = Vector2(50, 50)
-const SEPERATION = 1
+@export var MARKER_POS = Vector2(-170, -260)
+@export var TILE_SIZE = 48
+@export var SEPERATION = 2
 
 @onready var grid: Control = $Grid
 @onready var items: Control = $Items
@@ -33,9 +33,10 @@ func _on_open_inventory(player : BaseEntity):
 		for j in range(inventory_size.y):
 			var tile := Panel.new()
 			grid.add_child(tile)
-			tile.position = MARKER_POS + Vector2((TILE_SIZE.x + SEPERATION) * i, (TILE_SIZE.y + SEPERATION) * j)
+			tile.position = MARKER_POS + Vector2((TILE_SIZE + SEPERATION) * i, (TILE_SIZE + SEPERATION) * j)
 			
-			tile.custom_minimum_size = TILE_SIZE
+			tile.custom_minimum_size = Vector2(TILE_SIZE, TILE_SIZE)
+			tile.set_anchors_preset(Control.PRESET_CENTER)
 	
 	for inventory_container_data in players_inventory.items_data as Dictionary[InventoryContainerData, Vector2i]:
 		var item_display : InventoryItemDisplay = INVENTORY_ITEM_DISPLAY.instantiate()
