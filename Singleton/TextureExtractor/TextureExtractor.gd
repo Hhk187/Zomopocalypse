@@ -40,7 +40,7 @@ func get_texture(item : BaseItem) -> ImageTexture:
 		
 		cached_textures[key] = texture
 		
-		call_deferred("queue_free", item)
+		item.call_deferred("queue_free")
 		return texture
 
 
