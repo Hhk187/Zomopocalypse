@@ -14,7 +14,7 @@ signal equipe(index: InventoryContainerData)
 
 
 
-	
+
 var grid: Array[Array]
 var items_data: Dictionary[InventoryContainerData, Vector2i]
 
@@ -41,7 +41,7 @@ func _on_add(item: BaseItem):
 	inventory_container_data.item_data = item_data
 	inventory_container_data.icon = await TextureExtractor.get_texture(item)
 	
-	items_data[inventory_container_data] = Vector2i.ZERO
+	items_data[inventory_container_data] = Vector2i.ZERO # TODO: should get next available
 	var coord = _get_coords_from_inventory_container_data(inventory_container_data)
 	_set_coord_grid(coord, inventory_container_data)
 
@@ -51,14 +51,16 @@ func _on_add(item: BaseItem):
 	for h in item_data.tiles_height:
 		for w in range(1, item_data.tiles_width):
 			grid[h][w] = '-'
-	
-	
+
+func _on_move():
+	pass
+
 
 func _get_coords_from_inventory_container_data(data : InventoryContainerData) -> Vector2i:
 	return items_data[data]
 
 func _set_coord_grid(coord : Vector2i, data : Variant):
-	grid[coord.x][coord.y] = data
+		grid[coord.x][coord.y] = data
 
 # func get_item_from_coord(coord : Vector2i) -> ItemDataRes:
 # 	return grid[coord.x][coord.y]

@@ -41,113 +41,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_fr8q6")
 
-[node name="Equipements" type="Control" parent="InventoryInterface/PersonnalInventory"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -6.1035156e-05
-offset_right = -6.1035156e-05
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Weapon1" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
-custom_minimum_size = Vector2(250, 150)
-layout_mode = 1
-offset_left = -605.69995
-offset_top = -158.38501
-offset_right = -355.69995
-offset_bottom = -8.38501
-
-[node name="Weapon2" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
-custom_minimum_size = Vector2(250, 150)
-layout_mode = 1
-offset_left = -605.69995
-offset_top = 10.61499
-offset_right = -355.69995
-offset_bottom = 160.61499
-
-[node name="Weapon3" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
-custom_minimum_size = Vector2(150, 250)
-layout_mode = 1
-offset_left = -337.69995
-offset_top = -115.38501
-offset_right = -187.69995
-offset_bottom = 134.61499
-
-[node name="item1" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-offset_left = -610.69995
-offset_top = 180.61499
-offset_right = -510.69995
-offset_bottom = 280.615
-
-[node name="item2" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-offset_left = -488.69995
-offset_top = 178.61499
-offset_right = -388.69995
-offset_bottom = 278.615
-
-[node name="item3" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-offset_left = -366.69995
-offset_top = 178.61499
-offset_right = -266.69995
-offset_bottom = 278.615
-
-[node name="item4" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-offset_left = -366.69995
-offset_top = 297.615
-offset_right = -266.69995
-offset_bottom = 397.615
-
-[node name="item5" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-offset_left = -488.69995
-offset_top = 295.615
-offset_right = -388.69995
-offset_bottom = 395.615
-
-[node name="item6" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-offset_left = -608.69995
-offset_top = 297.615
-offset_right = -508.69995
-offset_bottom = 397.615
-
-[node name="GridInventory" type="Control" parent="InventoryInterface/PersonnalInventory"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -6.1035156e-05
-offset_right = -6.1035156e-05
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("3_0e7dp")
-
-[node name="Grid" type="Control" parent="InventoryInterface/PersonnalInventory/GridInventory"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Items" type="Control" parent="InventoryInterface/PersonnalInventory/GridInventory"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Character" type="Control" parent="InventoryInterface/PersonnalInventory"]
 layout_mode = 1
 anchors_preset = 8
@@ -337,6 +230,113 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="InventoryInterface/PersonnalInventory/Character/SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_f84y6")
+
+[node name="Equipements" type="Control" parent="InventoryInterface/PersonnalInventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.1035156e-05
+offset_right = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Weapon1" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 1
+offset_left = -605.69995
+offset_top = -158.38501
+offset_right = -355.69995
+offset_bottom = -8.38501
+
+[node name="Weapon2" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(250, 150)
+layout_mode = 1
+offset_left = -605.69995
+offset_top = 10.61499
+offset_right = -355.69995
+offset_bottom = 160.61499
+
+[node name="Weapon3" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(150, 250)
+layout_mode = 1
+offset_left = -337.69995
+offset_top = -115.38501
+offset_right = -187.69995
+offset_bottom = 134.61499
+
+[node name="item1" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -610.69995
+offset_top = 180.61499
+offset_right = -510.69995
+offset_bottom = 280.615
+
+[node name="item2" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -488.69995
+offset_top = 178.61499
+offset_right = -388.69995
+offset_bottom = 278.615
+
+[node name="item3" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -366.69995
+offset_top = 178.61499
+offset_right = -266.69995
+offset_bottom = 278.615
+
+[node name="item4" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -366.69995
+offset_top = 297.615
+offset_right = -266.69995
+offset_bottom = 397.615
+
+[node name="item5" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -488.69995
+offset_top = 295.615
+offset_right = -388.69995
+offset_bottom = 395.615
+
+[node name="item6" type="Panel" parent="InventoryInterface/PersonnalInventory/Equipements"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+offset_left = -608.69995
+offset_top = 297.615
+offset_right = -508.69995
+offset_bottom = 397.615
+
+[node name="GridInventory" type="Control" parent="InventoryInterface/PersonnalInventory"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.1035156e-05
+offset_right = -6.1035156e-05
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_0e7dp")
+
+[node name="Grid" type="Control" parent="InventoryInterface/PersonnalInventory/GridInventory"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Items" type="Control" parent="InventoryInterface/PersonnalInventory/GridInventory"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Control" type="Control" parent="InventoryInterface"]
 anchors_preset = 0

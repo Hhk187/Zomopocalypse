@@ -13,7 +13,7 @@ func update_debug_info(key : String, value : Variant) -> void:
 	if not debug_info.has(key):
 		var label = Label.new()
 		label.name = key
-		label.add_theme_font_size_override("font_size", 10)
+		label.add_theme_font_size_override("font_size", 15)
 		label.add_theme_color_override("font_color", Color.GREEN)
 
 		debug_container.add_child(label)

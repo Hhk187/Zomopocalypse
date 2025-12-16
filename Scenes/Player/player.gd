@@ -106,15 +106,15 @@ func test_use_weapon():
 	#print(ray_origin, ray_origin)
 
 
-var cooldown = Time.get_ticks_msec()
-func _physics_process(_delta: float) -> void:
-	if Engine.is_editor_hint(): return
-	if Input.is_action_pressed("play_fire") and Time.get_ticks_msec() - cooldown > 50:
-		test_use_weapon()
-		$AudioStreamPlayer3D.pitch_scale = randf_range(0.8, 2)
-		
-		$AudioStreamPlayer3D.play()
-		cooldown = Time.get_ticks_msec()
+#var cooldown = Time.get_ticks_msec()
+#func _physics_process(_delta: float) -> void:
+	#if Engine.is_editor_hint(): return
+	#if Input.is_action_pressed("play_fire") and Time.get_ticks_msec() - cooldown > 50:
+		#test_use_weapon()
+		#$AudioStreamPlayer3D.pitch_scale = randf_range(0.8, 2)
+		#
+		#$AudioStreamPlayer3D.play()
+		#cooldown = Time.get_ticks_msec()
 	
 	#if Input.is_action_pressed("play_pickup"):
 		#interaction_area.pick_up_item()
