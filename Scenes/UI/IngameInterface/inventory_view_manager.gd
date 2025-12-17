@@ -146,10 +146,12 @@ func highlight_hovered_equipement_slots():
 		var top_left_pos = slot.global_position
 		var bottom_right_pos = top_left_pos + slot.size
 		
-		if top_left_pos < get_global_mouse_position() and bottom_right_pos > get_global_mouse_position():
+		if (
+			top_left_pos.x < get_global_mouse_position().x and top_left_pos.y < get_global_mouse_position().y 
+			and bottom_right_pos.x > get_global_mouse_position().x and bottom_right_pos.y > get_global_mouse_position().y
+			):
 			slot._on_toggle_tiles_color(HOVERED_COLOR_GREEN)
 		
-		Global.debug_manager.update_debug_info(str(slot.name), [top_left_pos, bottom_right_pos, get_global_mouse_position()])
 
 
 var selected_item : InventoryItemDisplay

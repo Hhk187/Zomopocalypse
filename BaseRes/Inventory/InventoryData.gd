@@ -5,7 +5,10 @@ const DEFAULT_WIDTH := 8
 const DEFAULT_HEIGHT := 5
 
 
-signal move_to(from_index: InventoryContainerData, to_index: InventoryContainerData)
+signal move_to(
+	inventory_container_data: InventoryContainerData,
+	from_index: Vector2i,
+	to_index: Vector2i)
 signal add(item: BaseItem)
 signal remove(index: InventoryContainerData) 
 # Subject to change

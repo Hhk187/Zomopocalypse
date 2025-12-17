@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ld8keue41g2m" path="res://Scenes/UI/IngameInterface/ingame_interface.gd" id="1_g3kp2"]
 [ext_resource type="Script" uid="uid://c8786xrjmywox" path="res://Scenes/UI/IngameInterface/personnal_inventory.gd" id="2_fr8q6"]
-[ext_resource type="Script" uid="uid://bcjn08ipsuuvt" path="res://Scenes/UI/IngameInterface/grid_inventory.gd" id="3_0e7dp"]
+[ext_resource type="Script" uid="uid://bcjn08ipsuuvt" path="res://Scenes/UI/IngameInterface/inventory_view_manager.gd" id="3_0e7dp"]
 [ext_resource type="PackedScene" uid="uid://cd4shomxx12md" path="res://temp/assets/mixamo/BaseCharacter.blend" id="5_0e7dp"]
 [ext_resource type="PackedScene" uid="uid://bkqajk4bjyhkk" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/InventoryItemTile/InventoryTile.tscn" id="5_fbsg5"]
 [ext_resource type="Script" uid="uid://c2ksyn8fgxgxr" path="res://Scenes/UI/IngameInterface/animation_player.gd" id="6_fbsg5"]
