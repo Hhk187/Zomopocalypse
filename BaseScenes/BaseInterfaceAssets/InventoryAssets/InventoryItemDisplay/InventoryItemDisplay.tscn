@@ -5,8 +5,10 @@
 
 [node name="InventoryItemDisplay" type="PanelContainer"]
 custom_minimum_size = Vector2(50, 50)
+layout_direction = 4
 offset_right = 50.0
 offset_bottom = 50.0
+size_flags_vertical = 4
 script = ExtResource("1_5hrsh")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

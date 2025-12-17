@@ -1,6 +1,16 @@
-[gd_scene format=3 uid="uid://bkqajk4bjyhkk"]
+[gd_scene load_steps=4 format=3 uid="uid://bkqajk4bjyhkk"]
 
-[node name="InventoryTile" type="PanelContainer"]
-custom_minimum_size = Vector2(50, 50)
-offset_right = 10.0
-offset_bottom = 10.0
+[ext_resource type="Shader" uid="uid://bdv537rm77wi4" path="res://Scenes/UI/IngameInterface/IngameInterface.gdshader" id="1_1kfri"]
+[ext_resource type="Script" uid="uid://diy88vkj7wwtk" path="res://BaseScenes/BaseInterfaceAssets/InventoryAssets/InventoryItemTile/inventory_tile.gd" id="2_8xnuj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8xnuj"]
+shader = ExtResource("1_1kfri")
+shader_parameter/tint_color = Color(0.13333334, 0.13333334, 0.13333334, 0.49803922)
+shader_parameter/strength = 1.0
+shader_parameter/border_color = Color(1, 1, 1, 1)
+shader_parameter/border_px = 0.0
+shader_parameter/rect_size = 128.0
+
+[node name="InventoryTile" type="Panel"]
+material = SubResource("ShaderMaterial_8xnuj")
+script = ExtResource("2_8xnuj")

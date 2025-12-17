@@ -18,6 +18,20 @@ signal equipe(index: InventoryContainerData)
 var grid: Array[Array]
 var items_data: Dictionary[InventoryContainerData, Vector2i]
 
+var backpack : Dictionary[InventoryContainerData, Vector2i]
+
+var weapon1 : InventoryContainerData
+var weapon2 : InventoryContainerData
+var pocket1 : InventoryContainerData
+var pocket2 : InventoryContainerData
+var pocket3 : InventoryContainerData
+var pocket4 : InventoryContainerData
+
+var head_gear : InventoryContainerData
+var chest_gear : InventoryContainerData
+var hands_gear : InventoryContainerData
+var legs_gear : InventoryContainerData
+var foot_gear : InventoryContainerData
 
 
 func _ready() -> void:

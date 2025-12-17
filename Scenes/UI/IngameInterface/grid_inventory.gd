@@ -1,17 +1,28 @@
 extends Control
+class_name InventoryViewManager
+
+signal toggle_tiles_color(switch : bool)
 
 const INVENTORY_ITEM_DISPLAY = preload("uid://dqin6gxt05ret")
+const INVENTORY_TILE = preload("uid://bkqajk4bjyhkk")
 
 
 const MARKER_POS = Vector2(-170, -260)
-const TILE_SIZE = Vector2(50, 50)
-const SEPERATION = 1
+const TILE_SIZE = 48
+const SEPERATION = 2
 const INVENTORY_WIDTH = 8
+const INVENTORY_HEIGHT = 5
+
+const HOVERED_COLOR_GREEN = Color.FOREST_GREEN
+const HOVERED_COLOR_RED = Color.DARK_RED
+const HOVERED_COLOR_DEFAULT = Color.DIM_GRAY
+ 
 
 var players_inventory : InventoryData
-
-@onready var grid: Control = $Grid
-@onready var items: Control = $Items
+@onready var grid: Control = $GridInventory/Grid
+@onready var items: Control = $GridInventory/Items
+@onready var equipements: Control = $Equipements
+@onready var character: Control = $Character
 
 
 
@@ -35,11 +46,22 @@ func _on_open_inventory(player : BaseEntity):
 	# grid display
 	for i in range(inventory_size.y):
 		for j in range(inventory_size.x):
-			var tile := Panel.new()
+			var tile : InventoryTile = INVENTORY_TILE.instantiate()
+			tile.material = tile.material.duplicate(true)
+			connect("toggle_tiles_color", tile._on_toggle_tiles_color)
+			tile._on_toggle_tiles_color(HOVERED_COLOR_DEFAULT)
 			
 			grid.add_child(tile)
-			tile.position = MARKER_POS + Vector2((TILE_SIZE.x + SEPERATION) * j, (TILE_SIZE.y + SEPERATION) * i)
-			tile.custom_minimum_size = TILE_SIZE
+			tile.position = MARKER_POS + Vector2((TILE_SIZE + SEPERATION) * j, (TILE_SIZE + SEPERATION) * i)
+			tile.custom_minimum_size = Vector2(TILE_SIZE, TILE_SIZE)
+			tile.size = custom_minimum_size
+	
+	# equipements
+	for tile in equipements.get_children():
+		tile.material = tile.material.duplicate(true)
+		connect("toggle_tiles_color", tile._on_toggle_tiles_color)
+		tile._on_toggle_tiles_color(HOVERED_COLOR_DEFAULT)
+	
 	
 	
 	for i in players_inventory.grid.size():
@@ -54,18 +76,81 @@ func _on_open_inventory(player : BaseEntity):
 				# connecting to input for interactions on "_on_item1_clicked"
 				item_display.connect("gui_input", _on_item_clicked.bind(item_display))
 				
-				item_display.position = grid.get_child(j + i * INVENTORY_WIDTH).position
+				item_display.position = grid.get_child(j + i * INVENTORY_WIDTH).position - Vector2(SEPERATION, SEPERATION) * 0.5
 				item_display.texture_rect.texture = inventory_container_data.icon
 
-func get_tile_from_mouse_pos(pos : Vector2):
+func get_tile_index_from_pos(pos : Vector2) -> Vector2i:
 	var real_pos = Vector2i(pos - grid.get_child(0).global_position)
-	if real_pos.x < 0 or real_pos.y < 0: return
 
+	if real_pos.x < 0 or real_pos.y < 0: return Vector2i(-1, -1)
 	var x = real_pos.x / 50
 	var y = (real_pos.y / 50) 
 	
+	if x > INVENTORY_WIDTH -1 or y > INVENTORY_HEIGHT - 1:
+		return Vector2i(-1, -1)
 	
-	return [grid.get_child(x + y * INVENTORY_WIDTH), Vector2i(x, y)]
+	
+	return Vector2i(x, y)
+
+
+func get_tile_from_pos(pos : Vector2) -> Panel:
+	var vec2 : Vector2i = get_tile_index_from_pos(pos)
+	return get_tile_from_index(vec2)
+
+
+func get_tile_from_index(pos : Vector2) -> Panel:
+	var vec2 : Vector2i = pos
+	if vec2 == Vector2i(-1, -1) or vec2.x > INVENTORY_WIDTH -1 or vec2.y > INVENTORY_HEIGHT - 1:
+		return null
+	
+	return grid.get_child(vec2.x + vec2.y * INVENTORY_WIDTH)
+
+
+var old_panel : InventoryTile
+func highlight_hovered_tiles():
+	var tiles_array : Array[InventoryTile]
+	
+	var index_tile_vec2 = get_tile_index_from_pos(selected_item.global_position + Vector2(TILE_SIZE*0.5, TILE_SIZE*0.5))
+	if index_tile_vec2 == Vector2i(-1, -1):
+		return
+	
+	var item_tiles_width : int = selected_item.item_data.tiles_width
+	var item_tiles_height : int = selected_item.item_data.tiles_height
+	
+	for width in item_tiles_width:
+		for height in item_tiles_height:
+			var tile : InventoryTile
+			
+			if selected_item.rotated:
+				tile = get_tile_from_index(Vector2(index_tile_vec2.x + height, index_tile_vec2.y + width))
+			else :
+				tile = get_tile_from_index(Vector2(index_tile_vec2.x + width, index_tile_vec2.y + height))
+
+			
+			tiles_array.append(tile)
+	
+	# checking for nulls
+	var OK : bool = true
+	for tile in tiles_array:
+		if tile == null:
+			OK = false
+			break
+			
+	if OK:
+		for tile in tiles_array: 
+			tile._on_toggle_tiles_color(HOVERED_COLOR_GREEN)
+
+
+func highlight_hovered_equipement_slots():
+	for slot in equipements.get_children() as Array[InventoryTile]:
+		var top_left_pos = slot.global_position
+		var bottom_right_pos = top_left_pos + slot.size
+		
+		if top_left_pos < get_global_mouse_position() and bottom_right_pos > get_global_mouse_position():
+			slot._on_toggle_tiles_color(HOVERED_COLOR_GREEN)
+		
+		Global.debug_manager.update_debug_info(str(slot.name), [top_left_pos, bottom_right_pos, get_global_mouse_position()])
+
 
 var selected_item : InventoryItemDisplay
 ## Connected to InventoryItemDisplay instances
@@ -74,10 +159,22 @@ func _on_item_clicked(event : InputEvent, item_display : InventoryItemDisplay):
 		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 			selected_item = item_display
 			item_display.follow_mouse = true
+			highlight_hovered_tiles()
 		if event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
-			if get_tile_from_mouse_pos(get_global_mouse_position()):
-				item_display.position = get_tile_from_mouse_pos(get_global_mouse_position())[0].position
+			if get_tile_from_pos(item_display.global_position + Vector2(TILE_SIZE*0.5, TILE_SIZE*0.5)):
+				item_display.global_position = get_tile_from_pos(
+					item_display.global_position + Vector2(TILE_SIZE*0.5, TILE_SIZE*0.5) # top left of the item display is the selector
+					).global_position - Vector2(SEPERATION, SEPERATION) * 0.5 # applying offset seperation
 				players_inventory._on_move()
 			else:
 				item_display.position = item_display.og_pos
 			item_display.follow_mouse = false
+			
+			selected_item = null
+			toggle_tiles_color.emit(HOVERED_COLOR_DEFAULT)
+
+func _process(_delta: float) -> void:
+	if selected_item:
+		toggle_tiles_color.emit(HOVERED_COLOR_DEFAULT)
+		highlight_hovered_tiles()
+		highlight_hovered_equipement_slots()

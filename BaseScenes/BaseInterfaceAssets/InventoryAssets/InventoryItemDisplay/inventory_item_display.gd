@@ -10,8 +10,11 @@ var item_data : ItemDataRes
 func populate(item : ItemDataRes):
 	item_data = item
 	custom_minimum_size = Vector2(item.tiles_width, item.tiles_height) * TILE_SIZE
-	
 
+var rotated : bool = false:
+	set(value):
+		rotated = value
+		_rotate()
 
 var og_pos: Vector2
 var position_offset: Vector2
@@ -24,10 +27,30 @@ var follow_mouse: bool = false:
 		var last_index = get_parent().get_child_count() - 1
 		parent.move_child(self, last_index)
 		
-		# calculates mouse offset
 		og_pos = position
+		_calculate_mouse_to_center_offset()
+
+func _process(_delta: float) -> void:
+	if follow_mouse:
+		global_position = lerp(global_position, get_global_mouse_position() + position_offset, 0.4)
+		if Input.is_action_just_pressed("inv_rotate"):
+			rotated = !rotated
+
+func _calculate_mouse_to_center_offset():
+		# calculates mouse offset
 		position_offset = -custom_minimum_size * 0.5
 
-func _process(delta: float) -> void:
-	if follow_mouse:
-		global_position = get_global_mouse_position() + position_offset
+func _rotate():
+	var image : Image = texture_rect.texture.get_image()
+	
+	if size == Vector2(item_data.tiles_width, item_data.tiles_height) * TILE_SIZE:
+		image.rotate_90(CLOCKWISE)
+		custom_minimum_size = Vector2(item_data.tiles_height, item_data.tiles_width) * TILE_SIZE
+		size = custom_minimum_size
+	else :
+		image.rotate_90(COUNTERCLOCKWISE)
+		custom_minimum_size = Vector2(item_data.tiles_width, item_data.tiles_height) * TILE_SIZE
+		size = custom_minimum_size
+	
+	texture_rect.texture = ImageTexture.create_from_image(image)
+	_calculate_mouse_to_center_offset()
