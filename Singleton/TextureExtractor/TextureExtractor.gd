@@ -22,11 +22,13 @@ func get_texture(item : BaseItem) -> ImageTexture:
 	var key = item.item_data.name
 	
 	if cached_textures.has(key):
+		item.get_parent().remove_child(item)
 		return cached_textures[key]
 	else:
 		item.get_parent().remove_child(item)
 		item._toggle(true)
-		target.add_child(item)
+		target.call_deferred("add_child", item)
+		
 		# setup camera shot
 		item.position = item.item_data.offset_pos
 		camera_3d.size = item.item_data.offset_camera_size
@@ -40,7 +42,7 @@ func get_texture(item : BaseItem) -> ImageTexture:
 		
 		cached_textures[key] = texture
 		
-		item.call_deferred("queue_free")
+		target.call_deferred("remove_child", item)
 		return texture
 
 

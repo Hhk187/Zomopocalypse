@@ -1,7 +1,7 @@
 extends RigidBody3D
 class_name BaseItem
 
-@export var item_data : ItemDataRes
+@export var item_data: ItemDataRes
 
 @onready var model: Node3D = $Model
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
@@ -13,6 +13,7 @@ var basis_z : Vector3
 
 func _ready() -> void:
 	og_parent = get_parent() as Node
+	item_data.item = self
 
 func un_equipe():
 	equiped_pos = get_parent().global_position

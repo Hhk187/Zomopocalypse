@@ -48,7 +48,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_0e7dp")
 
-[node name="Character" type="Control" parent="InventoryInterface/PersonnalInventory/InventoryViewManager"]
+[node name="CharacterView" type="Control" parent="InventoryInterface/PersonnalInventory/InventoryViewManager"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,14 +62,14 @@ offset_bottom = 405.385
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character"]
+[node name="Panel" type="Panel" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView"]
 layout_mode = 0
 offset_left = 257.30005
 offset_top = -264.385
 offset_right = 607.30005
 offset_bottom = 385.615
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -83,18 +83,18 @@ grow_horizontal = 2
 grow_vertical = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView/SubViewportContainer"]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(350, 650)
 render_target_update_mode = 4
 
-[node name="Model" type="Node3D" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character/SubViewportContainer/SubViewport"]
+[node name="Model" type="Node3D" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView/SubViewportContainer/SubViewport"]
 
-[node name="BaseCharacter" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character/SubViewportContainer/SubViewport/Model" instance=ExtResource("5_0e7dp")]
+[node name="BaseCharacter" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView/SubViewportContainer/SubViewport/Model" instance=ExtResource("5_0e7dp")]
 
-[node name="Skeleton3D" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character/SubViewportContainer/SubViewport/Model/BaseCharacter/Armature" index="0"]
+[node name="Skeleton3D" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView/SubViewportContainer/SubViewport/Model/BaseCharacter/Armature" index="0"]
 bones/0/position = Vector3(0.0011351544, 0.99127764, 0.00128933)
 bones/0/rotation = Quaternion(-3.7687762e-08, -1.393259e-06, 4.3904816e-05, 1)
 bones/1/rotation = Quaternion(-0.049456313, 0.009377272, 0.030522706, 0.99826574)
@@ -226,18 +226,18 @@ bones/165/rotation = Quaternion(1.8699213e-09, -1.8958963e-07, -5.7480076e-10, 1
 bones/167/position = Vector3(-0.09124467, 0.5038956, 0.6845485)
 bones/167/rotation = Quaternion(3.5527137e-15, -4.6566126e-10, -3.410605e-13, 1)
 
-[node name="AnimationPlayer" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character/SubViewportContainer/SubViewport/Model/BaseCharacter" index="1"]
+[node name="AnimationPlayer" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView/SubViewportContainer/SubViewport/Model/BaseCharacter" index="1"]
 script = ExtResource("6_fbsg5")
 
-[node name="Camera3D" type="Camera3D" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character/SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9167578, 2.1761148)
 fov = 53.5
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character/SubViewportContainer/SubViewport"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView/SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Character/SubViewportContainer/SubViewport"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView/SubViewportContainer/SubViewport"]
 environment = SubResource("Environment_f84y6")
 
 [node name="Equipements" type="Control" parent="InventoryInterface/PersonnalInventory/InventoryViewManager"]
@@ -260,6 +260,7 @@ offset_left = -605.69995
 offset_top = -158.38501
 offset_right = -355.69995
 offset_bottom = -8.38501
+item_type = 0
 
 [node name="Weapon2" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
@@ -267,6 +268,7 @@ offset_left = -605.69995
 offset_top = 10.61499
 offset_right = -355.69995
 offset_bottom = 160.61499
+item_type = 0
 
 [node name="Weapon3" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
@@ -274,6 +276,8 @@ offset_left = -337.69995
 offset_top = -115.38501
 offset_right = -187.69995
 offset_bottom = 134.61499
+is_rotated = true
+item_type = 0
 
 [node name="Item1" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
@@ -281,6 +285,7 @@ offset_left = -610.69995
 offset_top = 180.61499
 offset_right = -510.69995
 offset_bottom = 278.615
+item_type = 3
 
 [node name="Item2" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
@@ -288,6 +293,7 @@ offset_left = -488.69995
 offset_top = 178.61499
 offset_right = -388.69995
 offset_bottom = 276.615
+item_type = 3
 
 [node name="Item3" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
@@ -295,6 +301,7 @@ offset_left = -366.69995
 offset_top = 178.61499
 offset_right = -266.69995
 offset_bottom = 276.615
+item_type = 3
 
 [node name="Item4" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
@@ -302,6 +309,7 @@ offset_left = -610.69995
 offset_top = 295.615
 offset_right = -510.69995
 offset_bottom = 393.615
+item_type = 3
 
 [node name="Item5" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
@@ -309,6 +317,7 @@ offset_left = -488.69995
 offset_top = 297.615
 offset_right = -388.69995
 offset_bottom = 395.615
+item_type = 3
 
 [node name="Item6" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
@@ -316,6 +325,52 @@ offset_left = -366.69995
 offset_top = 297.615
 offset_right = -266.69995
 offset_bottom = 395.615
+item_type = 3
+
+[node name="Head" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 0
+offset_left = 377.30005
+offset_top = -226.38501
+offset_right = 477.30005
+offset_bottom = -128.38501
+item_type = 2
+
+[node name="UpperBody" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 0
+offset_left = 378.30005
+offset_top = -109.38501
+offset_right = 478.30005
+offset_bottom = -11.38501
+item_type = 2
+
+[node name="LowerBuddy" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 0
+offset_left = 384.30005
+offset_top = 35.61499
+offset_right = 484.30005
+offset_bottom = 133.61499
+item_type = 2
+
+[node name="Shoes" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 0
+offset_left = 382.30005
+offset_top = 256.615
+offset_right = 482.30005
+offset_bottom = 354.615
+item_type = 2
+
+[node name="Hands" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 0
+offset_left = 272.30005
+offset_top = -33.38501
+offset_right = 372.30005
+offset_bottom = 64.61499
+item_type = 2
 
 [node name="GridInventory" type="Control" parent="InventoryInterface/PersonnalInventory/InventoryViewManager"]
 layout_mode = 1
@@ -346,4 +401,4 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[editable path="InventoryInterface/PersonnalInventory/InventoryViewManager/Character/SubViewportContainer/SubViewport/Model/BaseCharacter"]
+[editable path="InventoryInterface/PersonnalInventory/InventoryViewManager/CharacterView/SubViewportContainer/SubViewport/Model/BaseCharacter"]

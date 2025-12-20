@@ -3,7 +3,8 @@ class_name ConstItemType
 # Item types 
 const TYPE_WEAPON = "weapon"
 const TYPE_CONSUMABLE = "consumable"
-const TYPE_TRAP = "trap"
+const TYPE_GEAR = "gear"
+const TYPE_ITEM = "item"
 
 # Hands name 
 const HAND_R = "right_hand"

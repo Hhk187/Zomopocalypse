@@ -13,23 +13,24 @@ const SEPERATION = 2
 const INVENTORY_WIDTH = 8
 const INVENTORY_HEIGHT = 5
 
-const HOVERED_COLOR_GREEN = Color.FOREST_GREEN
-const HOVERED_COLOR_RED = Color.DARK_RED
-const HOVERED_COLOR_DEFAULT = Color.DIM_GRAY
+const HOVERED_COLOR_GREEN = Color(Color.FOREST_GREEN, 0.7)
+const HOVERED_COLOR_RED = Color(Color.DARK_RED, 0.7)
+const HOVERED_COLOR_DEFAULT = Color(Color.DIM_GRAY, 0.5)
  
 
 var players_inventory : InventoryData
 @onready var grid: Control = $GridInventory/Grid
 @onready var items: Control = $GridInventory/Items
 @onready var equipements: Control = $Equipements
-@onready var character: Control = $Character
+@onready var character_view: Control = $CharacterView
 
 
 
 func _ready() -> void:
 	owner.open_inventory.connect(_on_open_inventory)
-	#owner.close_inventory.connect(_on_close_inventory)
+	owner.close_inventory.connect(_on_close_inventory)
 	#owner.toggle_inventory.connect(_on_toggle_inventory)
+	
 
 ## Updating inventory view
 func _on_open_inventory(player : BaseEntity):
@@ -57,9 +58,10 @@ func _on_open_inventory(player : BaseEntity):
 			tile.size = custom_minimum_size
 	
 	# equipements
-	for tile in equipements.get_children():
+	for tile in equipements.get_children() as Array[InventoryTile]:
 		tile.material = tile.material.duplicate(true)
-		connect("toggle_tiles_color", tile._on_toggle_tiles_color)
+		if not toggle_tiles_color.is_connected(tile._on_toggle_tiles_color):
+			connect("toggle_tiles_color", tile._on_toggle_tiles_color)
 		tile._on_toggle_tiles_color(HOVERED_COLOR_DEFAULT)
 	
 	
@@ -79,6 +81,23 @@ func _on_open_inventory(player : BaseEntity):
 				item_display.position = grid.get_child(j + i * INVENTORY_WIDTH).position - Vector2(SEPERATION, SEPERATION) * 0.5
 				item_display.texture_rect.texture = inventory_container_data.icon
 
+func _on_close_inventory():
+	if grid.get_child_count():
+		for i in grid.get_children():
+			i.queue_free()
+	if items.get_child_count():
+		for i in items.get_children():
+			i.queue_free()
+	
+	if selected_item:
+		selected_item.follow_mouse = false
+		selected_item = null
+	
+
+
+
+### Tile search ###
+
 func get_tile_index_from_pos(pos : Vector2) -> Vector2i:
 	var real_pos = Vector2i(pos - grid.get_child(0).global_position)
 
@@ -93,11 +112,6 @@ func get_tile_index_from_pos(pos : Vector2) -> Vector2i:
 	return Vector2i(x, y)
 
 
-func get_tile_from_pos(pos : Vector2) -> Panel:
-	var vec2 : Vector2i = get_tile_index_from_pos(pos)
-	return get_tile_from_index(vec2)
-
-
 func get_tile_from_index(pos : Vector2) -> Panel:
 	var vec2 : Vector2i = pos
 	if vec2 == Vector2i(-1, -1) or vec2.x > INVENTORY_WIDTH -1 or vec2.y > INVENTORY_HEIGHT - 1:
@@ -106,13 +120,21 @@ func get_tile_from_index(pos : Vector2) -> Panel:
 	return grid.get_child(vec2.x + vec2.y * INVENTORY_WIDTH)
 
 
-var old_panel : InventoryTile
-func highlight_hovered_tiles():
+func get_tile_from_pos(pos : Vector2) -> Panel:
+	var vec2 : Vector2i = get_tile_index_from_pos(pos)
+	return get_tile_from_index(vec2)
+
+######
+
+
+### Tile highlighting ###
+
+func highlight_hovered_tiles() -> bool:
 	var tiles_array : Array[InventoryTile]
 	
 	var index_tile_vec2 = get_tile_index_from_pos(selected_item.global_position + Vector2(TILE_SIZE*0.5, TILE_SIZE*0.5))
 	if index_tile_vec2 == Vector2i(-1, -1):
-		return
+		return false
 	
 	var item_tiles_width : int = selected_item.item_data.tiles_width
 	var item_tiles_height : int = selected_item.item_data.tiles_height
@@ -125,9 +147,9 @@ func highlight_hovered_tiles():
 				tile = get_tile_from_index(Vector2(index_tile_vec2.x + height, index_tile_vec2.y + width))
 			else :
 				tile = get_tile_from_index(Vector2(index_tile_vec2.x + width, index_tile_vec2.y + height))
-
-			
+	
 			tiles_array.append(tile)
+	
 	
 	# checking for nulls
 	var OK : bool = true
@@ -135,13 +157,17 @@ func highlight_hovered_tiles():
 		if tile == null:
 			OK = false
 			break
-			
+	
 	if OK:
 		for tile in tiles_array: 
 			tile._on_toggle_tiles_color(HOVERED_COLOR_GREEN)
+		
+		return true
+	
+	return false
 
 
-func highlight_hovered_equipement_slots():
+func highlight_hovered_equipement_slots() -> Panel:
 	for slot in equipements.get_children() as Array[InventoryTile]:
 		var top_left_pos = slot.global_position
 		var bottom_right_pos = top_left_pos + slot.size
@@ -151,29 +177,59 @@ func highlight_hovered_equipement_slots():
 			and bottom_right_pos.x > get_global_mouse_position().x and bottom_right_pos.y > get_global_mouse_position().y
 			):
 			slot._on_toggle_tiles_color(HOVERED_COLOR_GREEN)
-		
+			return slot
+	
+	return 
+
+######
 
 
-var selected_item : InventoryItemDisplay
+
+## Verifies and places the item display if its legal
+func can_and_place_item(item_display : InventoryItemDisplay):
+	
+	
+	var tile : InventoryTile = get_tile_from_pos(item_display.global_position + Vector2(TILE_SIZE*0.5, TILE_SIZE*0.5)) # top left of the item display is the selector
+	var is_legal = highlight_hovered_tiles()
+	
+	var equipement_tile : InventoryTile = highlight_hovered_equipement_slots()
+	
+	
+
+
+	if tile and is_legal:
+		item_display.og_rot = item_display.rotated
+		item_display.global_position = tile.global_position - Vector2(SEPERATION, SEPERATION) * 0.5 # applying offset seperation
+		item_display.og_size = item_display.custom_minimum_size
+	elif equipement_tile:
+		item_display.og_rot = equipement_tile.is_rotated
+		item_display.global_position = equipement_tile.global_position
+		item_display.og_size = equipement_tile.size
+	else:
+		item_display.rotated = item_display.og_rot
+		item_display.position = item_display.og_pos
+		item_display.size = item_display.og_size
+	
+	
+	item_display.follow_mouse = false
+	selected_item = null
+	toggle_tiles_color.emit(HOVERED_COLOR_DEFAULT)
+
+
+var selected_item: InventoryItemDisplay
 ## Connected to InventoryItemDisplay instances
 func _on_item_clicked(event : InputEvent, item_display : InventoryItemDisplay):
 	if event is InputEventMouseButton:
 		if event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
 			selected_item = item_display
 			item_display.follow_mouse = true
-			highlight_hovered_tiles()
+			item_display.size = get_minimum_size()
+
 		if event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
-			if get_tile_from_pos(item_display.global_position + Vector2(TILE_SIZE*0.5, TILE_SIZE*0.5)):
-				item_display.global_position = get_tile_from_pos(
-					item_display.global_position + Vector2(TILE_SIZE*0.5, TILE_SIZE*0.5) # top left of the item display is the selector
-					).global_position - Vector2(SEPERATION, SEPERATION) * 0.5 # applying offset seperation
-				players_inventory._on_move()
-			else:
-				item_display.position = item_display.og_pos
-			item_display.follow_mouse = false
-			
-			selected_item = null
-			toggle_tiles_color.emit(HOVERED_COLOR_DEFAULT)
+			if selected_item:
+				can_and_place_item(selected_item)
+
+
 
 func _process(_delta: float) -> void:
 	if selected_item:

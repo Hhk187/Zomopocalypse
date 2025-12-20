@@ -5,18 +5,30 @@ const TILE_SIZE := 50.0
 
 @onready var texture_rect: TextureRect = $MarginContainer/TextureRect
 
-
 var item_data : ItemDataRes
+
+var og_pos: Vector2
+var og_rot: bool:
+	set(value):
+		og_rot = value
+		rotated = og_rot
+var og_size: Vector2:
+	set(value):
+		og_size = value
+		size = og_size
+
 func populate(item : ItemDataRes):
 	item_data = item
 	custom_minimum_size = Vector2(item.tiles_width, item.tiles_height) * TILE_SIZE
 
 var rotated : bool = false:
 	set(value):
-		rotated = value
-		_rotate()
+		if value != rotated:
+			rotated = value
+		
+			_rotate()
 
-var og_pos: Vector2
+
 var position_offset: Vector2
 var follow_mouse: bool = false:
 	set(value):
@@ -40,17 +52,18 @@ func _calculate_mouse_to_center_offset():
 		# calculates mouse offset
 		position_offset = -custom_minimum_size * 0.5
 
+
 func _rotate():
 	var image : Image = texture_rect.texture.get_image()
 	
-	if size == Vector2(item_data.tiles_width, item_data.tiles_height) * TILE_SIZE:
+	if rotated:
 		image.rotate_90(CLOCKWISE)
 		custom_minimum_size = Vector2(item_data.tiles_height, item_data.tiles_width) * TILE_SIZE
-		size = custom_minimum_size
 	else :
 		image.rotate_90(COUNTERCLOCKWISE)
 		custom_minimum_size = Vector2(item_data.tiles_width, item_data.tiles_height) * TILE_SIZE
-		size = custom_minimum_size
+	
+	size = custom_minimum_size
 	
 	texture_rect.texture = ImageTexture.create_from_image(image)
 	_calculate_mouse_to_center_offset()

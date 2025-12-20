@@ -7,6 +7,8 @@ enum FIRE_TYPE {
 	FULL_AUTO
 }
 
+var item: BaseItem
+
 @export var id: int = randi()
 @export var name: String = "Name_Placeholder"
 
@@ -14,7 +16,8 @@ enum FIRE_TYPE {
 @export_enum(
 	ConstItemType.TYPE_WEAPON,
 	ConstItemType.TYPE_CONSUMABLE,
-	ConstItemType.TYPE_TRAP
+	ConstItemType.TYPE_GEAR,
+	ConstItemType.TYPE_ITEM
 	) var item_type
 
 @export_group("Stats")

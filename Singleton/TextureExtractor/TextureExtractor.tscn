@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctp8xbnh5cvbk"]
+[gd_scene load_steps=5 format=3 uid="uid://ctp8xbnh5cvbk"]
 
 [ext_resource type="Script" uid="uid://btupl5qkfywk" path="res://Singleton/TextureExtractor/TextureExtractor.gd" id="1_awbao"]
-[ext_resource type="PackedScene" uid="uid://dnblltv50fky0" path="res://Scenes/Weapons/Ranged/Ak/Ak.tscn" id="2_f0ico"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wnusb"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -31,9 +30,6 @@ environment = SubResource("Environment_rm7hq")
 
 [node name="Target" type="Marker3D" parent="SubViewport"]
 
-[node name="Ak" parent="SubViewport/Target" instance=ExtResource("2_f0ico")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.026, 0.115)
-
 [node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(-0.5726453, 0, -0.81980324, 0, 1, 0, 0.81980324, 0, -0.5726453, -0.79793614, 0, -0.5573707)
 projection = 1
@@ -43,6 +39,6 @@ size = 0.4
 transform = Transform3D(-4.371139e-08, -1, -4.371139e-08, 0, -4.371139e-08, 1, -1, 4.371139e-08, 1.9106855e-15, 0, 1.6136975, 0)
 
 [node name="FrontLight" type="SpotLight3D" parent="SubViewport"]
-transform = Transform3D(-0.013686865, 0, -0.99990594, 0, 1, 0, 0.99990594, 0, -0.013686865, -0.80765706, 0, -0.0110553205)
+transform = Transform3D(-0.013686864, 0, -0.9999059, 0, 1, 0, 0.9999059, 0, -0.013686864, -0.80765706, 0, -0.0110553205)
 spot_range = 2.493763
 spot_angle = 41.060177
