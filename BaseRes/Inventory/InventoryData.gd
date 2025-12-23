@@ -86,7 +86,10 @@ func _on_add(item: BaseItem):
 	
 	inventory_container_data.icon = await TextureExtractor.get_texture(item)
 
-func _has_enough_space_in_grid(item: BaseItem, vec2: Vector2i, rotated = false) -> bool:
+
+
+# [value, value] -> [enough space, rotated or not]
+func _has_enough_space_in_grid(item: BaseItem, vec2: Vector2i, rotated = false) -> Array: 
 	var width_available = grid[0].size() - vec2.y 
 	var height_available = grid.size() - vec2.x
 	
@@ -107,12 +110,12 @@ func _has_enough_space_in_grid(item: BaseItem, vec2: Vector2i, rotated = false) 
 	Global.debug_manager.update_debug_info("width_available", width_available)
 	Global.debug_manager.update_debug_info("height_available", height_available)
 	
-	var return_value : bool = false
+	var return_value : Array = [false, false]
 	
-	if width <= width_available and height <= height_available: 
-		return_value = true
+	if width <= width_available and height <= height_available:
+		return_value = [true, false]
 	if width <= rotated_width and height <= rotated_height:
-		return_value = true
+		return_value = [true, true]
 	
 	return return_value
 
@@ -122,7 +125,13 @@ func _search_next_available_tile(item: BaseItem) -> Dictionary:
 		for tile in grid[0].size():
 			print(Vector2i(row, tile))
 			if grid[row][tile] != null: continue
-			return_value = {Vector2i(row, tile) : _has_enough_space_in_grid(item, Vector2i(row, tile))}
+
+			var resault : Array = _has_enough_space_in_grid(item, Vector2i(row, tile))
+			
+			if resault[0]:
+				return_value = {Vector2i(row, tile) : false}
+				break
+
 	
 	return return_value
 
