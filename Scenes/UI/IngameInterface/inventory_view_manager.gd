@@ -32,7 +32,7 @@ func _ready() -> void:
 	#owner.toggle_inventory.connect(_on_toggle_inventory)
 	
 
-## Updating inventory view
+## Updating inventory view ##############################################################
 func _on_open_inventory(player : BaseEntity):
 	players_inventory = player.inventory_data
 	var inventory_size: Vector2i = players_inventory.get_size()
@@ -74,12 +74,13 @@ func _on_open_inventory(player : BaseEntity):
 				var item_display : InventoryItemDisplay = INVENTORY_ITEM_DISPLAY.instantiate()
 				items.add_child(item_display)
 				
-				item_display.populate(inventory_container_data.item_data)
+				item_display.populate(inventory_container_data)
 				# connecting to input for interactions on "_on_item1_clicked"
 				item_display.connect("gui_input", _on_item_clicked.bind(item_display))
 				
 				item_display.position = grid.get_child(j + i * INVENTORY_WIDTH).position - Vector2(SEPERATION, SEPERATION) * 0.5
 				item_display.texture_rect.texture = inventory_container_data.icon
+				item_display.rotated = inventory_container_data.rotated
 
 func _on_close_inventory():
 	if grid.get_child_count():
@@ -92,11 +93,12 @@ func _on_close_inventory():
 	if selected_item:
 		selected_item.follow_mouse = false
 		selected_item = null
-	
+
+##############################################################
 
 
 
-### Tile search ###
+### Tile search ##############################################################
 
 func get_tile_index_from_pos(pos : Vector2) -> Vector2i:
 	var real_pos = Vector2i(pos - grid.get_child(0).global_position)
@@ -124,10 +126,10 @@ func get_tile_from_pos(pos : Vector2) -> Panel:
 	var vec2 : Vector2i = get_tile_index_from_pos(pos)
 	return get_tile_from_index(vec2)
 
-######
+##############################################################
 
 
-### Tile highlighting ###
+### Tile highlighting ##############################################################
 
 func highlight_hovered_tiles() -> bool:
 	var tiles_array : Array[InventoryTile]
@@ -153,18 +155,30 @@ func highlight_hovered_tiles() -> bool:
 	
 	# checking for nulls
 	var OK : bool = true
+	var overlapping : bool = players_inventory.is_overlapping_item(
+		selected_item, 
+		Vector2i(index_tile_vec2.y, index_tile_vec2.x)
+		)
+	
+	Global.debug_manager.update_debug_info("overlapping item", overlapping)
+	Global.debug_manager.update_debug_info("index pos", index_tile_vec2)
 	for tile in tiles_array:
 		if tile == null:
 			OK = false
-			break
+			return false
+
 	
-	if OK:
+	if not overlapping:
 		for tile in tiles_array: 
 			tile._on_toggle_tiles_color(HOVERED_COLOR_GREEN)
-		
 		return true
 	
-	return false
+	else :
+		for tile in tiles_array: 
+			tile._on_toggle_tiles_color(HOVERED_COLOR_RED)
+		return false
+	
+	
 
 
 func highlight_hovered_equipement_slots() -> Panel:
@@ -181,11 +195,11 @@ func highlight_hovered_equipement_slots() -> Panel:
 	
 	return 
 
-######
+##############################################################
 
 
 
-## Verifies and places the item display if its legal
+## Verifies and places the item display if its legal ##############################################################
 func can_and_place_item(item_display : InventoryItemDisplay):
 	
 	
@@ -215,6 +229,7 @@ func can_and_place_item(item_display : InventoryItemDisplay):
 	selected_item = null
 	toggle_tiles_color.emit(HOVERED_COLOR_DEFAULT)
 
+############################################################################################################################
 
 var selected_item: InventoryItemDisplay
 ## Connected to InventoryItemDisplay instances

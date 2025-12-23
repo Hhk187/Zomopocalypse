@@ -5,6 +5,7 @@ const TILE_SIZE := 50.0
 
 @onready var texture_rect: TextureRect = $MarginContainer/TextureRect
 
+var inventory_container_data : InventoryContainerData
 var item_data : ItemDataRes
 
 var og_pos: Vector2
@@ -17,9 +18,11 @@ var og_size: Vector2:
 		og_size = value
 		size = og_size
 
-func populate(item : ItemDataRes):
-	item_data = item
-	custom_minimum_size = Vector2(item.tiles_width, item.tiles_height) * TILE_SIZE
+func populate(_inventory_container_data : InventoryContainerData):
+	inventory_container_data = _inventory_container_data
+	item_data = _inventory_container_data.item_data
+
+	custom_minimum_size = Vector2(item_data.tiles_width, item_data.tiles_height) * TILE_SIZE
 
 var rotated : bool = false:
 	set(value):

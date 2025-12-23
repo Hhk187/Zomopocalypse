@@ -13,7 +13,7 @@ var basis_z : Vector3
 
 func _ready() -> void:
 	og_parent = get_parent() as Node
-	item_data.item = self
+	item_data.base_item = self
 
 func un_equipe():
 	equiped_pos = get_parent().global_position
