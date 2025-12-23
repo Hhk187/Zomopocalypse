@@ -7,7 +7,6 @@ const DEFAULT_HEIGHT := 5
 
 signal move_to(
 	inventory_container_data: InventoryContainerData,
-	from_index: Vector2i,
 	to_index: Vector2i)
 
 signal add(item: BaseItem)
@@ -54,50 +53,80 @@ func _populate_data():
 	
 
 func _on_add(item: BaseItem):
-	var next_tile : Vector2i = _search_next_available_tile(item)
-	
-	if next_tile == Vector2i(-1, -1): 
+	var next_tile : Dictionary = _search_next_available_tile(item)
+	if next_tile.keys()[0] == Vector2i(-1, -1): 
 		push_warning("INVENTORY IS FULL")
 		return
-	if not _has_enough_space_in_grid(item, next_tile):
-		push_warning("not enough space")
-		return
 	
-	
+
 	var item_data : ItemDataRes = item.item_data.duplicate(true)
 	var inventory_container_data = InventoryContainerData.new() 
 	inventory_container_data.item_data = item_data
-	inventory_container_data.icon = await TextureExtractor.get_texture(item)
+	inventory_container_data.rotated = next_tile.values()[0]
 	
-	items_data[inventory_container_data] = next_tile # TODO: should get next available
+	items_data[inventory_container_data] = next_tile.keys()[0]
+
 	var coord = _get_coords_from_inventory_container_data(inventory_container_data)
 	_set_coord_grid(coord, inventory_container_data)
 
-	for h in range(1, item_data.tiles_height):
-		grid[h + coord.x][coord.y] = '|'
+	if inventory_container_data.rotated:
+		for h in range(1, item_data.tiles_width):
+			grid[h + coord.x][coord.y] = '|'
 
-	for h in item_data.tiles_height:
-		for w in range(1, item_data.tiles_width):
-			grid[h + coord.x][w + coord.y] = '-'
+		for h in item_data.tiles_width:
+			for w in range(1, item_data.tiles_height):
+				grid[h + coord.x][w + coord.y] = '-'
+	else:
+		for h in range(1, item_data.tiles_height):
+			grid[h + coord.x][coord.y] = '|'
 
-func _has_enough_space_in_grid(item: BaseItem, vec2: Vector2i) -> bool:
+		for h in item_data.tiles_height:
+			for w in range(1, item_data.tiles_width):
+				grid[h + coord.x][w + coord.y] = '-'
+	
+	inventory_container_data.icon = await TextureExtractor.get_texture(item)
+
+func _has_enough_space_in_grid(item: BaseItem, vec2: Vector2i, rotated = false) -> bool:
+	var width_available = grid[0].size() - vec2.y 
+	var height_available = grid.size() - vec2.x
+	
 	var width = item.item_data.tiles_width
 	var height = item.item_data.tiles_height
 	
-	if width > grid.size() - vec2.y + 1: return false
-	if height > grid[0].size() - vec2.x + 1: return false
+	var rotated_width = item.item_data.tiles_height
+	var rotated_height = item.item_data.tiles_width
 	
-	return true
+	
+	
+	Global.debug_manager.update_debug_info("width_item", width)
+	Global.debug_manager.update_debug_info("hight_item", height)
+	
+	Global.debug_manager.update_debug_info("rotated_width_item", rotated_width)
+	Global.debug_manager.update_debug_info("rotated_height_item", rotated_height)
 
-func _search_next_available_tile(item: BaseItem) -> Vector2i:
+	Global.debug_manager.update_debug_info("width_available", width_available)
+	Global.debug_manager.update_debug_info("height_available", height_available)
+	
+	var return_value : bool = false
+	
+	if width <= width_available and height <= height_available: 
+		return_value = true
+	if width <= rotated_width and height <= rotated_height:
+		return_value = true
+	
+	return return_value
+
+func _search_next_available_tile(item: BaseItem) -> Dictionary:
+	var return_value : Dictionary = {Vector2(-1, -1) : null}
 	for row in grid.size():
 		for tile in grid[0].size():
 			print(Vector2i(row, tile))
-			if grid[row][tile] == null and _has_enough_space_in_grid(item, Vector2i(row, tile)):
-				return Vector2i(row, tile)
-	return Vector2i(-1, -1)
+			if grid[row][tile] != null: continue
+			return_value = {Vector2i(row, tile) : _has_enough_space_in_grid(item, Vector2i(row, tile))}
+	
+	return return_value
 
-func _on_move():
+func _on_move(inventory_container_data: InventoryContainerData, to_index: Vector2i):
 	pass
 
 
@@ -105,7 +134,7 @@ func _get_coords_from_inventory_container_data(data : InventoryContainerData) ->
 	return items_data[data]
 
 func _set_coord_grid(coord : Vector2i, data : Variant):
-		grid[coord.x][coord.y] = data
+	grid[coord.x][coord.y] = data
 
 # func get_item_from_coord(coord : Vector2i) -> ItemDataRes:
 # 	return grid[coord.x][coord.y]

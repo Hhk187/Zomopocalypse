@@ -10,9 +10,9 @@ const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 @onready var animation_player: AnimationPlayer = $Model/BaseCharacter/AnimationPlayer
 
 
-@onready var camera_3d: CameraPOV = $HeadTargetIK/SpringArm3D/Camera3D
-@onready var camera_ray_cast: RayCast3D = $HeadTargetIK/SpringArm3D/Camera3D/CameraRayCast
-@onready var spring_arm_3d: SpringArm3D = $HeadTargetIK/SpringArm3D
+@onready var camera_3d: CameraPOV = $HeadTargetIK/Camera3D
+@onready var camera_ray_cast: RayCast3D = $HeadTargetIK/Camera3D/CameraRayCast
+
 
 
 
@@ -26,32 +26,14 @@ var equiped_weapon : BaseItem
 
 @onready var animation_tree = $AnimationTree
 
-@export var is_third_person: bool = false :
-	set(value):
-		if not spring_arm_3d: return
-		is_third_person = value
-		# 0.196
-		#TODO: make third person toggler
-		if is_third_person:
-			pass
-		else:
-			spring_arm_3d.spring_length = 0
-			
-
-
-func toggle_pov() -> void:
-	is_third_person = !is_third_person
 
 
 
 func _input(event: InputEvent) -> void:
 	var input_dir := Input.get_vector("play_left", "play_right", "play_backward", "play_forward").normalized()
 	
-	if event.is_action_pressed("play_toggle_pov"):
-		toggle_pov()
-	
 	if input_dir:
-		animation_tree.set("parameters/movements/locomotive/blend_position", input_dir)
+		animation_tree.set("parameters/movements/locomotive/blend_position", input_dir * 0.5)
 	else:
 		animation_tree.set("parameters/movements/locomotive/blend_position", Vector2.ZERO)
 	
