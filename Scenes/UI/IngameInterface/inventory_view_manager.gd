@@ -216,7 +216,7 @@ func highlight_hovered_tiles() -> bool:
 		return false
 	
 	
-
+## TODO : make it so equipement slot dont overwrite each other 
 
 func highlight_hovered_equipement_slots() -> Panel:
 	for slot in equipements.get_children() as Array[InventoryTile]:
@@ -294,7 +294,6 @@ func _on_item_clicked(event : InputEvent, item_display : InventoryItemDisplay):
 
 		
 		if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
-			selected_item = item_display
 			item_display.follow_mouse = false
 			players_inventory._on_remove(item_display.inventory_container_data)
 			_on_open_inventory(players_inventory.get_parent())

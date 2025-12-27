@@ -13,9 +13,9 @@ var basis_z : Vector3
 
 func _ready() -> void:
 	og_parent = get_parent() as Node
-	item_data.base_item = self
 
-func un_equipe():
+
+func throw_away():
 	equiped_pos = get_parent().global_position
 	basis_z = get_parent().global_basis.z
 
@@ -24,9 +24,16 @@ func un_equipe():
 		og_parent.add_child(self)
 	_toggle(false)
 
+func un_equipe():
+	equiped_pos = get_parent().global_position
+	basis_z = get_parent().global_basis.z
+
+	get_parent().remove_child(self)
+	_toggle(false)
+
+
 func equipe(new_parent : Node3D):
 	info_label.hide()
-	get_parent().remove_child(self)
 	new_parent.add_child(self)
 	_toggle(true)
 
@@ -41,7 +48,7 @@ func _toggle(value : bool):
 		linear_velocity = Vector3.ZERO
 		position = Vector3.ZERO
 		rotation = Vector3.ZERO
-	else:
+	elif is_inside_tree():
 		rotation = Vector3(
 			randf() * PI,
 			randf() * PI,

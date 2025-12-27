@@ -22,17 +22,20 @@ func get_texture(base_item : BaseItem) -> ImageTexture:
 	var key = base_item.item_data.name
 	
 	if cached_textures.has(key):
-		base_item.get_parent().remove_child(base_item)
 		return cached_textures[key]
 	else:
-		base_item.get_parent().remove_child(base_item)
-		base_item._toggle(true)
-		target.call_deferred("add_child", base_item)
+		var _base_item : BaseItem = base_item.duplicate(DUPLICATE_SCRIPTS)
+		_base_item.freeze = true
+		_base_item.position = Vector3.ZERO
+		_base_item.rotation = Vector3.ZERO
+		
+		
+		target.call_deferred("add_child", _base_item)
 		
 		# setup camera shot
-		base_item.position = base_item.item_data.offset_pos
-		camera_3d.size = base_item.item_data.offset_camera_size
-		sub_viewport.size = base_item.item_data.viewport_size
+		_base_item.position = _base_item.item_data.offset_pos
+		camera_3d.size = _base_item.item_data.offset_camera_size
+		sub_viewport.size = _base_item.item_data.viewport_size
 		
 		await RenderingServer.frame_post_draw
 		
@@ -42,7 +45,7 @@ func get_texture(base_item : BaseItem) -> ImageTexture:
 		
 		cached_textures[key] = texture
 		
-		target.call_deferred("remove_child", base_item)
+		_base_item.call_deferred("queue_free")
 		return texture
 
 

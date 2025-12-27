@@ -112,26 +112,27 @@ func _populate_data():
 
 
 
-func _on_add(item: BaseItem):
-	var next_tile : Dictionary = _search_next_available_tile(item)
+func _on_add(base_item: BaseItem):
+	var next_tile : Dictionary = _search_next_available_tile(base_item)
 	if next_tile.keys()[0] == Vector2i(-1, -1): 
 		push_warning("INVENTORY IS FULL")
 		return
 
 	var coord: Vector2i = next_tile.keys()[0]
 
-	var item_data : ItemDataRes = item.item_data.duplicate(true)
 	var inventory_container_data = inventory_grid[coord.x][coord.y]
 	inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.PARENT
-	inventory_container_data.item_data = item_data
+	inventory_container_data.base_item = base_item
+	
 	inventory_container_data.rotated = next_tile.values()[0]
 
 	
 	
 
 	_place_item_on_inventory_grid(inventory_container_data)
-
-	inventory_container_data.icon = await TextureExtractor.get_texture(item)
+	
+	base_item.get_parent().remove_child(base_item)
+	inventory_container_data.icon = await TextureExtractor.get_texture(base_item)
 
 
 func _place_item_on_inventory_grid(inventory_container_data : InventoryContainerData):
@@ -192,13 +193,7 @@ func is_overlapping_item(item_display : InventoryItemDisplay, vec2 : Vector2i) -
 				return_value = false
 			
 			legal_array.append(return_value)
-			
-			Global.debug_manager.update_debug_info("not empty tiles", _inventory_container_data.tile_type != InventoryContainerData.TILE_TYPE.EMPTY)
-			Global.debug_manager.update_debug_info("same item overlapp", (
-				_inventory_container_data.parent == inventory_container_data
-				and (_inventory_container_data.tile_type != InventoryContainerData.TILE_TYPE.FILLER
-				or _inventory_container_data.tile_type != InventoryContainerData.TILE_TYPE.PARENT)
-				))
+
 			
 
 		
@@ -213,15 +208,17 @@ func is_overlapping_item(item_display : InventoryItemDisplay, vec2 : Vector2i) -
 
 
 ## [value, value] -> [enough space, rotated or not]
-func _has_enough_space_in_inventory_grid(item: BaseItem, vec2: Vector2i) -> Array: 
+func _has_enough_space_in_inventory_grid(base_item: BaseItem, vec2: Vector2i) -> Array: 
+	var item_data = base_item.item_data
+
 	var width_available = inventory_grid[0].size() - vec2.y 
 	var height_available = inventory_grid.size() - vec2.x 
 	
-	var width = item.item_data.tiles_width
-	var height = item.item_data.tiles_height
+	var width = item_data.tiles_width
+	var height = item_data.tiles_height
 	
-	var rotated_width = item.item_data.tiles_height
-	var rotated_height = item.item_data.tiles_width
+	var rotated_width = item_data.tiles_height
+	var rotated_height = item_data.tiles_width
 	
 	
 	var return_value : Array = [false, false]
@@ -249,7 +246,7 @@ func _has_enough_space_in_inventory_grid(item: BaseItem, vec2: Vector2i) -> Arra
 
 	return return_value
 
-func _search_next_available_tile(item: BaseItem) -> Dictionary:
+func _search_next_available_tile(base_item: BaseItem) -> Dictionary:
 	var return_value : Dictionary = {Vector2i(-1, -1) : null}
 	for row in inventory_grid.size():
 		for tile in inventory_grid[0].size():
@@ -257,7 +254,7 @@ func _search_next_available_tile(item: BaseItem) -> Dictionary:
 			if _inventory_container_data.tile_type != InventoryContainerData.TILE_TYPE.EMPTY: continue
 			print(Vector2i(row, tile))
 
-			var resault : Array = _has_enough_space_in_inventory_grid(item, Vector2i(row, tile))
+			var resault : Array = _has_enough_space_in_inventory_grid(base_item, Vector2i(row, tile))
 			
 			print(resault)
 			if resault[0]:
@@ -267,9 +264,6 @@ func _search_next_available_tile(item: BaseItem) -> Dictionary:
 	
 	return return_value
 
-
-func _set_coord_inventory_grid(coord : Vector2i, data : Variant):
-	inventory_grid[coord.x][coord.y] = data
 
 
 ###########################################################################################
@@ -287,7 +281,7 @@ func _on_remove(inventory_container_data: InventoryContainerData):
 	if inventory_container_data.container_type != InventoryContainerData.CONTAINER_TYPE.TILE:
 		
 		inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.EMPTY
-		inventory_container_data.item_data = null
+		inventory_container_data.base_item = null
 		inventory_container_data.amount = 0
 		inventory_container_data.rotated = false
 
@@ -299,7 +293,7 @@ func _on_remove(inventory_container_data: InventoryContainerData):
 			_inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.EMPTY
 			_inventory_container_data.parent = null
 
-			_inventory_container_data.item_data = null
+			_inventory_container_data.base_item = null
 			_inventory_container_data.amount = 0
 			_inventory_container_data.rotated = false
 			
@@ -310,7 +304,7 @@ func _on_remove(inventory_container_data: InventoryContainerData):
 				_inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.EMPTY
 				_inventory_container_data.parent = null
 
-				_inventory_container_data.item_data = null
+				_inventory_container_data.base_item = null
 				_inventory_container_data.amount = 0
 				_inventory_container_data.rotated = false
 			
@@ -320,7 +314,7 @@ func _on_remove(inventory_container_data: InventoryContainerData):
 func _on_move(item_display: InventoryItemDisplay, to_index: Vector2i):
 	var inventory_container_data: InventoryContainerData = item_display.inventory_container_data
 	
-	var item_data: ItemDataRes = inventory_container_data.item_data
+	var base_item: BaseItem = inventory_container_data.base_item
 	var old_amount: int = inventory_container_data.amount
 	var old_icon: Texture2D = inventory_container_data.icon
 	
@@ -328,7 +322,7 @@ func _on_move(item_display: InventoryItemDisplay, to_index: Vector2i):
 
 
 	var new_inventory_container_data: InventoryContainerData = inventory_grid[to_index.x][to_index.y]
-	new_inventory_container_data.item_data = item_data
+	new_inventory_container_data.base_item = base_item
 
 	new_inventory_container_data.rotated = item_display.rotated
 	new_inventory_container_data.amount = old_amount
@@ -339,7 +333,7 @@ func _on_move(item_display: InventoryItemDisplay, to_index: Vector2i):
 func _on_equip(item_display: InventoryItemDisplay, to_index: int):
 	var inventory_container_data: InventoryContainerData = item_display.inventory_container_data
 
-	var item_data: ItemDataRes = inventory_container_data.item_data
+	var base_item: BaseItem = inventory_container_data.base_item
 	var old_amount: int = inventory_container_data.amount
 	var old_icon: Texture2D = inventory_container_data.icon
 
@@ -350,7 +344,7 @@ func _on_equip(item_display: InventoryItemDisplay, to_index: int):
 
 	new_inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.EQUIPEMENTS
 
-	new_inventory_container_data.item_data = item_data
+	new_inventory_container_data.base_item = base_item
 
 	new_inventory_container_data.rotated = item_display.rotated
 	new_inventory_container_data.amount = old_amount
