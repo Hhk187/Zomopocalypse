@@ -32,6 +32,7 @@ func equipe(new_parent : Node3D):
 
 
 ## Prepare item to be equiped/unequiped
+## true => equiped
 func _toggle(value : bool):
 	freeze = value
 	sleeping = value

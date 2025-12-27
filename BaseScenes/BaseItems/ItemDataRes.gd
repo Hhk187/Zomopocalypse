@@ -7,7 +7,6 @@ enum FIRE_TYPE {
 	FULL_AUTO
 }
 
-var base_item: BaseItem
 
 @export var id: int = randi()
 @export var name: String = "Name_Placeholder"

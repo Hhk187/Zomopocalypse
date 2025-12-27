@@ -30,7 +30,7 @@ func _ready() -> void:
 	#owner.toggle_inventory.connect(_on_toggle_inventory)
 
 	for tile in equipements.get_children() as Array[InventoryTile]:
-		if not tile.is_connected("toggle_tiles_color", tile._on_toggle_tiles_color):
+		if not toggle_tiles_color.is_connected(tile._on_toggle_tiles_color):
 			connect("toggle_tiles_color", tile._on_toggle_tiles_color)
 		
 	

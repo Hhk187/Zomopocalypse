@@ -13,26 +13,26 @@ extends Node3D
 @export var cached_textures: Dictionary[String, ImageTexture]
 
 # Cycle through the array of models and create a texture for each model and save it to the disk
-func get_texture(item : BaseItem) -> ImageTexture:
+func get_texture(base_item : BaseItem) -> ImageTexture:
 	if target.get_child_count():
 		for i in target.get_children():
 			i.queue_free()
 	
 	camera_3d.look_at(Vector3.ZERO)
-	var key = item.item_data.name
+	var key = base_item.item_data.name
 	
 	if cached_textures.has(key):
-		item.get_parent().remove_child(item)
+		base_item.get_parent().remove_child(base_item)
 		return cached_textures[key]
 	else:
-		item.get_parent().remove_child(item)
-		item._toggle(true)
-		target.call_deferred("add_child", item)
+		base_item.get_parent().remove_child(base_item)
+		base_item._toggle(true)
+		target.call_deferred("add_child", base_item)
 		
 		# setup camera shot
-		item.position = item.item_data.offset_pos
-		camera_3d.size = item.item_data.offset_camera_size
-		sub_viewport.size = item.item_data.viewport_size
+		base_item.position = base_item.item_data.offset_pos
+		camera_3d.size = base_item.item_data.offset_camera_size
+		sub_viewport.size = base_item.item_data.viewport_size
 		
 		await RenderingServer.frame_post_draw
 		
@@ -42,7 +42,7 @@ func get_texture(item : BaseItem) -> ImageTexture:
 		
 		cached_textures[key] = texture
 		
-		target.call_deferred("remove_child", item)
+		target.call_deferred("remove_child", base_item)
 		return texture
 
 
