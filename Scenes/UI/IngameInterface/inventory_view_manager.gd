@@ -1,7 +1,7 @@
 extends Control
 class_name InventoryViewManager
 
-signal toggle_tiles_color(switch : bool)
+signal toggle_tiles_color(switch : Color)
 
 const INVENTORY_ITEM_DISPLAY = preload("uid://dqin6gxt05ret")
 const INVENTORY_TILE = preload("uid://bkqajk4bjyhkk")
@@ -13,9 +13,7 @@ const SEPERATION = 2
 const INVENTORY_WIDTH = 8
 const INVENTORY_HEIGHT = 5
 
-const HOVERED_COLOR_GREEN = Color(Color.FOREST_GREEN, 0.7)
-const HOVERED_COLOR_RED = Color(Color.DARK_RED, 0.7)
-const HOVERED_COLOR_DEFAULT = Color(Color.DIM_GRAY, 0.5)
+
  
 
 var players_inventory : InventoryData
@@ -30,6 +28,11 @@ func _ready() -> void:
 	owner.open_inventory.connect(_on_open_inventory)
 	owner.close_inventory.connect(_on_close_inventory)
 	#owner.toggle_inventory.connect(_on_toggle_inventory)
+
+	for tile in equipements.get_children() as Array[InventoryTile]:
+		if not tile.is_connected("toggle_tiles_color", tile._on_toggle_tiles_color):
+			connect("toggle_tiles_color", tile._on_toggle_tiles_color)
+		
 	
 
 ## Updating inventory view ##############################################################
@@ -49,7 +52,7 @@ func _on_open_inventory(player : BaseEntity):
 		for j in range(inventory_size.x):
 			var tile : InventoryTile = INVENTORY_TILE.instantiate()
 			connect("toggle_tiles_color", tile._on_toggle_tiles_color)
-			tile._on_toggle_tiles_color(HOVERED_COLOR_DEFAULT)
+			tile._on_toggle_tiles_color(InventoryTile.HOVERED_COLOR_DEFAULT)
 			
 			grid.add_child(tile)
 			tile.position = MARKER_POS + Vector2((TILE_SIZE + SEPERATION) * j, (TILE_SIZE + SEPERATION) * i)
@@ -57,10 +60,27 @@ func _on_open_inventory(player : BaseEntity):
 			tile.size = custom_minimum_size
 	
 	# equipements
-	for tile in equipements.get_children() as Array[InventoryTile]:
-		if not toggle_tiles_color.is_connected(tile._on_toggle_tiles_color):
-			connect("toggle_tiles_color", tile._on_toggle_tiles_color)
-		tile._on_toggle_tiles_color(HOVERED_COLOR_DEFAULT)
+	for index in equipements.get_child_count():
+		var inventory_container_data: InventoryContainerData = players_inventory.equipements[index]
+		var equipement_tile: InventoryTile = equipements.get_child(index)
+
+		
+		if inventory_container_data.tile_type != InventoryContainerData.TILE_TYPE.EQUIPEMENTS: continue
+		
+		var item_display : InventoryItemDisplay = INVENTORY_ITEM_DISPLAY.instantiate()
+		items.add_child(item_display)
+		
+		item_display.populate(inventory_container_data)
+		# connecting to input for interactions on "_on_item1_clicked"
+		item_display.connect("gui_input", _on_item_clicked.bind(item_display))
+		
+		item_display.texture_rect.texture = inventory_container_data.icon
+		item_display.og_rot = equipement_tile.is_rotated
+		item_display.global_position = equipement_tile.global_position
+		item_display.og_size = equipement_tile.size
+
+
+
 	
 	
 	
@@ -79,6 +99,9 @@ func _on_open_inventory(player : BaseEntity):
 				item_display.texture_rect.texture = inventory_container_data.icon
 				item_display.rotated = inventory_container_data.rotated
 
+
+	### DEBUG ###
+
 	var temp_array : Array
 	for i in players_inventory.inventory_grid.size():
 		temp_array.append([])
@@ -87,7 +110,14 @@ func _on_open_inventory(player : BaseEntity):
 
 	for i in temp_array.size():
 		Global.debug_manager.update_debug_info(str(i), temp_array[i])
+	
+	for index in players_inventory.equipements.size():
+		if players_inventory.equipements[index].item_data:
+			Global.debug_manager.update_debug_info("equipement %d" % [index], players_inventory.equipements[index].item_data.name)
+		else:
+			Global.debug_manager.update_debug_info("equipement %d" % [index], players_inventory.equipements[index].tile_type)
 
+	#############
 
 func _on_close_inventory():
 	if grid.get_child_count():
@@ -177,12 +207,12 @@ func highlight_hovered_tiles() -> bool:
 	
 	if not overlapping:
 		for tile in tiles_array: 
-			tile._on_toggle_tiles_color(HOVERED_COLOR_GREEN)
+			tile._on_toggle_tiles_color(InventoryTile.HOVERED_COLOR_GREEN)
 		return true
 	
 	else :
 		for tile in tiles_array: 
-			tile._on_toggle_tiles_color(HOVERED_COLOR_RED)
+			tile._on_toggle_tiles_color(InventoryTile.HOVERED_COLOR_RED)
 		return false
 	
 	
@@ -197,7 +227,7 @@ func highlight_hovered_equipement_slots() -> Panel:
 			top_left_pos.x < get_global_mouse_position().x and top_left_pos.y < get_global_mouse_position().y 
 			and bottom_right_pos.x > get_global_mouse_position().x and bottom_right_pos.y > get_global_mouse_position().y
 			):
-			slot._on_toggle_tiles_color(HOVERED_COLOR_GREEN)
+			slot._on_toggle_tiles_color(InventoryTile.HOVERED_COLOR_GREEN)
 			return slot
 	
 	return 
@@ -222,6 +252,8 @@ func can_and_place_item(item_display : InventoryItemDisplay):
 		item_display.og_rot = equipement_tile.is_rotated
 		item_display.global_position = equipement_tile.global_position
 		item_display.og_size = equipement_tile.size
+
+		players_inventory._on_equip(item_display, equipement_tile.get_index())
 		
 	elif tile and is_legal:
 		item_display.og_rot = item_display.rotated
@@ -240,7 +272,7 @@ func can_and_place_item(item_display : InventoryItemDisplay):
 	
 	item_display.follow_mouse = false
 	selected_item = null
-	toggle_tiles_color.emit(HOVERED_COLOR_DEFAULT)
+	toggle_tiles_color.emit(InventoryTile.HOVERED_COLOR_DEFAULT)
 
 ############################################################################################################################
 
@@ -269,6 +301,6 @@ func _on_item_clicked(event : InputEvent, item_display : InventoryItemDisplay):
 
 func _process(_delta: float) -> void:
 	if selected_item:
-		toggle_tiles_color.emit(HOVERED_COLOR_DEFAULT)
+		toggle_tiles_color.emit(InventoryTile.HOVERED_COLOR_DEFAULT)
 		highlight_hovered_tiles()
 		highlight_hovered_equipement_slots()

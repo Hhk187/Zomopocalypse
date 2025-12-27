@@ -8,13 +8,14 @@ enum TILE_TYPE {
 	EQUIPEMENTS
 }
 enum CONTAINER_TYPE {
+	TILE,
 	ITEM,
 	WEAPON,
 	GEAR
 }
 
 var tile_type: TILE_TYPE = TILE_TYPE.EMPTY
-var container_type: CONTAINER_TYPE 
+var container_type: CONTAINER_TYPE = CONTAINER_TYPE.TILE
 
 
 var parent : InventoryContainerData

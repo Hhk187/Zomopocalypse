@@ -44,10 +44,14 @@ var equipements: Array[InventoryContainerData] = [
 	weapon1,
 	weapon2,
 	weapon3,
+	
 	pocket1,
 	pocket2,
 	pocket3,
 	pocket4,
+	pocket5,
+	pocket6,
+	
 	head,
 	chest,
 	hands,
@@ -94,9 +98,6 @@ func _populate_data():
 				inventory_grid[row].append(_inventory_container_data)
 				_inventory_container_data.vec2 = Vector2i(row, column)
 	
-	for container in equipements:
-		container.tile_type = InventoryContainerData.TILE_TYPE.EQUIPEMENTS
-
 	for container in weapon_containers:
 		container.container_type = InventoryContainerData.CONTAINER_TYPE.WEAPON
 	
@@ -280,16 +281,35 @@ func _on_remove(inventory_container_data: InventoryContainerData):
 
 	
 	
-	for h in width:
-		var _inventory_container_data: InventoryContainerData = inventory_grid[h + coord.x][coord.y]
-		_inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.EMPTY
-		_inventory_container_data.parent = null
 
-	for h in width:
-		for w in height:
-			var _inventory_container_data: InventoryContainerData = inventory_grid[h + coord.x][w + coord.y]
+	if inventory_container_data.container_type != InventoryContainerData.CONTAINER_TYPE.TILE:
+		
+		inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.EMPTY
+		inventory_container_data.item_data = null
+		inventory_container_data.amount = 0
+		inventory_container_data.rotated = false
+
+	else:
+		for h in width:
+			var _inventory_container_data: InventoryContainerData = inventory_grid[h + coord.x][coord.y]
 			_inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.EMPTY
 			_inventory_container_data.parent = null
+
+			_inventory_container_data.item_data = null
+			_inventory_container_data.amount = 0
+			_inventory_container_data.rotated = false
+			
+
+		for h in width:
+			for w in height:
+				var _inventory_container_data: InventoryContainerData = inventory_grid[h + coord.x][w + coord.y]
+				_inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.EMPTY
+				_inventory_container_data.parent = null
+
+				_inventory_container_data.item_data = null
+				_inventory_container_data.amount = 0
+				_inventory_container_data.rotated = false
+			
 
 
 
@@ -311,6 +331,27 @@ func _on_move(item_display: InventoryItemDisplay, to_index: Vector2i):
 	new_inventory_container_data.icon = old_icon
 
 	_place_item_on_inventory_grid(new_inventory_container_data)
+
+func _on_equip(item_display: InventoryItemDisplay, to_index: int):
+	var inventory_container_data: InventoryContainerData = item_display.inventory_container_data
+
+	var item_data: ItemDataRes = inventory_container_data.item_data
+	var old_amount: int = inventory_container_data.amount
+	var old_icon: Texture2D = inventory_container_data.icon
+
+	
+	_on_remove(inventory_container_data)
+
+	var new_inventory_container_data := equipements[to_index]
+
+	new_inventory_container_data.tile_type = InventoryContainerData.TILE_TYPE.EQUIPEMENTS
+
+	new_inventory_container_data.item_data = item_data
+
+	new_inventory_container_data.rotated = item_display.rotated
+	new_inventory_container_data.amount = old_amount
+	new_inventory_container_data.icon = old_icon
+
 
 
 
