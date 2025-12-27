@@ -279,7 +279,7 @@ offset_bottom = 134.61499
 is_rotated = true
 item_type = 0
 
-[node name="Item1" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+[node name="Pocket1" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
 offset_left = -610.69995
 offset_top = 180.61499
@@ -287,7 +287,7 @@ offset_right = -510.69995
 offset_bottom = 278.615
 item_type = 3
 
-[node name="Item2" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+[node name="Pocket2" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
 offset_left = -488.69995
 offset_top = 178.61499
@@ -295,7 +295,7 @@ offset_right = -388.69995
 offset_bottom = 276.615
 item_type = 3
 
-[node name="Item3" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+[node name="Pocket3" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
 offset_left = -366.69995
 offset_top = 178.61499
@@ -303,7 +303,7 @@ offset_right = -266.69995
 offset_bottom = 276.615
 item_type = 3
 
-[node name="Item4" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+[node name="Pocket4" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
 offset_left = -610.69995
 offset_top = 295.615
@@ -311,7 +311,7 @@ offset_right = -510.69995
 offset_bottom = 393.615
 item_type = 3
 
-[node name="Item5" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+[node name="Pocket5" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
 offset_left = -488.69995
 offset_top = 297.615
@@ -319,7 +319,7 @@ offset_right = -388.69995
 offset_bottom = 395.615
 item_type = 3
 
-[node name="Item6" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+[node name="Pocket6" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 layout_mode = 0
 offset_left = -366.69995
 offset_top = 297.615
@@ -336,31 +336,13 @@ offset_right = 477.30005
 offset_bottom = -128.38501
 item_type = 2
 
-[node name="UpperBody" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+[node name="Chest" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
 self_modulate = Color(1, 1, 1, 0.5882353)
 layout_mode = 0
 offset_left = 378.30005
 offset_top = -109.38501
 offset_right = 478.30005
 offset_bottom = -11.38501
-item_type = 2
-
-[node name="LowerBuddy" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
-self_modulate = Color(1, 1, 1, 0.5882353)
-layout_mode = 0
-offset_left = 384.30005
-offset_top = 35.61499
-offset_right = 484.30005
-offset_bottom = 133.61499
-item_type = 2
-
-[node name="Shoes" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
-self_modulate = Color(1, 1, 1, 0.5882353)
-layout_mode = 0
-offset_left = 382.30005
-offset_top = 256.615
-offset_right = 482.30005
-offset_bottom = 354.615
 item_type = 2
 
 [node name="Hands" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
@@ -370,6 +352,24 @@ offset_left = 272.30005
 offset_top = -33.38501
 offset_right = 372.30005
 offset_bottom = 64.61499
+item_type = 2
+
+[node name="Legs" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 0
+offset_left = 384.30005
+offset_top = 35.61499
+offset_right = 484.30005
+offset_bottom = 133.61499
+item_type = 2
+
+[node name="Foot" parent="InventoryInterface/PersonnalInventory/InventoryViewManager/Equipements" instance=ExtResource("5_fbsg5")]
+self_modulate = Color(1, 1, 1, 0.5882353)
+layout_mode = 0
+offset_left = 382.30005
+offset_top = 256.615
+offset_right = 482.30005
+offset_bottom = 354.615
 item_type = 2
 
 [node name="GridInventory" type="Control" parent="InventoryInterface/PersonnalInventory/InventoryViewManager"]

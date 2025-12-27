@@ -48,7 +48,6 @@ func _on_open_inventory(player : BaseEntity):
 	for i in range(inventory_size.y):
 		for j in range(inventory_size.x):
 			var tile : InventoryTile = INVENTORY_TILE.instantiate()
-			tile.material = tile.material.duplicate(true)
 			connect("toggle_tiles_color", tile._on_toggle_tiles_color)
 			tile._on_toggle_tiles_color(HOVERED_COLOR_DEFAULT)
 			
@@ -59,17 +58,16 @@ func _on_open_inventory(player : BaseEntity):
 	
 	# equipements
 	for tile in equipements.get_children() as Array[InventoryTile]:
-		tile.material = tile.material.duplicate(true)
 		if not toggle_tiles_color.is_connected(tile._on_toggle_tiles_color):
 			connect("toggle_tiles_color", tile._on_toggle_tiles_color)
 		tile._on_toggle_tiles_color(HOVERED_COLOR_DEFAULT)
 	
 	
 	
-	for i in players_inventory.grid.size():
-		for j in players_inventory.grid[0].size():
-			var inventory_container_data: InventoryContainerData = players_inventory.grid[i][j]
-			if inventory_container_data.type == InventoryContainerData.TILE_TYPE.PARENT:
+	for i in players_inventory.inventory_grid.size():
+		for j in players_inventory.inventory_grid[0].size():
+			var inventory_container_data: InventoryContainerData = players_inventory.inventory_grid[i][j]
+			if inventory_container_data.tile_type == InventoryContainerData.TILE_TYPE.PARENT:
 				var item_display : InventoryItemDisplay = INVENTORY_ITEM_DISPLAY.instantiate()
 				items.add_child(item_display)
 				
@@ -82,10 +80,10 @@ func _on_open_inventory(player : BaseEntity):
 				item_display.rotated = inventory_container_data.rotated
 
 	var temp_array : Array
-	for i in players_inventory.grid.size():
+	for i in players_inventory.inventory_grid.size():
 		temp_array.append([])
-		for j in players_inventory.grid[0].size():
-			temp_array[i].append(players_inventory.grid[i][j].type)
+		for j in players_inventory.inventory_grid[0].size():
+			temp_array[i].append(players_inventory.inventory_grid[i][j].tile_type)
 
 	for i in temp_array.size():
 		Global.debug_manager.update_debug_info(str(i), temp_array[i])
@@ -220,7 +218,12 @@ func can_and_place_item(item_display : InventoryItemDisplay):
 	
 
 
-	if tile and is_legal:
+	if equipement_tile:
+		item_display.og_rot = equipement_tile.is_rotated
+		item_display.global_position = equipement_tile.global_position
+		item_display.og_size = equipement_tile.size
+		
+	elif tile and is_legal:
 		item_display.og_rot = item_display.rotated
 		item_display.global_position = tile.global_position - Vector2(SEPERATION, SEPERATION) * 0.5 # applying offset seperation
 		item_display.og_size = item_display.custom_minimum_size
@@ -229,10 +232,6 @@ func can_and_place_item(item_display : InventoryItemDisplay):
 			selected_item,
 			Vector2i(index_tile_vec2.y, index_tile_vec2.x)
 			)
-	elif equipement_tile:
-		item_display.og_rot = equipement_tile.is_rotated
-		item_display.global_position = equipement_tile.global_position
-		item_display.og_size = equipement_tile.size
 	else:
 		item_display.rotated = item_display.og_rot
 		item_display.position = item_display.og_pos

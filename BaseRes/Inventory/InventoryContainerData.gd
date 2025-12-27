@@ -4,11 +4,17 @@ class_name InventoryContainerData
 enum TILE_TYPE {
 	EMPTY,
 	FILLER,
-	PARENT
+	PARENT,
+	EQUIPEMENTS
+}
+enum CONTAINER_TYPE {
+	ITEM,
+	WEAPON,
+	GEAR
 }
 
-var type : TILE_TYPE = TILE_TYPE.EMPTY
-
+var tile_type: TILE_TYPE = TILE_TYPE.EMPTY
+var container_type: CONTAINER_TYPE 
 
 
 var parent : InventoryContainerData
