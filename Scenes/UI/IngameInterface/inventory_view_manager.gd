@@ -68,9 +68,8 @@ func _on_open_inventory(player : BaseEntity):
 	
 	for i in players_inventory.grid.size():
 		for j in players_inventory.grid[0].size():
-			Global.debug_manager.update_debug_info(str(i), players_inventory.grid[i])
-			if players_inventory.grid[i][j] is InventoryContainerData:
-				var inventory_container_data : InventoryContainerData = players_inventory.grid[i][j]
+			var inventory_container_data: InventoryContainerData = players_inventory.grid[i][j]
+			if inventory_container_data.type == InventoryContainerData.TILE_TYPE.PARENT:
 				var item_display : InventoryItemDisplay = INVENTORY_ITEM_DISPLAY.instantiate()
 				items.add_child(item_display)
 				
@@ -81,6 +80,16 @@ func _on_open_inventory(player : BaseEntity):
 				item_display.position = grid.get_child(j + i * INVENTORY_WIDTH).position - Vector2(SEPERATION, SEPERATION) * 0.5
 				item_display.texture_rect.texture = inventory_container_data.icon
 				item_display.rotated = inventory_container_data.rotated
+
+	var temp_array : Array
+	for i in players_inventory.grid.size():
+		temp_array.append([])
+		for j in players_inventory.grid[0].size():
+			temp_array[i].append(players_inventory.grid[i][j].type)
+
+	for i in temp_array.size():
+		Global.debug_manager.update_debug_info(str(i), temp_array[i])
+
 
 func _on_close_inventory():
 	if grid.get_child_count():
@@ -207,7 +216,7 @@ func can_and_place_item(item_display : InventoryItemDisplay):
 	var is_legal = highlight_hovered_tiles()
 	
 	var equipement_tile : InventoryTile = highlight_hovered_equipement_slots()
-	
+	var index_tile_vec2 = get_tile_index_from_pos(selected_item.global_position + Vector2(TILE_SIZE*0.5, TILE_SIZE*0.5))
 	
 
 
@@ -215,6 +224,11 @@ func can_and_place_item(item_display : InventoryItemDisplay):
 		item_display.og_rot = item_display.rotated
 		item_display.global_position = tile.global_position - Vector2(SEPERATION, SEPERATION) * 0.5 # applying offset seperation
 		item_display.og_size = item_display.custom_minimum_size
+
+		players_inventory._on_move(
+			selected_item,
+			Vector2i(index_tile_vec2.y, index_tile_vec2.x)
+			)
 	elif equipement_tile:
 		item_display.og_rot = equipement_tile.is_rotated
 		item_display.global_position = equipement_tile.global_position
@@ -243,8 +257,16 @@ func _on_item_clicked(event : InputEvent, item_display : InventoryItemDisplay):
 		if event.is_released() and event.button_index == MOUSE_BUTTON_LEFT:
 			if selected_item:
 				can_and_place_item(selected_item)
+			_on_open_inventory(players_inventory.get_parent())
+			
 
 
+		
+		if event.is_pressed() and event.button_index == MOUSE_BUTTON_RIGHT:
+			selected_item = item_display
+			item_display.follow_mouse = false
+			players_inventory._on_remove(item_display.inventory_container_data)
+			_on_open_inventory(players_inventory.get_parent())
 
 func _process(_delta: float) -> void:
 	if selected_item:

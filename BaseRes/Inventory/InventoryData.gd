@@ -44,13 +44,15 @@ func _ready() -> void:
 
 
 func _populate_data():
-	if grid.is_empty(): 
-		for i in range(DEFAULT_HEIGHT):
-			var row: Array = []
-			row.resize(DEFAULT_WIDTH)
-			row.fill(null)
-			grid.append(row)
-	
+
+	if grid.is_empty():
+		for row in DEFAULT_HEIGHT:
+			grid.append([])
+			for column in DEFAULT_WIDTH:
+				var _inventory_container_data: InventoryContainerData = InventoryContainerData.new()
+				grid[row].append(_inventory_container_data)
+				_inventory_container_data.vec2 = Vector2i(row, column)
+
 
 func _on_add(item: BaseItem):
 	var next_tile : Dictionary = _search_next_available_tile(item)
@@ -58,14 +60,16 @@ func _on_add(item: BaseItem):
 		push_warning("INVENTORY IS FULL")
 		return
 
+	var coord: Vector2i = next_tile.keys()[0]
+
 	var item_data : ItemDataRes = item.item_data.duplicate(true)
-	var inventory_container_data = InventoryContainerData.new() 
+	var inventory_container_data = grid[coord.x][coord.y]
+	inventory_container_data.type = InventoryContainerData.TILE_TYPE.PARENT
 	inventory_container_data.item_data = item_data
 	inventory_container_data.rotated = next_tile.values()[0]
-	inventory_container_data.vec2 = next_tile.keys()[0]
 
 	
-	items_data[inventory_container_data] = next_tile.keys()[0]
+	
 
 	_place_item_on_grid(inventory_container_data)
 
@@ -75,20 +79,24 @@ func _on_add(item: BaseItem):
 func _place_item_on_grid(inventory_container_data : InventoryContainerData):
 	
 	var item_data = inventory_container_data.item_data
-	var coord = _get_coords_from_inventory_container_data(inventory_container_data)
-	_set_coord_grid(coord, inventory_container_data)
+	var coord = inventory_container_data.vec2
 
-	var width = item_data.tiles_height if inventory_container_data.rotated else item_data.tiles_width 
-	var height = item_data.tiles_width if inventory_container_data.rotated else item_data.tiles_height
+	var width = item_data.tiles_width if inventory_container_data.rotated else item_data.tiles_height 
+	var height = item_data.tiles_height if inventory_container_data.rotated else item_data.tiles_width
 
-
-	for h in range(1, width):
-		grid[h + coord.x][coord.y] = '|'
 
 	for h in width:
-		for w in range(1, height):
-			grid[h + coord.x][w + coord.y] = '-'
+		var _inventory_container_data: InventoryContainerData = grid[h + coord.x][coord.y]
+		_inventory_container_data.type = InventoryContainerData.TILE_TYPE.FILLER
+		_inventory_container_data.parent = inventory_container_data
 
+	for h in width:
+		for w in height:
+			var _inventory_container_data: InventoryContainerData = grid[h + coord.x][w + coord.y]
+			_inventory_container_data.type = InventoryContainerData.TILE_TYPE.FILLER
+			_inventory_container_data.parent = inventory_container_data
+
+	inventory_container_data.type = InventoryContainerData.TILE_TYPE.PARENT
 
 ### Used by the view ##############################################################
 
@@ -102,22 +110,42 @@ func is_overlapping_item(item_display : InventoryItemDisplay, vec2 : Vector2i) -
 	var height = item_data.tiles_width if item_display.rotated else item_data.tiles_height
 	
 	# check if coords are wihtin 
-	var width_available = grid[0].size() - vec2.y
+	var width_available = grid[0].size() - vec2.y 
 	var height_available = grid.size() - vec2.x 
-	Global.debug_manager.update_debug_info("not enough space", not (width <= width_available and height <= height_available))
+
 	if not (width <= width_available and height <= height_available):
 		return true
 	
-	var grid_array : Array # for debug purposes
-	
 	var return_value = false
+	var legal_array : Array[bool]
 	for i in width:
 		for j in height:
-			if grid[vec2.x + j][vec2.y + i] != null:
-				return_value = true
-			grid_array.append(grid[vec2.x + j][vec2.y + i])
+			var _inventory_container_data: InventoryContainerData = grid[vec2.x + j][vec2.y + i]
+			
+			if not _inventory_container_data: continue
 
-	Global.debug_manager.update_debug_info("grid tiles", grid_array)
+			if _inventory_container_data.type != InventoryContainerData.TILE_TYPE.EMPTY:
+				return_value = true
+			if (
+				_inventory_container_data.parent == inventory_container_data
+				and (_inventory_container_data.type != InventoryContainerData.TILE_TYPE.FILLER
+				or _inventory_container_data.type != InventoryContainerData.TILE_TYPE.PARENT)
+				):
+				return_value = false
+			
+			legal_array.append(return_value)
+			
+			Global.debug_manager.update_debug_info("not empty tiles", _inventory_container_data.type != InventoryContainerData.TILE_TYPE.EMPTY)
+			Global.debug_manager.update_debug_info("same item overlapp", (
+				_inventory_container_data.parent == inventory_container_data
+				and (_inventory_container_data.type != InventoryContainerData.TILE_TYPE.FILLER
+				or _inventory_container_data.type != InventoryContainerData.TILE_TYPE.PARENT)
+				))
+			
+
+		
+	return_value = true in legal_array
+
 	return return_value
 
 ###########################################################################################
@@ -129,44 +157,50 @@ func is_overlapping_item(item_display : InventoryItemDisplay, vec2 : Vector2i) -
 ## [value, value] -> [enough space, rotated or not]
 func _has_enough_space_in_grid(item: BaseItem, vec2: Vector2i) -> Array: 
 	var width_available = grid[0].size() - vec2.y 
-	var height_available = grid.size() - vec2.x
+	var height_available = grid.size() - vec2.x 
 	
 	var width = item.item_data.tiles_width
 	var height = item.item_data.tiles_height
 	
 	var rotated_width = item.item_data.tiles_height
 	var rotated_height = item.item_data.tiles_width
-
-
-	
-	Global.debug_manager.update_debug_info("width_item", width)
-	Global.debug_manager.update_debug_info("hight_item", height)
-	
-	Global.debug_manager.update_debug_info("rotated_width_item", rotated_width)
-	Global.debug_manager.update_debug_info("rotated_height_item", rotated_height)
-
-	Global.debug_manager.update_debug_info("width_available", width_available)
-	Global.debug_manager.update_debug_info("height_available", height_available)
-	
 	
 	
 	var return_value : Array = [false, false]
 	
 	if width <= width_available and height <= height_available:
-		return [true, false]
+		return_value = [true, false]
 	elif rotated_width <= width_available and rotated_height <= height_available:
-		return [true, true]
+		return_value = [true, true]
 	
+	width = rotated_width if return_value[1] else width
+	height = rotated_height if return_value[1] else height
+
+	if return_value[0]:
+		for i in width:
+			for j in height:
+				var _inventory_container_data: InventoryContainerData = grid[vec2.x + j][vec2.y + i]
+				
+				if not _inventory_container_data: continue
+
+				if _inventory_container_data.type != InventoryContainerData.TILE_TYPE.EMPTY:
+					return_value[0] = false
+
+
+
+
 	return return_value
 
 func _search_next_available_tile(item: BaseItem) -> Dictionary:
 	var return_value : Dictionary = {Vector2i(-1, -1) : null}
 	for row in grid.size():
 		for tile in grid[0].size():
-			if grid[row][tile] != null: continue
+			var _inventory_container_data: InventoryContainerData = grid[row][tile]
+			if _inventory_container_data.type != InventoryContainerData.TILE_TYPE.EMPTY: continue
 			print(Vector2i(row, tile))
 
 			var resault : Array = _has_enough_space_in_grid(item, Vector2i(row, tile))
+			
 			print(resault)
 			if resault[0]:
 				return_value = {Vector2i(row, tile) : resault[1]}
@@ -182,8 +216,46 @@ func _set_coord_grid(coord : Vector2i, data : Variant):
 
 ###########################################################################################
 
-func _on_move(inventory_container_data: InventoryContainerData, to_index: Vector2i):
-	pass
+func _on_remove(inventory_container_data: InventoryContainerData):
+	var item_data = inventory_container_data.item_data
+	var coord = inventory_container_data.vec2
+
+	var width = item_data.tiles_width if inventory_container_data.rotated else item_data.tiles_height 
+	var height = item_data.tiles_height if inventory_container_data.rotated else item_data.tiles_width
+
+	
+	
+	for h in width:
+		var _inventory_container_data: InventoryContainerData = grid[h + coord.x][coord.y]
+		_inventory_container_data.type = InventoryContainerData.TILE_TYPE.EMPTY
+		_inventory_container_data.parent = null
+
+	for h in width:
+		for w in height:
+			var _inventory_container_data: InventoryContainerData = grid[h + coord.x][w + coord.y]
+			_inventory_container_data.type = InventoryContainerData.TILE_TYPE.EMPTY
+			_inventory_container_data.parent = null
+
+
+
+func _on_move(item_display: InventoryItemDisplay, to_index: Vector2i):
+	var inventory_container_data: InventoryContainerData = item_display.inventory_container_data
+	
+	var item_data: ItemDataRes = inventory_container_data.item_data
+	var old_amount: int = inventory_container_data.amount
+	var old_icon: Texture2D = inventory_container_data.icon
+	
+	_on_remove(inventory_container_data)
+
+
+	var new_inventory_container_data: InventoryContainerData = grid[to_index.x][to_index.y]
+	new_inventory_container_data.item_data = item_data
+
+	new_inventory_container_data.rotated = item_display.rotated
+	new_inventory_container_data.amount = old_amount
+	new_inventory_container_data.icon = old_icon
+
+	_place_item_on_grid(new_inventory_container_data)
 
 
 func _get_coords_from_inventory_container_data(data : InventoryContainerData) -> Vector2i:
