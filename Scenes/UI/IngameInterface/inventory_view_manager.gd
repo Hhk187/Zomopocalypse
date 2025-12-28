@@ -193,7 +193,7 @@ func highlight_hovered_tiles() -> bool:
 		return false
 	
 	
-## TODO : make it so equipement slot dont overwrite each other 
+
 
 func highlight_hovered_equipement_slots() -> Panel:
 	for slot in equipements.get_children() as Array[InventoryTile]:
