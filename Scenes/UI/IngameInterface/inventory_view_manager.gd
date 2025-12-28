@@ -100,25 +100,6 @@ func _on_open_inventory(player : BaseEntity):
 				item_display.rotated = inventory_container_data.rotated
 
 
-	### DEBUG ###
-
-	var temp_array : Array
-	for i in players_inventory.inventory_grid.size():
-		temp_array.append([])
-		for j in players_inventory.inventory_grid[0].size():
-			temp_array[i].append(players_inventory.inventory_grid[i][j].tile_type)
-
-	for i in temp_array.size():
-		Global.debug_manager.update_debug_info(str(i), temp_array[i])
-	
-	for index in players_inventory.equipements.size():
-		if players_inventory.equipements[index].item_data:
-			Global.debug_manager.update_debug_info("equipement %d" % [index], players_inventory.equipements[index].item_data.name)
-		else:
-			Global.debug_manager.update_debug_info("equipement %d" % [index], players_inventory.equipements[index].tile_type)
-
-	#############
-
 func _on_close_inventory():
 	if grid.get_child_count():
 		for i in grid.get_children():
@@ -191,17 +172,13 @@ func highlight_hovered_tiles() -> bool:
 	
 	
 	# checking for nulls
-	var OK : bool = true
 	var overlapping : bool = players_inventory.is_overlapping_item(
 		selected_item, 
 		Vector2i(index_tile_vec2.y, index_tile_vec2.x)
 		)
 	
-	Global.debug_manager.update_debug_info("overlapping item", overlapping)
-	Global.debug_manager.update_debug_info("index pos", index_tile_vec2)
 	for tile in tiles_array:
 		if tile == null:
-			OK = false
 			return false
 
 	
@@ -222,13 +199,20 @@ func highlight_hovered_equipement_slots() -> Panel:
 	for slot in equipements.get_children() as Array[InventoryTile]:
 		var top_left_pos = slot.global_position
 		var bottom_right_pos = top_left_pos + slot.size
-		
+		var inventory_container_data: InventoryContainerData = players_inventory.equipements[slot.get_index()]
+
 		if (
 			top_left_pos.x < get_global_mouse_position().x and top_left_pos.y < get_global_mouse_position().y 
 			and bottom_right_pos.x > get_global_mouse_position().x and bottom_right_pos.y > get_global_mouse_position().y
+			
 			):
-			slot._on_toggle_tiles_color(InventoryTile.HOVERED_COLOR_GREEN)
-			return slot
+			if inventory_container_data.tile_type == InventoryContainerData.TILE_TYPE.EMPTY:
+				slot._on_toggle_tiles_color(InventoryTile.HOVERED_COLOR_GREEN)
+				return slot
+			else:
+				slot._on_toggle_tiles_color(InventoryTile.HOVERED_COLOR_RED)
+			
+
 	
 	return 
 
