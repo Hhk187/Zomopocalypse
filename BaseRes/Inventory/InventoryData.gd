@@ -100,6 +100,7 @@ func _populate_data():
 				inventory_grid[row].append(_inventory_container_data)
 				_inventory_container_data.vec2 = Vector2i(row, column)
 	
+	
 	for container in weapon_containers:
 		container.container_type = InventoryContainerData.CONTAINER_TYPE.WEAPON
 	
@@ -125,9 +126,6 @@ func _on_add(base_item: BaseItem):
 	inventory_container_data.base_item = base_item
 	
 	inventory_container_data.rotated = next_tile.values()[0]
-
-	
-	
 
 	_place_item_on_inventory_grid(inventory_container_data)
 	
