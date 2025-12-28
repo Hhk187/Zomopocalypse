@@ -3,8 +3,9 @@ extends AnimationTree
 
 
 
-
-
+@export var head_ik: SkeletonIK3D
+@export var right_hand_ik: SkeletonIK3D
+@export var left_hand_ik: SkeletonIK3D
 
 @export var set_filter_LH: bool:
 	set(value):
