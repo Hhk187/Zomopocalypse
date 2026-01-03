@@ -13,7 +13,8 @@ enum FIRE_TYPE {
 
 @export_group("Type")
 @export_enum(
-	ConstItemType.TYPE_WEAPON,
+	ConstItemType.TYPE_WEAPON_ONE_HANDED,
+	ConstItemType.TYPE_WEAPON_TWO_HANDED,
 	ConstItemType.TYPE_CONSUMABLE,
 	ConstItemType.TYPE_GEAR,
 	ConstItemType.TYPE_ITEM

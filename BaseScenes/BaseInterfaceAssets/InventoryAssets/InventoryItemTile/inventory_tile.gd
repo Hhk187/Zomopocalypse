@@ -10,7 +10,8 @@ const HOVERED_COLOR_DEFAULT = Color(Color.DIM_GRAY, 0.5)
 @export var is_rotated : bool
 
 @export_enum(
-	ConstItemType.TYPE_WEAPON,
+	ConstItemType.TYPE_WEAPON_ONE_HANDED,
+	ConstItemType.TYPE_WEAPON_TWO_HANDED,
 	ConstItemType.TYPE_CONSUMABLE,
 	ConstItemType.TYPE_GEAR,
 	ConstItemType.TYPE_ITEM

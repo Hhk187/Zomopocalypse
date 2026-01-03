@@ -1,7 +1,7 @@
 extends Area3D
 class_name InteractionArea
 
-@onready var hand_attach_bone: Marker3D = $"../Model/BaseCharacter/Armature/Skeleton3D/HandAttachBone/Offset"
+
 @onready var camera_ray_cast: RayCast3D:
 	get():
 		if not camera_ray_cast:
@@ -20,15 +20,11 @@ func pick_up_item():
 	
 	
 	if focused_item in items:
-		#focused_item.equipe(hand_attach_bone)
 		var player : PlayerBaseEntity = get_parent()
 		player.inventory_data.emit_signal("add", focused_item)
 		
 
 
-func drop_item():
-	if hand_attach_bone.get_children():
-		hand_attach_bone.get_children()[0].un_equipe()
 
 
 func interact():

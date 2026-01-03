@@ -16,9 +16,7 @@ signal use(index: InventoryContainerData)
 signal equipe(index: InventoryContainerData)
 
 
-signal equiped
-signal un_equiped
-
+signal update_equipement
 
 var inventory_grid: Array[Array]
 
@@ -283,7 +281,7 @@ func _on_remove(inventory_container_data: InventoryContainerData):
 		inventory_container_data.amount = 0
 		inventory_container_data.rotated = false
 
-		un_equiped.emit() # To update the character visually
+
 
 	else:
 		for h in width:
@@ -328,6 +326,8 @@ func _on_move(item_display: InventoryItemDisplay, to_index: Vector2i):
 
 	_place_item_on_inventory_grid(new_inventory_container_data)
 
+	update_equipement.emit() # To update the character visually
+
 func _on_equip(item_display: InventoryItemDisplay, to_index: int):
 	var inventory_container_data: InventoryContainerData = item_display.inventory_container_data
 
@@ -348,7 +348,7 @@ func _on_equip(item_display: InventoryItemDisplay, to_index: int):
 	new_inventory_container_data.amount = old_amount
 	new_inventory_container_data.icon = old_icon
 	
-	equiped.emit() # To update the character visually
+	update_equipement.emit() # To update the character visually
 
 
 

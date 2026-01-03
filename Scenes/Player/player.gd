@@ -20,20 +20,6 @@ var equiped_weapon : BaseItem
 
 @onready var animation_tree = $AnimationTree
 
-func _ready():
-	inventory_data.connect('equiped', _on_equiped)
-	inventory_data.connect('un_equiped', _on_un_equiped)
-
-
-
-@onready var offset = $Model/BaseCharacter/Armature/Skeleton3D/RightHandAttachBone/Offset
-func _on_equiped():
-	var base_item := inventory_data.equipements[0].base_item
-	base_item.equipe(offset)
-
-func _on_un_equiped():
-	var base_item: BaseItem = offset.get_child(0)
-	base_item.un_equipe()
 
 
 func _input(event: InputEvent) -> void:

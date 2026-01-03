@@ -1,7 +1,8 @@
 class_name ConstItemType
 
 # Item types 
-const TYPE_WEAPON = "weapon"
+const TYPE_WEAPON_ONE_HANDED = "weapon_one_handed"
+const TYPE_WEAPON_TWO_HANDED = "weapon_two_handed"
 const TYPE_CONSUMABLE = "consumable"
 const TYPE_GEAR = "gear"
 const TYPE_ITEM = "item"
