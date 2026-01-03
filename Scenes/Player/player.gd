@@ -26,7 +26,7 @@ func _ready():
 
 
 
-@onready var offset = $Model/BaseCharacter/Armature/Skeleton3D/HandAttachBone/Offset
+@onready var offset = $Model/BaseCharacter/Armature/Skeleton3D/RightHandAttachBone/Offset
 func _on_equiped():
 	var base_item := inventory_data.equipements[0].base_item
 	base_item.equipe(offset)
