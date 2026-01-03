@@ -25,14 +25,16 @@ func throw_away():
 	_toggle(false)
 
 func un_equipe():
+	if not get_parent(): return
+	
 	equiped_pos = get_parent().global_position
 	basis_z = get_parent().global_basis.z
-
 	get_parent().remove_child(self)
-	_toggle(false)
+	
 
 
 func equipe(new_parent : Node3D):
+	un_equipe()
 	info_label.hide()
 	new_parent.add_child(self)
 	_toggle(true)

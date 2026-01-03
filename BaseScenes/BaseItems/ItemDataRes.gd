@@ -13,8 +13,7 @@ enum FIRE_TYPE {
 
 @export_group("Type")
 @export_enum(
-	ConstItemType.TYPE_WEAPON_ONE_HANDED,
-	ConstItemType.TYPE_WEAPON_TWO_HANDED,
+	ConstItemType.TYPE_WEAPON,
 	ConstItemType.TYPE_CONSUMABLE,
 	ConstItemType.TYPE_GEAR,
 	ConstItemType.TYPE_ITEM
@@ -36,6 +35,12 @@ enum FIRE_TYPE {
 	ConstItemType.HAND_R,
 	ConstItemType.HAND_L
 	) var hand
+
+@export_enum(
+	ConstItemType.ONE_HANDED,
+	ConstItemType.TWO_HANDED
+	) var held_capacity
+
 @export var offset_rotation : Vector3
 @export var offset_position : Vector3
 

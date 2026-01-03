@@ -1,8 +1,7 @@
 class_name ConstItemType
 
 # Item types 
-const TYPE_WEAPON_ONE_HANDED = "weapon_one_handed"
-const TYPE_WEAPON_TWO_HANDED = "weapon_two_handed"
+const TYPE_WEAPON = "weapon"
 const TYPE_CONSUMABLE = "consumable"
 const TYPE_GEAR = "gear"
 const TYPE_ITEM = "item"
@@ -11,7 +10,9 @@ const TYPE_ITEM = "item"
 const HAND_R = "right_hand"
 const HAND_L = "left_hand"
 
-
+# Hold_capacity
+const ONE_HANDED = "one_handed"
+const TWO_HANDED = "two_handed"
 
 # Animation names
 # use

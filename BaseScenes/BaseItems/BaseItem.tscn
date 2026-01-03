@@ -30,4 +30,6 @@ target = NodePath("..")
 visible = false
 stream = ExtResource("3_ksj2v")
 
+[node name="LeftHandTarget" type="Marker3D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

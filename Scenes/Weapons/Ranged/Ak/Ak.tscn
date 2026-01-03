@@ -15,6 +15,7 @@ fire_rate = 100.0
 ammo = 30
 max_ammo = 30
 hand = 0
+held_capacity = null
 tiles_width = 3
 tiles_height = 2
 offset_camera_size = 0.4
@@ -39,3 +40,6 @@ shape = SubResource("BoxShape3D_1erx4")
 
 [node name="InfoLabel" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+
+[node name="LeftHandTarget" parent="." index="4"]
+transform = Transform3D(0.5438473, 0.6846752, 0.48523182, -0.13502687, -0.4992896, 0.8558491, 0.8282499, -0.5309706, -0.17908776, -0.086879015, 0.03631997, -0.13966498)

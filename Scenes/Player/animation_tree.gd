@@ -1,5 +1,9 @@
 @tool
 extends AnimationTree
+class_name EntityAnimationTree
+
+
+signal anim_finished(anim : String)
 
 
 
@@ -24,3 +28,12 @@ extends AnimationTree
 		
 		for path in AnimationsBlendFilters.RIGHT_HAND:
 			one_shot.set_filter_path(path, set_filter_RH)
+
+
+### Hand animations ###
+func reach_back_weapon():
+	set("parameters/OneShotUpperBody/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+
+
+func equip_weapon_two_handed(value):
+	set("parameters/BlendLowerAndUpper/blend_amount", value)
