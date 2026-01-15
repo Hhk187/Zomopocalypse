@@ -113,8 +113,55 @@ func _physics_process(delta: float) -> void:
 			back1.get_child(0)._toggle(true)
 			
 			right_hand_weapon_equiped = null
+	
+	
+	if Input.is_action_just_pressed("play_weapon_2"):
+		if not back2.get_meta("has_item"): return
+		if not right_hand_weapon_equiped:
 
-		
+			animation_tree.reach_back_weapon()
+			
+			await get_tree().create_timer(0.8).timeout
+
+			right_hand_weapon_equiped = back2.get_child(0)
+			back2.remove_child(right_hand_weapon_equiped)
+			right_hand.add_child(right_hand_weapon_equiped)
+			
+			var tween := create_tween()
+			tween.tween_property(self, "blend_value", 1.0, 1)
+			tween.play()
+
+			
+
+			await get_tree().create_timer(0.8).timeout
+			
+			animation_tree.left_hand_ik.target_node = right_hand_weapon_equiped.get_child(-1).get_path()
+			animation_tree.right_hand_ik.active = true
+			animation_tree.left_hand_ik.active = true
+			
+		else :
+			
+			
+			animation_tree.reach_back_weapon()
+			var tween := create_tween()
+			tween.tween_property(self, "blend_value", 0.0, 1)
+			tween.play()
+			
+			animation_tree.right_hand_ik.active = false
+			animation_tree.left_hand_ik.active = false
+			
+			await get_tree().create_timer(0.8).timeout
+			
+			
+			right_hand.remove_child(right_hand_weapon_equiped)
+			back2.add_child(right_hand_weapon_equiped)
+			back2.get_child(0)._toggle(true)
+			
+			right_hand_weapon_equiped = null
+	
+	
+	
+	
 	animation_tree.equip_weapon_two_handed(blend_value)
 
 	

@@ -35,7 +35,7 @@ func _ready() -> void:
 		
 	
 
-## Updating inventory view ##############################################################
+### Updating inventory view ##############################################################
 func _on_open_inventory(player : BaseEntity):
 	players_inventory = player.inventory_data
 	var inventory_size: Vector2i = players_inventory.get_size()
