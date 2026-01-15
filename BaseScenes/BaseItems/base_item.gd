@@ -24,7 +24,7 @@ func throw_away():
 		og_parent.add_child(self)
 	_toggle(false)
 
-func un_equipe():
+func un_equip():
 	if not get_parent(): return
 	
 	equiped_pos = get_parent().global_position
@@ -34,7 +34,7 @@ func un_equipe():
 
 
 func equipe(new_parent : Node3D):
-	un_equipe()
+	un_equip()
 	info_label.hide()
 	new_parent.add_child(self)
 	_toggle(true)
