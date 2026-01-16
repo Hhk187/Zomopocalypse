@@ -34,15 +34,6 @@ enum FIRE_TYPE {
 @export var sfx_fire_path: String
 
 @export_group("Held")
-@export_enum(
-	ConstItemType.HAND_R,
-	ConstItemType.HAND_L
-	) var hand
-
-@export_enum(
-	ConstItemType.ONE_HANDED,
-	ConstItemType.TWO_HANDED
-	) var held_capacity
 
 @export var offset_rotation : Vector3
 @export var offset_position : Vector3

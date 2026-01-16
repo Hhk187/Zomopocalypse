@@ -47,6 +47,8 @@ var left_hand_weapon_equiped: BaseItem
 @onready var inventory_data: InventoryData = $"../InventoryData"
 @onready var animation_tree: EntityAnimationTree = $"../AnimationTree"
 
+var left_hand_blend = 0.0
+
 func _ready() -> void:
 	weapon_equiped_finished.connect(_on_weapon_equiped_finished)
 	weapon_equiping.connect(_on_weapon_equiping)
@@ -59,9 +61,6 @@ func _ready() -> void:
 
 
 
-	# if not animation_tree:
-	# 	push_error("ERROR : BaseEquipementsManager DID NOT FIND THE OWNER'S AnimationTree NODE")
-	# 	return
 	
 func _populate():
 	add_child(cooldown)
@@ -78,29 +77,37 @@ func _populate():
 
 func _on_equipement_updated():
 	for index in inventory_data.weapon_containers.size():
+		
 		var weapon_container := inventory_data.weapon_containers[index]
 		var back_marker := back_array[index]
+
+		if (back_marker.get_child_count() and not weapon_container.base_item) or index == slot_equiped:
+			await un_equip_weapon(index) # un-equip specific weapon if it's in hand
+
+	for index in inventory_data.weapon_containers.size():
+		
+		var weapon_container := inventory_data.weapon_containers[index]
+		var back_marker := back_array[index]
+		
 		
 		if not back_marker.get_child_count() and weapon_container.base_item:
 			weapon_container.base_item.equipe(back_marker)
 			back_marker.set_meta("has_item", true)
 			
 		elif (back_marker.get_child_count() and not weapon_container.base_item) or index == slot_equiped:
-			await un_equip_weapon(index) # un-equip specific weapon if it's in hand
+			
 			back_marker.get_child(0).un_equip()
 			back_marker.set_meta("has_item", false)
 
 
 
 
-
-var left_hand_blend = 0.0
 func equipe_weapon(slot : SLOT) -> void:
 
 	var back := back_array[slot]
 
-	if not back.get_meta("has_item"): return
-	if slot_equiped != SLOT.NONE or equiping or right_hand_weapon_equiped: return
+	if back.get_child_count() == 0: return
+	if slot_equiped != SLOT.NONE or equiping == true or right_hand_weapon_equiped != null or back.get_meta("has_item") == false: return
 
 	weapon_equiping.emit()
 
@@ -131,11 +138,11 @@ func equipe_weapon(slot : SLOT) -> void:
 ## un-equip the specified weapon if it's in hand [br]
 func un_equip_weapon(slot : SLOT):
 	
+	var back = back_array[slot]
 
-	if slot_equiped != slot: return 
+	if slot_equiped != slot or right_hand_weapon_equiped == null: return 
 
 	weapon_equiping.emit()
-	var back = back_array[slot]
 
 	animation_tree.reach_back_weapon()
 	var tween := create_tween()
@@ -150,7 +157,8 @@ func un_equip_weapon(slot : SLOT):
 	await cooldown.timeout
 	
 	
-	right_hand.remove_child(right_hand_weapon_equiped)
+	
+	right_hand_weapon_equiped.get_parent().remove_child(right_hand_weapon_equiped)
 	back.add_child(right_hand_weapon_equiped)
 	back.get_child(0)._toggle(true)
 	
