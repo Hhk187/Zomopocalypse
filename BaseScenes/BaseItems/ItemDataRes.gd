@@ -30,6 +30,9 @@ enum FIRE_TYPE {
 @export var ammo : int = 0
 @export var max_ammo : int = 0
 
+@export_group("Sfx")
+@export var sfx_fire_path: String
+
 @export_group("Held")
 @export_enum(
 	ConstItemType.HAND_R,

@@ -6,15 +6,16 @@
 
 [sub_resource type="Resource" id="Resource_1km6r"]
 script = ExtResource("2_ja8ts")
-id = "9mm"
+id = null
 name = "9mm"
 item_type = 0
 damage = 10
 range_unit = 100
+fire_rate = 500.0
 ammo = 12
 max_ammo = 12
 hand = 0
-held_capacity = null
+held_capacity = 0
 offset_rotation = Vector3(0, 0, 8)
 offset_position = Vector3(-0.07, 0.03, -0.305)
 tiles_width = 2
@@ -37,4 +38,4 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0005
 shape = SubResource("BoxShape3D_1km6r")
 
 [node name="LeftHandTarget" parent="." index="4"]
-transform = Transform3D(0.10751413, -0.15884551, 0.981432, -0.9877634, 0.095110804, 0.123601474, -0.11297833, -0.98271155, -0.14667603, -0.048, -0.054, 0.166)
+transform = Transform3D(0.12576011, -0.16258337, 0.9786476, -0.9850524, 0.09658526, 0.14262894, -0.11771201, -0.9819561, -0.14800657, -0.025, -0.052, 0.164)

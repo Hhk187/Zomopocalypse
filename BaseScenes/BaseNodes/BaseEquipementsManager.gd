@@ -14,8 +14,10 @@ enum SLOT {
 	THIRD,
 	NONE
 }
-var slot_equiped : SLOT = SLOT.NONE
-var equiping : bool = false
+var slot_equiped: SLOT = SLOT.NONE
+var equiping: bool = false
+
+var cooldown: Timer = Timer.new()
 
 @export var right_hand: Node3D
 @export var left_hand: Node3D
@@ -62,6 +64,7 @@ func _ready() -> void:
 	# 	return
 	
 func _populate():
+	add_child(cooldown)
 	back_array.append(back1) #
 	back_array.append(back2) # This fixes the fact that variables are getting forgot when assigning directly
 	back_array.append(back3) #
@@ -82,7 +85,7 @@ func _on_equipement_updated():
 			weapon_container.base_item.equipe(back_marker)
 			back_marker.set_meta("has_item", true)
 			
-		elif back_marker.get_child_count() and not weapon_container.base_item:
+		elif (back_marker.get_child_count() and not weapon_container.base_item) or index == slot_equiped:
 			await un_equip_weapon(index) # un-equip specific weapon if it's in hand
 			back_marker.get_child(0).un_equip()
 			back_marker.set_meta("has_item", false)
@@ -128,7 +131,8 @@ func equipe_weapon(slot : SLOT) -> void:
 ## un-equip the specified weapon if it's in hand [br]
 func un_equip_weapon(slot : SLOT):
 	
-	if slot_equiped == SLOT.NONE or equiping or not right_hand_weapon_equiped: return 
+
+	if slot_equiped != slot: return 
 
 	weapon_equiping.emit()
 	var back = back_array[slot]
@@ -141,13 +145,18 @@ func un_equip_weapon(slot : SLOT):
 	animation_tree.right_hand_ik.active = false
 	animation_tree.left_hand_ik.active = false
 	
-	await get_tree().create_timer(0.4).timeout
+	
+	cooldown.start(0.4)
+	await cooldown.timeout
 	
 	
 	right_hand.remove_child(right_hand_weapon_equiped)
 	back.add_child(right_hand_weapon_equiped)
 	back.get_child(0)._toggle(true)
 	
+	slot_equiped = SLOT.NONE
+	right_hand_weapon_equiped = null
+
 
 	weapon_equiped_finished.emit()
 
@@ -166,7 +175,8 @@ func free_hands():
 	animation_tree.right_hand_ik.active = false
 	animation_tree.left_hand_ik.active = false
 	
-	await get_tree().create_timer(0.4).timeout
+	cooldown.start(0.4)
+	await cooldown.timeout
 	
 	
 	right_hand.remove_child(right_hand_weapon_equiped)
