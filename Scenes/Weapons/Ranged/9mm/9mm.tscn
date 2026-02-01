@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://7n3iw4wdvwcy"]
+[gd_scene load_steps=7 format=3 uid="uid://7n3iw4wdvwcy"]
 
 [ext_resource type="PackedScene" uid="uid://qsf1is5fnqvd" path="res://BaseScenes/BaseItems/BaseItem.tscn" id="1_gqu2v"]
+[ext_resource type="Script" uid="uid://cdnuv5ybp8mxg" path="res://BaseScenes/BaseItems/Children/FireArm.gd" id="2_1km6r"]
 [ext_resource type="Script" uid="uid://bd0s152hspgvo" path="res://BaseScenes/BaseItems/ItemDataRes.gd" id="2_ja8ts"]
 [ext_resource type="PackedScene" uid="uid://dtj6iyuqqeued" path="res://temp/9mm.blend" id="3_ja8ts"]
 
@@ -26,6 +27,7 @@ metadata/_custom_type_script = "uid://bd0s152hspgvo"
 size = Vector3(0.3223877, 0.22595228, 0.09765625)
 
 [node name="9mm" instance=ExtResource("1_gqu2v")]
+script = ExtResource("2_1km6r")
 item_data = SubResource("Resource_1km6r")
 
 [node name="9mm" parent="Model" index="0" instance=ExtResource("3_ja8ts")]

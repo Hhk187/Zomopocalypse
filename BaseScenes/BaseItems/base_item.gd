@@ -1,6 +1,8 @@
 extends RigidBody3D
 class_name BaseItem
 
+const LEFT_HAND_MARKER = "LeftHandTarget"
+
 @export var item_data: ItemDataRes
 
 @onready var model: Node3D = $Model
@@ -71,3 +73,20 @@ func _on_body_entered(_body: Node) -> void:
 	if Time.get_ticks_msec() - sfx_cooldown > 1000:
 		contact.play()
 		sfx_cooldown = Time.get_ticks_msec()
+
+
+
+func _thread_free_node(node: Object) -> void:
+	# Never free scene nodes directly from a thread.
+	# Use deferred call to safely schedule on the main thread.
+	node.call_deferred("queue_free")
+
+
+
+
+func use():
+	pass
+
+
+func update(entity : BaseEntity):
+	pass

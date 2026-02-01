@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnblltv50fky0"]
+[gd_scene load_steps=8 format=3 uid="uid://dnblltv50fky0"]
 
 [ext_resource type="PackedScene" uid="uid://qsf1is5fnqvd" path="res://BaseScenes/BaseItems/BaseItem.tscn" id="1_1erx4"]
+[ext_resource type="Script" uid="uid://cdnuv5ybp8mxg" path="res://BaseScenes/BaseItems/Children/FireArm.gd" id="2_k25jp"]
 [ext_resource type="PackedScene" uid="uid://cy318hm4clxvr" path="res://temp/AK.blend" id="3_1erx4"]
+[ext_resource type="AudioStream" uid="uid://jodhwljuh5ar" path="res://Assets/SFX/Weapons/Rifle/firing2.wav" id="3_k25jp"]
 [ext_resource type="Script" uid="uid://bd0s152hspgvo" path="res://BaseScenes/BaseItems/ItemDataRes.gd" id="3_lql1c"]
 
 [sub_resource type="Resource" id="Resource_k25jp"]
@@ -15,8 +17,7 @@ firing_type = 2
 fire_rate = 100.0
 ammo = 30
 max_ammo = 30
-hand = 0
-held_capacity = 1
+sfx_fire = ExtResource("3_k25jp")
 tiles_width = 3
 tiles_height = 2
 offset_camera_size = 0.4
@@ -30,6 +31,7 @@ size = Vector3(0.06225586, 0.304688, 0.95947266)
 
 [node name="Ak" instance=ExtResource("1_1erx4")]
 max_contacts_reported = 1
+script = ExtResource("2_k25jp")
 item_data = SubResource("Resource_k25jp")
 
 [node name="AK" parent="Model" index="0" instance=ExtResource("3_1erx4")]

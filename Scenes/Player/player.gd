@@ -12,6 +12,7 @@ const THIRD_PERSON_POS = Vector3(0.64, 0.135, 1.153)
 
 @onready var head_target_ik: Marker3D = $HeadTargetIK
 @onready var right_hand_target_ik: TargetIK = $RightHandIK
+@onready var right_hand_target_offset = $RightHandIK/RightHandTargetOffset
 
 
 var equiped_weapon : BaseItem
@@ -32,8 +33,6 @@ func _input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("play_pickup"):
 		interaction_area.pick_up_item()
-	if event.is_action_pressed("play_drop"):
-		interaction_area.drop_item()
 	
 	if event.is_action_pressed("play_use"):
 		interaction_area.interact()
@@ -81,16 +80,8 @@ func test_use_weapon():
 	#print(ray_origin, ray_origin)
 
 
-#var cooldown = Time.get_ticks_msec()
-#func _physics_process(_delta: float) -> void:
-	#if Engine.is_editor_hint(): return
-	#if Input.is_action_pressed("play_fire") and Time.get_ticks_msec() - cooldown > 50:
-		#test_use_weapon()
-		#$AudioStreamPlayer3D.pitch_scale = randf_range(0.8, 2)
-		#
-		#$AudioStreamPlayer3D.play()
-		#cooldown = Time.get_ticks_msec()
-	
+func _physics_process(_delta: float) -> void:
+	pass
 	#if Input.is_action_pressed("play_pickup"):
 		#interaction_area.pick_up_item()
 	#if Input.is_action_pressed("play_drop"):

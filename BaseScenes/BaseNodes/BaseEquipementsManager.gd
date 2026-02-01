@@ -47,6 +47,8 @@ var left_hand_weapon_equiped: BaseItem
 @onready var inventory_data: InventoryData = $"../InventoryData"
 @onready var animation_tree: EntityAnimationTree = $"../AnimationTree"
 
+
+
 var left_hand_blend = 0.0
 
 func _ready() -> void:
@@ -76,13 +78,10 @@ func _populate():
 
 
 func _on_equipement_updated():
-	for index in inventory_data.weapon_containers.size():
-		
-		var weapon_container := inventory_data.weapon_containers[index]
-		var back_marker := back_array[index]
-
-		if (back_marker.get_child_count() and not weapon_container.base_item) or index == slot_equiped:
-			await un_equip_weapon(index) # un-equip specific weapon if it's in hand
+	# TODO: known issue when the player could switch weapon slot in inventory while physically equiping it, 
+	# breaks, it leaves "equiping" true and the player would be locked from equiping weapons
+	if right_hand_weapon_equiped and inventory_data.weapon_containers[slot_equiped].base_item == null:
+		await un_equip_weapon(slot_equiped)
 
 	for index in inventory_data.weapon_containers.size():
 		
@@ -90,13 +89,14 @@ func _on_equipement_updated():
 		var back_marker := back_array[index]
 		
 		
-		if not back_marker.get_child_count() and weapon_container.base_item:
+		if not back_marker.get_meta("has_item") and weapon_container.base_item:
+			prints("equiping", index)
 			weapon_container.base_item.equipe(back_marker)
 			back_marker.set_meta("has_item", true)
 			
-		elif (back_marker.get_child_count() and not weapon_container.base_item) or index == slot_equiped:
-			
-			back_marker.get_child(0).un_equip()
+		elif back_marker.get_meta("has_item") and not weapon_container.base_item:
+			if back_marker.get_child_count():
+				back_marker.get_child(0).un_equip()
 			back_marker.set_meta("has_item", false)
 
 
@@ -116,8 +116,8 @@ func equipe_weapon(slot : SLOT) -> void:
 	await get_tree().create_timer(0.4).timeout
 
 	right_hand_weapon_equiped = back.get_child(0)
-	back.remove_child(right_hand_weapon_equiped)
-	right_hand.add_child(right_hand_weapon_equiped)
+	right_hand_weapon_equiped.equipe(right_hand)
+
 	
 	var tween := create_tween()
 	tween.tween_property(self, "left_hand_blend", 1.0, 0.4)
@@ -127,7 +127,7 @@ func equipe_weapon(slot : SLOT) -> void:
 
 	await get_tree().create_timer(0.4).timeout
 	
-	animation_tree.left_hand_ik.target_node = right_hand_weapon_equiped.get_child(-1).get_path()
+	animation_tree.left_hand_ik.target_node = right_hand_weapon_equiped.get_node(BaseItem.LEFT_HAND_MARKER).get_path()
 	animation_tree.right_hand_ik.active = true
 	animation_tree.left_hand_ik.active = true
 
@@ -158,9 +158,7 @@ func un_equip_weapon(slot : SLOT):
 	
 	
 	
-	right_hand_weapon_equiped.get_parent().remove_child(right_hand_weapon_equiped)
-	back.add_child(right_hand_weapon_equiped)
-	back.get_child(0)._toggle(true)
+	right_hand_weapon_equiped.equipe(back)
 	
 	slot_equiped = SLOT.NONE
 	right_hand_weapon_equiped = null
@@ -187,9 +185,7 @@ func free_hands():
 	await cooldown.timeout
 	
 	
-	right_hand.remove_child(right_hand_weapon_equiped)
-	back.add_child(right_hand_weapon_equiped)
-	back.get_child(0)._toggle(true)
+	right_hand_weapon_equiped.equipe(back)
 	
 
 	slot_equiped = SLOT.NONE
@@ -206,13 +202,35 @@ func _on_weapon_equiping():
 #########################################
 
 
+
+#var right_hand_offset_og_trans: Transform3D = right_hand_target_offset.transform
+# var right_hand_offset_og_pos: Vector3 = right_hand_target_offset.position
+# var right_hand_offset_og_rot: Vector3 = right_hand_target_offset.rotation
+
 func _physics_process(delta: float) -> void:
 	for index in back_array.size():
 		if Input.is_action_just_pressed("play_weapon_%s" % (index + 1)):
 			equipe_weapon(index)
 	
+
 	if Input.is_action_just_pressed("play_hands_free"):
 		free_hands()
-
+	
 
 	animation_tree.equip_weapon_two_handed(left_hand_blend)
+	
+	if right_hand_weapon_equiped and not equiping:
+		right_hand_weapon_equiped.update(get_parent())
+	
+	
+	#right_hand_target_offset.transform = lerp(
+		#right_hand_target_offset.transform,
+		#right_hand_offset_og_trans,
+		#0.1)
+
+
+
+
+
+
+	

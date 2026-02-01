@@ -31,7 +31,7 @@ enum FIRE_TYPE {
 @export var max_ammo : int = 0
 
 @export_group("Sfx")
-@export var sfx_fire_path: String
+@export var sfx_fire: AudioStream
 
 @export_group("Held")
 
