@@ -1,0 +1,1 @@
+- theard loading levels and nodes management, its done by ai, id like to rebuild it from scratch
