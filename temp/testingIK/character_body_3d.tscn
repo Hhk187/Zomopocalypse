@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://cqyv2uvh7e3ta"]
+
+[ext_resource type="Script" uid="uid://bsr0hdnj53pq6" path="res://temp/testingIK/character_body_3d.gd" id="1_35rkw"]
+[ext_resource type="PackedScene" uid="uid://cd4shomxx12md" path="res://temp/assets/mixamo/BaseCharacter.blend" id="1_x4l1n"]
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_x4l1n"]
+angle = 0.7853982
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_35rkw"]
+angle = 0.7853982
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_0fn3q"]
+angle = 0.7853982
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_taay5"]
+angle = 1.2138765
+
+[sub_resource type="JointLimitationCone3D" id="JointLimitationCone3D_ifc6v"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_35rkw"]
+radius = 0.1
+height = 0.2
+
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=769827450]
+script = ExtResource("1_35rkw")
+
+[node name="BaseCharacter" parent="." unique_id=1595103115 instance=ExtResource("1_x4l1n")]
+
+[node name="RHTwoBoneIK3D" type="TwoBoneIK3D" parent="BaseCharacter/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1595103115, 951262156) index="3" unique_id=1448165535]
+active = false
+setting_count = 1
+settings/0/target_node = NodePath("../../../../Marker3D")
+settings/0/pole_node = NodePath("../../../../Marker3D/MeshInstance3D")
+settings/0/root_bone_name = "mixamorig_RightShoulder"
+settings/0/root_bone = 46
+settings/0/middle_bone_name = "mixamorig_RightForeArm"
+settings/0/middle_bone = 48
+settings/0/pole_direction = 2
+settings/0/end_bone_name = "mixamorig_RightHand"
+settings/0/end_bone = 49
+settings/0/use_virtual_end = false
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.0
+
+[node name="CCDIK3D" type="CCDIK3D" parent="BaseCharacter/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1595103115, 951262156) index="4" unique_id=715162880]
+deterministic = true
+setting_count = 1
+settings/0/target_node = NodePath("../../../../HeadIK")
+settings/0/root_bone_name = "mixamorig_Spine"
+settings/0/root_bone = 1
+settings/0/end_bone_name = "mixamorig_Head"
+settings/0/end_bone = 5
+settings/0/extend_end_bone = false
+settings/0/joint_count = 5
+settings/0/joints/0/rotation_axis = 4
+settings/0/joints/0/rotation_axis_vector = Vector3(1, 0, 0)
+settings/0/joints/0/limitation = SubResource("JointLimitationCone3D_x4l1n")
+settings/0/joints/0/limitation/right_axis = 0
+settings/0/joints/0/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = SubResource("JointLimitationCone3D_35rkw")
+settings/0/joints/1/limitation/right_axis = 0
+settings/0/joints/1/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = SubResource("JointLimitationCone3D_0fn3q")
+settings/0/joints/2/limitation/right_axis = 0
+settings/0/joints/2/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = SubResource("JointLimitationCone3D_taay5")
+settings/0/joints/3/limitation/right_axis = 0
+settings/0/joints/3/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = SubResource("JointLimitationCone3D_ifc6v")
+settings/0/joints/4/limitation/right_axis = 0
+settings/0/joints/4/limitation/rotation_offset = Quaternion(0, 0, 0, 1)
+
+[node name="FABRIK3D" type="FABRIK3D" parent="BaseCharacter/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1595103115, 951262156) index="5" unique_id=1657388880]
+active = false
+angular_delta_limit = 0.08019787912913943
+deterministic = true
+setting_count = 1
+settings/0/target_node = NodePath("../../../../HeadIK")
+settings/0/root_bone_name = "mixamorig_Spine"
+settings/0/root_bone = 1
+settings/0/end_bone_name = "mixamorig_Head"
+settings/0/end_bone = 5
+settings/0/extend_end_bone = false
+settings/0/joint_count = 5
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+
+[node name="JacobianIK3D" type="JacobianIK3D" parent="BaseCharacter/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1595103115, 951262156) index="6" unique_id=907439234]
+deterministic = true
+setting_count = 1
+settings/0/target_node = NodePath("../../../../HeadIK")
+settings/0/root_bone_name = "mixamorig_Spine"
+settings/0/root_bone = 1
+settings/0/end_bone_name = "mixamorig_Head"
+settings/0/end_bone = 5
+settings/0/extend_end_bone = false
+settings/0/joint_count = 5
+settings/0/joints/0/rotation_axis = 3
+settings/0/joints/0/limitation = null
+settings/0/joints/1/rotation_axis = 3
+settings/0/joints/1/limitation = null
+settings/0/joints/2/rotation_axis = 3
+settings/0/joints/2/limitation = null
+settings/0/joints/3/rotation_axis = 3
+settings/0/joints/3/limitation = null
+settings/0/joints/4/rotation_axis = 3
+settings/0/joints/4/limitation = null
+
+[node name="CopyTransformModifier3D" type="CopyTransformModifier3D" parent="BaseCharacter/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1595103115, 951262156) index="7" unique_id=1014757856]
+setting_count = 1
+settings/0/amount = 1.0
+settings/0/apply_bone_name = "mixamorig_Head"
+settings/0/apply_bone = 5
+settings/0/reference_type = 1
+settings/0/reference_node = NodePath("../../../../HeadIK")
+settings/0/copy = 2
+settings/0/axes = 7
+settings/0/invert = 0
+settings/0/additive = false
+
+[node name="BoneTwistDisperser3D" type="BoneTwistDisperser3D" parent="BaseCharacter/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1595103115, 951262156) index="8" unique_id=1479132004]
+setting_count = 1
+settings/0/root_bone_name = "mixamorig_Spine"
+settings/0/root_bone = 1
+settings/0/end_bone_name = "mixamorig_Head"
+settings/0/end_bone = 5
+settings/0/extend_end_bone = true
+settings/0/end_bone_direction = 6
+settings/0/twist_from_rest = true
+settings/0/disperse_mode = 0
+settings/0/joint_count = 5
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1455249425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2129125, 1.3938231, 0.2554981)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Marker3D" unique_id=741231156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48736757, -0.5340726, -0.87314475)
+mesh = SubResource("SphereMesh_35rkw")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=218184570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4453696, 1.0482675, -0.30333233)
+mesh = SubResource("SphereMesh_35rkw")
+
+[node name="HeadIK" type="Marker3D" parent="." unique_id=1829411580]
+transform = Transform3D(0.992461, -0.100126825, 0.07068251, 0, 0.57670885, 0.8169498, -0.12256184, -0.8107905, 0.5723612, 0, 1.651865, 0.28761825)
+
+[node name="target" type="MeshInstance3D" parent="." unique_id=1752020315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21730506, 0.85975057, 1.4720385)
+mesh = SubResource("SphereMesh_35rkw")
+
+[editable path="BaseCharacter"]
