@@ -14,6 +14,7 @@ const SCENES : Dictionary = {
 	"3d" : {
 		"intro" : "res://Scenes/IntroScene/intro_scene.tscn",
 		"city" : "res://Scenes/Levels/TestLevels/City2/City2.tscn",
+		"voxel_world" : "res://Scenes/Levels/TestLevels/voxel_based_world/VoxelBaseWorld.tscn"
 	},
 	"2d" : {
 		"hud" : "res://Scenes/HUD/hud_scene.tscn"

@@ -1,12 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://4dfvwoguwx1b"]
+[gd_scene format=3 uid="uid://4dfvwoguwx1b"]
 
 [ext_resource type="Script" uid="uid://m0q215b5p6wt" path="res://Scenes/GameController/game_controller.gd" id="1_ovo16"]
 
-[node name="GameController" type="Node"]
+[node name="GameController" type="Node" unique_id=1503124115]
 script = ExtResource("1_ovo16")
 
-[node name="World3D" type="Node3D" parent="."]
+[node name="World3D" type="Node3D" parent="." unique_id=878381441]
 
-[node name="World2D" type="Node2D" parent="."]
+[node name="World2D" type="Node2D" parent="." unique_id=2014707268]
 
-[node name="GUI" type="CanvasLayer" parent="."]
+[node name="GUI" type="CanvasLayer" parent="." unique_id=1572520189]

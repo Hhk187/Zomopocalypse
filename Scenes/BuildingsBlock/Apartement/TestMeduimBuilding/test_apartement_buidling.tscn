@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://d2a7pndqqmwnf"]
+[gd_scene format=3 uid="uid://d2a7pndqqmwnf"]
 
 [ext_resource type="PackedScene" uid="uid://donvnxtekyp11" path="res://BaseScenes/BaseBuildings/BaseApartementBuilding/base_apartement_buidling.tscn" id="1_4ecy8"]
 [ext_resource type="PackedScene" uid="uid://jmr22kisf30a" path="res://Assets/Models/CIty/HollowApartement/Meduim/HollowApartement.Meduim.blend" id="2_jwdal"]
-[ext_resource type="Texture2D" uid="uid://b5upi5w53s1pl" path="res://temp/BrickWall.jpg" id="3_sbmju"]
+[ext_resource type="Texture2D" uid="uid://b5upi5w53s1pl" path="res://Assets/Textures/Material/BrickWall.jpg" id="3_sbmju"]
 [ext_resource type="Material" uid="uid://bps5ot6u27d2x" path="res://Assets/Materials/OuterWallFloor.tres" id="3_whab4"]
 [ext_resource type="Material" uid="uid://bn2lj7y874u6n" path="res://Assets/Materials/FloorWood.tres" id="4_bv6v1"]
 [ext_resource type="Material" uid="uid://b1dnp7i4313p5" path="res://Assets/Materials/GroundInsideWall.tres" id="4_l88ba"]
